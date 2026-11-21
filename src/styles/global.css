@@ -1,7 +1,7 @@
 /* ==========================================================================
    CAMPUSWAVE GLOBAL BASE STYLES
-   Modern, Clean, High-Contrast Audio Streaming Design System
-   Fully Responsive for Light and Dark Modes
+   Clean, Editorial, Modern Campus Radio Platform
+   Designed by a human UI/UX team: Minimal, Balanced, Music-Focused
    ========================================================================== */
 
 @import './variables.css';
@@ -23,9 +23,6 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  background-image: linear-gradient(to bottom, var(--ruled-line-color) 1px, transparent 1px);
-  background-size: 100% 32px;
-  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
@@ -34,12 +31,12 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Headings: Clean, modern, responsive typography */
+/* Headings: Editorial, Modern, Crisp */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-primary);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
 }
 
@@ -119,7 +116,7 @@ input, textarea, select {
 }
 
 .page-wrapper {
-  max-width: 1240px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-lg);
   width: 100%;
@@ -136,7 +133,7 @@ input, textarea, select {
 
 @media (max-width: 768px) {
   .page-wrapper {
-    padding: 14px 16px;
+    padding: 16px;
   }
 
   .desktop-only {
@@ -149,16 +146,16 @@ input, textarea, select {
 }
 
 /* ==========================================================================
-   BUTTONS SYSTEM: Modern, Touch-Friendly, Accessible
+   BUTTONS: Accessible, Human-Designed, Balanced
    ========================================================================== */
 .btn-primary, .btn-orange, .btn-coral {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: 8px;
   background-color: var(--color-orange);
   color: #FFFFFF !important;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: var(--font-size-btn);
   padding: 10px 22px;
@@ -178,17 +175,17 @@ input, textarea, select {
 }
 
 .btn-primary:active, .btn-orange:active, .btn-coral:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
-  background-color: var(--bg-card-subtle);
+  gap: 8px;
+  background-color: var(--bg-card);
   color: var(--text-primary) !important;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: var(--font-size-btn);
   padding: 10px 20px;
@@ -201,12 +198,35 @@ input, textarea, select {
 }
 
 .btn-secondary:hover {
-  background-color: var(--border-color-hover);
-  color: var(--text-primary) !important;
+  background-color: var(--bg-card-subtle);
+  border-color: var(--border-color-hover);
 }
 
 .btn-secondary:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
+}
+
+.btn-forest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--color-forest);
+  color: #FFF8E9 !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--font-size-btn);
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 248, 233, 0.15);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 44px;
+}
+
+.btn-forest:hover {
+  background-color: var(--color-forest-dark);
+  transform: translateY(-1px);
 }
 
 .btn-icon {
@@ -218,7 +238,7 @@ input, textarea, select {
   min-width: 44px;
   min-height: 44px;
   border-radius: var(--radius-full);
-  background-color: var(--bg-card-subtle);
+  background-color: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
   cursor: pointer;
@@ -226,21 +246,21 @@ input, textarea, select {
 }
 
 .btn-icon:hover {
-  background-color: var(--border-color);
+  background-color: var(--bg-card-subtle);
   color: var(--color-orange);
+  border-color: var(--border-color-hover);
 }
 
 .btn-icon:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
-/* Button alias for existing brutal classes to keep them clean and modern */
 .btn-brutal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-weight: 700;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -248,17 +268,13 @@ input, textarea, select {
   min-height: 40px;
 }
 
-.btn-brutal:active {
-  transform: scale(0.97);
-}
-
 /* ==========================================================================
-   CARDS & PANELS: Clean, Subtle Borders, High Contrast
+   CARDS & PANELS: Clean Editorial Structure
    ========================================================================== */
 .card-modern, .glass-panel {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   color: var(--text-primary);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
@@ -270,235 +286,51 @@ input, textarea, select {
   border-color: var(--border-color-hover);
 }
 
-/* Badges & Tags */
-.editorial-badge {
-  font-family: var(--font-body);
-  font-size: 0.74rem;
-  letter-spacing: 0.04em;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-orange-soft);
-  color: var(--color-orange);
-  border: 1px solid rgba(255, 85, 0, 0.25);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  line-height: 1.2;
-}
-
-/* Funky Retro Student Stickers & Accents (Inspired by Tactile Gadgets & Pop Posters) */
-.sticker-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-body);
-  font-size: 0.76rem;
-  font-weight: 800;
-  padding: 4px 12px;
-  border-radius: 8px;
-  background-color: #FEF08A;
-  color: #1E293B;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transform: rotate(-1.5deg);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  user-select: none;
-}
-
-.sticker-tag:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-
-.sticker-tag-orange {
-  background-color: var(--color-orange);
-  color: #FFFFFF;
-}
-
-.sticker-tag-cyan {
-  background-color: #67E8F9;
-  color: #0F172A;
-}
-
-.funky-pop {
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-}
-
-.funky-pop:hover {
-  transform: translateY(-3px) scale(1.02);
+/* Flagship Live Radio Banner in Forest Green */
+.card-forest {
+  background-color: var(--color-forest);
+  color: #FFF8E9;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 248, 233, 0.12);
   box-shadow: var(--shadow-md);
 }
 
-/* Sound Equalizer Animated Bars */
-.sound-equalizer {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 16px;
-}
-
-.sound-bar {
-  width: 3px;
-  background-color: var(--color-orange);
-  border-radius: 2px;
-  animation: soundBounce 1.2s ease-in-out infinite;
-}
-
-.sound-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
-.sound-bar:nth-child(2) { height: 90%; animation-delay: 0.3s; }
-.sound-bar:nth-child(3) { height: 60%; animation-delay: 0.15s; }
-.sound-bar:nth-child(4) { height: 100%; animation-delay: 0.45s; }
-
-/* ==========================================================================
-   FM RETRO RADIO TYPOGRAPHY & VISUAL MOTIFS
-   Inspired by 70s Groovy Radio Shows & Vintage Receiver Consoles
-   ========================================================================== */
-
-/* 70s Retro Curvy Groovy Title */
-.font-retro {
-  font-family: var(--font-retro);
-  letter-spacing: 0.015em;
-  font-weight: normal;
-}
-
-/* Vintage Broadcast Station Lettering */
-.font-radio {
-  font-family: var(--font-radio);
-  letter-spacing: 0.03em;
-}
-
-/* 70s Multi-Layered Drop Shadow (Inspired by "the Kirby's Show" & "imersão Retrô") */
-.retro-title-shadow {
-  font-family: var(--font-retro);
-  color: var(--color-retro-yellow);
-  text-shadow: 
-    2px 2px 0 var(--color-retro-red),
-    4px 4px 0 rgba(44, 33, 23, 0.25);
-}
-
-.retro-title-orange {
-  font-family: var(--font-retro);
-  color: var(--color-orange);
-  text-shadow: 
-    2px 2px 0 var(--color-retro-red),
-    3px 3px 0 rgba(44, 33, 23, 0.2);
-}
-
-/* Vintage Radio Tuner Dial Indicator */
-.retro-tuner-scale {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--bg-card-subtle);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: 6px 12px;
-  font-family: var(--font-mono);
+/* Editorial Badges & Category Tags */
+.editorial-badge {
+  font-family: var(--font-heading);
   font-size: 0.72rem;
-  color: var(--text-muted);
-  position: relative;
-  overflow: hidden;
-}
-
-.retro-tuner-needle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: var(--color-orange);
-  box-shadow: 0 0 8px var(--color-orange-glow);
-  left: 50%;
-}
-
-/* Washi Tape Corner Accents (Inspired by portfolio design reference) */
-.washi-tape {
-  position: absolute;
-  width: 52px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  border: 1px dashed rgba(0, 0, 0, 0.15);
-  z-index: 4;
-  pointer-events: none;
-}
-.washi-tape-tl {
-  top: -8px;
-  left: 16px;
-  transform: rotate(-3.5deg);
-}
-.washi-tape-tr {
-  top: -8px;
-  right: 16px;
-  transform: rotate(3deg);
-}
-
-/* Retro Folder Tab Cutout (Inspired by physical file folder tabs in reference) */
-.folder-tab-bar {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  margin-bottom: -1px;
-  position: relative;
-  z-index: 2;
-}
-
-.folder-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px 8px;
-  font-family: var(--font-radio);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  background: var(--color-orange);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 14px;
-  position: relative;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.04);
-}
-
-.folder-tab-blue {
-  background: #2563EB;
-}
-
-.folder-tab-yellow {
-  background: #FAB005;
-  color: #1A1A1A;
-}
-
-.folder-tab-teal {
-  background: #0CA678;
-}
-
-/* Editorial Minimalist Pills (Zero Emojis, High-Contrast Premium Styling) */
-.retro-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
-  font-family: var(--font-radio);
-  font-size: 0.76rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  border: 1px solid currentColor;
+  background-color: var(--color-forest-soft);
+  color: var(--color-forest);
+  border: 1px solid rgba(18, 61, 44, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   line-height: 1.2;
+  text-transform: uppercase;
 }
-.retro-pill-yellow { background: #FEF08A; color: #854D0E; border-color: #FDE047; }
-.retro-pill-orange { background: var(--color-orange-soft); color: var(--color-orange); border-color: var(--color-orange); }
-.retro-pill-green { background: #DCFCE7; color: #166534; border-color: #86EFAC; }
-.retro-pill-blue { background: #DBEAFE; color: #1E40AF; border-color: #93C5FD; }
-.retro-pill-pink { background: #FCE7F3; color: #9D174D; border-color: #F472B6; }
 
+html[data-theme="dark"] .editorial-badge {
+  background-color: rgba(244, 197, 66, 0.12);
+  color: var(--color-yellow);
+  border-color: rgba(244, 197, 66, 0.25);
+}
 
+.editorial-badge-orange {
+  background-color: var(--color-orange-soft);
+  color: var(--color-orange);
+  border-color: rgba(241, 90, 36, 0.3);
+}
 
 /* Section Header Layout */
 .section-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
   flex-wrap: wrap;
   gap: var(--space-md);
 }
@@ -507,8 +339,9 @@ input, textarea, select {
   font-family: var(--font-heading);
   font-size: var(--font-size-section-heading);
   color: var(--text-primary);
-  line-height: 1.2;
-  font-weight: 700;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .section-header-subtitle {
@@ -516,6 +349,40 @@ input, textarea, select {
   font-size: var(--font-size-body);
   font-weight: 400;
   margin-top: 4px;
+}
+
+/* Sound Equalizer Animated Bars */
+.sound-equalizer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+
+.sound-bar {
+  width: 2.5px;
+  background-color: var(--color-orange);
+  border-radius: 1px;
+  animation: soundBounce 1.2s ease-in-out infinite;
+}
+
+.sound-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.sound-bar:nth-child(2) { height: 90%; animation-delay: 0.3s; }
+.sound-bar:nth-child(3) { height: 60%; animation-delay: 0.15s; }
+.sound-bar:nth-child(4) { height: 100%; animation-delay: 0.45s; }
+
+/* Radio Dial Tuner Scale */
+.radio-tuner-scale {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
 /* Form Controls */
@@ -527,7 +394,7 @@ input, textarea, select {
 }
 
 .form-label {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -552,4 +419,49 @@ input, textarea, select {
 
 .form-input::placeholder {
   color: var(--text-muted);
+}
+
+/* Category Filter Pills Row */
+.category-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.category-pills-row::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+  background-color: var(--bg-card-subtle);
+  color: var(--text-primary);
+}
+
+.category-pill.active {
+  background-color: var(--color-forest);
+  color: #FFF8E9;
+  border-color: var(--color-forest);
+}
+
+html[data-theme="dark"] .category-pill.active {
+  background-color: var(--color-orange);
+  color: #FFFFFF;
+  border-color: var(--color-orange);
 }

@@ -53,29 +53,30 @@ export const Podcasts = () => {
       {/* Top Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="retro-pill retro-pill-orange">
-            VOICE CRATES // 90.4 MHZ
+          <span className="editorial-badge">
+            STUDENT VOICES • 90.4 MHZ
           </span>
-          <span className="retro-pill retro-pill-yellow">
-            STUDENT VOICES
+          <span className="editorial-badge editorial-badge-forest">
+            ON-DEMAND AUDIO
           </span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
             NMAMIT STUDENT BROADCASTS
           </span>
         </div>
 
         <h1 
           style={{ 
-            fontFamily: 'var(--font-retro)',
-            fontSize: 'clamp(1.8rem, 5vw, 2.8rem)',
-            letterSpacing: '0.02em',
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
             marginTop: '8px', 
             marginBottom: '10px', 
             color: 'var(--text-primary)',
-            textShadow: '2px 2px 0 var(--color-retro-shadow, rgba(201, 42, 42, 0.25))'
+            lineHeight: 1.15
           }}
         >
-          STUDENT <span style={{ color: 'var(--color-orange)' }}>PODCASTS</span>
+          Student <span style={{ color: 'var(--color-orange)' }}>Podcasts</span>
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', fontWeight: 500, maxWidth: '680px', marginBottom: '20px', lineHeight: 1.6 }}>
           Real engineering discussions, hostel chronicles, tech debates, and placement insights recorded right on campus.

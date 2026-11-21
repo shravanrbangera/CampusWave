@@ -1,56 +1,66 @@
 /* ==========================================================================
    CAMPUSWAVE DESIGN SYSTEM TOKENS
-   FM RETRO RADIO & VINTAGE BROADCAST AESTHETIC
-   Inspired by 70s Curvy Groovy Radio Shows & Vintage Receiver Consoles
+   Professional Editorial Campus Radio Aesthetic
+   Human-Crafted, Balanced, Music-Focused, Clean
    ========================================================================== */
 
 :root {
-  /* Brand Core Accent: 70s Burnt Sunset Orange */
-  --color-orange: #E8590C;
-  --color-orange-hover: #D9480F;
-  --color-orange-soft: rgba(232, 89, 12, 0.12);
-  --color-orange-glow: rgba(232, 89, 12, 0.35);
+  /* Brand Core Palette (User Defined) */
+  --color-forest: #123D2C;
+  --color-forest-dark: #0D2C20;
+  --color-forest-soft: rgba(18, 61, 44, 0.08);
+  --color-forest-glow: rgba(18, 61, 44, 0.25);
 
-  /* Legacy aliases mapped for backward compatibility */
-  --color-coral: #E8590C;
-  --color-coral-hover: #D9480F;
-  --color-coral-soft: rgba(232, 89, 12, 0.12);
-  --color-coral-glow: rgba(232, 89, 12, 0.35);
-  --color-live: #E8590C;
+  --color-cream: #FFF8E9;
+  --color-cream-subtle: #F9F3E4;
 
-  /* 70s Retro Broadcast Palette */
-  --color-amber: #FAB005;
-  --color-amber-soft: rgba(250, 176, 5, 0.15);
-  --color-retro-yellow: #FAB005;
-  --color-retro-red: #C92A2A;
-  --color-retro-teal: #0CA678;
-  --color-retro-teal-soft: rgba(12, 166, 120, 0.15);
-  --color-success: #0CA678;
-  --color-success-soft: rgba(12, 166, 120, 0.15);
-  --color-teal: #123C40;
+  --color-orange: #F15A24;           /* Burnt orange - reserved for key CTAs, active states & music controls */
+  --color-orange-hover: #D94813;
+  --color-orange-soft: rgba(241, 90, 36, 0.1);
+  --color-orange-glow: rgba(241, 90, 36, 0.22);
 
-  /* FM Retro Typography System */
-  --font-retro: 'Shrikhand', cursive; /* 70s groovy curvy display */
-  --font-radio: 'Righteous', cursive, sans-serif; /* Vintage broadcast lettering */
-  --font-serif-retro: 'Fraunces', Georgia, serif; /* Warm vintage editorial serif */
-  --font-heading: 'Shrikhand', 'Righteous', cursive, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Space Mono', monospace; /* Radio frequency tuner digits */
+  --color-yellow: #F4C542;           /* Mustard yellow - badges & secondary tags */
+  --color-yellow-soft: rgba(244, 197, 66, 0.15);
+
+  --color-charcoal: #20231F;
+  --color-muted-grey: #77766F;
+
+  /* Legacy mappings for backward compatibility */
+  --color-coral: #F15A24;
+  --color-coral-hover: #D94813;
+  --color-coral-soft: rgba(241, 90, 36, 0.1);
+  --color-coral-glow: rgba(241, 90, 36, 0.22);
+  --color-amber: #F4C542;
+  --color-amber-soft: rgba(244, 197, 66, 0.15);
+  --color-teal: #123D2C;
+  --color-live: #F15A24;
+
+  /* Professional Typography System */
+  --font-heading: 'Plus Jakarta Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Legacy aliases mapped to clean fonts */
+  --font-retro: 'Plus Jakarta Sans', sans-serif;
+  --font-radio: 'Plus Jakarta Sans', sans-serif;
+  --font-serif-retro: 'Fraunces', Georgia, serif;
+  --font-black: 'Plus Jakarta Sans', sans-serif;
 
   /* Responsive Fluid Typography Clamps (Mobile-First) */
-  --font-size-hero: clamp(1.85rem, 5.5vw, 3.2rem);       /* 30px - 51px */
-  --font-size-page-heading: clamp(1.5rem, 4vw, 2.4rem);   /* 24px - 38px */
-  --font-size-section-heading: clamp(1.2rem, 3vw, 1.65rem); /* 19px - 26px */
-  --font-size-card-heading: clamp(1rem, 2vw, 1.15rem);    /* 16px - 18px */
-  --font-size-body: clamp(0.875rem, 1.6vw, 1rem);        /* 14px - 16px */
-  --font-size-supporting: clamp(0.75rem, 1.4vw, 0.85rem); /* 12px - 14px */
-  --font-size-btn: clamp(0.85rem, 1.5vw, 0.95rem);        /* 14px - 15px */
+  --font-size-hero: clamp(2rem, 5vw, 3.4rem);
+  --font-size-page-heading: clamp(1.6rem, 3.6vw, 2.4rem);
+  --font-size-section-heading: clamp(1.2rem, 2.6vw, 1.65rem);
+  --font-size-card-heading: clamp(1rem, 1.8vw, 1.18rem);
+  --font-size-body: clamp(0.875rem, 1.5vw, 1rem);
+  --font-size-supporting: clamp(0.75rem, 1.3vw, 0.85rem);
+  --font-size-btn: clamp(0.85rem, 1.4vw, 0.95rem);
 
   /* Touch Ergonomics Minimum Sizes */
   --min-touch-target: 48px;
   --min-touch-btn: 44px;
 
-  /* Spacing Scale */
+  /* Consistent Spacing Scale */
   --space-2xs: 2px;
   --space-xs: 4px;
   --space-sm: 8px;
@@ -60,12 +70,12 @@
   --space-2xl: 44px;
   --space-3xl: 60px;
 
-  /* Retro Card & Dial Radius */
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  /* Balanced Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   /* Layout Dimensions */
@@ -73,99 +83,83 @@
   --bottom-nav-height: 58px;
   --navbar-height: 62px;
 
-  /* Transitions */
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Clean transitions */
+  --transition-fast: 0.16s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.24s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================
-   LIGHT THEME (Warm Vintage 70s Parchment & Tube Radio Console)
+   LIGHT THEME: Clean Warm Cream & Forest Green
    ========================================================================== */
 html,
 html[data-theme="light"],
 :root {
-  --bg-primary: #FAF6ED;
-  --bg-page: #FAF6ED;
-  --bg-secondary: #F3EBDD;
-  --bg-tertiary: #FFFDF9;
-  --bg-card: #FFFDF9;
-  --bg-card-subtle: #F3EBDD;
+  --bg-primary: #FFF8E9;
+  --bg-page: #FFF8E9;
+  --bg-secondary: #F5EFE0;
+  --bg-tertiary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F9F5EC;
   --bg-elevated: #FFFFFF;
-  --bg-glass: rgba(250, 246, 237, 0.94);
-  --bg-glass-card: rgba(255, 253, 249, 0.95);
-  --bg-navbar: rgba(250, 246, 237, 0.94);
-  --bg-bottom-nav: rgba(250, 246, 237, 0.96);
-  --bg-mini-player: rgba(255, 253, 249, 0.97);
+  --bg-glass: rgba(255, 248, 233, 0.92);
+  --bg-glass-card: rgba(255, 255, 255, 0.95);
+  --bg-navbar: rgba(255, 248, 233, 0.94);
+  --bg-bottom-nav: rgba(255, 248, 233, 0.96);
+  --bg-mini-player: rgba(255, 255, 255, 0.97);
 
-  --border-color: #E8DCC6;
-  --border-color-hover: #D4BE9B;
-  --border-color-active: #E8590C;
-  --grid-line-color: rgba(180, 140, 90, 0.08);
-  --ruled-line-color: rgba(60, 50, 40, 0.08);
+  --border-color: #E6DFD1;
+  --border-color-hover: #D4CCBB;
+  --border-color-active: #F15A24;
 
-  --text-primary: #2C2117;
-  --text-secondary: #6B5B4E;
-  --text-muted: #998675;
+  --text-primary: #20231F;
+  --text-secondary: #77766F;
+  --text-muted: #9C9B93;
   --text-inverse: #FFFFFF;
 
-  --color-retro-shadow: rgba(201, 42, 42, 0.35);
+  --shadow-sm: 0 1px 3px rgba(32, 35, 31, 0.05);
+  --shadow-md: 0 4px 14px rgba(32, 35, 31, 0.06);
+  --shadow-lg: 0 12px 28px rgba(32, 35, 31, 0.08);
+  --shadow-card: 0 2px 8px rgba(32, 35, 31, 0.04);
+  --shadow-hover: 0 8px 20px rgba(32, 35, 31, 0.08);
 
-  --shadow-sm: 0 1px 3px rgba(44, 33, 23, 0.06), 0 1px 2px rgba(44, 33, 23, 0.04);
-  --shadow-md: 0 4px 14px rgba(44, 33, 23, 0.08), 0 2px 6px rgba(44, 33, 23, 0.04);
-  --shadow-lg: 0 12px 30px rgba(44, 33, 23, 0.1);
-  --shadow-card: 0 2px 10px rgba(44, 33, 23, 0.05);
-  --shadow-hover: 0 8px 24px rgba(44, 33, 23, 0.1);
-
-  --icon-color: #2C2117;
+  --icon-color: #20231F;
 }
 
 /* ==========================================================================
-   DARK THEME (Deep Warm Mahogany / Vintage Studio Console)
+   DARK THEME: Deep Charcoal & Forest Slate
    ========================================================================== */
 html[data-theme="dark"] {
-  --bg-primary: #15120E;
-  --bg-page: #15120E;
-  --bg-secondary: #1D1814;
-  --bg-tertiary: #25201A;
-  --bg-card: #1D1814;
-  --bg-card-subtle: #25201A;
-  --bg-elevated: #2E2720;
-  --bg-glass: rgba(21, 18, 14, 0.94);
-  --bg-glass-card: rgba(29, 24, 20, 0.95);
-  --bg-navbar: rgba(21, 18, 14, 0.94);
-  --bg-bottom-nav: rgba(21, 18, 14, 0.96);
-  --bg-mini-player: rgba(29, 24, 20, 0.97);
+  --bg-primary: #151815;
+  --bg-page: #151815;
+  --bg-secondary: #1D211D;
+  --bg-tertiary: #242924;
+  --bg-card: #202420;
+  --bg-card-subtle: #272C27;
+  --bg-elevated: #2D332D;
+  --bg-glass: rgba(21, 24, 21, 0.92);
+  --bg-glass-card: rgba(32, 36, 32, 0.95);
+  --bg-navbar: rgba(21, 24, 21, 0.94);
+  --bg-bottom-nav: rgba(21, 24, 21, 0.96);
+  --bg-mini-player: rgba(32, 36, 32, 0.97);
 
-  --border-color: rgba(255, 210, 160, 0.1);
-  --border-color-hover: rgba(255, 107, 0, 0.45);
-  --border-color-active: #FF6B00;
-  --grid-line-color: rgba(255, 200, 140, 0.035);
-  --ruled-line-color: rgba(255, 200, 140, 0.04);
+  --border-color: rgba(255, 248, 233, 0.12);
+  --border-color-hover: rgba(241, 90, 36, 0.45);
+  --border-color-active: #F15A24;
 
-  --text-primary: #FFF6EC;
-  --text-secondary: #C8B7A5;
-  --text-muted: #8E7E6E;
-  --text-inverse: #15120E;
+  --text-primary: #FFF8E9;
+  --text-secondary: #A6A49B;
+  --text-muted: #7A786F;
+  --text-inverse: #151815;
 
-  --color-orange: #FF6B00;
-  --color-orange-hover: #F76707;
-  --color-orange-soft: rgba(255, 107, 0, 0.16);
-  --color-orange-glow: rgba(255, 107, 0, 0.4);
+  --color-orange: #F15A24;
+  --color-orange-hover: #D94813;
+  --color-orange-soft: rgba(241, 90, 36, 0.16);
 
-  --color-amber: #FFD43B;
-  --color-amber-soft: rgba(255, 212, 59, 0.16);
-  --color-retro-yellow: #FFD43B;
-  --color-retro-red: #FA5252;
-  --color-retro-teal: #20C997;
-  --color-retro-teal-soft: rgba(32, 201, 151, 0.16);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
 
-  --color-retro-shadow: rgba(0, 0, 0, 0.6);
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.6);
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 8px 26px rgba(0, 0, 0, 0.55);
-
-  --icon-color: #FFF6EC;
+  --icon-color: #FFF8E9;
 }

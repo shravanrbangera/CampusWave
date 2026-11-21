@@ -69,7 +69,7 @@ export const Register = () => {
         minHeight: 'calc(100vh - var(--navbar-height))',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        backgroundColor: '#F4F1EA'
+        backgroundColor: 'var(--bg-primary)'
       }}
       className="split-login-container"
     >
@@ -78,8 +78,8 @@ export const Register = () => {
         className="login-visual-panel"
         style={{
           position: 'relative',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
-          borderRight: '3px solid #000',
+          backgroundColor: 'var(--color-forest)',
+          borderRight: '1px solid var(--border-color)',
           padding: 'var(--space-3xl)',
           display: 'flex',
           flexDirection: 'column',
@@ -91,56 +91,41 @@ export const Register = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <div 
               style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '14px',
-                background: 'var(--color-coral)',
-                border: '2px solid #000',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-orange)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#FFFFFF',
-                boxShadow: '3px 3px 0 #000'
+                boxShadow: '0 2px 8px var(--color-orange-glow)'
               }}
             >
-              <Radio size={24} />
+              <Radio size={22} />
             </div>
             <div>
-              <span style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', letterSpacing: '-0.03em', color: '#fff' }}>
-                CAMPUS<span style={{ color: 'var(--color-coral)' }}>WAVE</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, letterSpacing: '-0.02em', color: '#fff' }}>
+                CAMPUS<span style={{ color: 'var(--color-orange)' }}>WAVE</span>
               </span>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-acid)' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-yellow)' }}>
                 NMAMIT • 90.4 DIGITAL FM
               </div>
             </div>
           </div>
 
-          <h2 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(2rem, 3.8vw, 2.9rem)', color: '#FFFFFF', textTransform: 'uppercase', lineHeight: 1.15, marginBottom: '16px' }}>
-            Join your student audio <span style={{ color: 'var(--color-acid)' }}>community</span>.
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 3.8vw, 2.8rem)', color: '#FFFFFF', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px' }}>
+            Join your student audio <span style={{ color: 'var(--color-yellow)' }}>community</span>.
           </h2>
-          <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.6 }}>
-            Set up your listener profile to vote for evening tracks, bookmark AI broadcast summaries, and submit song requests to student RJs.
+          <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.85)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.6 }}>
+            Set up your listener profile to vote for evening tracks, bookmark broadcast episodes, and submit shoutouts to student RJs.
           </p>
 
-          {/* Sticky badge */}
-          <div 
-            style={{
-              marginTop: '20px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: 'var(--color-acid)',
-              color: '#000',
-              border: '2px solid #000',
-              padding: '6px 14px',
-              borderRadius: '8px',
-              boxShadow: '3px 3px 0 #000',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.8rem',
-              fontWeight: 900
-            }}
-          >
-            <span>NMAMIT AUDIO COMMUNITY // PASS ID</span>
+          {/* Badge */}
+          <div style={{ marginTop: '20px' }}>
+            <span className="editorial-badge editorial-badge-forest">
+              NMAMIT AUDIO COMMUNITY • LISTENER PASS
+            </span>
           </div>
         </div>
 
@@ -165,20 +150,19 @@ export const Register = () => {
           style={{
             position: 'relative',
             zIndex: 2,
-            backgroundColor: '#FFFFFF',
-            color: '#000',
-            padding: '16px 22px',
-            borderRadius: '16px',
-            border: '2px solid #000',
-            boxShadow: '4px 4px 0 #000'
+            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+            color: '#FFFFFF',
+            padding: '16px 20px',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid rgba(255, 255, 255, 0.12)'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#000', fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '0.85rem', marginBottom: '4px' }}>
-            <CheckCircle2 size={16} color="var(--color-coral)" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-yellow)', fontWeight: 700, fontFamily: 'var(--font-mono)', fontSize: '0.82rem', marginBottom: '4px' }}>
+            <CheckCircle2 size={16} color="var(--color-orange)" />
             INSTANT PASS ACTIVATION
           </div>
-          <p style={{ fontSize: '0.85rem', fontFamily: 'var(--font-body)', color: '#222', lineHeight: 1.5 }}>
-            No complicated paperwork. Create your verified student credentials in seconds.
+          <p style={{ fontSize: '0.85rem', fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.5 }}>
+            No complicated paperwork. Create your student credentials in seconds.
           </p>
         </div>
       </div>
@@ -192,7 +176,7 @@ export const Register = () => {
           justifyContent: 'center',
           padding: 'var(--space-2xl) var(--space-xl)',
           overflowY: 'auto',
-          backgroundColor: '#F4F1EA'
+          backgroundColor: 'var(--bg-primary)'
         }}
       >
         <div 
@@ -201,37 +185,20 @@ export const Register = () => {
             maxWidth: '480px', 
             width: '100%',
             padding: '36px',
-            borderRadius: '24px',
-            backgroundColor: '#FFFFFF',
-            border: '2.5px solid #000',
-            boxShadow: '6px 6px 0 #000'
+            borderRadius: 'var(--radius-xl)',
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border-color)',
+            boxShadow: 'var(--shadow-md)'
           }}
         >
           <div style={{ marginBottom: '24px' }}>
-            <span 
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.74rem',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                backgroundColor: 'var(--color-acid)',
-                color: '#000',
-                border: '1.5px solid #000',
-                padding: '3px 8px',
-                borderRadius: '6px',
-                boxShadow: '2px 2px 0 #000',
-                marginBottom: '10px'
-              }}
-            >
+            <span className="editorial-badge" style={{ marginBottom: '10px' }}>
               NEW STUDENT ENROLLMENT
             </span>
-            <h1 style={{ fontFamily: 'var(--font-black)', fontSize: '2.2rem', marginBottom: '8px', color: '#000', textTransform: 'uppercase' }}>
+            <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-primary)' }}>
               Student Registration
             </h1>
-            <p style={{ fontFamily: 'var(--font-mono)', color: '#444', fontSize: '0.88rem', fontWeight: 600 }}>
+            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.5 }}>
               Join fellow engineers, hostellers, and creators on CampusWave.
             </p>
           </div>
@@ -239,15 +206,13 @@ export const Register = () => {
           {error && (
             <div 
               style={{
-                backgroundColor: 'var(--color-acid)',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                color: '#000',
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                color: '#EF4444',
                 padding: '10px 14px',
-                borderRadius: '8px',
+                borderRadius: 'var(--radius-sm)',
                 fontSize: '0.85rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
+                fontWeight: 600,
                 marginBottom: '18px'
               }}
             >
@@ -258,7 +223,9 @@ export const Register = () => {
           <form onSubmit={handleSubmit}>
             {/* Name Field */}
             <div className="form-group" style={{ marginBottom: '14px' }}>
-              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Full Student Name</label>
+              <label className="form-label" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                Full Student Name
+              </label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="text"
@@ -269,19 +236,19 @@ export const Register = () => {
                   style={{
                     width: '100%',
                     padding: '12px 16px 12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none'
                   }}
                   required
                 />
                 <User 
                   size={18} 
-                  color="#000" 
+                  color="var(--text-muted)" 
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
                 />
               </div>
@@ -289,7 +256,9 @@ export const Register = () => {
 
             {/* Email Field */}
             <div className="form-group" style={{ marginBottom: '14px' }}>
-              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>NMAMIT Institutional Email</label>
+              <label className="form-label" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                NMAMIT Institutional Email
+              </label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="email"
@@ -300,19 +269,19 @@ export const Register = () => {
                   style={{
                     width: '100%',
                     padding: '12px 16px 12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none'
                   }}
                   required
                 />
                 <Mail 
                   size={18} 
-                  color="#000" 
+                  color="var(--text-muted)" 
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
                 />
               </div>
@@ -320,7 +289,9 @@ export const Register = () => {
 
             {/* Department / Branch */}
             <div className="form-group" style={{ marginBottom: '14px' }}>
-              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Department / Branch</label>
+              <label className="form-label" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                Department / Branch
+              </label>
               <div style={{ position: 'relative' }}>
                 <select
                   name="branch"
@@ -329,26 +300,25 @@ export const Register = () => {
                   style={{
                     width: '100%',
                     padding: '12px 16px 12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none',
-                    cursor: 'pointer',
-                    backgroundColor: '#fff'
+                    cursor: 'pointer'
                   }}
                 >
                   {branches.map((b, idx) => (
-                    <option key={idx} value={b} style={{ background: '#fff', color: '#000' }}>
+                    <option key={idx} value={b}>
                       {b}
                     </option>
                   ))}
                 </select>
                 <BookOpen 
                   size={18} 
-                  color="#000" 
+                  color="var(--text-muted)" 
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
                 />
               </div>
@@ -356,7 +326,9 @@ export const Register = () => {
 
             {/* Password */}
             <div className="form-group" style={{ marginBottom: '14px' }}>
-              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Password</label>
+              <label className="form-label" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                Password
+              </label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="password"
@@ -367,19 +339,19 @@ export const Register = () => {
                   style={{
                     width: '100%',
                     padding: '12px 16px 12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none'
                   }}
                   required
                 />
                 <Lock 
                   size={18} 
-                  color="#000" 
+                  color="var(--text-muted)" 
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
                 />
               </div>
@@ -387,7 +359,9 @@ export const Register = () => {
 
             {/* Confirm Password */}
             <div className="form-group" style={{ marginBottom: '20px' }}>
-              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Confirm Password</label>
+              <label className="form-label" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                Confirm Password
+              </label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="password"
@@ -398,19 +372,19 @@ export const Register = () => {
                   style={{
                     width: '100%',
                     padding: '12px 16px 12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none'
                   }}
                   required
                 />
                 <Lock 
                   size={18} 
-                  color="#000" 
+                  color="var(--text-muted)" 
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
                 />
               </div>
@@ -420,7 +394,7 @@ export const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn-brutal"
+              className="btn-primary"
               style={{
                 width: '100%',
                 display: 'inline-flex',
@@ -429,13 +403,6 @@ export const Register = () => {
                 gap: '8px',
                 padding: '14px',
                 fontSize: '0.92rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                backgroundColor: 'var(--color-coral)',
-                color: '#FFFFFF',
-                border: '2px solid #000',
-                boxShadow: '3px 3px 0 #000',
-                borderRadius: '12px',
                 marginBottom: '16px',
                 cursor: 'pointer'
               }}
@@ -446,9 +413,9 @@ export const Register = () => {
           </form>
 
           {/* Switch to Login */}
-          <div style={{ textAlign: 'center', fontSize: '0.86rem', fontFamily: 'var(--font-mono)', color: '#333' }}>
+          <div style={{ textAlign: 'center', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
             Already have an account?{' '}
-            <Link to="/login" style={{ color: 'var(--color-coral)', fontWeight: 800 }}>
+            <Link to="/login" style={{ color: 'var(--color-orange)', fontWeight: 700 }}>
               Sign in here
             </Link>
           </div>

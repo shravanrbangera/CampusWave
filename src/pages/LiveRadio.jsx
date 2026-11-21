@@ -79,7 +79,7 @@ export const LiveRadio = () => {
 
   return (
     <div className="live-radio-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
-      {/* Top Status Banner with Funky Stickers */}
+      {/* Top Status Banner */}
       <div 
         style={{
           display: 'flex',
@@ -92,14 +92,14 @@ export const LiveRadio = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="retro-pill retro-pill-orange">
+          <span className="editorial-badge">
             STUDIO TRANSMISSION ACTIVE
           </span>
-          <span className="retro-pill retro-pill-yellow">
+          <span className="editorial-badge editorial-badge-forest">
             90.4 MHZ STEREO
           </span>
-          <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
-            Stay Tuned! NMAMIT Campus Digital Airwaves
+          <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.85rem', color: 'var(--color-orange)', fontWeight: 600 }}>
+            NMAMIT Campus Digital Airwaves
           </span>
         </div>
 
@@ -139,22 +139,14 @@ export const LiveRadio = () => {
         {/* Left: Turntable, Large Controls & Frequency Analyzer */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
           <div>
-            <div className="folder-tab-bar">
-              <span className="folder-tab folder-tab-blue">
-                STUDIO DECK 01
-              </span>
-              <span className="folder-tab folder-tab-yellow">
-                90.4 MHZ STEREO
-              </span>
-            </div>
             {/* Turntable Deck & Artwork */}
             <div 
-              className="live-turntable-deck card-modern"
+              className="live-turntable-deck card-forest"
               style={{
-                background: 'linear-gradient(145deg, #123C40 0%, #0F1216 100%)',
+                backgroundColor: 'var(--color-forest)',
                 padding: 'var(--space-2xl)',
-                borderRadius: '0 24px 24px 24px',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
+                borderRadius: 'var(--radius-xl)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
                 boxShadow: 'var(--shadow-md)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -164,19 +156,18 @@ export const LiveRadio = () => {
                 color: '#FFFFFF'
               }}
             >
-              <div className="washi-tape washi-tape-tr" />
             {/* Interactive LiquidEther Studio Visualizer Background */}
             <div 
               style={{
                 position: 'absolute',
                 inset: 0,
                 zIndex: 0,
-                opacity: 0.45,
+                opacity: 0.35,
                 pointerEvents: 'auto'
               }}
             >
               <LiquidEther 
-                colors={['#FF5500', '#FFB800', '#00F0FF', '#123C40']}
+                colors={['#F15A24', '#F4C542', '#123D2C', '#0D2C20']}
                 mouseForce={24}
                 cursorSize={90}
                 autoDemo={true}
@@ -215,7 +206,7 @@ export const LiveRadio = () => {
                   <span className={isLivePlaying ? "badge-live-pulse" : ""} style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff' }} />
                   {isLivePlaying ? "LIVE ON AIR" : "STUDIO PAUSED"}
                 </div>
-                <span style={{ fontSize: '0.8rem', color: '#FFB800', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--color-yellow)', fontWeight: 700 }}>
                   90.4 MHZ DIGITAL
                 </span>
               </div>
@@ -229,27 +220,6 @@ export const LiveRadio = () => {
               </div>
             </div>
 
-            {/* Retro FM Frequency Tuner Dial */}
-            <div 
-              className="retro-tuner-scale" 
-              style={{ 
-                width: '100%', 
-                maxWidth: '380px', 
-                marginBottom: '14px', 
-                position: 'relative', 
-                zIndex: 2,
-                backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <span>88 FM</span>
-              <span style={{ color: '#FAB005', fontWeight: 800 }}>90.4 MHZ [TUNED]</span>
-              <span>96</span>
-              <span>102</span>
-              <span>108 FM</span>
-              <div className="retro-tuner-needle" style={{ left: '26%' }} />
-            </div>
-
             {/* High-Fidelity Vinyl Record */}
             <div style={{ margin: '4px 0 18px', position: 'relative', zIndex: 2 }}>
               <VinylRecord 
@@ -261,28 +231,27 @@ export const LiveRadio = () => {
               />
             </div>
 
-            {/* Show Titles - FM Retro Display */}
+            {/* Show Titles - Editorial Display */}
             <div style={{ textAlign: 'center', width: '100%', marginBottom: '18px', position: 'relative', zIndex: 2 }}>
-              <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: '#FAB005', fontSize: '1rem', marginBottom: '4px' }}>
-                A Wonderful Live Broadcast with...
+              <div style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--color-yellow)', fontSize: '1rem', marginBottom: '4px' }}>
+                Currently Broadcasting Live
               </div>
               <h1 
-                className="retro-title-shadow"
                 style={{ 
-                  fontFamily: 'var(--font-retro)', 
+                  fontFamily: 'var(--font-heading)', 
                   fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', 
-                  color: 'var(--color-retro-yellow)', 
-                  fontWeight: 400, 
+                  color: '#FFFFFF', 
+                  fontWeight: 800, 
                   marginBottom: '8px', 
                   lineHeight: 1.2 
                 }}
               >
                 {mockLiveShow.title}
               </h1>
-              <p style={{ fontFamily: 'var(--font-radio)', color: '#FFFFFF', fontSize: '1.05rem', letterSpacing: '0.04em' }}>
+              <p style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-yellow)', fontSize: '1rem', fontWeight: 700, letterSpacing: '0.04em' }}>
                 HOSTED BY RJ {mockLiveShow.rj.toUpperCase()}
               </p>
-              <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.88rem', marginTop: '6px', maxWidth: '480px', margin: '6px auto 0', lineHeight: 1.5 }}>
+              <p style={{ color: 'rgba(255, 255, 255, 0.82)', fontSize: '0.88rem', marginTop: '6px', maxWidth: '480px', margin: '6px auto 0', lineHeight: 1.5 }}>
                 {mockLiveShow.description}
               </p>
             </div>

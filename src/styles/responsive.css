@@ -88,7 +88,8 @@ a:active,
   }
 
   /* Prevent page content from being obscured behind fixed MiniPlayer + BottomNav */
-  .app-container {
+  .app-container,
+  .main-content {
     padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 32px) !important;
   }
 

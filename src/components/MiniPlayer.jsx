@@ -139,9 +139,9 @@ export const MiniPlayer = () => {
           <div style={{ minWidth: 0, overflow: 'hidden' }}>
             <div 
               style={{
-                fontFamily: 'var(--font-radio)',
+                fontFamily: 'var(--font-heading)',
                 fontSize: '0.9rem',
-                letterSpacing: '0.02em',
+                fontWeight: 700,
                 color: 'var(--text-primary)',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',

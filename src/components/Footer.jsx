@@ -68,10 +68,10 @@ export const Footer = () => {
             <span>Nitte, Karkala Taluk, Udupi, Karnataka 574110</span>
           </div>
 
-          {/* Sticky Student Tag */}
+          {/* Studio Tag */}
           <div style={{ marginTop: '14px' }}>
-            <span className="retro-pill retro-pill-yellow">
-              STUDIO 90.4 FM // LIVE FROM NITTE CAMPUS
+            <span className="editorial-badge editorial-badge-forest">
+              STUDIO 90.4 FM • LIVE FROM NITTE CAMPUS
             </span>
           </div>
         </div>

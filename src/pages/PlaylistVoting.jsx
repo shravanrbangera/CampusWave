@@ -122,33 +122,30 @@ export const PlaylistVoting = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="retro-pill retro-pill-orange">
-            CAMPUS DEMOCRACY // 90.4 MHZ
+          <span className="editorial-badge">
+            CAMPUS DEMOCRACY • 90.4 MHZ
           </span>
-          <span className="retro-pill retro-pill-yellow">
+          <span className="editorial-badge editorial-badge-forest">
             STUDENT PICKS
           </span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
             HOSTEL PRIME HOUR CURATION
           </span>
         </div>
 
-        <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: 'var(--color-orange)', fontSize: '1.05rem', marginTop: '6px' }}>
-          Stay Tuned & Cast Your Voice...
-        </div>
         <h1 
-          className="retro-title-shadow"
           style={{ 
-            fontFamily: 'var(--font-retro)',
-            fontSize: 'var(--font-size-hero)',
-            fontWeight: 400,
-            marginTop: '4px', 
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
+            marginTop: '8px', 
             marginBottom: '10px', 
-            color: 'var(--color-retro-yellow)',
+            color: 'var(--text-primary)',
             lineHeight: 1.15
           }}
         >
-          DAILY PLAYLIST <span style={{ color: 'var(--color-orange)' }}>VOTING</span>
+          Daily Playlist <span style={{ color: 'var(--color-orange)' }}>Voting</span>
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', fontWeight: 500, maxWidth: '680px', lineHeight: 1.6 }}>
           Vote for the tracks you want to hear during tonight's 9:00 PM Hostel Prime Hour. One vote per student per day.
@@ -157,24 +154,15 @@ export const PlaylistVoting = () => {
 
       {/* Main Voting Card */}
       <section>
-        <div className="folder-tab-bar">
-          <span className="folder-tab folder-tab-yellow">
-            TONIGHT'S PRIME POLL
-          </span>
-          <span className="folder-tab folder-tab-blue">
-            9:00 PM AIRPLAY
-          </span>
-        </div>
         <div 
           className="card-modern"
           style={{
-            borderRadius: '0 24px 24px 24px',
+            borderRadius: 'var(--radius-xl)',
             padding: 'var(--space-2xl)',
             position: 'relative',
             overflow: 'hidden'
           }}
         >
-          <div className="washi-tape washi-tape-tr" />
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '24px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
             <div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>

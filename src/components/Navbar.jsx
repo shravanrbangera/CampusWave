@@ -117,9 +117,10 @@ export const Navbar = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span 
                 style={{
-                  fontFamily: 'var(--font-radio)',
-                  fontSize: '1.25rem',
-                  letterSpacing: '0.03em',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '1.2rem',
+                  fontWeight: 800,
+                  letterSpacing: '-0.02em',
                   color: 'var(--text-primary)',
                   lineHeight: 1
                 }}
@@ -179,10 +180,10 @@ export const Navbar = () => {
                 gap: '7px',
                 padding: '6px 14px',
                 borderRadius: 'var(--radius-full)',
-                fontSize: '0.8rem',
-                fontFamily: 'var(--font-radio)',
-                letterSpacing: '0.04em',
-                color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontSize: '0.84rem',
+                fontFamily: 'var(--font-heading)',
+                fontWeight: isActive ? 700 : 500,
+                color: isActive ? 'var(--color-orange)' : 'var(--text-secondary)',
                 backgroundColor: isActive ? 'var(--bg-card-subtle)' : 'transparent',
                 border: isActive ? '1px solid var(--border-color)' : '1px solid transparent',
                 position: 'relative',

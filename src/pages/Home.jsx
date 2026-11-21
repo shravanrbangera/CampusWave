@@ -7,7 +7,6 @@ import {
   ArrowRight, 
   Clock, 
   Vote, 
-  Bookmark, 
   Mic2, 
   Volume2,
   Search,
@@ -24,7 +23,7 @@ import { VinylRecord } from '../components/VinylRecord';
 
 export const Home = () => {
   const navigate = useNavigate();
-  const { user, votedPolls, castVote, savedPodcasts, downloadedPodcasts } = useAuth();
+  const { user, votedPolls, castVote } = useAuth();
   const { isPlaying, playTrack, togglePlay, currentTrack } = useAudio();
 
   const [activeVote, setActiveVote] = useState(votedPolls['dailySong'] || null);
@@ -37,9 +36,6 @@ export const Home = () => {
   // Dynamic contextual time greeting
   const hour = new Date().getHours();
   const timeGreeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-
-  // Filter saved episodes for quick access shelf
-  const savedItems = mockPodcasts.filter(p => savedPodcasts?.includes(p.id) || downloadedPodcasts?.includes(p.id));
 
   // Upcoming radio show
   const upcomingShow = mockLiveShow.schedule?.find(s => !s.active) || {
@@ -61,10 +57,10 @@ export const Home = () => {
     castVote('dailySong', songId);
     try {
       confetti({
-        particleCount: 50,
+        particleCount: 45,
         spread: 50,
         origin: { y: 0.8 },
-        colors: ['#FF5500', '#FFB52E', '#10B981']
+        colors: ['#F15A24', '#F4C542', '#123D2C']
       });
     } catch (e) {}
     setVotedToast(true);
@@ -84,235 +80,145 @@ export const Home = () => {
       style={{ 
         display: 'flex', 
         flexDirection: 'column', 
-        gap: 'clamp(18px, 4vw, 30px)',
-        paddingTop: 'clamp(10px, 2.5vw, 20px)'
+        gap: 'clamp(24px, 4vw, 36px)',
+        paddingTop: 'clamp(8px, 2vw, 16px)'
       }}
     >
-      {/* 1. Header & Welcome Message */}
+      {/* 1. Welcoming Introduction to Campus Radio */}
       <section 
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '12px',
-          paddingBottom: '14px',
+          gap: '14px',
+          paddingBottom: '20px',
           borderBottom: '1px solid var(--border-color)'
         }}
       >
-        {/* Top Editorial Badges Row */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="retro-pill retro-pill-orange">
-            90.4 DIGITAL FM
+          <span className="editorial-badge">
+            NMAMIT DIGITAL RADIO • 90.4 MHZ
           </span>
-          <span className="retro-pill retro-pill-yellow">
-            STUDIO BROADCAST
-          </span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-            {user?.hostel || "NETRAVATI BLOCK • CAMPUS STREAM"}
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+            {user?.hostel || "NETRAVATI BLOCK • CAMPUS BROADCAST"}
           </span>
         </div>
 
-        {/* Dynamic Contextual Greeting */}
         <div>
-          <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.94rem', color: 'var(--text-secondary)', marginBottom: '2px' }}>
-            A Wonderful Broadcast with...
-          </div>
           <h1 
             style={{ 
-              fontFamily: 'var(--font-retro)', 
-              fontSize: 'clamp(1.7rem, 5.5vw, 2.7rem)', 
+              fontSize: 'clamp(1.85rem, 4.5vw, 2.85rem)', 
               color: 'var(--text-primary)', 
-              letterSpacing: '0.02em',
-              lineHeight: 1.15,
-              margin: '2px 0 6px',
-              textShadow: '2px 2px 0 var(--color-retro-shadow, rgba(201, 42, 42, 0.25))'
+              fontWeight: 800,
+              lineHeight: 1.18,
+              letterSpacing: '-0.025em',
+              margin: '0 0 8px'
             }}
           >
-            {timeGreeting}, <span style={{ color: 'var(--color-orange)' }}>{firstName}</span>!
+            {timeGreeting}, <span style={{ color: 'var(--color-orange)' }}>{firstName}</span>.
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', fontWeight: 500, maxWidth: '640px', lineHeight: 1.5 }}>
-            Student engineering chronicles, indie hostel acoustics, and daily playlist votes. Stay tuned to 90.4 MHz Stereo.
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.92rem, 1.6vw, 1.05rem)', fontWeight: 400, maxWidth: '640px', lineHeight: 1.6 }}>
+            The official student-powered broadcast network of NMAMIT. Live radio, student-hosted podcasts, and daily hostel playlists.
           </p>
         </div>
 
-        {/* Vintage Radio FM Frequency Scale */}
-        <div 
-          style={{
-            maxWidth: '560px',
-            margin: '2px 0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            background: 'var(--bg-card-subtle)',
-            border: '1px solid var(--border-color)',
-            borderRadius: '10px',
-            padding: '7px 14px',
-            position: 'relative'
-          }}
-        >
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>88 FM</span>
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>· · ·</span>
-          <span style={{ 
-            fontSize: '0.74rem', 
-            fontFamily: 'var(--font-mono)', 
-            fontWeight: 800, 
-            color: 'var(--color-orange)',
-            backgroundColor: 'var(--color-orange-soft)',
-            padding: '2px 8px',
-            borderRadius: '4px',
-            border: '1px solid var(--color-orange)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px'
-          }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-orange)', animation: 'pulse 1s infinite' }} />
-            90.4 MHZ (TUNED)
-          </span>
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>· · ·</span>
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>98 FM</span>
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>· · ·</span>
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>108 FM</span>
-        </div>
-
-        {/* Quick Action Navigation Pills */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '2px' }}>
-          <Link 
-            to="/live" 
-            className="btn-primary"
-            style={{ 
-              textDecoration: 'none',
-              padding: '9px 18px',
-              fontSize: '0.84rem',
-              minHeight: '40px'
+        {/* Search & Quick CTA Row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '4px' }}>
+          <form 
+            onSubmit={handleSearchSubmit}
+            style={{
+              position: 'relative',
+              flex: '1 1 280px',
+              maxWidth: '480px'
             }}
           >
-            <Radio size={15} />
-            <span>TUNE IN (90.4 FM)</span>
-          </Link>
+            <Search 
+              size={16} 
+              color="var(--text-muted)" 
+              style={{
+                position: 'absolute',
+                left: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none'
+              }}
+            />
+            <input
+              type="text"
+              value={homeSearch}
+              onChange={(e) => setHomeSearch(e.target.value)}
+              placeholder="Search shows, podcasts, or student RJs..."
+              style={{
+                width: '100%',
+                padding: '10px 36px 10px 40px',
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-full)',
+                color: 'var(--text-primary)',
+                fontSize: '14px',
+                fontWeight: 500,
+                outline: 'none',
+                transition: 'border-color var(--transition-fast)'
+              }}
+              onFocus={(e) => e.target.style.borderColor = 'var(--color-orange)'}
+              onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
+            />
+            {homeSearch && (
+              <button
+                type="button"
+                onClick={() => setHomeSearch('')}
+                style={{
+                  position: 'absolute',
+                  right: '12px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer'
+                }}
+                title="Clear"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </form>
+
           <Link 
             to="/podcasts" 
             className="btn-secondary"
             style={{ 
               textDecoration: 'none',
-              padding: '9px 18px',
+              padding: '8px 18px',
               fontSize: '0.84rem',
-              minHeight: '40px'
+              minHeight: '38px'
             }}
           >
-            <Mic2 size={15} />
-            <span>PODCASTS</span>
+            <Mic2 size={14} />
+            <span>Browse Podcasts</span>
           </Link>
         </div>
       </section>
 
-      {/* 2. Compact Search Bar */}
+      {/* 2. Prominent Live Radio Player (Deep Forest Green Banner) */}
       <section>
-        <form 
-          onSubmit={handleSearchSubmit}
-          style={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '640px'
-          }}
-        >
-          <Search 
-            size={17} 
-            color="var(--text-muted)" 
-            style={{
-              position: 'absolute',
-              left: '15px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              pointerEvents: 'none'
-            }}
-          />
-          <input
-            type="text"
-            value={homeSearch}
-            onChange={(e) => setHomeSearch(e.target.value)}
-            placeholder="Search shows, podcasts, or RJs..."
-            style={{
-              width: '100%',
-              padding: '11px 40px 11px 44px',
-              backgroundColor: 'var(--bg-card)',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-full)',
-              color: 'var(--text-primary)',
-              fontSize: '15px',
-              fontWeight: 500,
-              boxShadow: 'var(--shadow-sm)',
-              outline: 'none',
-              transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)'
-            }}
-            onFocus={(e) => {
-              e.target.style.borderColor = 'var(--color-orange)';
-              e.target.style.boxShadow = '0 0 0 3px var(--color-orange-soft)';
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = 'var(--border-color)';
-              e.target.style.boxShadow = 'var(--shadow-sm)';
-            }}
-          />
-          {homeSearch && (
-            <button
-              type="button"
-              onClick={() => setHomeSearch('')}
-              style={{
-                position: 'absolute',
-                right: '12px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: 'var(--text-muted)',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '4px'
-              }}
-              title="Clear search"
-            >
-              <X size={15} />
-            </button>
-          )}
-        </form>
-      </section>
-
-      {/* 3. Prominent Live Radio Section */}
-      <section>
-        <div className="folder-tab-bar">
-          <span className="folder-tab folder-tab-blue">
-            LIVE BROADCAST 01
-          </span>
-          <span className="folder-tab folder-tab-yellow">
-            90.4 MHZ STEREO
-          </span>
-        </div>
         <div 
-          className="card-modern home-live-banner"
+          className="card-forest home-live-banner"
           style={{
             position: 'relative',
             overflow: 'hidden',
-            borderRadius: '0 20px 20px 20px',
-            background: 'linear-gradient(135deg, #123C40 0%, #0F1216 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            boxShadow: 'var(--shadow-md)',
-            padding: 'clamp(16px, 3.5vw, 28px)',
-            color: '#FFFFFF'
+            borderRadius: 'var(--radius-xl)',
+            padding: 'clamp(20px, 4vw, 36px)'
           }}
         >
-          <div className="washi-tape washi-tape-tr" />
           <div 
             style={{
-              position: 'relative',
-              zIndex: 2,
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: 'clamp(16px, 3vw, 28px)',
+              gap: 'clamp(18px, 3.5vw, 32px)',
               alignItems: 'center'
             }}
           >
             <div>
-              {/* Live Badge & Listener Count */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
+              {/* Live Badge */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
                 <span 
                   style={{ 
                     display: 'inline-flex', 
@@ -323,70 +229,82 @@ export const Home = () => {
                     fontSize: '0.72rem',
                     fontWeight: 800,
                     padding: '3px 10px',
-                    borderRadius: 'var(--radius-full)'
+                    borderRadius: 'var(--radius-full)',
+                    letterSpacing: '0.04em'
                   }}
                 >
                   <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFF', animation: 'pulse 1.2s infinite' }} />
-                  {mockLiveShow.status}
+                  {isLiveActive ? "LIVE ON AIR" : "CURRENT BROADCAST"}
                 </span>
 
-                <span style={{ fontSize: '0.76rem', color: 'rgba(255, 255, 255, 0.85)', letterSpacing: '0.04em', fontWeight: 600 }}>
-                  {mockLiveShow.listenersCount} LISTENING • {mockLiveShow.frequency}
+                <span style={{ fontSize: '0.78rem', color: 'rgba(255, 248, 233, 0.8)', letterSpacing: '0.04em', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+                  90.4 MHZ STEREO
                 </span>
               </div>
 
               {/* Show Title */}
-              <h2 style={{ fontSize: 'clamp(1.35rem, 3.5vw, 1.8rem)', color: 'var(--color-retro-yellow)', marginBottom: '6px', lineHeight: 1.2, fontFamily: 'var(--font-retro)', letterSpacing: '0.02em', textShadow: '1px 1px 0 rgba(0,0,0,0.6)' }}>
+              <h2 
+                style={{ 
+                  fontSize: 'clamp(1.45rem, 3.2vw, 2.1rem)', 
+                  color: '#FFF8E9', 
+                  fontWeight: 800,
+                  marginBottom: '8px', 
+                  lineHeight: 1.25,
+                  letterSpacing: '-0.02em'
+                }}
+              >
                 {mockLiveShow.title}
               </h2>
 
               {/* Host & Studio Info */}
-              <p style={{ color: '#FFB52E', fontSize: '0.88rem', fontWeight: 700, marginBottom: '8px' }}>
+              <p style={{ color: 'var(--color-yellow)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '8px' }}>
                 Hosted by {mockLiveShow.rj} • {mockLiveShow.rjLabel}
               </p>
 
-              <p style={{ color: 'rgba(255, 255, 255, 0.82)', fontSize: '0.86rem', lineHeight: 1.5, maxWidth: '520px', marginBottom: '16px' }}>
+              <p style={{ color: 'rgba(255, 248, 233, 0.82)', fontSize: '0.88rem', lineHeight: 1.55, maxWidth: '520px', marginBottom: '18px' }}>
                 {mockLiveShow.description}
               </p>
 
               {/* Audio Controls */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '12px' }}>
                 <button
                   onClick={handleLivePlay}
                   className="btn-primary"
                   style={{
-                    backgroundColor: 'var(--color-orange)',
-                    padding: '10px 20px',
-                    fontSize: '0.86rem',
-                    minHeight: '40px'
+                    padding: '11px 24px',
+                    fontSize: '0.88rem',
+                    minHeight: '42px'
                   }}
                 >
                   {isLiveActive ? <Pause size={17} fill="#FFF" /> : <Play size={17} fill="#FFF" style={{ marginLeft: '2px' }} />}
-                  <span>{isLiveActive ? "PAUSE STREAM" : "TUNE IN (90.4 FM)"}</span>
+                  <span>{isLiveActive ? "PAUSE STREAM" : "LISTEN LIVE NOW"}</span>
                 </button>
 
                 <Link 
                   to="/live" 
-                  className="btn-secondary"
                   style={{ 
-                    padding: '10px 16px', 
-                    fontSize: '0.82rem',
-                    backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                    color: '#FFFFFF',
-                    borderColor: 'rgba(255, 255, 255, 0.25)',
+                    padding: '10px 18px', 
+                    fontSize: '0.84rem',
+                    fontWeight: 600,
+                    backgroundColor: 'rgba(255, 248, 233, 0.12)',
+                    color: '#FFF8E9',
+                    border: '1px solid rgba(255, 248, 233, 0.22)',
+                    borderRadius: 'var(--radius-full)',
                     textDecoration: 'none',
-                    minHeight: '40px'
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    minHeight: '42px'
                   }}
                 >
-                  <span>STUDIO DASHBOARD</span>
+                  <span>Studio Console</span>
                   <ArrowRight size={14} />
                 </Link>
               </div>
 
-              {/* Clarity Notice */}
-              <div style={{ fontSize: '0.72rem', color: 'rgba(255, 255, 255, 0.65)', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <Volume2 size={12} color="var(--color-orange)" />
-                <span>Simulated campus radio stream • High-fidelity audio broadcast</span>
+              <div style={{ fontSize: '0.74rem', color: 'rgba(255, 248, 233, 0.65)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Volume2 size={13} color="var(--color-orange)" />
+                <span>Simulated campus radio stream • 320kbps HD studio master</span>
               </div>
             </div>
 
@@ -402,7 +320,7 @@ export const Home = () => {
               <VinylRecord 
                 isPlaying={isLiveActive} 
                 coverImage={mockLiveShow.cover} 
-                size={180} 
+                size={190} 
                 albumTitle={mockLiveShow.title}
                 showArm={true}
               />
@@ -411,29 +329,39 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* 4. Upcoming Radio Show Strip */}
+      {/* 3. Upcoming Broadcast Information */}
       <section 
         className="card-modern"
         style={{
-          borderRadius: 'var(--radius-lg)',
-          backgroundColor: 'var(--bg-card)',
-          padding: '12px 18px',
+          padding: '14px 20px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: '10px'
+          gap: '12px'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: 'var(--color-orange-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-orange)', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div 
+            style={{ 
+              width: '38px', 
+              height: '38px', 
+              borderRadius: 'var(--radius-md)', 
+              backgroundColor: 'var(--color-forest-soft)', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              color: 'var(--color-forest)', 
+              flexShrink: 0 
+            }}
+          >
             <Clock size={18} />
           </div>
           <div>
             <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              NEXT BROADCAST AT {upcomingShow.time}
+              NEXT BROADCAST TONIGHT AT {upcomingShow.time}
             </div>
-            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.94rem', fontWeight: 700, color: 'var(--text-primary)' }}>
               {upcomingShow.title} • Hosted by {upcomingShow.rj}
             </div>
           </div>
@@ -442,106 +370,44 @@ export const Home = () => {
         <Link
           to="/live"
           style={{
-            fontSize: '0.8rem',
+            fontSize: '0.82rem',
             fontWeight: 700,
             color: 'var(--color-orange)',
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: '3px'
+            gap: '4px'
           }}
         >
-          VIEW SCHEDULE →
+          <span>Full Schedule</span>
+          <ArrowRight size={13} />
         </Link>
       </section>
 
-      {/* 5. Quick Access to Saved Episodes (Only rendered when student has saved episodes) */}
-      {savedItems.length > 0 && (
-        <section>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Bookmark size={16} color="var(--color-orange)" />
-              <h2 style={{ fontFamily: 'var(--font-retro)', fontSize: '1.15rem', margin: 0, color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
-                QUICK ACCESS: SAVED EPISODES
-              </h2>
-            </div>
-            <Link to="/saved" style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-orange)', textDecoration: 'none' }}>
-              Open Vault ({savedItems.length}) →
-            </Link>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px' }}>
-            {savedItems.slice(0, 3).map(ep => (
-              <div
-                key={ep.id}
-                className="card-modern"
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: 'var(--radius-lg)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '10px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                  <img src={ep.cover} alt={ep.title} style={{ width: '42px', height: '42px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} />
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.86rem', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: 'var(--text-primary)' }}>
-                      {ep.title}
-                    </div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>
-                      {ep.host} • {ep.duration}
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => playTrack(ep)}
-                  className="btn-icon"
-                  style={{
-                    width: '34px',
-                    height: '34px',
-                    minWidth: '34px',
-                    minHeight: '34px',
-                    backgroundColor: 'var(--color-orange)',
-                    color: '#FFF',
-                    border: 'none',
-                    boxShadow: 'var(--shadow-sm)',
-                    flexShrink: 0
-                  }}
-                  title="Play episode"
-                >
-                  <Play size={14} fill="#FFF" style={{ marginLeft: '2px' }} />
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 6. Featured Podcasts & Latest Episodes */}
+      {/* 4. Featured Student Podcasts */}
       <section>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
+        <div className="section-header">
           <div>
-            <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              CAMPUS DISCUSSIONS // PODCASTS
+            <span className="editorial-badge" style={{ marginBottom: '6px' }}>
+              CAMPUS AUDIO
             </span>
-            <h2 style={{ fontFamily: 'var(--font-retro)', fontSize: 'clamp(1.25rem, 3.5vw, 1.6rem)', margin: '2px 0 0', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
-              FEATURED EPISODES
+            <h2 className="section-header-title">
+              Featured Student Podcasts
             </h2>
+            <div className="section-header-subtitle">
+              Discussions, tech chronicles, and stories hosted by NMAMIT students.
+            </div>
           </div>
           <Link 
             to="/podcasts" 
             className="btn-secondary"
             style={{ 
-              padding: '6px 14px',
-              fontSize: '0.8rem',
-              textDecoration: 'none',
-              minHeight: '34px'
+              padding: '7px 16px',
+              fontSize: '0.82rem',
+              minHeight: '36px'
             }}
           >
-            <span>VIEW ALL PODCASTS</span>
+            <span>View All Podcasts</span>
             <ArrowRight size={13} />
           </Link>
         </div>
@@ -550,7 +416,7 @@ export const Home = () => {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: '14px'
+            gap: '16px'
           }}
         >
           {mockPodcasts.slice(0, 3).map(podcast => (
@@ -559,63 +425,75 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* 7. Daily Playlist Voting Preview */}
+      {/* 5. Daily Playlist Voting Preview */}
       <section 
         className="card-modern"
         style={{
-          borderRadius: '20px',
-          padding: 'clamp(16px, 3vw, 24px)'
+          padding: 'clamp(18px, 3.5vw, 28px)'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', marginBottom: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', marginBottom: '16px' }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              <Vote size={13} /> PLAYLIST VOTING PREVIEW
+              <Vote size={13} /> DAILY PLAYLIST VOTING
             </div>
-            <h3 style={{ fontFamily: 'var(--font-retro)', fontSize: '1.18rem', margin: '2px 0 0', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
-              Tonight's Prime Hour Track Vote
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 800, margin: '3px 0 0', color: 'var(--text-primary)' }}>
+              {mockVotingData.dailySongPoll.question}
             </h3>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+              Winning track plays live during tonight's 9:00 PM Hostel Prime Hour broadcast.
+            </div>
           </div>
 
           <Link
             to="/vote"
             style={{
-              fontSize: '0.8rem',
+              fontSize: '0.82rem',
               fontWeight: 700,
               color: 'var(--color-orange)',
-              textDecoration: 'none'
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px'
             }}
           >
-            FULL VOTING →
+            <span>All Nominees</span>
+            <ArrowRight size={13} />
           </Link>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px' }}>
-          {mockVotingData.dailySongPoll.songs.map((song) => {
+        {votedToast && (
+          <div style={{ padding: '8px 14px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--color-forest-soft)', color: 'var(--color-forest)', fontSize: '0.82rem', fontWeight: 700, marginBottom: '12px' }}>
+            Vote recorded! Check back at 9:00 PM to hear the winner on 90.4 FM.
+          </div>
+        )}
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+          {mockVotingData.dailySongPoll.songs.slice(0, 3).map((song) => {
             const isVoted = activeVote === song.id;
 
             return (
               <div
                 key={song.id}
-                className="card-modern"
                 style={{
-                  padding: '10px 12px',
-                  borderRadius: 'var(--radius-lg)',
+                  padding: '12px 14px',
+                  borderRadius: 'var(--radius-md)',
                   backgroundColor: isVoted ? 'var(--color-orange-soft)' : 'var(--bg-card-subtle)',
-                  borderColor: isVoted ? 'var(--color-orange)' : 'var(--border-color)',
+                  border: isVoted ? '1px solid var(--color-orange)' : '1px solid var(--border-color)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: '8px'
+                  gap: '10px',
+                  transition: 'all var(--transition-fast)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                  <img src={song.cover} alt={song.title} style={{ width: '40px', height: '40px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} />
+                  <img src={song.cover} alt={song.title} style={{ width: '42px', height: '42px', borderRadius: 'var(--radius-sm)', objectFit: 'cover', flexShrink: 0 }} />
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.86rem', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: 'var(--text-primary)' }}>
+                    <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: 'var(--text-primary)' }}>
                       {song.title}
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>
+                    <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
                       {song.artist}
                     </div>
                   </div>
@@ -625,13 +503,13 @@ export const Home = () => {
                   onClick={() => handleQuickVote(song.id)}
                   className={isVoted ? "btn-primary" : "btn-secondary"}
                   style={{
-                    padding: '5px 12px',
-                    fontSize: '0.74rem',
-                    minHeight: '32px',
+                    padding: '6px 14px',
+                    fontSize: '0.76rem',
+                    minHeight: '34px',
                     flexShrink: 0
                   }}
                 >
-                  {isVoted ? 'VOTED' : 'VOTE'}
+                  {isVoted ? 'Voted' : 'Vote'}
                 </button>
               </div>
             );

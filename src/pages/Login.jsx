@@ -54,7 +54,7 @@ export const Login = () => {
         minHeight: 'calc(100vh - var(--navbar-height))',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        backgroundColor: '#F4F1EA'
+        backgroundColor: 'var(--bg-primary)'
       }}
       className="split-login-container"
     >
@@ -63,8 +63,8 @@ export const Login = () => {
         className="login-visual-panel"
         style={{
           position: 'relative',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
-          borderRight: '3px solid #000',
+          backgroundColor: 'var(--color-forest)',
+          borderRight: '1px solid var(--border-color)',
           padding: 'var(--space-3xl)',
           display: 'flex',
           flexDirection: 'column',
@@ -76,56 +76,41 @@ export const Login = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <div
               style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '14px',
-                background: 'var(--color-coral)',
-                border: '2px solid #000',
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-orange)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#FFFFFF',
-                boxShadow: '3px 3px 0 #000'
+                boxShadow: '0 2px 8px var(--color-orange-glow)'
               }}
             >
-              <Radio size={24} />
+              <Radio size={22} />
             </div>
             <div>
-              <span style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', letterSpacing: '-0.03em', color: '#fff' }}>
-                CAMPUS<span style={{ color: 'var(--color-coral)' }}>WAVE</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, letterSpacing: '-0.02em', color: '#fff' }}>
+                CAMPUS<span style={{ color: 'var(--color-orange)' }}>WAVE</span>
               </span>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-acid)' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-yellow)' }}>
                 NMAMIT • 90.4 DIGITAL FM
               </div>
             </div>
           </div>
 
-          <h2 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(2rem, 3.8vw, 2.9rem)', color: '#FFFFFF', textTransform: 'uppercase', lineHeight: 1.15, marginBottom: '16px' }}>
-            Tune into the <span style={{ color: 'var(--color-acid)' }}>heartbeat</span> of your campus.
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 3.8vw, 2.8rem)', color: '#FFFFFF', fontWeight: 800, lineHeight: 1.15, marginBottom: '16px' }}>
+            Tune into the <span style={{ color: 'var(--color-yellow)' }}>heartbeat</span> of your campus.
           </h2>
-          <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.6 }}>
-            Access exclusive hosteller playlists, real-time radio shoutouts, AI episode digests, and community song voting.
+          <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.85)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.6 }}>
+            Access student playlists, real-time live radio, on-demand podcast episodes, and daily hostel music voting.
           </p>
 
-          {/* Sticky badge */}
-          <div 
-            style={{
-              marginTop: '20px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: 'var(--color-acid)',
-              color: '#000',
-              border: '2px solid #000',
-              padding: '6px 14px',
-              borderRadius: '8px',
-              boxShadow: '3px 3px 0 #000',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.8rem',
-              fontWeight: 900
-            }}
-          >
-            <span>90.4 MHZ // BROADCAST ACCESS PORTAL</span>
+          {/* Badge */}
+          <div style={{ marginTop: '20px' }}>
+            <span className="editorial-badge editorial-badge-forest">
+              90.4 MHZ • STUDENT ACCESS PORTAL
+            </span>
           </div>
         </div>
 
@@ -152,18 +137,17 @@ export const Login = () => {
           style={{
             position: 'relative',
             zIndex: 2,
-            backgroundColor: '#FFFFFF',
-            color: '#000',
-            padding: '16px 22px',
-            borderRadius: '16px',
-            border: '2px solid #000',
-            boxShadow: '4px 4px 0 #000'
+            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+            color: '#FFFFFF',
+            padding: '16px 20px',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid rgba(255, 255, 255, 0.12)'
           }}
         >
-          <p style={{ fontStyle: 'italic', fontSize: '0.88rem', fontFamily: 'var(--font-body)', color: '#111', marginBottom: '6px', fontWeight: 600 }}>
+          <p style={{ fontStyle: 'italic', fontSize: '0.88rem', fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '6px' }}>
             “Whether studying in Netravati hostel or commuting on the Karkala bus, CampusWave keeps us connected to every beat.”
           </p>
-          <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--color-coral)', fontWeight: 800 }}>
+          <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--color-yellow)', fontWeight: 700 }}>
             — Ananya Hegde (CSE '25, Resident RJ)
           </div>
         </div>
@@ -178,7 +162,7 @@ export const Login = () => {
           justifyContent: 'center',
           padding: 'var(--space-2xl) var(--space-xl)',
           position: 'relative',
-          backgroundColor: '#F4F1EA'
+          backgroundColor: 'var(--bg-primary)'
         }}
       >
         <div 
@@ -187,53 +171,34 @@ export const Login = () => {
             maxWidth: '460px', 
             width: '100%',
             padding: '36px',
-            borderRadius: '24px',
-            backgroundColor: '#FFFFFF',
-            border: '2.5px solid #000',
-            boxShadow: '6px 6px 0 #000'
+            borderRadius: 'var(--radius-xl)',
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border-color)',
+            boxShadow: 'var(--shadow-md)'
           }}
         >
           <div style={{ marginBottom: '24px' }}>
-            <span 
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.74rem',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                backgroundColor: 'var(--color-acid)',
-                color: '#000',
-                border: '1.5px solid #000',
-                padding: '3px 8px',
-                borderRadius: '6px',
-                boxShadow: '2px 2px 0 #000',
-                marginBottom: '10px'
-              }}
-            >
+            <span className="editorial-badge" style={{ marginBottom: '10px' }}>
               STUDENT AUTHENTICATION
             </span>
-            <h1 style={{ fontFamily: 'var(--font-black)', fontSize: '2.2rem', marginBottom: '8px', color: '#000', textTransform: 'uppercase' }}>
+            <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-primary)' }}>
               Welcome back
             </h1>
-            <p style={{ fontFamily: 'var(--font-mono)', color: '#444', fontSize: '0.88rem', fontWeight: 600 }}>
-              Sign in with your NMAMIT student credentials or test drive as a guest listener.
+            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+              Sign in with your NMAMIT credentials or test drive as a guest listener.
             </p>
           </div>
 
           {error && (
             <div
               style={{
-                backgroundColor: 'var(--color-acid)',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                color: '#000',
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                color: '#EF4444',
                 padding: '10px 14px',
-                borderRadius: '8px',
+                borderRadius: 'var(--radius-sm)',
                 fontSize: '0.85rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
+                fontWeight: 600,
                 marginBottom: '18px'
               }}
             >
@@ -244,15 +209,13 @@ export const Login = () => {
           {toastMsg && (
             <div
               style={{
-                backgroundColor: 'var(--color-acid)',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                color: '#000',
+                backgroundColor: 'var(--color-orange-soft)',
+                border: '1px solid var(--color-orange)',
+                color: 'var(--color-orange)',
                 padding: '10px 14px',
-                borderRadius: '8px',
+                borderRadius: 'var(--radius-sm)',
                 fontSize: '0.85rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
+                fontWeight: 600,
                 marginBottom: '18px'
               }}
             >
@@ -263,7 +226,9 @@ export const Login = () => {
           <form onSubmit={handleSubmit}>
             {/* Email Field */}
             <div className="form-group" style={{ marginBottom: '16px' }}>
-              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>NMAMIT Email Address</label>
+              <label className="form-label" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                NMAMIT Email Address
+              </label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="email"
@@ -273,19 +238,19 @@ export const Login = () => {
                   style={{
                     width: '100%',
                     padding: '12px 16px 12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none'
                   }}
                   required
                 />
                 <Mail
                   size={18}
-                  color="#000"
+                  color="var(--text-muted)"
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }}
                 />
               </div>
@@ -294,11 +259,13 @@ export const Login = () => {
             {/* Password Field */}
             <div className="form-group" style={{ marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label className="form-label" style={{ margin: 0, fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Password</label>
+                <label className="form-label" style={{ margin: 0, fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)' }}>
+                  Password
+                </label>
                 <button
                   type="button"
                   onClick={handleForgotPassword}
-                  style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--color-coral)', cursor: 'pointer', fontWeight: 800, background: 'none', border: 'none' }}
+                  style={{ fontSize: '0.78rem', color: 'var(--color-orange)', cursor: 'pointer', fontWeight: 600, background: 'none', border: 'none' }}
                 >
                   Forgot password?
                 </button>
@@ -313,19 +280,19 @@ export const Login = () => {
                   style={{
                     width: '100%',
                     padding: '12px 44px',
-                    borderRadius: '12px',
-                    border: '2px solid #000',
-                    boxShadow: '2px 2px 0 #000',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-color)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
                     outline: 'none'
                   }}
                   required
                 />
                 <Lock
                   size={18}
-                  color="#000"
+                  color="var(--text-muted)"
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }}
                 />
                 <button
@@ -336,7 +303,7 @@ export const Login = () => {
                     right: '16px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    color: '#000',
+                    color: 'var(--text-muted)',
                     cursor: 'pointer',
                     background: 'none',
                     border: 'none'
@@ -355,9 +322,9 @@ export const Login = () => {
                 id="remember"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                style={{ width: '18px', height: '18px', accentColor: 'var(--color-coral)', cursor: 'pointer' }}
+                style={{ width: '16px', height: '16px', accentColor: 'var(--color-orange)', cursor: 'pointer' }}
               />
-              <label htmlFor="remember" style={{ fontSize: '0.84rem', fontFamily: 'var(--font-mono)', fontWeight: 600, color: '#222', cursor: 'pointer' }}>
+              <label htmlFor="remember" style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', cursor: 'pointer' }}>
                 Keep me signed in on this device
               </label>
             </div>
@@ -366,7 +333,7 @@ export const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn-brutal"
+              className="btn-primary"
               style={{
                 width: '100%',
                 display: 'inline-flex',
@@ -375,14 +342,7 @@ export const Login = () => {
                 gap: '8px',
                 padding: '14px',
                 fontSize: '0.92rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                backgroundColor: 'var(--color-coral)',
-                color: '#FFFFFF',
-                border: '2px solid #000',
-                boxShadow: '3px 3px 0 #000',
-                borderRadius: '12px',
-                marginBottom: '14px',
+                marginBottom: '12px',
                 cursor: 'pointer'
               }}
             >
@@ -394,18 +354,11 @@ export const Login = () => {
             <button
               type="button"
               onClick={handleGuestLogin}
-              className="btn-brutal"
+              className="btn-secondary"
               style={{
                 width: '100%',
                 padding: '12px',
                 fontSize: '0.88rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                backgroundColor: 'var(--color-acid)',
-                color: '#000',
-                border: '2px solid #000',
-                boxShadow: '3px 3px 0 #000',
-                borderRadius: '12px',
                 marginBottom: '20px',
                 cursor: 'pointer'
               }}
@@ -415,9 +368,9 @@ export const Login = () => {
           </form>
 
           {/* Switch to Register */}
-          <div style={{ textAlign: 'center', fontSize: '0.86rem', fontFamily: 'var(--font-mono)', color: '#333' }}>
+          <div style={{ textAlign: 'center', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
             New to NMAMIT CampusWave?{' '}
-            <Link to="/register" style={{ color: 'var(--color-coral)', fontWeight: 800 }}>
+            <Link to="/register" style={{ color: 'var(--color-orange)', fontWeight: 700 }}>
               Create an account
             </Link>
           </div>

@@ -101,12 +101,12 @@ export const PodcastDetails = () => {
 
       {/* Main Episode Banner */}
       <div 
-        className="hero-split-grid podcast-details-banner card-modern"
+        className="hero-split-grid podcast-details-banner card-forest"
         style={{
           padding: 'var(--space-2xl)',
-          borderRadius: '24px',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, #0F1216 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          borderRadius: 'var(--radius-xl)',
+          backgroundColor: 'var(--color-forest)',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
           boxShadow: 'var(--shadow-md)',
           display: 'grid',
           gridTemplateColumns: 'minmax(260px, 340px) 1fr',
@@ -121,7 +121,7 @@ export const PodcastDetails = () => {
             position: 'relative',
             width: '100%',
             height: '300px',
-            borderRadius: '20px',
+            borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
             border: '1px solid rgba(255, 255, 255, 0.2)'
           }}
@@ -139,7 +139,7 @@ export const PodcastDetails = () => {
             }}
           >
             <span 
-              className="sticker-tag sticker-tag-orange"
+              className="editorial-badge"
               style={{ fontSize: '0.74rem' }}
             >
               {podcast.category}
@@ -152,34 +152,31 @@ export const PodcastDetails = () => {
           <div>
             <div 
               style={{
-                fontFamily: 'var(--font-radio)',
-                fontSize: '0.82rem',
-                color: 'var(--color-orange)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.8rem',
+                color: 'var(--color-yellow)',
+                fontWeight: 700,
                 letterSpacing: '0.04em',
                 marginBottom: '6px'
               }}
             >
-              {podcast.showName.toUpperCase()} • EPISODE DISPATCH // 90.4 MHZ
-            </div>
-            <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: '#FAB005', fontSize: '1rem', marginBottom: '4px' }}>
-              From The Campus Tape Vault...
+              {podcast.showName.toUpperCase()} • 90.4 MHZ
             </div>
             <h1 
-              className="retro-title-shadow"
               style={{ 
-                fontFamily: 'var(--font-retro)', 
+                fontFamily: 'var(--font-heading)', 
                 fontSize: 'clamp(1.8rem, 3.4vw, 2.6rem)', 
                 lineHeight: 1.2, 
                 marginBottom: '10px', 
-                color: 'var(--color-retro-yellow)',
-                fontWeight: 400
+                color: '#FFFFFF',
+                fontWeight: 800
               }}
             >
               {podcast.title}
             </h1>
             <div style={{ fontSize: '0.92rem', color: 'rgba(255, 255, 255, 0.9)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>
               <User size={16} color="var(--color-orange)" />
-              <span style={{ fontFamily: 'var(--font-radio)', color: '#FFB800', letterSpacing: '0.02em', fontSize: '1.02rem' }}>{podcast.host}</span>
+              <span style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-yellow)', letterSpacing: '0.02em', fontSize: '1.02rem', fontWeight: 700 }}>{podcast.host}</span>
               <span>— {podcast.hostRole}</span>
             </div>
           </div>

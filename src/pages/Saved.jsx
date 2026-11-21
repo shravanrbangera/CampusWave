@@ -111,32 +111,29 @@ export const Saved = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="retro-pill retro-pill-orange">
-            STUDENT AUDIO VAULT // 90.4 FM
+          <span className="editorial-badge">
+            STUDENT AUDIO VAULT • 90.4 FM
           </span>
-          <span className="retro-pill retro-pill-yellow">
-            CASSETTE VAULT
+          <span className="editorial-badge editorial-badge-forest">
+            STORED BROADCASTS
           </span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
-            OFFLINE RECORDINGS & STORED BROADCASTS
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+            OFFLINE RECORDINGS
           </span>
         </div>
 
-        <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: 'var(--color-orange)', fontSize: '1.05rem', marginTop: '6px' }}>
-          Your Vintage Magnetic Tapes & Records...
-        </div>
         <h1 
-          className="retro-title-shadow"
           style={{ 
-            fontFamily: 'var(--font-retro)',
-            fontSize: 'var(--font-size-hero)',
-            fontWeight: 400,
-            margin: '4px 0 10px',
-            color: 'var(--color-retro-yellow)',
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
+            margin: '8px 0 10px',
+            color: 'var(--text-primary)',
             lineHeight: 1.15
           }}
         >
-          SAVED <span style={{ color: 'var(--color-orange)' }}>LIBRARY</span>
+          Saved <span style={{ color: 'var(--color-orange)' }}>Library</span>
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', fontWeight: 500, maxWidth: '680px', lineHeight: 1.6 }}>
           Your bookmarked episodes, offline downloaded audio, listening history, and liked student tracks in one convenient vault.

@@ -22,6 +22,7 @@ import { mockVotingData } from '../data/voting';
 import { mockRJs } from '../data/rjs';
 import { PodcastCard } from '../components/PodcastCard';
 import { VinylRecord } from '../components/VinylRecord';
+import { FMTunerDial } from '../components/FMTunerDial';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -258,6 +259,9 @@ export const Home = () => {
           );
         })}
       </div>
+
+      {/* Retro FM Radio Tuner Dial (Inspired by user 70s FM radio and iPod reference) */}
+      <FMTunerDial />
 
       {/* 4. Live Broadcast Flagship Deck (Compact, music-first, Image 1 & 3) */}
       <section 

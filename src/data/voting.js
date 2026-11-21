@@ -1,3 +1,5 @@
+import { localImages } from '../assets/Images';
+
 // Community Music Voting and Polls Data
 export const mockVotingData = {
   dailySongPoll: {
@@ -11,7 +13,7 @@ export const mockVotingData = {
         artist: "The Nitte Collective",
         genre: "Lo-Fi Indie",
         votes: 382,
-        cover: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80"
+        cover: localImages.karkalaBeats
       },
       {
         id: "poll-song-2",
@@ -19,7 +21,7 @@ export const mockVotingData = {
         artist: "Hostel Room 304",
         genre: "Synthwave",
         votes: 298,
-        cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&q=80"
+        cover: localImages.hostel
       },
       {
         id: "poll-song-3",
@@ -27,7 +29,7 @@ export const mockVotingData = {
         artist: "DJ Shutter & NMAMIT EDM Club",
         genre: "EDM Fusion",
         votes: 194,
-        cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80"
+        cover: localImages.incridea
       }
     ]
   },

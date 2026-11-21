@@ -35,17 +35,18 @@
   --color-teal: #123D2C;
   --color-live: #F15A24;
 
-  /* Professional Typography System */
-  --font-heading: 'Plus Jakarta Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Professional 70s FM Retro Typography System (Requested by user) */
+  --font-heading: 'Syne', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Fraunces', Georgia, serif;
   --font-mono: 'Space Mono', monospace;
 
-  /* Legacy aliases mapped to clean fonts */
-  --font-retro: 'Plus Jakarta Sans', sans-serif;
-  --font-radio: 'Plus Jakarta Sans', sans-serif;
+  /* Legacy aliases mapped to clean retro fonts */
+  --font-retro: 'Syne', sans-serif;
+  --font-radio: 'Syne', sans-serif;
   --font-serif-retro: 'Fraunces', Georgia, serif;
-  --font-black: 'Plus Jakarta Sans', sans-serif;
+  --font-black: 'Syne', sans-serif;
 
   /* Responsive Fluid Typography Clamps (Mobile-First) */
   --font-size-hero: clamp(2rem, 5vw, 3.4rem);

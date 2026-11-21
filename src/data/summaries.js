@@ -1,3 +1,5 @@
+import { localImages } from '../assets/Images';
+
 // AI-Powered Broadcast Summaries
 export const mockSummaries = [
   {
@@ -10,7 +12,7 @@ export const mockSummaries = [
     readTime: "3 min read",
     category: "Tech & Coding",
     badge: "Featured AI Summary",
-    cover: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
+    cover: localImages.nitteTech,
     overview: "In this broadcast, the leads of the NMAMIT Robotics Club demonstrated the architecture of their national competition rover. They explained LiDAR calibration under bright sunlight and shared concrete strategies for sophomore and junior engineering students seeking core hardware/software internships.",
     keyTakeaways: [
       "Hardware optimization: Replaced heavy aluminum baseplates with lightweight carbon-infused 3D prints produced in the MakerSpace.",
@@ -32,7 +34,7 @@ export const mockSummaries = [
     readTime: "2 min read",
     category: "Hostel Stories",
     badge: "Trending Read",
-    cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80",
+    cover: localImages.hostel,
     overview: "A campus-wide cultural breakdown of hostel life across Netravati and Shambhavi blocks. Highlights practical hacks for monsoon weather, navigating the midnight laundry rush, and negotiating mess committee special dinners.",
     keyTakeaways: [
       "Monsoon preparations: Keep waterproof backpack raincovers and silica gel packets for electronics in humid hostel rooms.",
@@ -54,7 +56,7 @@ export const mockSummaries = [
     readTime: "4 min read",
     category: "Campus News",
     badge: "Cultural Scoop",
-    cover: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+    cover: localImages.incridea,
     overview: "Behind-the-scenes breakdown of NMAMIT's premier cultural fest. The committee explains the acoustic enhancements at Sambhram Open Air Theatre, esports setups for gaming events, and the upcoming student volunteer drive.",
     keyTakeaways: [
       "Acoustic improvements: Line array sound towers installed to prevent audio echo against the Mech block courtyard.",
@@ -76,7 +78,7 @@ export const mockSummaries = [
     readTime: "3 min read",
     category: "Career & Alumni",
     badge: "Career Guide",
-    cover: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+    cover: localImages.alumniRadar,
     overview: "Alumnus Rohit K. discusses how engineering students from NMAMIT can bridge the gap between academic curriculum and high-growth technology startups in Bengaluru and abroad.",
     keyTakeaways: [
       "Core fundamentals: Master system design principles and database concurrency early in your 3rd year.",

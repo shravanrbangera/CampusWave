@@ -271,53 +271,53 @@ export const Navbar = () => {
           {/* Quick Search Shortcut Button for Mobile */}
           <button 
             onClick={() => navigate('/podcasts')}
-            className="mobile-only btn-icon"
+            className="mobile-only"
             style={{
               width: '38px',
               height: '38px',
               minWidth: '38px',
               minHeight: '38px',
-              borderRadius: 'var(--radius-full)',
-              backgroundColor: 'var(--bg-card-subtle)',
-              border: '1px solid var(--border-color)',
+              borderRadius: '50%',
+              backgroundColor: 'var(--bg-card)',
+              border: '1.5px solid var(--border-color)',
               color: 'var(--text-primary)',
-              display: 'none', // Handled by media query in responsive.css
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer'
-            }}
-            title="Search podcasts"
-            aria-label="Search"
-          >
-            <Search size={17} />
-          </button>
-
-          {/* Theme Toggle Button - ALWAYS PROMINENT ON MOBILE AND DESKTOP */}
-          <button 
-            onClick={toggleTheme}
-            className="btn-icon theme-toggle-btn"
-            style={{
-              width: '38px',
-              height: '38px',
-              minWidth: '38px',
-              minHeight: '38px',
-              borderRadius: 'var(--radius-full)',
-              backgroundColor: 'var(--bg-card-subtle)',
-              border: '1px solid var(--border-color)',
-              color: 'var(--text-primary)',
-              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
               flexShrink: 0
             }}
+            title="Search podcasts"
+            aria-label="Search"
+          >
+            <Search size={17} color="var(--text-primary)" strokeWidth={2.2} />
+          </button>
+
+          {/* Theme Toggle Button - ALWAYS PROMINENT ON MOBILE AND DESKTOP */}
+          <button 
+            onClick={toggleTheme}
+            className="theme-toggle-btn"
+            style={{
+              width: '38px',
+              height: '38px',
+              minWidth: '38px',
+              minHeight: '38px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--bg-card)',
+              border: '1.5px solid var(--border-color)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              flexShrink: 0,
+              boxShadow: 'var(--shadow-sm)'
+            }}
             title={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              <Sun size={18} color="var(--color-amber)" />
+              <Sun size={18} color="#F4C542" strokeWidth={2.4} />
             ) : (
-              <Moon size={18} color="var(--text-primary)" />
+              <Moon size={18} color="var(--text-primary)" strokeWidth={2.4} />
             )}
           </button>
         </div>

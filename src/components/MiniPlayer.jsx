@@ -189,15 +189,14 @@ export const MiniPlayer = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
+            gap: '8px',
             flexShrink: 0
           }}
         >
-          {/* Desktop Volume Slider */}
+          {/* Desktop-Only Volume Slider (Hidden on mobile) */}
           <div 
             className="desktop-only"
             style={{
-              display: 'flex',
               alignItems: 'center',
               gap: '6px'
             }}
@@ -224,16 +223,16 @@ export const MiniPlayer = () => {
             />
           </div>
 
-          {/* Like Button */}
+          {/* Like Button (Desktop & Tablet) */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               toggleLikeTrack(currentTrack.id);
             }}
+            className="desktop-only"
             style={{
               padding: '6px',
               color: isLiked ? 'var(--color-orange)' : 'var(--text-secondary)',
-              display: 'flex',
               alignItems: 'center'
             }}
             title={isLiked ? "Saved to Liked" : "Like track"}
@@ -241,14 +240,14 @@ export const MiniPlayer = () => {
             <Heart size={18} fill={isLiked ? "var(--color-orange)" : "none"} />
           </button>
 
-          {/* Play/Pause Button */}
+          {/* Play/Pause Button (Primary touch control) */}
           <button
             onClick={togglePlay}
             style={{
-              width: '40px',
-              height: '40px',
-              minWidth: '40px',
-              minHeight: '40px',
+              width: '42px',
+              height: '42px',
+              minWidth: '42px',
+              minHeight: '42px',
               borderRadius: '50%',
               backgroundColor: 'var(--color-orange)',
               color: '#FFFFFF',
@@ -257,9 +256,11 @@ export const MiniPlayer = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              flexShrink: 0
             }}
             title={isPlaying ? "Pause" : "Play"}
+            aria-label={isPlaying ? "Pause audio" : "Play audio"}
           >
             {isPlaying ? <Pause size={18} fill="#FFF" /> : <Play size={18} fill="#FFF" style={{ marginLeft: '2px' }} />}
           </button>
@@ -277,11 +278,13 @@ export const MiniPlayer = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              flexShrink: 0
             }}
-            title="Expand Full Player"
+            title="Expand player"
+            aria-label="Expand player"
           >
-            <Maximize2 size={15} />
+            <Maximize2 size={16} />
           </button>
         </div>
       </div>

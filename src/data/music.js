@@ -1,3 +1,5 @@
+import { localImages } from '../assets/Images';
+
 // NMAMIT Campus Student Music & Indie Bands
 export const mockMusic = [
   {
@@ -5,7 +7,7 @@ export const mockMusic = [
     title: "Karkala Monsoon Breeze",
     artist: "The Nitte Collective",
     album: "Western Ghats EP",
-    cover: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
+    cover: localImages.karkalaBeats,
     duration: "03:42",
     durationSeconds: 222,
     genre: "Lo-Fi Indie",
@@ -20,7 +22,7 @@ export const mockMusic = [
     title: "Midnight at Netravati",
     artist: "Hostel Room 304",
     album: "All-Nighter Sessions",
-    cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",
+    cover: localImages.hostel,
     duration: "04:15",
     durationSeconds: 255,
     genre: "Synthwave / Chillhop",
@@ -35,7 +37,7 @@ export const mockMusic = [
     title: "Chai Kadai Melodies",
     artist: "Coastal Acoustics",
     album: "Highway 169",
-    cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&q=80",
+    cover: localImages.sports,
     duration: "03:20",
     durationSeconds: 200,
     genre: "Acoustic Pop",
@@ -50,7 +52,7 @@ export const mockMusic = [
     title: "Incridea Anthem (Remix)",
     artist: "DJ Shutter & NMAMIT EDM Club",
     album: "Fest Ignition",
-    cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
+    cover: localImages.incridea,
     duration: "03:55",
     durationSeconds: 235,
     genre: "Campus EDM",
@@ -65,7 +67,7 @@ export const mockMusic = [
     title: "Ghats in the Rearview",
     artist: "Pranitha Rao",
     album: "Single",
-    cover: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80",
+    cover: localImages.alumniRadar,
     duration: "04:30",
     durationSeconds: 270,
     genre: "Dream Pop",
@@ -80,7 +82,7 @@ export const mockMusic = [
     title: "Final Year Goodbye",
     artist: "The Backbenchers",
     album: "Convocation 2026",
-    cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80",
+    cover: localImages.examStress,
     duration: "04:02",
     durationSeconds: 242,
     genre: "Indie Rock",
@@ -103,7 +105,7 @@ export const mockLiveShow = {
   listenersCount: 342,
   badge: "Studio 1 • Sambhram Center",
   frequency: "90.4 MHz Digital",
-  cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",
+  cover: localImages.liveStudio,
   description: "Spinning student music submissions, taking live shoutouts from Netravati and Shambhavi hostels, and discussing the upcoming cultural week.",
   schedule: [
     { time: "07:30 PM", title: "Sunset Chill & Indie Submissions", rj: "RJ Ananya", active: true },

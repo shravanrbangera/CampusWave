@@ -1,3 +1,5 @@
+import { localImages } from '../assets/Images';
+
 // NMAMIT Campus Podcasts Data
 export const mockPodcasts = [
   {
@@ -6,7 +8,7 @@ export const mockPodcasts = [
     showName: "Nitte Tech Chronicles",
     host: "Prateek Shenoy & Divya Rao",
     hostRole: "Robotics Club Leads, 4th Year CSE",
-    cover: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
+    cover: localImages.nitteTech,
     duration: "24:18",
     durationSeconds: 1458,
     category: "Tech & Coding",
@@ -40,7 +42,7 @@ export const mockPodcasts = [
     showName: "Hostel Night Owl",
     host: "Kavya Bhat & Nihal Shetty",
     hostRole: "Student Council & Hostel Reps",
-    cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80",
+    cover: localImages.hostel,
     duration: "18:45",
     durationSeconds: 1125,
     category: "Hostel Stories",
@@ -74,7 +76,7 @@ export const mockPodcasts = [
     showName: "Karkala Beats",
     host: "RJ Shreya",
     hostRole: "Resident Campus DJ & 3rd Year ECE",
-    cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
+    cover: localImages.karkalaBeats,
     duration: "29:10",
     durationSeconds: 1750,
     category: "Indie Music",
@@ -108,7 +110,7 @@ export const mockPodcasts = [
     showName: "Alumni Radar",
     host: "Prof. Arvind Kamath & Ananya M.",
     hostRole: "Industry Relations Coordinator & CSE Senior",
-    cover: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+    cover: localImages.alumniRadar,
     duration: "32:05",
     durationSeconds: 1925,
     category: "Career & Alumni",
@@ -142,7 +144,7 @@ export const mockPodcasts = [
     showName: "Campus Pulse",
     host: "RJ Vicky & Tanvi S.",
     hostRole: "Cultural Committee Spokespersons",
-    cover: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+    cover: localImages.incridea,
     duration: "21:30",
     durationSeconds: 1290,
     category: "Campus News",
@@ -176,7 +178,7 @@ export const mockPodcasts = [
     showName: "Mind Over Matter",
     host: "Dr. Prema Nayak & Student Wellness Club",
     hostRole: "Campus Counselor & Peer Mentors",
-    cover: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&q=80",
+    cover: localImages.examStress,
     duration: "16:20",
     durationSeconds: 980,
     category: "Mental Health",

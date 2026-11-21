@@ -90,8 +90,8 @@ export const PodcastCard = ({ podcast, compact = false }) => {
             className="editorial-badge"
             style={{
               backgroundColor: 'rgba(12, 16, 18, 0.88)',
-              color: 'var(--color-orange)',
-              border: '1px solid rgba(255, 148, 26, 0.3)'
+              color: 'var(--color-amber)',
+              border: '1px solid rgba(255, 181, 46, 0.3)'
             }}
           >
             {podcast.category}
@@ -113,14 +113,14 @@ export const PodcastCard = ({ podcast, compact = false }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: isSaved ? 'var(--color-orange)' : 'var(--text-secondary)',
+            color: isSaved ? 'var(--color-coral)' : 'var(--text-secondary)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             zIndex: 2,
             transition: 'all var(--transition-fast)'
           }}
           title={isSaved ? "Remove from bookmarks" : "Save podcast"}
         >
-          <Bookmark size={15} fill={isSaved ? "var(--color-orange)" : "none"} />
+          <Bookmark size={15} fill={isSaved ? "var(--color-coral)" : "none"} />
         </button>
 
         {/* Play Button Overlay */}
@@ -133,21 +133,21 @@ export const PodcastCard = ({ podcast, compact = false }) => {
             width: '44px',
             height: '44px',
             borderRadius: '50%',
-            backgroundColor: 'var(--color-orange)',
-            color: '#0E1315',
+            backgroundColor: 'var(--color-coral)',
+            color: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.5)',
+            boxShadow: 'var(--shadow-coral)',
             zIndex: 2,
             transition: 'transform var(--transition-fast)'
           }}
           title={isCurrent && isPlaying ? "Pause" : "Play Episode"}
         >
           {isCurrent && isPlaying ? (
-            <Pause size={19} fill="#0E1315" />
+            <Pause size={19} fill="#FFFFFF" />
           ) : (
-            <Play size={19} fill="#0E1315" style={{ marginLeft: '2px' }} />
+            <Play size={19} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
           )}
         </button>
       </div>
@@ -205,7 +205,7 @@ export const PodcastCard = ({ podcast, compact = false }) => {
               marginBottom: '12px'
             }}
           >
-            <User size={13} color="var(--color-orange)" />
+            <User size={13} color="var(--color-coral)" />
             <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {podcast.host}
             </span>

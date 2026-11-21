@@ -1,22 +1,72 @@
 /* ==========================================================================
-   CAMPUSWAVE RESPONSIVE BREAKPOINTS
-   Rigorous responsive engineering for:
-   375px (Small Mobile), 430px (Standard Mobile), 768px (Tablet), 
-   1024px (Laptop), 1440px (Wide Desktop)
+   CAMPUSWAVE RESPONSIVE BREAKPOINTS & MOBILE ARCHITECTURE
+   Tailored for:
+   - Ultra-compact mobile (320px - 375px)
+   - Standard mobile (376px - 480px)
+   - Phablet & Small Tablet (481px - 768px)
+   - Tablet & Small Laptop (769px - 1024px)
+   - Desktop & Wide (1025px+)
    ========================================================================== */
 
-/* Large Desktop (1440px+) */
-@media (min-width: 1440px) {
+/* --------------------------------------------------------------------------
+   GLOBAL FLUID RESETS
+   -------------------------------------------------------------------------- */
+html, 
+body, 
+#root, 
+.app-container {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Horizontal scrollable pill containers touch ergonomics */
+.scroll-x,
+.scroll-touch-pills,
+.category-pills-row,
+[style*="overflowX: 'auto'"],
+[style*="overflow-x: auto"] {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.scroll-x::-webkit-scrollbar,
+.scroll-touch-pills::-webkit-scrollbar,
+.category-pills-row::-webkit-scrollbar,
+[style*="overflowX: 'auto'"]::-webkit-scrollbar,
+[style*="overflow-x: auto"]::-webkit-scrollbar {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   DESKTOP (1025px - 1440px+)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1025px) {
   .page-wrapper {
-    max-width: 1400px;
+    max-width: 1360px;
     padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .nav-mobile-bottom {
+    display: none !important;
+  }
+
+  #mobile-nav-toggle {
+    display: none !important;
   }
 }
 
-/* Laptop / Desktop (1024px to 1439px) */
+/* --------------------------------------------------------------------------
+   TABLET & SMALL LAPTOP (769px - 1024px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   :root {
-    --navbar-height: 68px;
+    --navbar-height: 66px;
   }
 
   .page-wrapper {
@@ -28,20 +78,46 @@
     gap: var(--space-xl) !important;
   }
 
+  /* Bento Grid Tablet Layout: 2 Columns */
+  .bento-category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-md) !important;
+  }
+
+  .bento-card {
+    grid-column: span 1 !important;
+    min-height: 240px !important;
+  }
+
+  .bento-card-7 {
+    grid-column: span 2 !important;
+  }
+
   .desktop-only {
     display: none !important;
   }
 }
 
-/* Tablet (768px to 1023px) */
+/* --------------------------------------------------------------------------
+   MOBILE & TABLET PORTRAIT (768px and below)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-
-  /* Prevent content from hiding behind both BottomNav & MiniPlayer */
-  .app-container {
-    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + 20px) !important;
+  :root {
+    --navbar-height: 62px;
+    --mini-player-height: 68px;
+    --bottom-nav-height: 62px;
   }
 
-  /* Desktop links hide, mobile bottom bar appears */
+  /* Prevent page content from being obscured behind fixed MiniPlayer + BottomNav */
+  .app-container {
+    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + 16px) !important;
+  }
+
+  .page-wrapper {
+    padding: var(--space-lg) var(--space-md) !important;
+  }
+
+  /* Navigation Bar Adjustments */
   .nav-desktop-links {
     display: none !important;
   }
@@ -50,22 +126,50 @@
     display: flex !important;
   }
 
-  /* Show mobile hamburger toggle */
   #mobile-nav-toggle {
     display: inline-flex !important;
   }
 
-  /* Dock Mini Player cleanly above the mobile bottom navigation bar */
+  /* Mobile Dock: MiniPlayer sits above Bottom Navigation */
   .mini-player-container {
     bottom: var(--bottom-nav-height) !important;
+    height: var(--mini-player-height) !important;
   }
 
-  .section-grid-2,
-  .section-grid-3,
-  .section-grid-4 {
+  /* Bento Grid on Mobile: 1 Column */
+  .bento-category-grid {
     grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
   }
 
+  .bento-card,
+  .bento-card-7,
+  .bento-card-5,
+  .bento-card-4 {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  /* Hero Container on Mobile */
+  .hero-container {
+    padding: 28px 18px !important;
+    border-radius: var(--radius-xl) !important;
+  }
+
+  .ghost-typography {
+    display: none !important; /* Hide ghost background letters on mobile to avoid contrast clash */
+  }
+
+  /* Vinyl Record Scaling on Mobile */
+  .vinyl-wrapper {
+    max-width: 100% !important;
+    transform: scale(0.85);
+    transform-origin: center center;
+    margin: -15px auto !important;
+  }
+
+  /* Split Login Layout on Mobile */
   .split-login-container {
     grid-template-columns: 1fr !important;
   }
@@ -73,58 +177,200 @@
   .login-visual-panel {
     display: none !important;
   }
+
+  /* Section Grids Collapse Cleanly */
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
+  }
+
+  /* Adjust section headers */
+  .section-header {
+    margin-bottom: var(--space-lg) !important;
+    gap: 8px !important;
+  }
+
+  .section-header-title {
+    font-size: 1.5rem !important;
+  }
+
+  /* Form Elements */
+  .form-input {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+    padding: 12px 16px !important;
+  }
 }
 
-/* Mobile Standard (430px and below) */
-@media (max-width: 430px) {
+/* --------------------------------------------------------------------------
+   STANDARD MOBILE (480px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
   :root {
-    --mini-player-height: 72px;
-    --bottom-nav-height: 60px;
-    --navbar-height: 62px;
+    --space-2xl: 24px;
+    --space-xl: 18px;
+    --space-lg: 14px;
+    --space-md: 10px;
   }
 
   .page-wrapper {
-    padding: var(--space-lg) var(--space-md);
+    padding: 16px 12px !important;
   }
 
+  /* Hero Headline font size fluid clamp */
   .editorial-title {
-    font-size: 2.15rem !important;
-    line-height: 1.12 !important;
+    font-size: clamp(1.85rem, 8vw, 2.3rem) !important;
+    line-height: 1.15 !important;
   }
 
-  .btn-primary,
-  .btn-secondary {
-    padding: 10px 18px;
-    font-size: 0.88rem;
+  .editorial-sub {
+    font-size: 0.94rem !important;
+  }
+
+  /* Buttons in hero / actions row take full width or flex nicely */
+  .hero-actions-row,
+  .hero-actions-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions-row button,
+  .hero-actions-row a,
+  .hero-actions-group button,
+  .hero-actions-group a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Stats Bar on Hero */
+  .hero-stats-row {
+    gap: 12px !important;
+    justify-content: space-between !important;
+  }
+
+  .hero-stats-row .divider-line {
+    display: none !important;
+  }
+
+  /* Vinyl Record in Turntable Cards */
+  .vinyl-wrapper {
+    transform: scale(0.72) !important;
+    margin: -32px auto !important;
+  }
+
+  /* MiniPlayer Compact Mobile Ergonomics */
+  .mini-player-track-info {
+    min-width: 0 !important;
+    max-width: 180px !important;
+    flex: 1 1 auto !important;
+  }
+
+  .mini-player-controls {
+    min-width: auto !important;
+    gap: 6px !important;
   }
 
   .mini-player-controls .secondary-control {
     display: none !important;
   }
 
-  .vinyl-wrapper {
-    transform: scale(0.85);
+  .mini-player-time {
+    display: none !important;
+  }
+
+  /* Full Screen Audio Modal */
+  .full-player-overlay {
+    padding: 0 !important;
+  }
+
+  .full-player-header-title {
+    display: none !important;
+  }
+
+  .full-player-tabs button {
+    padding: 5px 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* Audio Waveform on mobile */
+  .audio-waveform-container {
+    height: 36px !important;
+  }
+
+  /* Profile Page Responsive Layout */
+  .profile-header-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  .profile-header-card button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .profile-stats-grid .card-modern {
+    padding: 14px 10px !important;
+  }
+
+  /* Live Radio Mobile Controls */
+  .live-radio-deck {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+  }
+
+  .live-radio-deck > div {
+    justify-content: center !important;
+  }
+
+  /* Cards Grid: Ensure cards take full width on mobile */
+  [style*="minmax(280px"],
+  [style*="minmax(300px"],
+  [style*="minmax(310px"],
+  [style*="minmax(320px"],
+  [style*="minmax(360px"] {
+    grid-template-columns: 1fr !important;
   }
 }
 
-/* Small Mobile (375px and below) */
-@media (max-width: 375px) {
+/* --------------------------------------------------------------------------
+   ULTRA-COMPACT MOBILE (360px and below - e.g. iPhone SE / Fold outer)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .page-wrapper {
+    padding: 12px 10px !important;
+  }
+
   .editorial-title {
-    font-size: 1.85rem !important;
-  }
-
-  .hero-actions-group {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero-actions-group button,
-  .hero-actions-group a {
-    width: 100%;
-    text-align: center;
+    font-size: 1.65rem !important;
   }
 
   .vinyl-wrapper {
-    transform: scale(0.78);
+    transform: scale(0.65) !important;
+    margin: -45px auto !important;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-coral {
+    padding: 10px 16px !important;
+    font-size: 0.84rem !important;
+  }
+
+  .nav-mobile-bottom a span {
+    font-size: 0.6rem !important;
   }
 }

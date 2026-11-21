@@ -111,6 +111,7 @@ export const FullAudioPlayer = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Radio size={18} color="var(--color-coral)" />
           <span 
+            className="full-player-header-title"
             style={{ 
               fontFamily: 'var(--font-mono)', 
               fontSize: '0.78rem', 
@@ -124,6 +125,7 @@ export const FullAudioPlayer = () => {
 
         {/* Tab Switcher */}
         <div 
+          className="full-player-tabs"
           style={{
             display: 'flex',
             alignItems: 'center',

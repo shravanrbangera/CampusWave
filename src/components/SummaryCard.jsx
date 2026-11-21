@@ -54,7 +54,7 @@ export const SummaryCard = ({ summary }) => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="editorial-badge" style={{ background: 'var(--color-orange)', color: '#0E1315', border: 'none' }}>
+            <span className="editorial-badge" style={{ background: 'var(--color-coral)', color: '#FFFFFF', border: 'none' }}>
               <Sparkles size={12} />
               AI SUMMARY
             </span>
@@ -70,7 +70,7 @@ export const SummaryCard = ({ summary }) => {
               height: '32px',
               borderRadius: '50%',
               backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              color: isSaved ? 'var(--color-orange)' : 'var(--text-muted)',
+              color: isSaved ? 'var(--color-coral)' : 'var(--text-muted)',
               cursor: 'pointer',
               border: '1px solid var(--border-color)',
               display: 'flex',
@@ -80,7 +80,7 @@ export const SummaryCard = ({ summary }) => {
             }}
             title={isSaved ? "Saved to Library" : "Save summary to library"}
           >
-            <Bookmark size={15} fill={isSaved ? "var(--color-orange)" : "none"} />
+            <Bookmark size={15} fill={isSaved ? "var(--color-coral)" : "none"} />
           </button>
         </div>
 
@@ -103,7 +103,7 @@ export const SummaryCard = ({ summary }) => {
         <div 
           style={{
             fontSize: '0.82rem',
-            color: 'var(--color-orange)',
+            color: 'var(--color-amber)',
             fontWeight: 600,
             marginBottom: '12px'
           }}
@@ -150,7 +150,7 @@ export const SummaryCard = ({ summary }) => {
                 style={{
                   marginTop: '12px',
                   paddingLeft: '12px',
-                  borderLeft: '2px solid var(--color-orange)',
+                  borderLeft: '2px solid var(--color-coral)',
                   fontStyle: 'italic',
                   fontSize: '0.82rem',
                   color: 'var(--text-primary)'
@@ -198,7 +198,7 @@ export const SummaryCard = ({ summary }) => {
           style={{
             fontSize: '0.82rem',
             fontWeight: 600,
-            color: 'var(--color-orange)',
+            color: 'var(--color-coral)',
             cursor: 'pointer'
           }}
         >

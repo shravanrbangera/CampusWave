@@ -40,8 +40,8 @@ export const EventCard = ({ event }) => {
             position: 'absolute',
             top: '12px',
             left: '12px',
-            backgroundColor: 'var(--color-orange)',
-            color: '#0E1315',
+            backgroundColor: 'var(--color-coral)',
+            color: '#FFFFFF',
             borderRadius: '12px',
             padding: '5px 11px',
             textAlign: 'center',
@@ -115,11 +115,11 @@ export const EventCard = ({ event }) => {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Clock size={14} color="var(--color-orange)" />
+              <Clock size={14} color="var(--color-coral)" />
               <span>{event.time}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <MapPin size={14} color="var(--color-orange)" />
+              <MapPin size={14} color="var(--color-coral)" />
               <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{event.venue}</span>
             </div>
           </div>
@@ -162,8 +162,8 @@ export const EventCard = ({ event }) => {
               fontWeight: 600,
               cursor: 'pointer',
               transition: 'all var(--transition-fast)',
-              backgroundColor: isRSVPed ? 'rgba(34, 197, 94, 0.16)' : 'var(--color-orange)',
-              color: isRSVPed ? '#22c55e' : '#0E1315',
+              backgroundColor: isRSVPed ? 'rgba(34, 197, 94, 0.16)' : 'var(--color-coral)',
+              color: isRSVPed ? '#22c55e' : '#FFFFFF',
               border: isRSVPed ? '1px solid #22c55e' : 'none'
             }}
           >

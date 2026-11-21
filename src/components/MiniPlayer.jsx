@@ -118,12 +118,13 @@ export const MiniPlayer = () => {
         {/* Track Info (Click to open Full Player) */}
         <div 
           onClick={() => setIsFullPlayerOpen(true)}
+          className="mini-player-track-info"
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
             cursor: 'pointer',
-            minWidth: '200px',
+            minWidth: '180px',
             maxWidth: '360px',
             flex: '1'
           }}
@@ -287,6 +288,7 @@ export const MiniPlayer = () => {
 
           {/* Time Display */}
           <div 
+            className="mini-player-time"
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.7rem',

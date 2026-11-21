@@ -104,7 +104,7 @@ export const Summaries = () => {
       {/* Featured Editorial Magazine Card (Reference A) */}
       {!searchQuery && selectedCategory === 'All' && (
         <section 
-          className="card-modern"
+          className="card-modern hero-split-grid"
           style={{
             padding: 'var(--space-2xl)',
             borderRadius: 'var(--radius-2xl)',
@@ -116,7 +116,6 @@ export const Summaries = () => {
             alignItems: 'center',
             boxShadow: 'var(--shadow-lg)'
           }}
-          className="hero-split-grid"
         >
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>

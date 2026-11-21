@@ -86,7 +86,7 @@ export const MusicCard = ({ track }) => {
           style={{
             fontWeight: 700,
             fontSize: '0.94rem',
-            color: isCurrent ? 'var(--color-orange)' : 'var(--text-primary)',
+            color: isCurrent ? 'var(--color-coral)' : 'var(--text-primary)',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis'

@@ -124,7 +124,7 @@ export const LiveRadio = () => {
             <span className="badge-live-pulse" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }} />
             <span style={{ fontWeight: 700 }}>STUDIO TRANSMISSION ACTIVE</span>
             <span>•</span>
-            <span style={{ color: 'var(--color-orange)' }}>Simulated Live Radio Interface for NMAMIT Nitte</span>
+            <span style={{ color: 'var(--color-amber)' }}>Simulated Live Radio Interface for NMAMIT Nitte</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -133,14 +133,14 @@ export const LiveRadio = () => {
               onClick={() => setStreamQuality(streamQuality === '320k' ? '128k' : '320k')}
               style={{
                 fontFamily: 'var(--font-mono)',
-                backgroundColor: 'rgba(255, 148, 26, 0.18)',
-                color: 'var(--color-orange)',
+                backgroundColor: 'rgba(245, 45, 58, 0.18)',
+                color: 'var(--color-coral)',
                 padding: '3px 10px',
                 borderRadius: 'var(--radius-full)',
                 fontSize: '0.76rem',
                 fontWeight: 700,
                 cursor: 'pointer',
-                border: '1px solid rgba(255, 148, 26, 0.3)'
+                border: '1px solid rgba(245, 45, 58, 0.3)'
               }}
             >
               {streamQuality === '320k' ? '320 kbps Studio HD' : '128 kbps Data Saver'}
@@ -221,13 +221,13 @@ export const LiveRadio = () => {
                     <span className={isLivePlaying ? "badge-live-pulse" : ""} style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff' }} />
                     {isLivePlaying ? "LIVE ON AIR" : "STUDIO PAUSED"}
                   </div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--color-orange)', fontWeight: 700 }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--color-amber)', fontWeight: 700 }}>
                     90.4 MHZ DIGITAL
                   </span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: 'var(--color-cream)', opacity: 0.85 }}>
-                  <Users size={14} color="var(--color-orange)" />
+                  <Users size={14} color="var(--color-amber)" />
                   <span>342 Listening Live</span>
                 </div>
               </div>
@@ -248,7 +248,7 @@ export const LiveRadio = () => {
                 <h1 style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.3rem)', color: 'var(--color-cream)', marginBottom: '6px', lineHeight: 1.2 }}>
                   {mockLiveShow.title}
                 </h1>
-                <p style={{ color: 'var(--color-orange)', fontSize: '1rem', fontWeight: 600 }}>
+                <p style={{ color: 'var(--color-coral)', fontSize: '1rem', fontWeight: 600 }}>
                   Hosted by {mockLiveShow.rj}
                 </p>
                 <p style={{ color: 'rgba(245, 235, 221, 0.75)', fontSize: '0.88rem', marginTop: '6px', maxWidth: '480px', margin: '6px auto 0' }}>
@@ -269,7 +269,7 @@ export const LiveRadio = () => {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginBottom: '6px' }}>
                   <span>STUDIO EQUALIZER • CHANNEL 1</span>
-                  <span style={{ color: isLivePlaying ? 'var(--color-orange)' : 'var(--text-muted)' }}>
+                  <span style={{ color: isLivePlaying ? 'var(--color-coral)' : 'var(--text-muted)' }}>
                     {isLivePlaying ? 'MODULATING' : 'IDLE'}
                   </span>
                 </div>
@@ -278,6 +278,7 @@ export const LiveRadio = () => {
 
               {/* Core Stream Action Deck */}
               <div 
+                className="live-radio-deck"
                 style={{
                   width: '100%',
                   display: 'flex',
@@ -307,7 +308,7 @@ export const LiveRadio = () => {
                     onChange={(e) => setVolume(parseFloat(e.target.value))}
                     style={{
                       width: '80px',
-                      accentColor: 'var(--color-orange)',
+                      accentColor: 'var(--color-coral)',
                       cursor: 'pointer'
                     }}
                   />
@@ -316,29 +317,24 @@ export const LiveRadio = () => {
                 {/* Big Center Play/Pause Button */}
                 <button
                   onClick={handleToggleBroadcast}
+                  className="btn-coral"
                   style={{
                     padding: '14px 32px',
-                    borderRadius: 'var(--radius-full)',
-                    backgroundColor: 'var(--color-orange)',
-                    color: '#0E1315',
                     fontSize: '1rem',
                     fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '10px',
-                    boxShadow: '0 8px 30px rgba(255, 148, 26, 0.55)',
-                    cursor: 'pointer',
-                    transition: 'all var(--transition-fast)'
+                    gap: '10px'
                   }}
                 >
                   {isLivePlaying ? (
                     <>
-                      <Pause size={20} fill="#0E1315" />
+                      <Pause size={20} fill="#FFFFFF" />
                       <span>Pause Broadcast</span>
                     </>
                   ) : (
                     <>
-                      <Play size={20} fill="#0E1315" style={{ marginLeft: '2px' }} />
+                      <Play size={20} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
                       <span>Listen Live Now</span>
                     </>
                   )}
@@ -370,7 +366,7 @@ export const LiveRadio = () => {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-                <Clock size={17} color="var(--color-orange)" />
+                <Clock size={17} color="var(--color-amber)" />
                 <h3 style={{ fontSize: '1.2rem', color: 'var(--color-cream)', margin: 0 }}>
                   Upcoming Tonight on 90.4 FM
                 </h3>
@@ -386,16 +382,16 @@ export const LiveRadio = () => {
                       justifyContent: 'space-between',
                       padding: '12px 16px',
                       borderRadius: 'var(--radius-md)',
-                      backgroundColor: item.active ? 'rgba(255, 148, 26, 0.15)' : 'rgba(255, 255, 255, 0.04)',
-                      border: item.active ? '1px solid var(--color-orange)' : '1px solid rgba(255, 255, 255, 0.08)'
+                      backgroundColor: item.active ? 'rgba(245, 45, 58, 0.18)' : 'rgba(255, 255, 255, 0.04)',
+                      border: item.active ? '1px solid var(--color-coral)' : '1px solid rgba(255, 255, 255, 0.08)'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: item.active ? 'var(--color-orange)' : 'rgba(245, 235, 221, 0.6)', fontWeight: 700 }}>
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: item.active ? 'var(--color-coral)' : 'rgba(245, 235, 221, 0.6)', fontWeight: 700 }}>
                         {item.time}
                       </span>
                       <div>
-                        <div style={{ fontWeight: 700, fontSize: '0.9rem', color: item.active ? 'var(--color-orange)' : 'var(--color-cream)' }}>
+                        <div style={{ fontWeight: 700, fontSize: '0.9rem', color: item.active ? 'var(--color-coral)' : 'var(--color-cream)' }}>
                           {item.title}
                         </div>
                         <div style={{ fontSize: '0.76rem', color: 'rgba(245, 235, 221, 0.7)' }}>
@@ -445,13 +441,13 @@ export const LiveRadio = () => {
                 <img 
                   src={currentRJ.avatar} 
                   alt={currentRJ.name} 
-                  style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-orange)' }} 
+                  style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-coral)' }} 
                 />
                 <div>
                   <h3 style={{ fontSize: '1.2rem', color: 'var(--color-cream)', marginBottom: '2px' }}>
                     {currentRJ.name}
                   </h3>
-                  <div style={{ fontSize: '0.84rem', color: 'var(--color-orange)', fontWeight: 600 }}>
+                  <div style={{ fontSize: '0.84rem', color: 'var(--color-amber)', fontWeight: 600 }}>
                     {currentRJ.role}
                   </div>
                   <div style={{ fontSize: '0.74rem', color: 'rgba(245, 235, 221, 0.6)' }}>
@@ -476,11 +472,11 @@ export const LiveRadio = () => {
                 }}
               >
                 <div>
-                  <div style={{ color: 'var(--color-orange)', fontWeight: 700 }}>42 SHOWS</div>
+                  <div style={{ color: 'var(--color-amber)', fontWeight: 700 }}>42 SHOWS</div>
                   <div style={{ color: 'rgba(245, 235, 221, 0.6)' }}>Broadcasted</div>
                 </div>
                 <div>
-                  <div style={{ color: 'var(--color-orange)', fontWeight: 700 }}>4.8k STUDENTS</div>
+                  <div style={{ color: 'var(--color-coral)', fontWeight: 700 }}>4.8k STUDENTS</div>
                   <div style={{ color: 'rgba(245, 235, 221, 0.6)' }}>Monthly Reach</div>
                 </div>
               </div>
@@ -493,7 +489,7 @@ export const LiveRadio = () => {
                 padding: 'var(--space-xl)',
                 borderRadius: 'var(--radius-xl)',
                 backgroundColor: 'rgba(16, 56, 61, 0.45)',
-                border: '1px solid rgba(255, 148, 26, 0.25)',
+                border: '1px solid rgba(255, 181, 46, 0.25)',
                 display: 'flex',
                 flexDirection: 'column',
                 height: '460px'
@@ -501,12 +497,12 @@ export const LiveRadio = () => {
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <MessageSquare size={17} color="var(--color-orange)" />
+                  <MessageSquare size={17} color="var(--color-amber)" />
                   <h3 style={{ fontSize: '1.15rem', color: 'var(--color-cream)', margin: 0 }}>
                     Live Studio Shoutouts
                   </h3>
                 </div>
-                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--color-orange)', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--color-coral)', fontWeight: 700 }}>
                   FEED ACTIVE
                 </span>
               </div>
@@ -534,7 +530,7 @@ export const LiveRadio = () => {
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                      <span style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-orange)' }}>
+                      <span style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-amber)' }}>
                         {item.sender}
                       </span>
                       <span style={{ fontSize: '0.68rem', color: 'rgba(245, 235, 221, 0.5)' }}>
@@ -568,8 +564,8 @@ export const LiveRadio = () => {
                 <button
                   type="submit"
                   style={{
-                    backgroundColor: 'var(--color-orange)',
-                    color: '#0E1315',
+                    backgroundColor: 'var(--color-coral)',
+                    color: '#FFFFFF',
                     width: '38px',
                     height: '38px',
                     borderRadius: '50%',

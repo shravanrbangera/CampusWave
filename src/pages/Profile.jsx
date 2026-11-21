@@ -54,19 +54,19 @@ export const Profile = () => {
     <div className="profile-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
       {/* Top Banner / Student ID Card (Editorial Identity) */}
       <section 
-        className="card-modern"
+        className="card-modern profile-header-card"
         style={{
           padding: 'var(--space-2xl)',
           borderRadius: 'var(--radius-2xl)',
           background: 'linear-gradient(135deg, var(--color-teal) 0%, var(--color-charcoal) 100%)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
-          display: 'grid',
-          gridTemplateColumns: 'auto 1fr auto',
-          gap: 'var(--space-xl)',
+          display: 'flex',
           alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 'var(--space-xl)',
+          flexWrap: 'wrap',
           boxShadow: 'var(--shadow-lg)'
         }}
-        className="hero-split-grid"
       >
         <div style={{ position: 'relative' }}>
           <img 
@@ -186,6 +186,7 @@ export const Profile = () => {
 
       {/* Listening Stats Row */}
       <section 
+        className="profile-stats-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',

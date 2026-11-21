@@ -19,9 +19,12 @@ export const VinylRecord = ({
         position: 'relative',
         width: `${size}px`,
         height: `${size}px`,
+        maxWidth: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        margin: '0 auto',
+        flexShrink: 0
       }}
     >
       {/* Warm ambient backlight glow */}

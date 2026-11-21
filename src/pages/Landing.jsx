@@ -204,13 +204,15 @@ export const Landing = () => {
 
               {/* Stats Bar */}
               <div 
+                className="hero-stats-row"
                 style={{
                   marginTop: '36px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '24px',
                   paddingTop: '20px',
-                  borderTop: '1px solid var(--color-border)'
+                  borderTop: '1px solid var(--color-border)',
+                  flexWrap: 'wrap'
                 }}
               >
                 <div>
@@ -222,7 +224,7 @@ export const Landing = () => {
                   </div>
                 </div>
 
-                <div style={{ width: '1px', height: '24px', background: 'var(--color-border)' }} />
+                <div className="divider-line" style={{ width: '1px', height: '24px', background: 'var(--color-border)' }} />
 
                 <div>
                   <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
@@ -233,7 +235,7 @@ export const Landing = () => {
                   </div>
                 </div>
 
-                <div style={{ width: '1px', height: '24px', background: 'var(--color-border)' }} />
+                <div className="divider-line" style={{ width: '1px', height: '24px', background: 'var(--color-border)' }} />
 
                 <div>
                   <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-coral)' }}>
@@ -371,6 +373,7 @@ export const Landing = () => {
 
           {/* Asymmetric Bento Grid (12 columns) */}
           <div 
+            className="bento-category-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
@@ -380,7 +383,7 @@ export const Landing = () => {
             {/* Bento Card 1: Live Radio (Col span 7 - Deep Teal Immersive) */}
             <Link
               to="/live"
-              className="card-3d"
+              className="card-3d bento-card bento-card-7"
               style={{
                 gridColumn: 'span 7',
                 borderRadius: 'var(--radius-xl)',
@@ -427,7 +430,7 @@ export const Landing = () => {
             {/* Bento Card 2: Student Podcasts (Col span 5 - Soft Cream Card) */}
             <Link
               to="/podcasts"
-              className="card-3d"
+              className="card-3d bento-card bento-card-5"
               style={{
                 gridColumn: 'span 5',
                 borderRadius: 'var(--radius-xl)',
@@ -464,12 +467,12 @@ export const Landing = () => {
               </div>
             </Link>
 
-            {/* Bento Card 3: Music Discovery (Col span 4 - Warm Amber Card) */}
+            {/* Bento Card 3: Music Discovery (Col span 3) */}
             <Link
               to="/explore"
-              className="card-3d"
+              className="card-3d bento-card bento-card-4"
               style={{
-                gridColumn: 'span 4',
+                gridColumn: 'span 3',
                 borderRadius: 'var(--radius-xl)',
                 backgroundColor: 'var(--color-white)',
                 border: '1.5px solid var(--color-border)',
@@ -477,7 +480,7 @@ export const Landing = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                minHeight: '240px',
+                minHeight: '230px',
                 boxShadow: 'var(--shadow-card)'
               }}
             >
@@ -485,26 +488,26 @@ export const Landing = () => {
                 <div style={{ width: '40px', height: '40px', borderRadius: '12px', backgroundColor: 'var(--color-amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-charcoal)', marginBottom: '14px' }}>
                   <Music size={19} />
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
                   Campus Music
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  Original indie releases, coastal lo-fi beats, and hostel bedroom recordings.
+                  Original indie releases and coastal lo-fi beats.
                 </p>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>6 New Tracks</span>
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>6 Tracks</span>
                 <span style={{ color: 'var(--color-coral)', fontWeight: 700, fontSize: '0.88rem' }}>Listen →</span>
               </div>
             </Link>
 
-            {/* Bento Card 4: Campus Updates (Col span 4 - Crisp Clean Card) */}
+            {/* Bento Card 4: Campus Updates (Col span 3) */}
             <Link
               to="/campus"
-              className="card-3d"
+              className="card-3d bento-card bento-card-4"
               style={{
-                gridColumn: 'span 4',
+                gridColumn: 'span 3',
                 borderRadius: 'var(--radius-xl)',
                 backgroundColor: 'var(--color-white)',
                 border: '1.5px solid var(--color-border)',
@@ -512,7 +515,7 @@ export const Landing = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                minHeight: '240px',
+                minHeight: '230px',
                 boxShadow: 'var(--shadow-card)'
               }}
             >
@@ -520,26 +523,26 @@ export const Landing = () => {
                 <div style={{ width: '40px', height: '40px', borderRadius: '12px', backgroundColor: 'var(--color-soft-grey)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-charcoal)', marginBottom: '14px' }}>
                   <Bell size={19} />
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
                   Campus Updates
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  Incridea 2026 fest notices, IEEE hackathons, and library schedule circulars.
+                  Incridea 2026 fest notices and hackathons.
                 </p>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
-                <span style={{ fontSize: '0.78rem', color: 'var(--color-coral)', fontWeight: 600 }}>Active Bulletins</span>
+                <span style={{ fontSize: '0.78rem', color: 'var(--color-coral)', fontWeight: 600 }}>Active</span>
                 <span style={{ color: 'var(--color-coral)', fontWeight: 700, fontSize: '0.88rem' }}>View →</span>
               </div>
             </Link>
 
-            {/* Bento Card 5 & 6: AI Summaries & Community Voting (Col span 4 each) */}
+            {/* Bento Card 5: AI Summaries (Col span 3) */}
             <Link
               to="/summaries"
-              className="card-3d"
+              className="card-3d bento-card bento-card-4"
               style={{
-                gridColumn: 'span 4',
+                gridColumn: 'span 3',
                 borderRadius: 'var(--radius-xl)',
                 backgroundColor: 'var(--color-cream)',
                 border: '1.5px solid var(--color-border)',
@@ -547,7 +550,7 @@ export const Landing = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                minHeight: '240px',
+                minHeight: '230px',
                 boxShadow: 'var(--shadow-card)'
               }}
             >
@@ -555,17 +558,52 @@ export const Landing = () => {
                 <div style={{ width: '40px', height: '40px', borderRadius: '12px', backgroundColor: 'var(--color-coral)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', marginBottom: '14px' }}>
                   <Sparkles size={19} />
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
                   AI Summaries
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  3-minute digest cards of campus guest talks, tech workshops, and council meets.
+                  3-minute digest cards of campus guest talks and labs.
                 </p>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Fast Reading</span>
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Fast Digest</span>
                 <span style={{ color: 'var(--color-coral)', fontWeight: 700, fontSize: '0.88rem' }}>Read →</span>
+              </div>
+            </Link>
+
+            {/* Bento Card 6: Community Voting (Col span 3) */}
+            <Link
+              to="/community"
+              className="card-3d bento-card bento-card-4"
+              style={{
+                gridColumn: 'span 3',
+                borderRadius: 'var(--radius-xl)',
+                backgroundColor: 'var(--color-white)',
+                border: '1.5px solid var(--color-border)',
+                padding: 'var(--space-xl)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                minHeight: '230px',
+                boxShadow: 'var(--shadow-card)'
+              }}
+            >
+              <div>
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', backgroundColor: 'rgba(245, 45, 58, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-coral)', marginBottom: '14px' }}>
+                  <Vote size={19} />
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px', color: 'var(--color-charcoal)' }}>
+                  Student Voting
+                </h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                  Choose tonight's headline track and vote in polls.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
+                <span style={{ fontSize: '0.78rem', color: 'var(--color-coral)', fontWeight: 600 }}>Daily Poll</span>
+                <span style={{ color: 'var(--color-coral)', fontWeight: 700, fontSize: '0.88rem' }}>Vote →</span>
               </div>
             </Link>
           </div>

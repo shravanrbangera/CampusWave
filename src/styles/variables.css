@@ -31,54 +31,56 @@
   --color-magenta: #FF007F;
   --color-purple: #7B2CBF;
 
-  --color-coral: #F52D3A;
-  --color-coral-hover: #E01E2B;
-  --color-coral-soft: rgba(245, 45, 58, 0.1);
-  --color-coral-glow: rgba(245, 45, 58, 0.35);
+  /* Primary Vibrant Orange Accent (Campus Radio Identity) */
+  --color-orange: #FF5500;
+  --color-orange-hover: #E64C00;
+  --color-orange-glow: rgba(255, 85, 0, 0.4);
+  --color-orange-soft: rgba(255, 85, 0, 0.12);
 
-  --color-amber: #FFB52E;
-  --color-amber-hover: #E89E19;
-  --color-amber-soft: rgba(255, 181, 46, 0.14);
-  --color-amber-glow: rgba(255, 181, 46, 0.35);
+  --color-coral: #FF5500;
+  --color-coral-hover: #E64C00;
+  --color-coral-soft: rgba(255, 85, 0, 0.12);
+  --color-coral-glow: rgba(255, 85, 0, 0.4);
+
+  --color-amber: #FF9E1B;
+  --color-amber-hover: #E88C10;
+  --color-amber-soft: rgba(255, 158, 27, 0.14);
+  --color-amber-glow: rgba(255, 158, 27, 0.35);
 
   --color-teal: #123C40;
   --color-teal-dark: #0B2427;
   --color-teal-light: #1A5459;
   --color-teal-glow: rgba(18, 60, 64, 0.4);
 
-  --color-cream: #FFF5E9;
-  --color-cream-dark: #F5E5D0;
-  --color-border: #E8E8E8;
-  --color-border-hover: #D0D0D0;
+  --color-cream: #FAF8F5;
+  --color-cream-dark: #EFECE4;
+  --color-border: #E5E7EB;
+  --color-border-hover: #CBD5E1;
 
   /* Aliases for backwards compatibility & consistency */
-  --color-orange: #F52D3A; /* Map legacy orange accent to the new energetic Coral Red */
-  --color-orange-hover: #E01E2B;
-  --color-orange-glow: rgba(245, 45, 58, 0.35);
-  --color-orange-soft: rgba(245, 45, 58, 0.1);
-  --color-burgundy: #123C40; /* Map legacy burgundy to Deep Teal */
+  --color-burgundy: #123C40;
 
   /* Semantic UI Colors */
-  --color-live: #F52D3A;
-  --color-success: #16A34A;
-  --color-info: #0284C7;
+  --color-live: #FF5500;
+  --color-success: #10B981;
+  --color-info: #0EA5E9;
 
-  /* Modern Light Editorial Theme (Default!) */
-  --bg-primary: #F4F0E8;
-  --bg-secondary: #EBE6DC;
+  /* Modern Light Editorial Theme (Warm Off-White Surfaces) */
+  --bg-primary: #F8F6F0;
+  --bg-secondary: #EFECE4;
   --bg-tertiary: #FFFFFF;
   --bg-elevated: #FFFFFF;
   --bg-hero-container: #FFFFFF;
-  --bg-glass: rgba(255, 255, 255, 0.92);
-  --bg-glass-card: rgba(255, 255, 255, 0.9);
+  --bg-glass: rgba(255, 255, 255, 0.94);
+  --bg-glass-card: rgba(255, 255, 255, 0.92);
   
-  --border-color: #E8E8E8;
-  --border-color-hover: #D5D5D5;
-  --border-color-active: #F52D3A;
+  --border-color: #E2E8F0;
+  --border-color-hover: #CBD5E1;
+  --border-color-active: #FF5500;
 
-  --text-primary: #202020;
-  --text-secondary: #585858;
-  --text-muted: #888888;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
   --text-inverse: #FFFFFF;
 
   /* Typography: Funky, Bold, Brutalist & Audio-Centric */
@@ -140,29 +142,29 @@
   --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark / Immersive Mode (For Night Owl Listener & Studio) */
+/* Dark / Immersive Mode (Deep Charcoal / Midnight Background) */
 [data-theme="dark"] {
-  --bg-primary: #0E1315;
-  --grid-line-color: rgba(255, 255, 255, 0.07);
-  --bg-secondary: #161D20;
-  --bg-tertiary: #20262A;
-  --bg-elevated: #262E33;
-  --bg-hero-container: #191E21;
-  --bg-glass: rgba(18, 21, 23, 0.9);
-  --bg-glass-card: rgba(32, 38, 42, 0.75);
+  --bg-primary: #0D0F14;
+  --grid-line-color: rgba(255, 255, 255, 0.06);
+  --bg-secondary: #131722;
+  --bg-tertiary: #1A1F2E;
+  --bg-elevated: #222838;
+  --bg-hero-container: #151924;
+  --bg-glass: rgba(13, 15, 20, 0.92);
+  --bg-glass-card: rgba(26, 31, 46, 0.85);
 
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(245, 45, 58, 0.4);
-  --border-color-active: #F52D3A;
+  --border-color-hover: rgba(255, 85, 0, 0.5);
+  --border-color-active: #FF5500;
 
-  --text-primary: #FFFFFF;
-  --text-secondary: #B0B7BC;
-  --text-muted: #7A848C;
-  --text-inverse: #121517;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #0D0F14;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.55);
 }

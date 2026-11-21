@@ -55,6 +55,15 @@ export const AuthProvider = ({ children }) => {
     }
   });
 
+  const [downloadedPodcasts, setDownloadedPodcasts] = useState(() => {
+    try {
+      const saved = localStorage.getItem('campuswave_downloaded_podcasts');
+      return saved ? JSON.parse(saved) : ['pod-2'];
+    } catch {
+      return ['pod-2'];
+    }
+  });
+
   const [savedSummaries, setSavedSummaries] = useState(() => {
     try {
       const saved = localStorage.getItem('campuswave_saved_summaries');
@@ -178,7 +187,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('campuswave_is_auth');
   };
 
-  // Bookmark togglers
+  // Bookmark & Download togglers
   const toggleSavePodcast = (id) => {
     setSavedPodcasts(prev => {
       const updated = prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id];
@@ -186,6 +195,31 @@ export const AuthProvider = ({ children }) => {
       return updated;
     });
     return !savedPodcasts.includes(id);
+  };
+
+  const removeSavedPodcast = (id) => {
+    setSavedPodcasts(prev => {
+      const updated = prev.filter(item => item !== id);
+      localStorage.setItem('campuswave_saved_podcasts', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const toggleDownloadPodcast = (id) => {
+    setDownloadedPodcasts(prev => {
+      const updated = prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id];
+      localStorage.setItem('campuswave_downloaded_podcasts', JSON.stringify(updated));
+      return updated;
+    });
+    return !downloadedPodcasts.includes(id);
+  };
+
+  const removeDownloadedPodcast = (id) => {
+    setDownloadedPodcasts(prev => {
+      const updated = prev.filter(item => item !== id);
+      localStorage.setItem('campuswave_downloaded_podcasts', JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const toggleSaveSummary = (id) => {
@@ -252,12 +286,16 @@ export const AuthProvider = ({ children }) => {
     loginAsGuest,
     logout,
     savedPodcasts,
+    downloadedPodcasts,
     savedSummaries,
     likedTracks,
     votedPolls,
     rsvpEvents,
     listeningHistory,
     toggleSavePodcast,
+    removeSavedPodcast,
+    toggleDownloadPodcast,
+    removeDownloadedPodcast,
     toggleSaveSummary,
     toggleLikeTrack,
     toggleRSVP,

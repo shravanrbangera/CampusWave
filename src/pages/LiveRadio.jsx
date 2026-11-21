@@ -236,7 +236,7 @@ export const LiveRadio = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '6px',
-                      backgroundColor: isLivePlaying ? '#ef4444' : 'rgba(255, 255, 255, 0.1)',
+                      backgroundColor: isLivePlaying ? 'var(--color-orange)' : 'rgba(255, 255, 255, 0.1)',
                       color: '#fff',
                       padding: '4px 12px',
                       borderRadius: 'var(--radius-full)',
@@ -352,10 +352,10 @@ export const LiveRadio = () => {
                     padding: '14px 34px',
                     fontSize: '0.95rem',
                     fontFamily: 'var(--font-mono)',
-                    fontWeight: 800,
+                    fontWeight: 900,
                     textTransform: 'uppercase',
-                    backgroundColor: 'var(--color-acid)',
-                    color: '#000000',
+                    backgroundColor: 'var(--color-orange)',
+                    color: '#FFFFFF',
                     border: '2px solid #000',
                     boxShadow: '3px 3px 0 #000',
                     borderRadius: '999px',
@@ -367,12 +367,12 @@ export const LiveRadio = () => {
                 >
                   {isLivePlaying ? (
                     <>
-                      <Pause size={20} fill="#000" />
+                      <Pause size={20} fill="#FFF" />
                       <span>PAUSE BROADCAST</span>
                     </>
                   ) : (
                     <>
-                      <Play size={20} fill="#000" style={{ marginLeft: '2px' }} />
+                      <Play size={20} fill="#FFF" style={{ marginLeft: '2px' }} />
                       <span>LISTEN LIVE NOW</span>
                     </>
                   )}

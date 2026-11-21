@@ -2,43 +2,42 @@ import React, { useState } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { 
   Radio, 
-  Compass, 
   Home, 
   Mic2, 
-  Bell, 
-  Users, 
+  Vote, 
   Bookmark, 
   Search, 
   Sun, 
   Moon, 
-  Sparkles,
   Menu,
   X,
-  Zap
+  Sparkles
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAudio } from '../context/AudioContext';
 
 export const Navbar = () => {
-  const { user, isAuthenticated, theme, toggleTheme } = useAuth();
+  const { user, isAuthenticated, theme, toggleTheme, savedPodcasts, downloadedPodcasts } = useAuth();
   const { isPlaying } = useAudio();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const totalSavedCount = (savedPodcasts?.length || 0) + (downloadedPodcasts?.length || 0);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/explore?q=${encodeURIComponent(searchQuery.trim())}`);
+      navigate(`/podcasts?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchOpen(false);
       setSearchQuery('');
     }
   };
 
+  // The 5 primary sections requested
   const navLinks = [
-    { to: '/home', label: 'Home', icon: Home },
-    { to: '/explore', label: 'Explore', icon: Compass },
+    { to: '/', label: 'Home', icon: Home },
     { 
       to: '/live', 
       label: 'Live Radio', 
@@ -46,10 +45,8 @@ export const Navbar = () => {
       isLive: true 
     },
     { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
-    { to: '/campus', label: 'Campus', icon: Bell },
-    { to: '/summaries', label: 'AI Summaries', icon: Sparkles },
-    { to: '/community', label: 'Community', icon: Users },
-    { to: '/library', label: 'Library', icon: Bookmark }
+    { to: '/vote', label: 'Vote', icon: Vote },
+    { to: '/saved', label: 'Saved', icon: Bookmark, badge: totalSavedCount }
   ];
 
   return (
@@ -201,6 +198,21 @@ export const Navbar = () => {
               >
                 <Icon size={14} />
                 <span>{item.label}</span>
+                {item.badge > 0 && (
+                  <span 
+                    style={{
+                      fontSize: '0.65rem',
+                      fontWeight: 900,
+                      backgroundColor: 'var(--color-orange)',
+                      color: '#FFF',
+                      padding: '1px 6px',
+                      borderRadius: '999px',
+                      border: '1px solid #000'
+                    }}
+                  >
+                    {item.badge}
+                  </span>
+                )}
                 {item.isLive && (
                   <span 
                     style={{

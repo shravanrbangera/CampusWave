@@ -11,18 +11,14 @@ import { FullAudioPlayer } from './components/FullAudioPlayer';
 import { Footer } from './components/Footer';
 
 // Pages
-import { Landing } from './pages/Landing';
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
 import { Home } from './pages/Home';
-import { Explore } from './pages/Explore';
 import { LiveRadio } from './pages/LiveRadio';
 import { Podcasts } from './pages/Podcasts';
 import { PodcastDetails } from './pages/PodcastDetails';
-import { Summaries } from './pages/Summaries';
-import { Campus } from './pages/Campus';
-import { Community } from './pages/Community';
-import { Library } from './pages/Library';
+import { PlaylistVoting } from './pages/PlaylistVoting';
+import { Saved } from './pages/Saved';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
 import { Profile } from './pages/Profile';
 
 // Styles
@@ -55,21 +51,29 @@ function AppContent() {
       {/* Main Page Routes */}
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* The 5 Core Pages Requested */}
+          <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/explore" element={<Explore />} />
           <Route path="/live" element={<LiveRadio />} />
           <Route path="/podcasts" element={<Podcasts />} />
           <Route path="/podcast/:id" element={<PodcastDetails />} />
-          <Route path="/summaries" element={<Summaries />} />
-          <Route path="/campus" element={<Campus />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/library" element={<Library />} />
+          <Route path="/vote" element={<PlaylistVoting />} />
+          <Route path="/saved" element={<Saved />} />
+
+          {/* Authentication & Profile */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
-          {/* Catch-all redirect to Home/Landing */}
-          <Route path="*" element={<Landing />} />
+
+          {/* Backwards-Compatible Aliases */}
+          <Route path="/community" element={<PlaylistVoting />} />
+          <Route path="/library" element={<Saved />} />
+          <Route path="/explore" element={<Podcasts />} />
+          <Route path="/summaries" element={<Podcasts />} />
+          <Route path="/campus" element={<Home />} />
+
+          {/* Catch-all redirect to Home */}
+          <Route path="*" element={<Home />} />
         </Routes>
       </main>
 

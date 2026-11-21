@@ -264,8 +264,8 @@ export const MiniPlayer = () => {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                backgroundColor: 'var(--color-acid)',
-                color: '#000000',
+                backgroundColor: 'var(--color-orange)',
+                color: '#FFFFFF',
                 border: '2px solid #000',
                 boxShadow: '2px 2px 0 #000',
                 display: 'flex',
@@ -275,7 +275,7 @@ export const MiniPlayer = () => {
               }}
               title={isPlaying ? "Pause" : "Play"}
             >
-              {isPlaying ? <Pause size={18} fill="#000" /> : <Play size={18} fill="#000" style={{ marginLeft: '2px' }} />}
+              {isPlaying ? <Pause size={18} fill="#FFF" /> : <Play size={18} fill="#FFF" style={{ marginLeft: '2px' }} />}
             </button>
 
             <button

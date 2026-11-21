@@ -90,14 +90,14 @@ export const Footer = () => {
         {/* Discovery Links */}
         <div>
           <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.98rem', fontWeight: 900, marginBottom: '16px', letterSpacing: '0.04em', color: '#000' }}>
-            AUDIO DISCOVERY
+            CAMPUS RADIO
           </h4>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
-            <li><Link to="/live" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>⚡ Live Broadcast (90.4 FM)</Link></li>
-            <li><Link to="/podcasts" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🎙️ Student Podcasts Hub</Link></li>
-            <li><Link to="/explore" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>💿 Campus Indie Music</Link></li>
-            <li><Link to="/summaries" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>📌 AI Broadcast Summaries</Link></li>
-            <li><Link to="/community" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🔥 Hostel Song Voting</Link></li>
+            <li><Link to="/live" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>⚡ Live Broadcast (90.4 FM)</Link></li>
+            <li><Link to="/podcasts" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🎙️ Student Podcasts Directory</Link></li>
+            <li><Link to="/vote" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🔥 Daily Playlist Voting</Link></li>
+            <li><Link to="/saved" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>📼 Saved Episodes Vault</Link></li>
+            <li><Link to="/profile" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🪪 Student Listener Profile</Link></li>
           </ul>
         </div>
 

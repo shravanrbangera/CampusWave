@@ -1,23 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Compass, Radio, Mic2, Bookmark, Bell } from 'lucide-react';
+import { Home, Radio, Mic2, Vote, Bookmark } from 'lucide-react';
 import { useAudio } from '../context/AudioContext';
 
 export const BottomNavigation = () => {
   const { isPlaying } = useAudio();
 
-  // Mobile navigation items requested: Home, Explore, Live, Podcasts, Library
+  // Mobile navigation items: Home, Podcasts, Live (Center), Vote, Saved
   const navItems = [
-    { to: '/home', label: 'Home', icon: Home },
-    { to: '/explore', label: 'Explore', icon: Compass },
+    { to: '/', label: 'Home', icon: Home },
+    { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
     { 
       to: '/live', 
       label: 'Live', 
       icon: Radio, 
       isLive: true 
     },
-    { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
-    { to: '/library', label: 'Library', icon: Bookmark }
+    { to: '/vote', label: 'Vote', icon: Vote },
+    { to: '/saved', label: 'Saved', icon: Bookmark }
   ];
 
   return (

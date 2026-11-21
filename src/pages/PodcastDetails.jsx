@@ -4,6 +4,7 @@ import {
   Play, 
   Pause, 
   Bookmark, 
+  Download,
   Share2, 
   Clock, 
   User, 
@@ -14,7 +15,8 @@ import {
   Volume2,
   ChevronDown,
   ChevronUp,
-  Zap
+  Zap,
+  CheckCircle2
 } from 'lucide-react';
 import { mockPodcasts } from '../data/podcasts';
 import { useAudio } from '../context/AudioContext';
@@ -26,14 +28,15 @@ export const PodcastDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { currentTrack, isPlaying, playTrack, togglePlay, seekTo, currentTime, duration, formatTime } = useAudio();
-  const { savedPodcasts, toggleSavePodcast } = useAuth();
+  const { savedPodcasts, toggleSavePodcast, downloadedPodcasts, toggleDownloadPodcast } = useAuth();
 
   const [aiSummaryOpen, setAiSummaryOpen] = useState(true);
-  const [copyNotice, setCopyNotice] = useState(false);
+  const [toastMsg, setToastMsg] = useState('');
 
   const podcast = mockPodcasts.find(p => p.id === id) || mockPodcasts[0];
   const isCurrent = currentTrack?.id === podcast.id;
-  const isSaved = savedPodcasts.includes(podcast.id);
+  const isSaved = savedPodcasts?.includes(podcast.id);
+  const isDownloaded = downloadedPodcasts?.includes(podcast.id);
 
   const handlePlayToggle = () => {
     if (isCurrent) {
@@ -43,10 +46,22 @@ export const PodcastDetails = () => {
     }
   };
 
+  const handleDownloadToggle = () => {
+    const isNowDownloaded = toggleDownloadPodcast(podcast.id);
+    setToastMsg(isNowDownloaded ? "Episode stored for offline listening in your Saved vault!" : "Offline download removed from vault.");
+    setTimeout(() => setToastMsg(''), 3000);
+  };
+
+  const handleBookmarkToggle = () => {
+    const isNowSaved = toggleSavePodcast(podcast.id);
+    setToastMsg(isNowSaved ? "Episode bookmarked in your Saved vault!" : "Episode removed from bookmarks.");
+    setTimeout(() => setToastMsg(''), 3000);
+  };
+
   const handleShare = () => {
     navigator.clipboard?.writeText(window.location.href);
-    setCopyNotice(true);
-    setTimeout(() => setCopyNotice(false), 2500);
+    setToastMsg("Episode URL copied to clipboard!");
+    setTimeout(() => setToastMsg(''), 2500);
   };
 
   const handleTimestampJump = (timeStr) => {
@@ -197,7 +212,8 @@ export const PodcastDetails = () => {
           </div>
 
           {/* Action Row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap', paddingTop: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', paddingTop: '8px' }}>
+            {/* Play Button in Primary Vibrant Orange */}
             <button
               onClick={handlePlayToggle}
               className="btn-brutal"
@@ -205,12 +221,12 @@ export const PodcastDetails = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '12px 28px',
+                padding: '12px 26px',
                 fontSize: '0.92rem',
                 fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                backgroundColor: 'var(--color-acid)',
-                color: '#000',
+                fontWeight: 900,
+                backgroundColor: 'var(--color-orange)',
+                color: '#FFFFFF',
                 border: '2px solid #000',
                 boxShadow: '3px 3px 0 #000',
                 borderRadius: '999px',
@@ -219,31 +235,32 @@ export const PodcastDetails = () => {
             >
               {isCurrent && isPlaying ? (
                 <>
-                  <Pause size={18} fill="#000" />
+                  <Pause size={18} fill="#FFF" />
                   <span>PAUSE EPISODE</span>
                 </>
               ) : (
                 <>
-                  <Play size={18} fill="#000" style={{ marginLeft: '2px' }} />
+                  <Play size={18} fill="#FFF" style={{ marginLeft: '2px' }} />
                   <span>PLAY EPISODE ({podcast.duration})</span>
                 </>
               )}
             </button>
 
+            {/* Bookmark to Vault */}
             <button
-              onClick={() => toggleSavePodcast(podcast.id)}
+              onClick={handleBookmarkToggle}
               className="btn-brutal"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '12px 20px',
+                padding: '12px 18px',
                 borderRadius: '999px',
-                backgroundColor: isSaved ? 'var(--color-coral)' : '#FFFFFF',
+                backgroundColor: isSaved ? 'var(--color-orange)' : '#FFFFFF',
                 color: isSaved ? '#FFFFFF' : '#000',
                 border: '2px solid #000',
                 boxShadow: '3px 3px 0 #000',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 800,
                 cursor: 'pointer'
@@ -251,9 +268,35 @@ export const PodcastDetails = () => {
               title={isSaved ? "Saved" : "Save to bookmarks"}
             >
               <Bookmark size={16} fill={isSaved ? "#fff" : "none"} />
-              <span>{isSaved ? "BOOKMARKED" : "SAVE TO VAULT"}</span>
+              <span>{isSaved ? "BOOKMARKED" : "BOOKMARK"}</span>
             </button>
 
+            {/* Download for Offline Simulation */}
+            <button
+              onClick={handleDownloadToggle}
+              className="btn-brutal"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 18px',
+                borderRadius: '999px',
+                backgroundColor: isDownloaded ? '#10B981' : '#FFFFFF',
+                color: isDownloaded ? '#FFFFFF' : '#000',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000',
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                cursor: 'pointer'
+              }}
+              title={isDownloaded ? "Stored for offline listening" : "Simulate download for offline"}
+            >
+              <Download size={16} />
+              <span>{isDownloaded ? "DOWNLOADED ✓" : "DOWNLOAD OFFLINE"}</span>
+            </button>
+
+            {/* Share */}
             <button
               onClick={handleShare}
               className="btn-brutal"
@@ -276,9 +319,10 @@ export const PodcastDetails = () => {
             </button>
           </div>
 
-          {copyNotice && (
-            <div style={{ fontSize: '0.85rem', fontFamily: 'var(--font-mono)', fontWeight: 800, color: 'var(--color-acid)' }}>
-              ✓ Episode URL copied to clipboard!
+          {toastMsg && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontFamily: 'var(--font-mono)', fontWeight: 800, color: 'var(--color-orange)' }}>
+              <CheckCircle2 size={16} />
+              <span>{toastMsg}</span>
             </div>
           )}
         </div>

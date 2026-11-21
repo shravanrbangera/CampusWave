@@ -111,15 +111,14 @@ export const Saved = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange" style={{ fontFamily: 'var(--font-radio)', letterSpacing: '0.04em' }}>
-            <Bookmark size={13} fill="#FFF" />
+          <span className="retro-pill retro-pill-orange">
             STUDENT AUDIO VAULT // 90.4 FM
           </span>
-          <span className="sticker-tag" style={{ transform: 'rotate(1.2deg)', fontFamily: 'var(--font-mono)' }}>
-            CASSETTE VAULT 📼
+          <span className="retro-pill retro-pill-yellow">
+            CASSETTE VAULT
           </span>
-          <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
-            Offline Recordings & Stored Broadcasts
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
+            OFFLINE RECORDINGS & STORED BROADCASTS
           </span>
         </div>
 

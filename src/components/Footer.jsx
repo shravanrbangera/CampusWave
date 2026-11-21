@@ -68,43 +68,43 @@ export const Footer = () => {
             <span>Nitte, Karkala Taluk, Udupi, Karnataka 574110</span>
           </div>
 
-          {/* Sticky Funky Student Sticker */}
+          {/* Sticky Student Tag */}
           <div style={{ marginTop: '14px' }}>
-            <span className="sticker-tag">
-              🦖 90.4 FM // LIVE FROM NITTE CAMPUS
+            <span className="retro-pill retro-pill-yellow">
+              STUDIO 90.4 FM // LIVE FROM NITTE CAMPUS
             </span>
           </div>
         </div>
 
         {/* Navigation Links - 5 Main Items Only */}
         <div>
-          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 700, marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
+          <h4 style={{ fontFamily: 'var(--font-radio)', fontSize: '0.92rem', marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
             CAMPUS RADIO
           </h4>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', fontWeight: 500 }}>
             <li>
               <Link to="/home" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                🏠 Home Feed
+                Home Feed
               </Link>
             </li>
             <li>
               <Link to="/podcasts" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                🎙️ Student Podcasts
+                Student Podcasts
               </Link>
             </li>
             <li>
               <Link to="/live" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                ⚡ Live Broadcast (90.4 FM)
+                Live Broadcast (90.4 FM)
               </Link>
             </li>
             <li>
               <Link to="/vote" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                🔥 Daily Playlist Voting
+                Daily Playlist Voting
               </Link>
             </li>
             <li>
               <Link to="/saved" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                📼 Saved Episodes Vault
+                Saved Episodes Vault
               </Link>
             </li>
           </ul>
@@ -112,7 +112,7 @@ export const Footer = () => {
 
         {/* Radio Broadcast Info Badge */}
         <div>
-          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 700, marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
+          <h4 style={{ fontFamily: 'var(--font-radio)', fontSize: '0.92rem', marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
             STUDIO BROADCAST
           </h4>
           <div 
@@ -126,15 +126,15 @@ export const Footer = () => {
               lineHeight: 1.6
             }}
           >
-            <div style={{ color: 'var(--color-orange)', fontWeight: 800, marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ color: 'var(--color-orange)', fontWeight: 800, marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem' }}>
               <span className="badge-live-pulse" style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--color-orange)' }} />
-              FREQUENCY: 90.4 MHZ DIGITAL
+              FREQUENCY: 90.4 MHZ STEREO
             </div>
             <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
               Covering NMAMIT campus academic blocks, hostels & student dining commons.
             </div>
             <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid var(--border-color)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-              ⚡ Designed by & for NMAMIT students.
+              Designed by & for NMAMIT students.
             </div>
           </div>
         </div>

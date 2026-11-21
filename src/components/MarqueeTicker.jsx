@@ -1,20 +1,20 @@
 import React from 'react';
 
 export const MarqueeTicker = ({ 
-  text = "⚡ NMAMIT 90.4 MHZ • HARD BASS & CAMPUS DROPS • ZERO FADE // ALL PUNCH • HOSTELLER INDIE • CODE & LOFI • INCRIEDA BEATS • TUNE IN NOW",
+  text = "NMAMIT 90.4 MHZ STEREO • STUDENT AUDIO NETWORK • ZERO STATIC // PURE GROOVE • HOSTELLER INDIE • CODE & LOFI • INCRIEDA LIVE",
   bgColor = "#000000",
-  textColor = "var(--color-acid)",
+  textColor = "var(--color-amber)",
   reverse = false,
   speed = "normal"
 }) => {
   const items = [
-    "⚡ 90.4 MHZ DIGITAL TRANSMISSION",
-    "🎧 HOSTELLER INDIE & MIDNIGHT LOFI",
-    "💥 ZERO FADE // ALL PUNCH",
-    "🔥 INCRIEDA FESTIVAL MIXES LIVE",
-    "🦖 RETRO GAME BOY SYNTHS",
-    "📻 STUDENT RADIO NMAMIT NITTE",
-    "⚡ DROP YOUR SONG REQUESTS TONIGHT"
+    "NMAMIT 90.4 MHZ STEREO BROADCAST",
+    "HOSTELLER INDIE & MIDNIGHT LOFI",
+    "ZERO STATIC // ALL ANALOG PUNCH",
+    "INCRIEDA FESTIVAL MIXES LIVE",
+    "VINTAGE SYNTHS & VINYL TAPES",
+    "STUDENT DIGITAL RADIO NMAMIT NITTE",
+    "STUDIO REQUEST CONSOLE ACTIVE"
   ];
 
   const trackClass = reverse 

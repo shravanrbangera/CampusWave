@@ -158,7 +158,7 @@ export const Community = () => {
             textAlign: 'center'
           }}
         >
-          ⚡ {toastMsg}
+          {toastMsg}
         </div>
       )}
 
@@ -287,7 +287,7 @@ export const Community = () => {
                       cursor: 'pointer'
                     }}
                   >
-                    {isSelected ? "VOTED ✓" : "VOTE THIS"}
+                    {isSelected ? "VOTED" : "VOTE THIS"}
                   </button>
                 </div>
               </div>
@@ -499,7 +499,7 @@ export const Community = () => {
           </div>
 
           <div style={{ marginTop: '22px', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: '#444', textAlign: 'center', fontWeight: 600 }}>
-            ⚡ Poll results refreshed live from NMAMIT student listener sessions.
+            Poll results refreshed live from NMAMIT student listener sessions.
           </div>
         </div>
       </section>
@@ -524,7 +524,7 @@ export const Community = () => {
                 boxShadow: '2px 2px 0 #000'
               }}
             >
-              🎵 REQUEST BOARD
+              REQUEST BOARD
             </span>
             <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
               Recent Student Requests & Dedications

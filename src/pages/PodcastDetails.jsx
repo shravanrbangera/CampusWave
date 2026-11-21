@@ -159,7 +159,7 @@ export const PodcastDetails = () => {
                 marginBottom: '6px'
               }}
             >
-              ⚡ {podcast.showName.toUpperCase()} • EPISODE DISPATCH // 90.4 MHZ
+              {podcast.showName.toUpperCase()} • EPISODE DISPATCH // 90.4 MHZ
             </div>
             <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: '#FAB005', fontSize: '1rem', marginBottom: '4px' }}>
               From The Campus Tape Vault...
@@ -252,7 +252,7 @@ export const PodcastDetails = () => {
               title={isDownloaded ? "Stored for offline listening" : "Simulate download for offline"}
             >
               <Download size={15} />
-              <span>{isDownloaded ? "DOWNLOADED ✓" : "DOWNLOAD OFFLINE"}</span>
+              <span>{isDownloaded ? "STORED OFFLINE" : "DOWNLOAD OFFLINE"}</span>
             </button>
 
             <button
@@ -333,8 +333,8 @@ export const PodcastDetails = () => {
           <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {/* Overview */}
             <div>
-              <h3 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--color-orange)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                ⚡ EXECUTIVE OVERVIEW
+              <h3 style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--color-orange)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
+                EXECUTIVE OVERVIEW
               </h3>
               <p style={{ color: 'var(--text-primary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 {podcast.aiSummary.overview}
@@ -343,8 +343,8 @@ export const PodcastDetails = () => {
 
             {/* Highlights */}
             <div>
-              <h3 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                📌 DISCUSSION HIGHLIGHTS
+              <h3 style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
+                DISCUSSION HIGHLIGHTS
               </h3>
               <ul style={{ paddingLeft: '20px', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.9rem' }}>
                 {podcast.aiSummary.highlights.map((h, i) => (
@@ -355,8 +355,8 @@ export const PodcastDetails = () => {
 
             {/* Key Takeaways */}
             <div>
-              <h3 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                💡 ACTIONABLE KEY TAKEAWAYS FOR STUDENTS
+              <h3 style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
+                ACTIONABLE KEY TAKEAWAYS FOR STUDENTS
               </h3>
               <ul style={{ paddingLeft: '20px', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.9rem' }}>
                 {podcast.aiSummary.keyTakeaways.map((k, i) => (
@@ -367,8 +367,8 @@ export const PodcastDetails = () => {
 
             {/* Clickable Timestamps Chapters */}
             <div>
-              <h3 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                ⏱️ CHAPTER BOOKMARKS (CLICK TO JUMP AUDIO)
+              <h3 style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
+                CHAPTER BOOKMARKS (CLICK TO JUMP AUDIO)
               </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '10px' }}>
                 {podcast.aiSummary.timestamps.map((ts, idx) => (
@@ -414,8 +414,8 @@ export const PodcastDetails = () => {
       <section>
         <div className="section-header" style={{ marginBottom: '16px' }}>
           <div>
-            <span className="sticker-tag sticker-tag-cyan" style={{ marginBottom: '6px' }}>
-              🎙️ MORE IN THIS CRATE
+            <span className="retro-pill retro-pill-yellow" style={{ marginBottom: '6px' }}>
+              MORE IN THIS CRATE
             </span>
             <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-radio)', letterSpacing: '0.03em' }}>
               RELATED STUDENT SHOWS

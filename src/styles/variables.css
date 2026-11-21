@@ -101,6 +101,7 @@ html[data-theme="light"],
   --border-color-hover: #D4BE9B;
   --border-color-active: #E8590C;
   --grid-line-color: rgba(180, 140, 90, 0.08);
+  --ruled-line-color: rgba(60, 50, 40, 0.08);
 
   --text-primary: #2C2117;
   --text-secondary: #6B5B4E;
@@ -139,6 +140,7 @@ html[data-theme="dark"] {
   --border-color-hover: rgba(255, 107, 0, 0.45);
   --border-color-active: #FF6B00;
   --grid-line-color: rgba(255, 200, 140, 0.035);
+  --ruled-line-color: rgba(255, 200, 140, 0.04);
 
   --text-primary: #FFF6EC;
   --text-secondary: #C8B7A5;

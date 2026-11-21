@@ -201,7 +201,7 @@ export const Campus = () => {
                   boxShadow: '2px 2px 0 #000'
                 }}
               >
-                📢 CIRCULARS & NOTICES
+                CIRCULARS & NOTICES
               </span>
               <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
                 Important Campus Announcements
@@ -341,7 +341,7 @@ export const Campus = () => {
                   boxShadow: '2px 2px 0 #000'
                 }}
               >
-                🎟️ SCHEDULE & RSVP
+                SCHEDULE & RSVP
               </span>
               <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
                 Campus Events & Hackathons

@@ -92,11 +92,10 @@ export const LiveRadio = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange" style={{ fontFamily: 'var(--font-radio)', letterSpacing: '0.04em' }}>
-            <Radio size={14} />
+          <span className="retro-pill retro-pill-orange">
             STUDIO TRANSMISSION ACTIVE
           </span>
-          <span className="sticker-tag" style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+          <span className="retro-pill retro-pill-yellow">
             90.4 MHZ STEREO
           </span>
           <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
@@ -123,7 +122,7 @@ export const LiveRadio = () => {
             fontSize: '0.9rem'
           }}
         >
-          ✓ {toastMsg}
+          {toastMsg}
         </div>
       )}
 
@@ -139,23 +138,33 @@ export const LiveRadio = () => {
       >
         {/* Left: Turntable, Large Controls & Frequency Analyzer */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
-          {/* Turntable Deck & Artwork */}
-          <div 
-            className="live-turntable-deck card-modern"
-            style={{
-              background: 'linear-gradient(145deg, #123C40 0%, #0F1216 100%)',
-              padding: 'var(--space-2xl)',
-              borderRadius: '24px',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              boxShadow: 'var(--shadow-md)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              position: 'relative',
-              overflow: 'hidden',
-              color: '#FFFFFF'
-            }}
-          >
+          <div>
+            <div className="folder-tab-bar">
+              <span className="folder-tab folder-tab-blue">
+                STUDIO DECK 01
+              </span>
+              <span className="folder-tab folder-tab-yellow">
+                90.4 MHZ STEREO
+              </span>
+            </div>
+            {/* Turntable Deck & Artwork */}
+            <div 
+              className="live-turntable-deck card-modern"
+              style={{
+                background: 'linear-gradient(145deg, #123C40 0%, #0F1216 100%)',
+                padding: 'var(--space-2xl)',
+                borderRadius: '0 24px 24px 24px',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: 'var(--shadow-md)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                color: '#FFFFFF'
+              }}
+            >
+              <div className="washi-tape washi-tape-tr" />
             {/* Interactive LiquidEther Studio Visualizer Background */}
             <div 
               style={{
@@ -377,6 +386,7 @@ export const LiveRadio = () => {
                 <Share2 size={17} />
               </button>
             </div>
+          </div>
           </div>
 
           {/* Upcoming Programmes Schedule */}

@@ -122,15 +122,14 @@ export const PlaylistVoting = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange" style={{ fontFamily: 'var(--font-radio)', letterSpacing: '0.04em' }}>
-            <Vote size={13} />
+          <span className="retro-pill retro-pill-orange">
             CAMPUS DEMOCRACY // 90.4 MHZ
           </span>
-          <span className="sticker-tag" style={{ transform: 'rotate(1deg)', fontFamily: 'var(--font-mono)' }}>
-            STUDENT PICKS 🔥
+          <span className="retro-pill retro-pill-yellow">
+            STUDENT PICKS
           </span>
-          <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
-            Hostel Prime Hour Curation & Jukebox
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
+            HOSTEL PRIME HOUR CURATION
           </span>
         </div>
 
@@ -157,20 +156,30 @@ export const PlaylistVoting = () => {
       </div>
 
       {/* Main Voting Card */}
-      <section 
-        className="card-modern"
-        style={{
-          borderRadius: '24px',
-          padding: 'var(--space-2xl)',
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '24px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
-          <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
-              <Flame size={14} /> TONIGHT'S PRIME POLL
-            </div>
+      <section>
+        <div className="folder-tab-bar">
+          <span className="folder-tab folder-tab-yellow">
+            TONIGHT'S PRIME POLL
+          </span>
+          <span className="folder-tab folder-tab-blue">
+            9:00 PM AIRPLAY
+          </span>
+        </div>
+        <div 
+          className="card-modern"
+          style={{
+            borderRadius: '0 24px 24px 24px',
+            padding: 'var(--space-2xl)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <div className="washi-tape washi-tape-tr" />
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '24px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
+            <div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
+                TONIGHT'S PRIME POLL
+              </div>
             <h2 style={{ fontFamily: 'var(--font-radio)', fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', color: 'var(--text-primary)', marginTop: '4px', letterSpacing: '0.02em' }}>
               {mockVotingData.dailySongPoll.question}
             </h2>
@@ -325,6 +334,7 @@ export const PlaylistVoting = () => {
           <span>
             The winning track will be announced live on <strong>90.4 MHz Digital FM</strong> at 9:00 PM during RJ Ananya's Hostel Prime Hour.
           </span>
+        </div>
         </div>
       </section>
     </div>

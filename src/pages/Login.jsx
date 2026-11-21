@@ -125,7 +125,7 @@ export const Login = () => {
               fontWeight: 900
             }}
           >
-            <span>🦖 90.4 MHZ // BROADCAST ACCESS PORTAL</span>
+            <span>90.4 MHZ // BROADCAST ACCESS PORTAL</span>
           </div>
         </div>
 
@@ -212,7 +212,7 @@ export const Login = () => {
                 marginBottom: '10px'
               }}
             >
-              ⚡ STUDENT AUTHENTICATION
+              STUDENT AUTHENTICATION
             </span>
             <h1 style={{ fontFamily: 'var(--font-black)', fontSize: '2.2rem', marginBottom: '8px', color: '#000', textTransform: 'uppercase' }}>
               Welcome back
@@ -237,7 +237,7 @@ export const Login = () => {
                 marginBottom: '18px'
               }}
             >
-              ⚠️ {error}
+              {error}
             </div>
           )}
 
@@ -256,7 +256,7 @@ export const Login = () => {
                 marginBottom: '18px'
               }}
             >
-              ✓ {toastMsg}
+              {toastMsg}
             </div>
           )}
 

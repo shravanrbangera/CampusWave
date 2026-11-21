@@ -53,14 +53,13 @@ export const Podcasts = () => {
       {/* Top Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange">
-            <Mic2 size={13} />
+          <span className="retro-pill retro-pill-orange">
             VOICE CRATES // 90.4 MHZ
           </span>
-          <span className="sticker-tag" style={{ transform: 'rotate(1.2deg)' }}>
-            STUDENT VOICES 🎙️
+          <span className="retro-pill retro-pill-yellow">
+            STUDENT VOICES
           </span>
-          <span style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
             NMAMIT STUDENT BROADCASTS
           </span>
         </div>
@@ -321,8 +320,8 @@ export const Podcasts = () => {
       <section>
         <div className="section-header" style={{ marginBottom: '16px' }}>
           <div>
-            <span className="sticker-tag sticker-tag-cyan" style={{ marginBottom: '6px' }}>
-              🎙️ VOICES OF NMAMIT
+            <span className="retro-pill retro-pill-blue" style={{ marginBottom: '6px' }}>
+              VOICES OF NMAMIT
             </span>
             <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-retro)', letterSpacing: '0.02em' }}>
               Featured Student Hosts & RJs

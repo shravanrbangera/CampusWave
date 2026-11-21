@@ -252,7 +252,7 @@ export const BrutalistSoundSlider = () => {
                         fontWeight: 700
                       }}
                     >
-                      ★ {current.badge}
+                      {current.badge}
                     </span>
                   </div>
 

@@ -118,7 +118,7 @@ export const Profile = () => {
                   boxShadow: '2px 2px 0 #000'
                 }}
               >
-                ⚡ VERIFIED STUDENT LISTENER
+                VERIFIED STUDENT LISTENER
               </span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', fontWeight: 800, color: 'var(--color-acid)' }}>
                 USN: {user?.usn || "4NM22CS042"}
@@ -134,7 +134,7 @@ export const Profile = () => {
             </div>
 
             <div style={{ fontSize: '0.84rem', color: 'var(--color-amber)', marginTop: '4px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
-              📍 {user?.hostel || "Netravati Block B - Room 304"} • {user?.email}
+              {user?.hostel || "Netravati Block B - Room 304"} • {user?.email}
             </div>
           </div>
         </div>
@@ -319,7 +319,7 @@ export const Profile = () => {
                     transform: active ? 'translateY(-2px)' : 'none'
                   }}
                 >
-                  {active ? `✓ ${cat}` : `+ ${cat}`}
+                  {active ? `SELECTED: ${cat}` : `+ ${cat}`}
                 </button>
               );
             })}
@@ -327,7 +327,7 @@ export const Profile = () => {
 
           {savedToast && (
             <div style={{ marginTop: '14px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: '#16a34a', fontWeight: 800 }}>
-              ✓ Category preferences saved to your profile!
+              Category preferences saved to your profile!
             </div>
           )}
 

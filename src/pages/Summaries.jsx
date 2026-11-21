@@ -296,7 +296,7 @@ export const Summaries = () => {
                 boxShadow: '2px 2px 0 #000'
               }}
             >
-              📚 ALL DIGESTS
+              ALL DIGESTS
             </span>
             <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
               Broadcast Reading Cards ({filteredSummaries.length})

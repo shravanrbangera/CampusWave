@@ -29,18 +29,18 @@ export const Navbar = () => {
     }
   };
 
-  // The 5 core sections
+  // The 5 core sections with clean retro editorial dots (inspired by user portfolio reference)
   const navLinks = [
-    { to: '/', label: 'Home', icon: Home },
-    { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
+    { to: '/', label: 'Home', dotColor: '#E8590C' },
+    { to: '/podcasts', label: 'Podcasts', dotColor: '#0CA678' },
     { 
       to: '/live', 
       label: 'Live Radio', 
-      icon: Radio, 
+      dotColor: '#E8590C',
       isLive: true 
     },
-    { to: '/vote', label: 'Vote', icon: Vote },
-    { to: '/saved', label: 'Saved', icon: Bookmark, badge: totalSavedCount }
+    { to: '/vote', label: 'Vote', dotColor: '#FAB005' },
+    { to: '/saved', label: 'Saved', dotColor: '#2563EB', badge: totalSavedCount }
   ];
 
   return (
@@ -169,60 +169,66 @@ export const Navbar = () => {
             gap: '6px'
           }}
         >
-          {navLinks.map((item) => {
-            const Icon = item.icon;
-            return (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                style={({ isActive }) => ({
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '7px 14px',
-                  borderRadius: 'var(--radius-full)',
-                  fontSize: '0.84rem',
-                  fontFamily: 'var(--font-body)',
-                  fontWeight: isActive ? 700 : 500,
-                  color: isActive ? 'var(--color-orange)' : 'var(--text-secondary)',
-                  backgroundColor: isActive ? 'var(--color-orange-soft)' : 'transparent',
-                  border: isActive ? '1px solid var(--color-orange)' : '1px solid transparent',
-                  position: 'relative',
-                  transition: 'all var(--transition-fast)'
-                })}
-              >
-                <Icon size={15} />
-                <span>{item.label}</span>
-                {item.badge > 0 && (
-                  <span 
-                    style={{
-                      fontSize: '0.65rem',
-                      fontWeight: 800,
-                      backgroundColor: 'var(--color-orange)',
-                      color: '#FFF',
-                      padding: '1px 5px',
-                      borderRadius: '999px',
-                      marginLeft: '2px'
-                    }}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-                {item.isLive && (
-                  <span 
-                    style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      backgroundColor: 'var(--color-orange)',
-                      display: 'inline-block',
-                      animation: 'pulse 1.2s infinite'
-                    }}
-                  />
-                )}
-              </NavLink>
-            );
-          })}
+          {navLinks.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              style={({ isActive }) => ({
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px',
+                padding: '6px 14px',
+                borderRadius: 'var(--radius-full)',
+                fontSize: '0.8rem',
+                fontFamily: 'var(--font-radio)',
+                letterSpacing: '0.04em',
+                color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                backgroundColor: isActive ? 'var(--bg-card-subtle)' : 'transparent',
+                border: isActive ? '1px solid var(--border-color)' : '1px solid transparent',
+                position: 'relative',
+                transition: 'all var(--transition-fast)'
+              })}
+            >
+              <span 
+                style={{ 
+                  width: '6px', 
+                  height: '6px', 
+                  borderRadius: '50%', 
+                  backgroundColor: item.dotColor, 
+                  display: 'inline-block' 
+                }} 
+              />
+              <span>{item.label.toUpperCase()}</span>
+              {item.badge > 0 && (
+                <span 
+                  style={{
+                    fontSize: '0.62rem',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
+                    backgroundColor: 'var(--color-orange)',
+                    color: '#FFF',
+                    padding: '1px 5px',
+                    borderRadius: '999px',
+                    marginLeft: '2px'
+                  }}
+                >
+                  {item.badge}
+                </span>
+              )}
+              {item.isLive && (
+                <span 
+                  style={{
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--color-orange)',
+                    display: 'inline-block',
+                    animation: 'pulse 1.2s infinite'
+                  }}
+                />
+              )}
+            </NavLink>
+          ))}
         </nav>
 
         {/* Right Controls: Desktop Search & Universal Theme Toggle */}

@@ -171,14 +171,14 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
         {/* Screen Header Bar */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(232, 255, 0, 0.3)', paddingBottom: '6px', marginBottom: '10px' }}>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 700 }}>
-            ★ CAMPUS.WAVE // 90.4 FM
+            CAMPUS.WAVE // 90.4 FM
           </span>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--color-cyan)', fontWeight: 800 }}>
             MOD: STEREO
           </span>
         </div>
 
-        {/* Pixel Dino Mascot & Live Wave Meter */}
+        {/* Mascot & Live Wave Meter */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
           <div>
             <div 
@@ -190,7 +190,7 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
                 letterSpacing: '-0.03em'
               }}
             >
-              🦖 90.4
+              90.4 FM
             </div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-acid)', marginTop: '4px' }}>
               CURRENT: HOSTELLER RADIO
@@ -356,7 +356,7 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
         />
 
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 800, color: '#000000' }}>
-          📌 PASS: 4NM22-WAVE • ALL HOSTELS ON AIR
+          PASS: 4NM22-WAVE • ALL HOSTELS ON AIR
         </div>
 
         <button 
@@ -370,7 +370,7 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
             boxShadow: '2px 2px 0 #000'
           }}
         >
-          TICKET #{receiptCount} 🖨️
+          TICKET #{receiptCount}
         </button>
       </div>
     </div>

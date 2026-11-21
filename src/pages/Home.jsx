@@ -98,15 +98,15 @@ export const Home = () => {
           borderBottom: '1px solid var(--border-color)'
         }}
       >
-        {/* Top Funky Badges Row */}
+        {/* Top Editorial Badges Row */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange" style={{ fontSize: '0.74rem' }}>
-            ⚡ 90.4 DIGITAL FM
+          <span className="retro-pill retro-pill-orange">
+            90.4 DIGITAL FM
           </span>
-          <span className="sticker-tag" style={{ transform: 'rotate(1deg)', fontSize: '0.74rem' }}>
-            HELLO! 👋
+          <span className="retro-pill retro-pill-yellow">
+            STUDIO BROADCAST
           </span>
-          <span style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
             {user?.hostel || "NETRAVATI BLOCK • CAMPUS STREAM"}
           </span>
         </div>
@@ -278,12 +278,20 @@ export const Home = () => {
 
       {/* 3. Prominent Live Radio Section */}
       <section>
+        <div className="folder-tab-bar">
+          <span className="folder-tab folder-tab-blue">
+            LIVE BROADCAST 01
+          </span>
+          <span className="folder-tab folder-tab-yellow">
+            90.4 MHZ STEREO
+          </span>
+        </div>
         <div 
           className="card-modern home-live-banner"
           style={{
             position: 'relative',
             overflow: 'hidden',
-            borderRadius: '20px',
+            borderRadius: '0 20px 20px 20px',
             background: 'linear-gradient(135deg, #123C40 0%, #0F1216 100%)',
             border: '1px solid rgba(255, 255, 255, 0.12)',
             boxShadow: 'var(--shadow-md)',
@@ -291,6 +299,7 @@ export const Home = () => {
             color: '#FFFFFF'
           }}
         >
+          <div className="washi-tape washi-tape-tr" />
           <div 
             style={{
               position: 'relative',
@@ -622,7 +631,7 @@ export const Home = () => {
                     flexShrink: 0
                   }}
                 >
-                  {isVoted ? 'VOTED ✓' : 'VOTE'}
+                  {isVoted ? 'VOTED' : 'VOTE'}
                 </button>
               </div>
             );

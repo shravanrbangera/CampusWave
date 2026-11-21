@@ -550,7 +550,7 @@ export const FullAudioPlayer = () => {
                     textAlign: 'center'
                   }}
                 >
-                  ✓ Broadcast link copied to clipboard!
+                  Broadcast link copied to clipboard!
                 </div>
               )}
             </div>

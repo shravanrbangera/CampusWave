@@ -171,7 +171,7 @@ export const SummaryCard = ({ summary }) => {
             }}
           >
             <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.82rem', color: '#000', marginBottom: '8px', textTransform: 'uppercase' }}>
-              ⚡ KEY TAKEAWAYS:
+              KEY TAKEAWAYS:
             </div>
             <ul style={{ paddingLeft: '18px', fontSize: '0.84rem', color: '#222', display: 'flex', flexDirection: 'column', gap: '6px', fontFamily: 'var(--font-body)' }}>
               {summary.keyTakeaways.map((point, idx) => (

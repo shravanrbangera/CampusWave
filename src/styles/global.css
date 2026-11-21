@@ -23,10 +23,8 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  background-image: 
-    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: linear-gradient(to bottom, var(--ruled-line-color) 1px, transparent 1px);
+  background-size: 100% 32px;
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
@@ -410,6 +408,88 @@ input, textarea, select {
   box-shadow: 0 0 8px var(--color-orange-glow);
   left: 50%;
 }
+
+/* Washi Tape Corner Accents (Inspired by portfolio design reference) */
+.washi-tape {
+  position: absolute;
+  width: 52px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  z-index: 4;
+  pointer-events: none;
+}
+.washi-tape-tl {
+  top: -8px;
+  left: 16px;
+  transform: rotate(-3.5deg);
+}
+.washi-tape-tr {
+  top: -8px;
+  right: 16px;
+  transform: rotate(3deg);
+}
+
+/* Retro Folder Tab Cutout (Inspired by physical file folder tabs in reference) */
+.folder-tab-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 2;
+}
+
+.folder-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px 8px;
+  font-family: var(--font-radio);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: var(--color-orange);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 14px;
+  position: relative;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.folder-tab-blue {
+  background: #2563EB;
+}
+
+.folder-tab-yellow {
+  background: #FAB005;
+  color: #1A1A1A;
+}
+
+.folder-tab-teal {
+  background: #0CA678;
+}
+
+/* Editorial Minimalist Pills (Zero Emojis, High-Contrast Premium Styling) */
+.retro-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-radio);
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  line-height: 1.2;
+}
+.retro-pill-yellow { background: #FEF08A; color: #854D0E; border-color: #FDE047; }
+.retro-pill-orange { background: var(--color-orange-soft); color: var(--color-orange); border-color: var(--color-orange); }
+.retro-pill-green { background: #DCFCE7; color: #166534; border-color: #86EFAC; }
+.retro-pill-blue { background: #DBEAFE; color: #1E40AF; border-color: #93C5FD; }
+.retro-pill-pink { background: #FCE7F3; color: #9D174D; border-color: #F472B6; }
 
 
 

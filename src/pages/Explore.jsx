@@ -404,7 +404,7 @@ export const Explore = () => {
                   boxShadow: '2px 2px 0 #000'
                 }}
               >
-                🎙️ STUDENT PODCASTS
+                STUDENT PODCASTS
               </span>
               <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
                 Podcasts & Voice Notes ({filteredPodcasts.length})
@@ -453,7 +453,7 @@ export const Explore = () => {
                   boxShadow: '2px 2px 0 #000'
                 }}
               >
-                💿 ORIGINAL SOUNDS
+                ORIGINAL SOUNDS
               </span>
               <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
                 Campus Music Tracks ({filteredMusic.length})

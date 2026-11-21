@@ -140,7 +140,7 @@ export const Register = () => {
               fontWeight: 900
             }}
           >
-            <span>⚡ NMAMIT AUDIO COMMUNITY // PASS ID</span>
+            <span>NMAMIT AUDIO COMMUNITY // PASS ID</span>
           </div>
         </div>
 
@@ -226,7 +226,7 @@ export const Register = () => {
                 marginBottom: '10px'
               }}
             >
-              ⚡ NEW STUDENT ENROLLMENT
+              NEW STUDENT ENROLLMENT
             </span>
             <h1 style={{ fontFamily: 'var(--font-black)', fontSize: '2.2rem', marginBottom: '8px', color: '#000', textTransform: 'uppercase' }}>
               Student Registration
@@ -251,7 +251,7 @@ export const Register = () => {
                 marginBottom: '18px'
               }}
             >
-              ⚠️ {error}
+              {error}
             </div>
           )}
 

@@ -67,31 +67,91 @@ export const Home = () => {
           flexWrap: 'wrap',
           gap: 'var(--space-md)',
           paddingBottom: 'var(--space-md)',
-          borderBottom: '1px solid var(--border-color)'
+          borderBottom: '2.5px solid #000'
         }}
       >
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-            <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)', borderColor: 'var(--border-color)' }}>
-              {user?.hostel ? `${user.hostel} • LIVE FEED` : "NMAMIT CAMPUS STREAM"}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '2px solid #000',
+                borderRadius: '8px',
+                padding: '4px 10px',
+                boxShadow: '2px 2px 0 #000'
+              }}
+            >
+              ⚡ {user?.hostel ? `${user.hostel} • LIVE FEED` : "NMAMIT CAMPUS STREAM"}
             </span>
           </div>
-          <h1 style={{ fontSize: 'clamp(2rem, 3.8vw, 2.6rem)', color: 'var(--color-charcoal)' }}>
-            {timeGreeting}, {firstName}! Ready to tune in?
+          <h1 
+            style={{ 
+              fontFamily: 'var(--font-black)', 
+              fontSize: 'clamp(2.2rem, 4.2vw, 3.2rem)', 
+              color: 'var(--color-ink)', 
+              textTransform: 'uppercase', 
+              letterSpacing: '-0.03em' 
+            }}
+          >
+            {timeGreeting}, <span className="highlight-acid" style={{ border: '2px solid #000', borderRadius: '6px', padding: '0 8px' }}>{firstName}</span>!
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', marginTop: '4px' }}>
-            {user?.role || "Student Listener"} • {user?.branch || "NMAMIT Nitte"}
+          <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.92rem', fontWeight: 700, marginTop: '6px' }}>
+            {user?.role || "Student Listener"} • {user?.branch || "NMAMIT Nitte"} // 90.4 MHZ DIGITAL
           </p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Link to="/explore" className="btn-secondary" style={{ padding: '9px 18px', fontSize: '0.86rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <Link 
+            to="/explore" 
+            className="btn-brutal" 
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '10px 20px', 
+              fontSize: '0.84rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 800,
+              backgroundColor: '#FFFFFF',
+              color: '#000',
+              border: '2px solid #000',
+              boxShadow: '3px 3px 0 #000',
+              borderRadius: '999px',
+              textDecoration: 'none'
+            }}
+          >
             <Compass size={15} />
-            <span>Discover Content</span>
+            <span>DISCOVER CONTENT</span>
           </Link>
-          <Link to="/live" className="btn-primary" style={{ padding: '9px 18px', fontSize: '0.86rem' }}>
+          <Link 
+            to="/live" 
+            className="btn-brutal" 
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '10px 20px', 
+              fontSize: '0.84rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 800,
+              backgroundColor: 'var(--color-acid)',
+              color: '#000',
+              border: '2px solid #000',
+              boxShadow: '3px 3px 0 #000',
+              borderRadius: '999px',
+              textDecoration: 'none'
+            }}
+          >
             <Radio size={15} />
-            <span>Studio 90.4 FM</span>
+            <span>STUDIO 90.4 FM</span>
           </Link>
         </div>
       </section>

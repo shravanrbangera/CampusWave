@@ -13,7 +13,8 @@ import {
   Moon, 
   Sparkles,
   Menu,
-  X
+  X,
+  Zap
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAudio } from '../context/AudioContext';
@@ -45,7 +46,7 @@ export const Navbar = () => {
       isLive: true 
     },
     { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
-    { to: '/campus', label: 'Campus Updates', icon: Bell },
+    { to: '/campus', label: 'Campus', icon: Bell },
     { to: '/summaries', label: 'AI Summaries', icon: Sparkles },
     { to: '/community', label: 'Community', icon: Users },
     { to: '/library', label: 'Library', icon: Bookmark }
@@ -57,10 +58,11 @@ export const Navbar = () => {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: 'var(--bg-glass)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid var(--border-color)',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '2.5px solid #000000',
+        boxShadow: '0 4px 0 rgba(0, 0, 0, 0.05)',
         height: 'var(--navbar-height)',
         display: 'flex',
         alignItems: 'center',
@@ -69,7 +71,7 @@ export const Navbar = () => {
     >
       <div 
         style={{
-          maxWidth: '1320px',
+          maxWidth: '1360px',
           width: '100%',
           margin: '0 auto',
           padding: '0 var(--space-lg)',
@@ -79,42 +81,44 @@ export const Navbar = () => {
           gap: 'var(--space-md)'
         }}
       >
-        {/* Brand Logo with Coral Icon */}
+        {/* Brand Logo with Tactile Brutalist Badge */}
         <Link 
           to="/" 
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '11px',
+            gap: '10px',
             textDecoration: 'none'
           }}
         >
           <div 
             style={{
-              width: '40px',
-              height: '40px',
+              width: '42px',
+              height: '42px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, var(--color-coral) 0%, #D41724 100%)',
+              background: 'var(--color-coral)',
+              border: '2px solid #000',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: 'var(--shadow-coral)',
+              boxShadow: '3px 3px 0 #000',
               position: 'relative',
               flexShrink: 0
             }}
           >
-            <Radio size={20} color="#FFFFFF" />
+            <Radio size={22} color="#FFFFFF" />
             {isPlaying && (
               <span 
                 style={{
                   position: 'absolute',
-                  top: '-2px',
-                  right: '-2px',
-                  width: '9px',
-                  height: '9px',
+                  top: '-4px',
+                  right: '-4px',
+                  width: '12px',
+                  height: '12px',
                   borderRadius: '50%',
-                  background: '#22c55e',
-                  border: '2px solid var(--color-white)'
+                  background: 'var(--color-acid)',
+                  border: '2px solid #000',
+                  boxShadow: '1px 1px 0 #000'
                 }}
               />
             )}
@@ -123,38 +127,52 @@ export const Navbar = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span 
                 style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '1.25rem',
-                  fontWeight: 800,
-                  letterSpacing: '-0.03em',
-                  color: 'var(--color-charcoal)'
+                  fontFamily: 'var(--font-black)',
+                  fontSize: '1.35rem',
+                  letterSpacing: '-0.04em',
+                  color: '#000000'
                 }}
               >
                 CAMPUS<span style={{ color: 'var(--color-coral)' }}>WAVE</span>
+              </span>
+              <span 
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.62rem',
+                  fontWeight: 900,
+                  backgroundColor: 'var(--color-acid)',
+                  color: '#000',
+                  border: '1.5px solid #000',
+                  padding: '1px 5px',
+                  borderRadius: '4px',
+                  boxShadow: '1px 1px 0 #000'
+                }}
+              >
+                90.4
               </span>
             </div>
             <div 
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.64rem',
-                color: 'var(--text-muted)',
-                letterSpacing: '0.08em',
+                fontSize: '0.65rem',
+                color: '#333333',
+                letterSpacing: '0.06em',
                 lineHeight: 1,
-                fontWeight: 600
+                fontWeight: 700
               }}
             >
-              NMAMIT • 90.4 DIGITAL
+              NMAMIT • DIGITAL FM
             </div>
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav Links with Brutalist Tactile States */}
         <nav 
           className="nav-desktop-links"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '4px'
+            gap: '6px'
           }}
         >
           {navLinks.map((item) => {
@@ -167,28 +185,32 @@ export const Navbar = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  padding: '7px 14px',
-                  borderRadius: 'var(--radius-full)',
-                  fontSize: '0.86rem',
-                  fontWeight: isActive ? 700 : 600,
-                  color: isActive ? 'var(--color-coral)' : 'var(--text-secondary)',
-                  backgroundColor: isActive ? 'var(--color-coral-soft)' : 'transparent',
-                  border: isActive ? '1px solid rgba(245, 45, 58, 0.22)' : '1px solid transparent',
+                  padding: '6px 13px',
+                  borderRadius: '999px',
+                  fontSize: '0.84rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  color: isActive ? '#000000' : '#222222',
+                  backgroundColor: isActive ? 'var(--color-acid)' : 'transparent',
+                  border: isActive ? '2px solid #000' : '2px solid transparent',
+                  boxShadow: isActive ? '2px 2px 0 #000' : 'none',
                   position: 'relative',
-                  transition: 'all var(--transition-fast)'
+                  transition: 'all 0.15s ease'
                 })}
               >
-                <Icon size={15} />
+                <Icon size={14} />
                 <span>{item.label}</span>
                 {item.isLive && (
                   <span 
-                    className="badge-live-pulse"
                     style={{
-                      width: '6px',
-                      height: '6px',
+                      width: '8px',
+                      height: '8px',
                       borderRadius: '50%',
                       backgroundColor: 'var(--color-coral)',
-                      display: 'inline-block'
+                      border: '1px solid #000',
+                      display: 'inline-block',
+                      animation: 'pulse 1.2s infinite'
                     }}
                   />
                 )}
@@ -209,19 +231,22 @@ export const Navbar = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
-                  width: '200px',
+                  width: '210px',
                   padding: '7px 14px',
-                  borderRadius: 'var(--radius-full)',
-                  background: 'var(--bg-secondary)',
-                  border: '1.5px solid var(--color-coral)',
-                  color: 'var(--text-primary)',
-                  fontSize: '0.84rem'
+                  borderRadius: '999px',
+                  background: '#FFFFFF',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  color: '#000',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.82rem',
+                  fontWeight: 600
                 }}
               />
               <button 
                 type="button" 
                 onClick={() => setSearchOpen(false)}
-                style={{ marginLeft: '6px', color: 'var(--text-muted)' }}
+                style={{ marginLeft: '6px', color: '#000', cursor: 'pointer', background: 'none', border: 'none' }}
               >
                 <X size={18} />
               </button>
@@ -229,37 +254,62 @@ export const Navbar = () => {
           ) : (
             <button
               onClick={() => setSearchOpen(true)}
-              className="btn-icon"
+              className="btn-brutal"
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                backgroundColor: '#FFFFFF',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
+              }}
               title="Search CampusWave"
               aria-label="Search"
             >
-              <Search size={17} />
+              <Search size={16} />
             </button>
           )}
 
           {/* Theme Switcher */}
           <button
             onClick={toggleTheme}
-            className="btn-icon"
+            className="btn-brutal"
+            style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '50%',
+              backgroundColor: '#FFFFFF',
+              border: '2px solid #000',
+              boxShadow: '2px 2px 0 #000',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer'
+            }}
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
           {/* Profile / Auth Button */}
           {isAuthenticated ? (
             <Link 
               to="/profile"
+              className="btn-brutal"
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
                 padding: '4px 12px 4px 4px',
-                borderRadius: 'var(--radius-full)',
-                backgroundColor: 'var(--color-white)',
-                border: '1px solid var(--border-color)',
-                boxShadow: 'var(--shadow-sm)',
+                borderRadius: '999px',
+                backgroundColor: 'var(--color-acid)',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
                 textDecoration: 'none'
               }}
               title="Open Student Profile"
@@ -271,15 +321,17 @@ export const Navbar = () => {
                   width: '28px',
                   height: '28px',
                   borderRadius: '50%',
-                  objectFit: 'cover'
+                  objectFit: 'cover',
+                  border: '1.5px solid #000'
                 }}
               />
               <span 
                 className="desktop-only"
                 style={{
-                  fontSize: '0.84rem',
-                  fontWeight: 700,
-                  color: 'var(--text-primary)',
+                  fontSize: '0.82rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 800,
+                  color: '#000',
                   maxWidth: '90px',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -292,21 +344,38 @@ export const Navbar = () => {
           ) : (
             <Link 
               to="/login"
-              className="btn-coral"
+              className="btn-brutal"
               style={{
                 padding: '8px 18px',
-                fontSize: '0.84rem'
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-coral)',
+                color: '#fff',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
+                borderRadius: '999px'
               }}
             >
-              Login
+              LOGIN
             </Link>
           )}
 
           {/* Mobile hamburger menu toggle */}
           <button 
-            className="btn-icon"
+            className="btn-brutal"
             onClick={() => setMobileMenuOpen(prev => !prev)}
-            style={{ display: 'none' }}
+            style={{
+              display: 'none',
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
+              backgroundColor: '#fff',
+              border: '2px solid #000',
+              boxShadow: '2px 2px 0 #000',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
             id="mobile-nav-toggle"
             aria-label="Toggle navigation menu"
           >
@@ -324,12 +393,12 @@ export const Navbar = () => {
             left: 0,
             right: 0,
             backgroundColor: 'var(--color-white)',
-            borderBottom: '1px solid var(--border-color)',
+            borderBottom: '3px solid #000',
             padding: 'var(--space-md)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '6px',
-            boxShadow: 'var(--shadow-lg)'
+            gap: '8px',
+            boxShadow: '0 8px 0 rgba(0,0,0,0.1)'
           }}
         >
           {navLinks.map((item) => {
@@ -344,23 +413,26 @@ export const Navbar = () => {
                   alignItems: 'center',
                   gap: '12px',
                   padding: '11px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  color: isActive ? 'var(--color-coral)' : 'var(--text-primary)',
-                  backgroundColor: isActive ? 'var(--color-coral-soft)' : 'transparent',
-                  fontWeight: 700,
-                  fontSize: '0.92rem'
+                  borderRadius: '12px',
+                  border: '2px solid #000',
+                  boxShadow: isActive ? '3px 3px 0 #000' : 'none',
+                  color: '#000',
+                  backgroundColor: isActive ? 'var(--color-acid)' : '#fff',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 800,
+                  fontSize: '0.88rem'
                 })}
               >
                 <Icon size={18} />
                 <span>{item.label}</span>
                 {item.isLive && (
                   <span 
-                    className="badge-live-pulse"
                     style={{
-                      width: '6px',
-                      height: '6px',
+                      width: '8px',
+                      height: '8px',
                       borderRadius: '50%',
                       backgroundColor: 'var(--color-coral)',
+                      border: '1px solid #000',
                       marginLeft: 'auto'
                     }}
                   />

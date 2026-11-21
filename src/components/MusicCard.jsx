@@ -32,13 +32,15 @@ export const MusicCard = ({ track }) => {
 
   return (
     <div 
-      className="card-3d glass-panel"
+      className="card-modern shadow-brutal-sm"
       style={{
         display: 'flex',
         alignItems: 'center',
         padding: '12px 16px',
         gap: '14px',
-        borderRadius: 'var(--radius-md)',
+        borderRadius: '14px',
+        backgroundColor: '#FFFFFF',
+        border: '2px solid #000000',
         height: '76px'
       }}
     >
@@ -53,7 +55,8 @@ export const MusicCard = ({ track }) => {
           overflow: 'hidden',
           flexShrink: 0,
           cursor: 'pointer',
-          backgroundColor: 'var(--bg-tertiary)'
+          backgroundColor: '#000000',
+          border: '2px solid #000000'
         }}
       >
         <img 
@@ -65,7 +68,7 @@ export const MusicCard = ({ track }) => {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundColor: isCurrent ? 'rgba(255, 148, 26, 0.45)' : 'rgba(0, 0, 0, 0.35)',
+            backgroundColor: isCurrent ? 'rgba(232, 255, 0, 0.65)' : 'rgba(0, 0, 0, 0.4)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -73,9 +76,9 @@ export const MusicCard = ({ track }) => {
           }}
         >
           {isCurrent && isPlaying ? (
-            <Pause size={18} color="#FFFFFF" fill="#FFFFFF" />
+            <Pause size={18} color="#000000" fill="#000000" />
           ) : (
-            <Play size={18} color="#FFFFFF" fill="#FFFFFF" style={{ marginLeft: '2px' }} />
+            <Play size={18} color={isCurrent ? "#000000" : "#FFFFFF"} fill={isCurrent ? "#000000" : "#FFFFFF"} style={{ marginLeft: '2px' }} />
           )}
         </div>
       </div>
@@ -84,9 +87,10 @@ export const MusicCard = ({ track }) => {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div 
           style={{
-            fontWeight: 700,
-            fontSize: '0.94rem',
-            color: isCurrent ? 'var(--color-coral)' : 'var(--text-primary)',
+            fontFamily: 'var(--font-heading)',
+            fontWeight: 800,
+            fontSize: '0.98rem',
+            color: isCurrent ? 'var(--color-coral)' : '#000000',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis'
@@ -96,15 +100,16 @@ export const MusicCard = ({ track }) => {
         </div>
         <div 
           style={{
-            fontSize: '0.8rem',
-            color: 'var(--text-secondary)',
+            fontSize: '0.82rem',
+            color: '#444444',
+            fontWeight: 600,
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             marginTop: '2px'
           }}
         >
-          {track.artist} • <span style={{ color: 'var(--text-muted)' }}>{track.genre}</span>
+          {track.artist} • <span style={{ backgroundColor: 'var(--color-acid)', color: '#000', padding: '1px 6px', border: '1px solid #000', borderRadius: '3px', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>{track.genre}</span>
         </div>
       </div>
 

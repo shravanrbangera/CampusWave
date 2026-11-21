@@ -10,7 +10,8 @@ import {
   MessageSquare,
   CheckCircle2,
   Clock,
-  Flame
+  Flame,
+  Zap
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { mockVotingData } from '../data/voting';
@@ -45,11 +46,11 @@ export const Community = () => {
         particleCount: 60,
         spread: 60,
         origin: { y: 0.7 },
-        colors: ['#F52D3A', '#FFB52E', '#123C40', '#202020']
+        colors: ['#E8FF00', '#F52D3A', '#000000', '#00F0FF']
       });
     } catch (e) {}
 
-    setToastMsg("Vote counted! RJ Ananya will announce the winner at 9:00 PM.");
+    setToastMsg("VOTE RECORDED! RJ Ananya will announce the winner at 9:00 PM.");
     setTimeout(() => setToastMsg(''), 3500);
   };
 
@@ -57,7 +58,7 @@ export const Community = () => {
   const handleVoteCampusPoll = (optId) => {
     setCampusPollVote(optId);
     castVote('campusStudySpot', optId);
-    setToastMsg("Poll response recorded!");
+    setToastMsg("Campus poll response counted!");
     setTimeout(() => setToastMsg(''), 3000);
   };
 
@@ -99,13 +100,46 @@ export const Community = () => {
     <div className="community-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3xl)' }}>
       {/* Top Header */}
       <div>
-        <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-          STUDENT ENGAGEMENT
-        </span>
-        <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginTop: '8px', marginBottom: '12px', color: 'var(--color-charcoal)' }}>
-          Community & Music Voting
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
+          <span 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              backgroundColor: 'var(--color-acid)',
+              color: '#000',
+              border: '2px solid #000',
+              borderRadius: '8px',
+              padding: '4px 10px',
+              boxShadow: '2px 2px 0 #000'
+            }}
+          >
+            <Zap size={13} fill="#000" />
+            CAMPUS JUKEBOX // 90.4 MHZ LIVE
+          </span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 700, color: '#333' }}>
+            COMMUNITY SOUNDBATTLE
+          </span>
+        </div>
+
+        <h1 
+          style={{ 
+            fontFamily: 'var(--font-black)',
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)',
+            textTransform: 'uppercase',
+            letterSpacing: '-0.03em',
+            marginTop: '8px', 
+            marginBottom: '10px', 
+            color: 'var(--color-ink)' 
+          }}
+        >
+          COMMUNITY & <span className="highlight-acid" style={{ border: '2px solid #000', borderRadius: '6px', padding: '0 8px' }}>MUSIC VOTING</span>
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '640px' }}>
+        <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.95rem', fontWeight: 600, maxWidth: '680px', lineHeight: 1.6 }}>
           Have your say on what airs across the campus radio. Vote for tonight's headline track, submit song dedications, and participate in campus polls.
         </p>
       </div>
@@ -113,44 +147,62 @@ export const Community = () => {
       {toastMsg && (
         <div 
           style={{
-            backgroundColor: 'rgba(34, 197, 94, 0.12)',
-            border: '1px solid #16a34a',
-            color: '#16a34a',
+            backgroundColor: 'var(--color-acid)',
+            border: '2px solid #000',
+            boxShadow: '4px 4px 0 #000',
+            color: '#000',
             padding: '12px 20px',
-            borderRadius: 'var(--radius-lg)',
-            fontWeight: 600,
+            borderRadius: '12px',
+            fontWeight: 800,
+            fontFamily: 'var(--font-mono)',
             textAlign: 'center'
           }}
         >
-          ✓ {toastMsg}
+          ⚡ {toastMsg}
         </div>
       )}
 
-      {/* Main Daily Song Poll (Big Featured Interactive Section) */}
+      {/* Main Daily Song Poll */}
       <section 
-        className="card-modern"
         style={{
           padding: 'var(--space-2xl)',
-          borderRadius: 'var(--radius-2xl)',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, var(--color-charcoal) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: 'var(--shadow-lg)'
+          borderRadius: '24px',
+          background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
+          border: '3px solid #000',
+          boxShadow: '6px 6px 0 #000'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '22px' }}>
           <div>
-            <span className="editorial-badge" style={{ backgroundColor: 'var(--color-coral)', color: '#FFFFFF', border: 'none', marginBottom: '10px' }}>
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                backgroundColor: 'var(--color-coral)',
+                color: '#FFFFFF',
+                border: '2px solid #000',
+                borderRadius: '8px',
+                padding: '4px 10px',
+                boxShadow: '2px 2px 0 #000',
+                marginBottom: '10px'
+              }}
+            >
               <Vote size={13} color="#fff" />
               DAILY LIVE TRANSMISSION POLL
             </span>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#FFFFFF' }}>
+            <h2 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: '#FFFFFF', textTransform: 'uppercase' }}>
               {mockVotingData.dailySongPoll.question}
             </h2>
           </div>
 
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-amber)', textAlign: 'right' }}>
-            <div style={{ fontWeight: 700 }}>{mockVotingData.dailySongPoll.deadline}</div>
-            <div style={{ color: 'rgba(255, 255, 255, 0.65)', fontSize: '0.78rem' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-acid)', textAlign: 'right' }}>
+            <div style={{ fontWeight: 800 }}>DEADLINE: {mockVotingData.dailySongPoll.deadline}</div>
+            <div style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 700 }}>
               {mockVotingData.dailySongPoll.totalVotes + (activeSongVote ? 1 : 0)} votes registered
             </div>
           </div>
@@ -172,15 +224,16 @@ export const Community = () => {
                   position: 'relative',
                   overflow: 'hidden',
                   padding: '20px',
-                  borderRadius: 'var(--radius-xl)',
-                  backgroundColor: isSelected ? 'rgba(245, 45, 58, 0.25)' : 'rgba(0, 0, 0, 0.35)',
-                  border: isSelected ? '2px solid var(--color-coral)' : '1px solid rgba(255, 255, 255, 0.12)',
+                  borderRadius: '20px',
+                  backgroundColor: isSelected ? '#FFFFFF' : 'rgba(0, 0, 0, 0.45)',
+                  border: isSelected ? '3px solid var(--color-acid)' : '2px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: isSelected ? '4px 4px 0 var(--color-acid)' : 'none',
                   cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   gap: '16px',
-                  transition: 'all var(--transition-fast)'
+                  transition: 'all 0.15s ease'
                 }}
               >
                 {/* Visual Progress Fill */}
@@ -191,7 +244,7 @@ export const Community = () => {
                     top: 0,
                     bottom: 0,
                     width: `${pct}%`,
-                    backgroundColor: isSelected ? 'rgba(245, 45, 58, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                    backgroundColor: isSelected ? 'rgba(232, 255, 0, 0.25)' : 'rgba(255, 255, 255, 0.08)',
                     zIndex: 0,
                     transition: 'width 0.5s ease'
                   }}
@@ -201,35 +254,39 @@ export const Community = () => {
                   <img 
                     src={song.cover} 
                     alt={song.title} 
-                    style={{ width: '60px', height: '60px', borderRadius: '12px', objectFit: 'cover' }} 
+                    style={{ width: '64px', height: '64px', borderRadius: '12px', objectFit: 'cover', border: '2px solid #000' }} 
                   />
                   <div>
-                    <h3 style={{ fontSize: '1.1rem', color: isSelected ? 'var(--color-coral)' : '#FFFFFF', marginBottom: '4px' }}>
+                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, color: isSelected ? '#000' : '#FFFFFF', marginBottom: '4px' }}>
                       {song.title}
                     </h3>
-                    <div style={{ fontSize: '0.82rem', color: 'rgba(255, 255, 255, 0.75)' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: isSelected ? '#333' : 'rgba(255, 255, 255, 0.8)', fontWeight: 600 }}>
                       {song.artist} • {song.genre}
                     </div>
                   </div>
                 </div>
 
                 <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: isSelected ? 'var(--color-coral)' : '#FFFFFF' }}>
+                  <div style={{ fontFamily: 'var(--font-black)', fontSize: '1.6rem', color: isSelected ? '#000' : 'var(--color-acid)' }}>
                     {pct}%
                   </div>
 
                   <button
+                    className="btn-brutal"
                     style={{
                       padding: '8px 20px',
-                      borderRadius: 'var(--radius-full)',
-                      fontSize: '0.85rem',
-                      fontWeight: 700,
-                      backgroundColor: isSelected ? 'var(--color-coral)' : 'rgba(255, 255, 255, 0.15)',
-                      color: '#FFFFFF',
+                      borderRadius: '999px',
+                      fontSize: '0.82rem',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: 800,
+                      backgroundColor: isSelected ? 'var(--color-acid)' : '#FFFFFF',
+                      color: '#000000',
+                      border: '2px solid #000',
+                      boxShadow: '2px 2px 0 #000',
                       cursor: 'pointer'
                     }}
                   >
-                    {isSelected ? "Selected ✓" : "Vote This"}
+                    {isSelected ? "VOTED ✓" : "VOTE THIS"}
                   </button>
                 </div>
               </div>
@@ -248,47 +305,77 @@ export const Community = () => {
         className="hero-split-grid"
       >
         {/* Song Request Box */}
-        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: 'var(--radius-2xl)', backgroundColor: 'var(--color-white)' }}>
+        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: '24px', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '5px 5px 0 #000' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <Music size={22} color="var(--color-coral)" />
-            <h2 style={{ fontSize: '1.45rem', margin: 0, color: 'var(--color-charcoal)' }}>Request a Song for Tonight</h2>
+            <Music size={24} color="var(--color-coral)" />
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.45rem', fontWeight: 800, margin: 0, color: '#000', textTransform: 'uppercase' }}>
+              Request a Song for Tonight
+            </h2>
           </div>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '22px' }}>
-            Want to dedicate a track to your hostel mates or project team? Drop your request directly to the studio queue.
+          <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.88rem', fontWeight: 600, marginBottom: '22px' }}>
+            Want to dedicate a track to your hostel mates or project team? Drop your request directly into the RJ cue.
           </p>
 
           <form onSubmit={handleSongRequestSubmit}>
-            <div className="form-group">
-              <label className="form-label">Song Title</label>
+            <div className="form-group" style={{ marginBottom: '14px' }}>
+              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Song Title</label>
               <input
                 type="text"
                 value={songTitle}
                 onChange={(e) => setSongTitle(e.target.value)}
                 placeholder="e.g. Kasoor, Dil Chahta Hai, Starboy..."
-                className="form-input"
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.9rem',
+                  outline: 'none'
+                }}
                 required
               />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Artist / Band</label>
+            <div className="form-group" style={{ marginBottom: '14px' }}>
+              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Artist / Band</label>
               <input
                 type="text"
                 value={artistName}
                 onChange={(e) => setArtistName(e.target.value)}
                 placeholder="e.g. Prateek Kuhad, A.R. Rahman..."
-                className="form-input"
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.9rem',
+                  outline: 'none'
+                }}
                 required
               />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Your Hostel / Wing</label>
+            <div className="form-group" style={{ marginBottom: '14px' }}>
+              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Your Hostel / Wing</label>
               <select
                 value={hostelBlock}
                 onChange={(e) => setHostelBlock(e.target.value)}
-                className="form-input"
-                style={{ cursor: 'pointer' }}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.9rem',
+                  outline: 'none',
+                  cursor: 'pointer',
+                  backgroundColor: '#fff'
+                }}
               >
                 <option value="Netravati Block A">Netravati Block A</option>
                 <option value="Netravati Block B">Netravati Block B</option>
@@ -300,36 +387,63 @@ export const Community = () => {
               </select>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Dedication / Message</label>
+            <div className="form-group" style={{ marginBottom: '18px' }}>
+              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Dedication / Message</label>
               <textarea
                 value={dedication}
                 onChange={(e) => setDedication(e.target.value)}
                 placeholder="Shoutout to Room 304 or the midnight HackNight coders..."
-                className="form-input"
                 rows={3}
-                style={{ resize: 'none' }}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.9rem',
+                  outline: 'none',
+                  resize: 'none'
+                }}
               />
             </div>
 
             <button
               type="submit"
-              className="btn-primary"
-              style={{ width: '100%', padding: '13px', fontSize: '0.95rem' }}
+              className="btn-brutal"
+              style={{
+                width: '100%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '14px',
+                fontSize: '0.92rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-coral)',
+                color: '#fff',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000',
+                borderRadius: '12px',
+                cursor: 'pointer'
+              }}
             >
               <Send size={16} />
-              <span>Submit Song Request to RJ</span>
+              <span>SUBMIT SONG REQUEST TO RJ</span>
             </button>
           </form>
         </div>
 
         {/* Campus Poll Card */}
-        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: 'var(--radius-2xl)', backgroundColor: 'var(--color-white)' }}>
+        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: '24px', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '5px 5px 0 #000' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-            <Sparkles size={20} color="var(--color-coral)" />
-            <h2 style={{ fontSize: '1.4rem', margin: 0, color: 'var(--color-charcoal)' }}>Campus Life Poll</h2>
+            <Sparkles size={22} color="var(--color-coral)" />
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, margin: 0, color: '#000', textTransform: 'uppercase' }}>
+              Campus Life Poll
+            </h2>
           </div>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '20px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.92rem', fontWeight: 600, marginBottom: '20px' }}>
             {mockVotingData.campusPoll.question}
           </p>
 
@@ -348,15 +462,16 @@ export const Community = () => {
                     position: 'relative',
                     overflow: 'hidden',
                     padding: '16px 18px',
-                    borderRadius: 'var(--radius-lg)',
-                    backgroundColor: isSelected ? 'rgba(245, 45, 58, 0.08)' : 'var(--color-soft-grey)',
-                    border: isSelected ? '2px solid var(--color-coral)' : '1px solid var(--border-color)',
+                    borderRadius: '14px',
+                    backgroundColor: isSelected ? 'var(--color-acid)' : '#F5F5F5',
+                    border: '2px solid #000',
+                    boxShadow: isSelected ? '3px 3px 0 #000' : '2px 2px 0 #000',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '12px',
-                    transition: 'all var(--transition-fast)'
+                    transition: 'all 0.15s ease'
                   }}
                 >
                   <div 
@@ -366,15 +481,15 @@ export const Community = () => {
                       top: 0,
                       bottom: 0,
                       width: `${pct}%`,
-                      backgroundColor: isSelected ? 'rgba(245, 45, 58, 0.12)' : 'rgba(0,0,0,0.03)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.08)',
                       zIndex: 0,
                       transition: 'width 0.4s ease'
                     }}
                   />
-                  <span style={{ position: 'relative', zIndex: 1, fontSize: '0.9rem', fontWeight: 600, color: isSelected ? 'var(--color-coral)' : 'var(--color-charcoal)' }}>
+                  <span style={{ position: 'relative', zIndex: 1, fontSize: '0.9rem', fontWeight: 700, fontFamily: 'var(--font-body)', color: '#000' }}>
                     {opt.text}
                   </span>
-                  <span style={{ position: 'relative', zIndex: 1, fontFamily: 'var(--font-mono)', fontSize: '0.88rem', fontWeight: 700, color: isSelected ? 'var(--color-coral)' : 'var(--text-muted)' }}>
+                  <span style={{ position: 'relative', zIndex: 1, fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 900, color: '#000' }}>
                     {pct}%
                   </span>
                 </div>
@@ -382,20 +497,35 @@ export const Community = () => {
             })}
           </div>
 
-          <div style={{ marginTop: '22px', fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-            Poll results refreshed live from NMAMIT student activity sessions.
+          <div style={{ marginTop: '22px', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: '#444', textAlign: 'center', fontWeight: 600 }}>
+            ⚡ Poll results refreshed live from NMAMIT student listener sessions.
           </div>
         </div>
       </section>
 
       {/* Recent Community Song Requests Stream */}
       <section>
-        <div className="section-header">
+        <div className="section-header" style={{ marginBottom: '16px' }}>
           <div>
-            <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-              REQUEST BOARD
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '1.5px solid #000',
+                padding: '3px 8px',
+                borderRadius: '6px',
+                boxShadow: '2px 2px 0 #000'
+              }}
+            >
+              🎵 REQUEST BOARD
             </span>
-            <h2 className="section-header-title" style={{ marginTop: '6px' }}>
+            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
               Recent Student Requests & Dedications
             </h2>
           </div>
@@ -413,58 +543,61 @@ export const Community = () => {
               key={req.id}
               className="card-modern"
               style={{
-                padding: '20px 22px',
-                borderRadius: 'var(--radius-xl)',
+                padding: '22px',
+                borderRadius: '20px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 gap: '14px',
-                backgroundColor: 'var(--color-white)',
-                border: '1px solid var(--border-color)',
-                boxShadow: 'var(--shadow-sm)'
+                backgroundColor: '#FFFFFF',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000'
               }}
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--color-coral)', fontWeight: 700 }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#000', backgroundColor: 'var(--color-acid)', border: '1.5px solid #000', padding: '2px 8px', borderRadius: '6px', fontWeight: 800 }}>
                     {req.hostelBlock}
                   </span>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#555', fontWeight: 700 }}>
                     {req.timeAgo}
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.08rem', fontWeight: 700, marginBottom: '2px', color: 'var(--color-charcoal)' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, marginBottom: '2px', color: '#000' }}>
                   {req.songTitle}
                 </h3>
-                <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginBottom: '12px' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.84rem', color: 'var(--color-coral)', fontWeight: 700, marginBottom: '12px' }}>
                   by {req.artist}
                 </div>
 
-                <p style={{ fontStyle: 'italic', fontSize: '0.86rem', color: 'var(--text-secondary)', borderLeft: '2px solid var(--color-amber)', paddingLeft: '10px' }}>
+                <p style={{ fontStyle: 'italic', fontSize: '0.86rem', color: '#333', borderLeft: '3px solid #000', paddingLeft: '10px', fontFamily: 'var(--font-body)' }}>
                   “{req.dedication}”
                 </p>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  Requested by <strong style={{ color: 'var(--color-charcoal)' }}>{req.requestedBy}</strong>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '2px dashed #000' }}>
+                <span style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: '#444' }}>
+                  Req by: <strong style={{ color: '#000' }}>{req.requestedBy}</strong>
                 </span>
 
                 <button
                   onClick={() => handleUpvoteRequest(req.id)}
+                  className="btn-brutal"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
                     fontSize: '0.82rem',
-                    color: 'var(--color-coral)',
-                    backgroundColor: 'rgba(245, 45, 58, 0.08)',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
+                    color: '#000',
+                    backgroundColor: 'var(--color-acid)',
                     padding: '5px 12px',
-                    borderRadius: 'var(--radius-full)',
+                    borderRadius: '999px',
                     cursor: 'pointer',
-                    fontWeight: 600,
-                    border: '1px solid rgba(245, 45, 58, 0.2)'
+                    border: '1.5px solid #000',
+                    boxShadow: '1.5px 1.5px 0 #000'
                   }}
                   title="Upvote this song"
                 >

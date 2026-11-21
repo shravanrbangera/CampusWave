@@ -54,14 +54,14 @@ export const MiniPlayer = () => {
         left: 0,
         right: 0,
         height: 'var(--mini-player-height)',
-        backgroundColor: 'rgba(26, 26, 26, 0.96)',
+        backgroundColor: '#111111',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        borderTop: '2.5px solid #000000',
         zIndex: 95,
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.35)',
+        boxShadow: '0 -6px 0 rgba(0, 0, 0, 0.1)',
         transition: 'bottom var(--transition-fast)'
       }}
     >
@@ -259,21 +259,23 @@ export const MiniPlayer = () => {
 
             <button
               onClick={togglePlay}
+              className="btn-brutal"
               style={{
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                backgroundColor: 'var(--color-coral)',
-                color: '#FFFFFF',
+                backgroundColor: 'var(--color-acid)',
+                color: '#000000',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: 'var(--shadow-coral)',
-                transition: 'all var(--transition-fast)'
+                cursor: 'pointer'
               }}
               title={isPlaying ? "Pause" : "Play"}
             >
-              {isPlaying ? <Pause size={20} fill="#FFFFFF" /> : <Play size={20} fill="#FFFFFF" style={{ marginLeft: '2px' }} />}
+              {isPlaying ? <Pause size={18} fill="#000" /> : <Play size={18} fill="#000" style={{ marginLeft: '2px' }} />}
             </button>
 
             <button

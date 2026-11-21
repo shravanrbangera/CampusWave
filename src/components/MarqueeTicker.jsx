@@ -87,3 +87,4 @@ export const MarqueeTicker = ({
 };
 
 export default MarqueeTicker;
+

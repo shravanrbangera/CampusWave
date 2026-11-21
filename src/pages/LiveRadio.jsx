@@ -180,13 +180,12 @@ export const LiveRadio = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
             {/* Turntable Deck & Artwork */}
             <div 
-              className="glass-panel"
               style={{
-                background: 'linear-gradient(145deg, rgba(16, 56, 61, 0.75) 0%, rgba(14, 19, 21, 0.95) 100%)',
+                background: 'linear-gradient(145deg, rgba(16, 56, 61, 0.85) 0%, rgba(14, 19, 21, 0.98) 100%)',
                 padding: 'var(--space-2xl)',
-                borderRadius: 'var(--radius-xl)',
-                border: '2px solid var(--color-coral)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+                borderRadius: '24px',
+                border: '3px solid #000000',
+                boxShadow: '6px 6px 0 #000000',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -343,25 +342,33 @@ export const LiveRadio = () => {
                 {/* Big Center Play/Pause Button */}
                 <button
                   onClick={handleToggleBroadcast}
-                  className="btn-coral"
+                  className="btn-brutal"
                   style={{
-                    padding: '14px 32px',
-                    fontSize: '1rem',
-                    fontWeight: 700,
+                    padding: '14px 34px',
+                    fontSize: '0.95rem',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    backgroundColor: 'var(--color-acid)',
+                    color: '#000000',
+                    border: '2px solid #000',
+                    boxShadow: '3px 3px 0 #000',
+                    borderRadius: '999px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '10px'
+                    gap: '10px',
+                    cursor: 'pointer'
                   }}
                 >
                   {isLivePlaying ? (
                     <>
-                      <Pause size={20} fill="#FFFFFF" />
-                      <span>Pause Broadcast</span>
+                      <Pause size={20} fill="#000" />
+                      <span>PAUSE BROADCAST</span>
                     </>
                   ) : (
                     <>
-                      <Play size={20} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
-                      <span>Listen Live Now</span>
+                      <Play size={20} fill="#000" style={{ marginLeft: '2px' }} />
+                      <span>LISTEN LIVE NOW</span>
                     </>
                   )}
                 </button>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Radio, Eye, EyeOff, Lock, Mail, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Radio, Eye, EyeOff, Lock, Mail, ArrowRight, Sparkles, CheckCircle2, Zap } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { VinylRecord } from '../components/VinylRecord';
 
@@ -54,7 +54,7 @@ export const Login = () => {
         minHeight: 'calc(100vh - var(--navbar-height))',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        backgroundColor: 'var(--color-soft-grey)'
+        backgroundColor: '#F4F1EA'
       }}
       className="split-login-container"
     >
@@ -63,7 +63,8 @@ export const Login = () => {
         className="login-visual-panel"
         style={{
           position: 'relative',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, var(--color-charcoal) 100%)',
+          background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
+          borderRight: '3px solid #000',
           padding: 'var(--space-3xl)',
           display: 'flex',
           flexDirection: 'column',
@@ -71,53 +72,61 @@ export const Login = () => {
           overflow: 'hidden'
         }}
       >
-        {/* Ambient atmospheric glow */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '20%',
-            left: '10%',
-            width: '380px',
-            height: '380px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(245, 45, 58, 0.35) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            pointerEvents: 'none'
-          }}
-        />
-
         <div style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <div
               style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '12px',
+                width: '46px',
+                height: '46px',
+                borderRadius: '14px',
                 background: 'var(--color-coral)',
+                border: '2px solid #000',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FFFFFF'
+                color: '#FFFFFF',
+                boxShadow: '3px 3px 0 #000'
               }}
             >
               <Radio size={24} />
             </div>
             <div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: '#fff' }}>
+              <span style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', letterSpacing: '-0.03em', color: '#fff' }}>
                 CAMPUS<span style={{ color: 'var(--color-coral)' }}>WAVE</span>
               </span>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'rgba(255,255,255,0.7)' }}>
-                NMAMIT • 90.4 DIGITAL
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-acid)' }}>
+                NMAMIT • 90.4 DIGITAL FM
               </div>
             </div>
           </div>
 
-          <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: '#FFFFFF', lineHeight: 1.15, marginBottom: '16px' }}>
-            Tune into the heartbeat of your campus.
+          <h2 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(2rem, 3.8vw, 2.9rem)', color: '#FFFFFF', textTransform: 'uppercase', lineHeight: 1.15, marginBottom: '16px' }}>
+            Tune into the <span style={{ color: 'var(--color-acid)' }}>heartbeat</span> of your campus.
           </h2>
-          <p style={{ color: 'rgba(255, 255, 255, 0.82)', fontSize: '1.05rem', maxWidth: '480px', lineHeight: 1.6 }}>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.6 }}>
             Access exclusive hosteller playlists, real-time radio shoutouts, AI episode digests, and community song voting.
           </p>
+
+          {/* Sticky badge */}
+          <div 
+            style={{
+              marginTop: '20px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              backgroundColor: 'var(--color-acid)',
+              color: '#000',
+              border: '2px solid #000',
+              padding: '6px 14px',
+              borderRadius: '8px',
+              boxShadow: '3px 3px 0 #000',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.8rem',
+              fontWeight: 900
+            }}
+          >
+            <span>🦖 90.4 MHZ // BROADCAST ACCESS PORTAL</span>
+          </div>
         </div>
 
         {/* Center Vinyl Artwork */}
@@ -143,17 +152,18 @@ export const Login = () => {
           style={{
             position: 'relative',
             zIndex: 2,
-            backgroundColor: 'rgba(0, 0, 0, 0.4)',
-            backdropFilter: 'blur(12px)',
-            padding: '18px 24px',
-            borderRadius: 'var(--radius-xl)',
-            border: '1px solid rgba(255, 255, 255, 0.15)'
+            backgroundColor: '#FFFFFF',
+            color: '#000',
+            padding: '16px 22px',
+            borderRadius: '16px',
+            border: '2px solid #000',
+            boxShadow: '4px 4px 0 #000'
           }}
         >
-          <p style={{ fontStyle: 'italic', fontSize: '0.92rem', color: '#FFFFFF', marginBottom: '8px' }}>
+          <p style={{ fontStyle: 'italic', fontSize: '0.88rem', fontFamily: 'var(--font-body)', color: '#111', marginBottom: '6px', fontWeight: 600 }}>
             “Whether studying in Netravati hostel or commuting on the Karkala bus, CampusWave keeps us connected to every beat.”
           </p>
-          <div style={{ fontSize: '0.8rem', color: 'var(--color-amber)', fontWeight: 600 }}>
+          <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--color-coral)', fontWeight: 800 }}>
             — Ananya Hegde (CSE '25, Resident RJ)
           </div>
         </div>
@@ -167,18 +177,46 @@ export const Login = () => {
           justifyContent: 'center',
           padding: 'var(--space-2xl) var(--space-xl)',
           position: 'relative',
-          backgroundColor: 'var(--color-white)'
+          backgroundColor: '#F4F1EA'
         }}
       >
-        <div style={{ maxWidth: '440px', width: '100%' }}>
-          <div style={{ marginBottom: '28px' }}>
-            <span className="editorial-badge" style={{ marginBottom: '10px', backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-              STUDENT AUTHENTICATION
+        <div 
+          className="card-modern"
+          style={{ 
+            maxWidth: '460px', 
+            width: '100%',
+            padding: '36px',
+            borderRadius: '24px',
+            backgroundColor: '#FFFFFF',
+            border: '2.5px solid #000',
+            boxShadow: '6px 6px 0 #000'
+          }}
+        >
+          <div style={{ marginBottom: '24px' }}>
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '1.5px solid #000',
+                padding: '3px 8px',
+                borderRadius: '6px',
+                boxShadow: '2px 2px 0 #000',
+                marginBottom: '10px'
+              }}
+            >
+              ⚡ STUDENT AUTHENTICATION
             </span>
-            <h1 style={{ fontSize: '2.2rem', marginBottom: '8px', color: 'var(--color-charcoal)' }}>
+            <h1 style={{ fontFamily: 'var(--font-black)', fontSize: '2.2rem', marginBottom: '8px', color: '#000', textTransform: 'uppercase' }}>
               Welcome back
             </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+            <p style={{ fontFamily: 'var(--font-mono)', color: '#444', fontSize: '0.88rem', fontWeight: 600 }}>
               Sign in with your NMAMIT student credentials or test drive as a guest listener.
             </p>
           </div>
@@ -186,65 +224,80 @@ export const Login = () => {
           {error && (
             <div
               style={{
-                backgroundColor: 'rgba(245, 45, 58, 0.1)',
-                border: '1px solid var(--color-coral)',
-                color: 'var(--color-coral)',
-                padding: '12px 16px',
-                borderRadius: 'var(--radius-md)',
-                fontSize: '0.88rem',
-                marginBottom: '20px'
+                backgroundColor: 'var(--color-acid)',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
+                color: '#000',
+                padding: '10px 14px',
+                borderRadius: '8px',
+                fontSize: '0.85rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                marginBottom: '18px'
               }}
             >
-              {error}
+              ⚠️ {error}
             </div>
           )}
 
           {toastMsg && (
             <div
               style={{
-                backgroundColor: 'rgba(34, 197, 94, 0.12)',
-                border: '1px solid #16a34a',
-                color: '#16a34a',
-                padding: '12px 16px',
-                borderRadius: 'var(--radius-md)',
-                fontSize: '0.88rem',
-                marginBottom: '20px'
+                backgroundColor: 'var(--color-acid)',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
+                color: '#000',
+                padding: '10px 14px',
+                borderRadius: '8px',
+                fontSize: '0.85rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                marginBottom: '18px'
               }}
             >
-              {toastMsg}
+              ✓ {toastMsg}
             </div>
           )}
 
           <form onSubmit={handleSubmit}>
             {/* Email Field */}
-            <div className="form-group">
-              <label className="form-label">NMAMIT Email Address</label>
+            <div className="form-group" style={{ marginBottom: '16px' }}>
+              <label className="form-label" style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>NMAMIT Email Address</label>
               <div style={{ position: 'relative' }}>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. student@nitte.edu.in"
-                  className="form-input"
-                  style={{ paddingLeft: '44px' }}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px 12px 44px',
+                    borderRadius: '12px',
+                    border: '2px solid #000',
+                    boxShadow: '2px 2px 0 #000',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.88rem',
+                    fontWeight: 600,
+                    outline: 'none'
+                  }}
                   required
                 />
                 <Mail
                   size={18}
-                  color="var(--text-muted)"
+                  color="#000"
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }}
                 />
               </div>
             </div>
 
             {/* Password Field */}
-            <div className="form-group">
+            <div className="form-group" style={{ marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label className="form-label" style={{ margin: 0 }}>Password</label>
+                <label className="form-label" style={{ margin: 0, fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.78rem', textTransform: 'uppercase' }}>Password</label>
                 <button
                   type="button"
                   onClick={handleForgotPassword}
-                  style={{ fontSize: '0.8rem', color: 'var(--color-coral)', cursor: 'pointer', fontWeight: 600 }}
+                  style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--color-coral)', cursor: 'pointer', fontWeight: 800, background: 'none', border: 'none' }}
                 >
                   Forgot password?
                 </button>
@@ -256,13 +309,22 @@ export const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="form-input"
-                  style={{ paddingLeft: '44px', paddingRight: '44px' }}
+                  style={{
+                    width: '100%',
+                    padding: '12px 44px',
+                    borderRadius: '12px',
+                    border: '2px solid #000',
+                    boxShadow: '2px 2px 0 #000',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.88rem',
+                    fontWeight: 600,
+                    outline: 'none'
+                  }}
                   required
                 />
                 <Lock
                   size={18}
-                  color="var(--text-muted)"
+                  color="#000"
                   style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }}
                 />
                 <button
@@ -273,8 +335,10 @@ export const Login = () => {
                     right: '16px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    color: 'var(--text-muted)',
-                    cursor: 'pointer'
+                    color: '#000',
+                    cursor: 'pointer',
+                    background: 'none',
+                    border: 'none'
                   }}
                   title={showPassword ? "Hide password" : "Show password"}
                 >
@@ -284,15 +348,15 @@ export const Login = () => {
             </div>
 
             {/* Remember Me */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '22px' }}>
               <input
                 type="checkbox"
                 id="remember"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                style={{ accentColor: 'var(--color-coral)', cursor: 'pointer' }}
+                style={{ width: '18px', height: '18px', accentColor: 'var(--color-coral)', cursor: 'pointer' }}
               />
-              <label htmlFor="remember" style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', cursor: 'pointer' }}>
+              <label htmlFor="remember" style={{ fontSize: '0.84rem', fontFamily: 'var(--font-mono)', fontWeight: 600, color: '#222', cursor: 'pointer' }}>
                 Keep me signed in on this device
               </label>
             </div>
@@ -301,10 +365,27 @@ export const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary"
-              style={{ width: '100%', padding: '14px', fontSize: '1rem', marginBottom: '16px' }}
+              className="btn-brutal"
+              style={{
+                width: '100%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '14px',
+                fontSize: '0.92rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-coral)',
+                color: '#FFFFFF',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000',
+                borderRadius: '12px',
+                marginBottom: '14px',
+                cursor: 'pointer'
+              }}
             >
-              <span>{loading ? "Authenticating..." : "Sign In to CampusWave"}</span>
+              <span>{loading ? "AUTHENTICATING..." : "SIGN IN TO CAMPUSWAVE"}</span>
               <ArrowRight size={18} />
             </button>
 
@@ -312,17 +393,30 @@ export const Login = () => {
             <button
               type="button"
               onClick={handleGuestLogin}
-              className="btn-secondary"
-              style={{ width: '100%', padding: '12px', fontSize: '0.92rem', marginBottom: '24px' }}
+              className="btn-brutal"
+              style={{
+                width: '100%',
+                padding: '12px',
+                fontSize: '0.88rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000',
+                borderRadius: '12px',
+                marginBottom: '20px',
+                cursor: 'pointer'
+              }}
             >
-              <span>Continue as Guest Student</span>
+              <span>CONTINUE AS GUEST STUDENT</span>
             </button>
           </form>
 
           {/* Switch to Register */}
-          <div style={{ textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+          <div style={{ textAlign: 'center', fontSize: '0.86rem', fontFamily: 'var(--font-mono)', color: '#333' }}>
             New to NMAMIT CampusWave?{' '}
-            <Link to="/register" style={{ color: 'var(--color-coral)', fontWeight: 600 }}>
+            <Link to="/register" style={{ color: 'var(--color-coral)', fontWeight: 800 }}>
               Create an account
             </Link>
           </div>

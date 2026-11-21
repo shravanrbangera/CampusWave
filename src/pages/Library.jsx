@@ -10,7 +10,8 @@ import {
   Trash2,
   ArrowRight,
   Compass,
-  FolderOpen
+  FolderOpen,
+  Zap
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAudio } from '../context/AudioContext';
@@ -35,13 +36,46 @@ export const Library = () => {
     <div className="library-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
       {/* Header */}
       <div>
-        <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-          YOUR PERSONAL COLLECTION
-        </span>
-        <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginTop: '8px', marginBottom: '12px', color: 'var(--color-charcoal)' }}>
-          Student Audio Library
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
+          <span 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              backgroundColor: 'var(--color-acid)',
+              color: '#000',
+              border: '2px solid #000',
+              borderRadius: '8px',
+              padding: '4px 10px',
+              boxShadow: '2px 2px 0 #000'
+            }}
+          >
+            <Zap size={13} fill="#000" />
+            STUDENT VAULT // 90.4 MHZ
+          </span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 700, color: '#333' }}>
+            PERSONAL AUDIO ARCHIVE
+          </span>
+        </div>
+
+        <h1 
+          style={{ 
+            fontFamily: 'var(--font-black)',
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)',
+            textTransform: 'uppercase',
+            letterSpacing: '-0.03em',
+            marginTop: '8px', 
+            marginBottom: '10px', 
+            color: 'var(--color-ink)' 
+          }}
+        >
+          STUDENT AUDIO <span className="highlight-acid" style={{ border: '2px solid #000', borderRadius: '6px', padding: '0 8px' }}>LIBRARY</span>
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '640px' }}>
+        <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.95rem', fontWeight: 600, maxWidth: '680px', lineHeight: 1.6 }}>
           Quick access to your saved podcast episodes, bookmarked AI summaries, liked tracks, and listening history.
         </p>
       </div>
@@ -51,29 +85,31 @@ export const Library = () => {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
+          gap: '10px',
           overflowX: 'auto',
-          paddingBottom: '8px',
-          borderBottom: '1px solid var(--border-color)'
+          paddingBottom: '8px'
         }}
       >
         <button
           onClick={() => setActiveTab('podcasts')}
+          className="btn-brutal"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '10px 20px',
-            borderRadius: 'var(--radius-full)',
-            fontSize: '0.9rem',
-            fontWeight: 600,
+            borderRadius: '999px',
+            fontSize: '0.84rem',
+            fontFamily: 'var(--font-mono)',
+            fontWeight: 800,
+            textTransform: 'uppercase',
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            transition: 'all var(--transition-fast)',
-            backgroundColor: activeTab === 'podcasts' ? 'var(--color-coral)' : 'var(--color-white)',
-            color: activeTab === 'podcasts' ? '#FFFFFF' : 'var(--text-secondary)',
-            border: activeTab === 'podcasts' ? '1px solid var(--color-coral)' : '1px solid var(--border-color)',
-            boxShadow: activeTab === 'podcasts' ? '0 4px 12px rgba(245, 45, 58, 0.25)' : 'none'
+            backgroundColor: activeTab === 'podcasts' ? 'var(--color-acid)' : '#FFFFFF',
+            color: '#000000',
+            border: '2px solid #000',
+            boxShadow: activeTab === 'podcasts' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            transform: activeTab === 'podcasts' ? 'translateY(-2px)' : 'none'
           }}
         >
           <Mic2 size={16} />
@@ -82,21 +118,24 @@ export const Library = () => {
 
         <button
           onClick={() => setActiveTab('summaries')}
+          className="btn-brutal"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '10px 20px',
-            borderRadius: 'var(--radius-full)',
-            fontSize: '0.9rem',
-            fontWeight: 600,
+            borderRadius: '999px',
+            fontSize: '0.84rem',
+            fontFamily: 'var(--font-mono)',
+            fontWeight: 800,
+            textTransform: 'uppercase',
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            transition: 'all var(--transition-fast)',
-            backgroundColor: activeTab === 'summaries' ? 'var(--color-coral)' : 'var(--color-white)',
-            color: activeTab === 'summaries' ? '#FFFFFF' : 'var(--text-secondary)',
-            border: activeTab === 'summaries' ? '1px solid var(--color-coral)' : '1px solid var(--border-color)',
-            boxShadow: activeTab === 'summaries' ? '0 4px 12px rgba(245, 45, 58, 0.25)' : 'none'
+            backgroundColor: activeTab === 'summaries' ? 'var(--color-acid)' : '#FFFFFF',
+            color: '#000000',
+            border: '2px solid #000',
+            boxShadow: activeTab === 'summaries' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            transform: activeTab === 'summaries' ? 'translateY(-2px)' : 'none'
           }}
         >
           <Sparkles size={16} />
@@ -105,21 +144,24 @@ export const Library = () => {
 
         <button
           onClick={() => setActiveTab('liked')}
+          className="btn-brutal"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '10px 20px',
-            borderRadius: 'var(--radius-full)',
-            fontSize: '0.9rem',
-            fontWeight: 600,
+            borderRadius: '999px',
+            fontSize: '0.84rem',
+            fontFamily: 'var(--font-mono)',
+            fontWeight: 800,
+            textTransform: 'uppercase',
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            transition: 'all var(--transition-fast)',
-            backgroundColor: activeTab === 'liked' ? 'var(--color-coral)' : 'var(--color-white)',
-            color: activeTab === 'liked' ? '#FFFFFF' : 'var(--text-secondary)',
-            border: activeTab === 'liked' ? '1px solid var(--color-coral)' : '1px solid var(--border-color)',
-            boxShadow: activeTab === 'liked' ? '0 4px 12px rgba(245, 45, 58, 0.25)' : 'none'
+            backgroundColor: activeTab === 'liked' ? 'var(--color-acid)' : '#FFFFFF',
+            color: '#000000',
+            border: '2px solid #000',
+            boxShadow: activeTab === 'liked' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            transform: activeTab === 'liked' ? 'translateY(-2px)' : 'none'
           }}
         >
           <Heart size={16} />
@@ -128,21 +170,24 @@ export const Library = () => {
 
         <button
           onClick={() => setActiveTab('history')}
+          className="btn-brutal"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             padding: '10px 20px',
-            borderRadius: 'var(--radius-full)',
-            fontSize: '0.9rem',
-            fontWeight: 600,
+            borderRadius: '999px',
+            fontSize: '0.84rem',
+            fontFamily: 'var(--font-mono)',
+            fontWeight: 800,
+            textTransform: 'uppercase',
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            transition: 'all var(--transition-fast)',
-            backgroundColor: activeTab === 'history' ? 'var(--color-coral)' : 'var(--color-white)',
-            color: activeTab === 'history' ? '#FFFFFF' : 'var(--text-secondary)',
-            border: activeTab === 'history' ? '1px solid var(--color-coral)' : '1px solid var(--border-color)',
-            boxShadow: activeTab === 'history' ? '0 4px 12px rgba(245, 45, 58, 0.25)' : 'none'
+            backgroundColor: activeTab === 'history' ? 'var(--color-acid)' : '#FFFFFF',
+            color: '#000000',
+            border: '2px solid #000',
+            boxShadow: activeTab === 'history' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            transform: activeTab === 'history' ? 'translateY(-2px)' : 'none'
           }}
         >
           <Clock size={16} />
@@ -171,35 +216,39 @@ export const Library = () => {
               style={{
                 padding: 'var(--space-3xl)',
                 textAlign: 'center',
-                borderRadius: 'var(--radius-2xl)',
+                borderRadius: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '16px',
-                backgroundColor: 'var(--color-white)'
+                backgroundColor: '#FFFFFF',
+                border: '2.5px solid #000',
+                boxShadow: '5px 5px 0 #000'
               }}
             >
               <div
                 style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(245, 45, 58, 0.1)',
+                  width: '68px',
+                  height: '68px',
+                  borderRadius: '16px',
+                  backgroundColor: 'var(--color-acid)',
+                  border: '2px solid #000',
+                  boxShadow: '3px 3px 0 #000',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--color-coral)'
+                  color: '#000'
                 }}
               >
-                <Bookmark size={28} />
+                <Bookmark size={32} />
               </div>
-              <h3 style={{ fontSize: '1.4rem', color: 'var(--color-charcoal)' }}>No saved podcasts yet</h3>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '420px', fontSize: '0.95rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', textTransform: 'uppercase', color: '#000' }}>No saved podcasts yet</h3>
+              <p style={{ fontFamily: 'var(--font-mono)', color: '#333', maxWidth: '440px', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Bookmark episodes while exploring so you can listen during hostel study hours or daily bus commutes.
               </p>
-              <Link to="/podcasts" className="btn-primary" style={{ marginTop: '8px' }}>
+              <Link to="/podcasts" className="btn-brutal" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', backgroundColor: 'var(--color-coral)', color: '#fff', border: '2px solid #000', boxShadow: '3px 3px 0 #000', borderRadius: '999px', fontFamily: 'var(--font-mono)', fontWeight: 800, textDecoration: 'none' }}>
                 <Compass size={16} />
-                <span>Browse Student Podcasts</span>
+                <span>BROWSE STUDENT PODCASTS</span>
               </Link>
             </div>
           )}
@@ -227,35 +276,39 @@ export const Library = () => {
               style={{
                 padding: 'var(--space-3xl)',
                 textAlign: 'center',
-                borderRadius: 'var(--radius-2xl)',
+                borderRadius: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '16px',
-                backgroundColor: 'var(--color-white)'
+                backgroundColor: '#FFFFFF',
+                border: '2.5px solid #000',
+                boxShadow: '5px 5px 0 #000'
               }}
             >
               <div
                 style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(255, 181, 46, 0.15)',
+                  width: '68px',
+                  height: '68px',
+                  borderRadius: '16px',
+                  backgroundColor: 'var(--color-acid)',
+                  border: '2px solid #000',
+                  boxShadow: '3px 3px 0 #000',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--color-coral)'
+                  color: '#000'
                 }}
               >
-                <Sparkles size={28} />
+                <Sparkles size={32} />
               </div>
-              <h3 style={{ fontSize: '1.4rem', color: 'var(--color-charcoal)' }}>No AI summaries bookmarked</h3>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '420px', fontSize: '0.95rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', textTransform: 'uppercase', color: '#000' }}>No AI summaries bookmarked</h3>
+              <p style={{ fontFamily: 'var(--font-mono)', color: '#333', maxWidth: '440px', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Save key takeaways from robotics lectures and cultural fest meetings to revise them anytime.
               </p>
-              <Link to="/summaries" className="btn-primary" style={{ marginTop: '8px' }}>
+              <Link to="/summaries" className="btn-brutal" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', backgroundColor: 'var(--color-coral)', color: '#fff', border: '2px solid #000', boxShadow: '3px 3px 0 #000', borderRadius: '999px', fontFamily: 'var(--font-mono)', fontWeight: 800, textDecoration: 'none' }}>
                 <Sparkles size={16} />
-                <span>Browse AI Summaries</span>
+                <span>BROWSE AI SUMMARIES</span>
               </Link>
             </div>
           )}
@@ -283,34 +336,38 @@ export const Library = () => {
               style={{
                 padding: 'var(--space-3xl)',
                 textAlign: 'center',
-                borderRadius: 'var(--radius-2xl)',
+                borderRadius: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '16px',
-                backgroundColor: 'var(--color-white)'
+                backgroundColor: '#FFFFFF',
+                border: '2.5px solid #000',
+                boxShadow: '5px 5px 0 #000'
               }}
             >
               <div
                 style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(245, 45, 58, 0.1)',
+                  width: '68px',
+                  height: '68px',
+                  borderRadius: '16px',
+                  backgroundColor: 'var(--color-acid)',
+                  border: '2px solid #000',
+                  boxShadow: '3px 3px 0 #000',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--color-coral)'
+                  color: '#000'
                 }}
               >
-                <Heart size={28} />
+                <Heart size={32} />
               </div>
-              <h3 style={{ fontSize: '1.4rem', color: 'var(--color-charcoal)' }}>Your liked tracks will appear here</h3>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '420px', fontSize: '0.95rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', textTransform: 'uppercase', color: '#000' }}>Your liked tracks will appear here</h3>
+              <p style={{ fontFamily: 'var(--font-mono)', color: '#333', maxWidth: '440px', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Hit the heart icon on any campus song in the player or explore tab to build your hostel playlist.
               </p>
-              <Link to="/explore" className="btn-primary" style={{ marginTop: '8px' }}>
-                <span>Discover Campus Music</span>
+              <Link to="/explore" className="btn-brutal" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', backgroundColor: 'var(--color-coral)', color: '#fff', border: '2px solid #000', boxShadow: '3px 3px 0 #000', borderRadius: '999px', fontFamily: 'var(--font-mono)', fontWeight: 800, textDecoration: 'none' }}>
+                <span>DISCOVER CAMPUS MUSIC</span>
               </Link>
             </div>
           )}
@@ -320,41 +377,43 @@ export const Library = () => {
       {/* Tab 4: Listening History */}
       {activeTab === 'history' && (
         <section>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {listeningHistory.map((item, idx) => (
               <div
                 key={idx}
                 className="card-modern"
                 style={{
-                  padding: '16px 22px',
-                  borderRadius: 'var(--radius-xl)',
+                  padding: '18px 24px',
+                  borderRadius: '16px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   gap: '14px',
-                  backgroundColor: 'var(--color-white)',
-                  border: '1px solid var(--border-color)',
-                  boxShadow: 'var(--shadow-sm)'
+                  backgroundColor: '#FFFFFF',
+                  border: '2px solid #000',
+                  boxShadow: '3px 3px 0 #000'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                   <Clock size={18} color="var(--color-coral)" />
                   <div>
-                    <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-charcoal)' }}>{item.title}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Listened {item.time}</div>
+                    <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1rem', color: '#000' }}>{item.title}</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: '#444' }}>Listened {item.time}</div>
                   </div>
                 </div>
 
                 <span
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.75rem',
+                    fontSize: '0.74rem',
                     textTransform: 'uppercase',
-                    color: 'var(--color-coral)',
-                    backgroundColor: 'rgba(245, 45, 58, 0.08)',
+                    color: '#000',
+                    backgroundColor: 'var(--color-acid)',
+                    border: '1.5px solid #000',
                     padding: '3px 10px',
-                    borderRadius: 'var(--radius-full)',
-                    fontWeight: 700
+                    borderRadius: '6px',
+                    fontWeight: 800,
+                    boxShadow: '1.5px 1.5px 0 #000'
                   }}
                 >
                   {item.type}

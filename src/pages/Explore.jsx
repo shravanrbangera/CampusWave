@@ -5,13 +5,16 @@ import {
   SlidersHorizontal,
   Flame,
   Sparkles,
-  Compass
+  Compass,
+  Play,
+  Zap
 } from 'lucide-react';
 import { mockPodcasts, podcastCategories } from '../data/podcasts';
 import { mockMusic } from '../data/music';
 import { PodcastCard } from '../components/PodcastCard';
 import { MusicCard } from '../components/MusicCard';
 import { useAudio } from '../context/AudioContext';
+import { MarqueeTicker } from '../components/MarqueeTicker';
 
 export const Explore = () => {
   const [searchParams] = useSearchParams();
@@ -58,23 +61,56 @@ export const Explore = () => {
 
   return (
     <div className="explore-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
-      {/* Header & Search Bar */}
+      {/* Header & Search Bar with Brutalist Styling */}
       <div>
-        <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-          CONTENT DISCOVERY
-        </span>
-        <h1 style={{ fontSize: 'clamp(2rem, 3.8vw, 2.6rem)', marginTop: '8px', marginBottom: '10px', color: 'var(--color-charcoal)' }}>
-          Explore Student Audio
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
+          <span 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              backgroundColor: 'var(--color-acid)',
+              color: '#000',
+              border: '2px solid #000',
+              borderRadius: '8px',
+              padding: '4px 10px',
+              boxShadow: '2px 2px 0 #000'
+            }}
+          >
+            <Zap size={13} fill="#000" />
+            CRATE ARCHIVE // 90.4 MHZ
+          </span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 700, color: '#333' }}>
+            NMAMIT AUDIO VAULT
+          </span>
+        </div>
+
+        <h1 
+          style={{ 
+            fontFamily: 'var(--font-black)',
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)',
+            textTransform: 'uppercase',
+            letterSpacing: '-0.03em',
+            marginTop: '8px', 
+            marginBottom: '10px', 
+            color: 'var(--color-ink)' 
+          }}
+        >
+          EXPLORE <span className="highlight-acid" style={{ border: '2px solid #000', borderRadius: '6px', padding: '0 8px' }}>STUDENT SOUNDS</span>
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '640px', marginBottom: '22px' }}>
-          Search across 30+ NMAMIT student podcasts, independent music releases, tech debates, and campus stories.
+        <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.95rem', fontWeight: 600, maxWidth: '680px', marginBottom: '24px', lineHeight: 1.6 }}>
+          Dig through 30+ NMAMIT student podcasts, independent hostel bedroom releases, lab debates, and campus stories.
         </p>
 
-        {/* Big Search Input */}
+        {/* Big Search Input - Tactile Brutalist */}
         <div 
           style={{
             position: 'relative',
-            maxWidth: '640px',
+            maxWidth: '680px',
             width: '100%'
           }}
         >
@@ -83,48 +119,59 @@ export const Explore = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by title, host, keyword or hostel..."
-            className="form-input"
             style={{
-              padding: '14px 20px 14px 48px',
+              width: '100%',
+              padding: '16px 20px 16px 52px',
               fontSize: '1rem',
-              borderRadius: 'var(--radius-full)',
-              backgroundColor: 'var(--color-white)',
-              border: '1px solid var(--border-color)',
-              boxShadow: 'var(--shadow-sm)'
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 600,
+              borderRadius: '16px',
+              backgroundColor: '#FFFFFF',
+              border: '2.5px solid #000',
+              boxShadow: '4px 4px 0 #000',
+              color: '#000',
+              outline: 'none'
             }}
           />
           <Search 
-            size={20} 
-            color="var(--color-coral)" 
+            size={22} 
+            color="#000" 
             style={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)' }} 
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
+              className="btn-brutal"
               style={{
                 position: 'absolute',
-                right: '18px',
+                right: '14px',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: 'var(--text-muted)',
-                fontSize: '0.82rem',
+                padding: '4px 10px',
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '1.5px solid #000',
+                borderRadius: '6px',
+                fontSize: '0.76rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
                 cursor: 'pointer'
               }}
             >
-              Clear
+              CLEAR [X]
             </button>
           )}
         </div>
       </div>
 
-      {/* Category Filter Pills (Horizontal Scrollable) */}
+      {/* Category Filter Pills (Tactile Brutalist Buttons) */}
       <div 
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
+          gap: '10px',
           overflowX: 'auto',
-          paddingBottom: '6px'
+          paddingBottom: '8px'
         }}
       >
         {podcastCategories.map((cat) => {
@@ -133,18 +180,21 @@ export const Explore = () => {
             <button
               key={cat}
               onClick={() => handleCategorySelect(cat)}
+              className="btn-brutal"
               style={{
-                padding: '7px 18px',
-                borderRadius: 'var(--radius-full)',
-                fontSize: '0.84rem',
-                fontWeight: 600,
+                padding: '8px 18px',
+                borderRadius: '999px',
+                fontSize: '0.82rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                textTransform: 'uppercase',
                 whiteSpace: 'nowrap',
                 cursor: 'pointer',
-                transition: 'all var(--transition-fast)',
-                backgroundColor: isSelected ? 'var(--color-coral)' : 'var(--color-white)',
-                color: isSelected ? '#FFFFFF' : 'var(--text-secondary)',
-                border: isSelected ? '1px solid var(--color-coral)' : '1px solid var(--border-color)',
-                boxShadow: isSelected ? '0 4px 12px rgba(245, 45, 58, 0.25)' : 'none'
+                backgroundColor: isSelected ? 'var(--color-acid)' : '#FFFFFF',
+                color: '#000000',
+                border: '2px solid #000',
+                boxShadow: isSelected ? '3px 3px 0 #000' : '2px 2px 0 #000',
+                transform: isSelected ? 'translateY(-2px)' : 'none'
               }}
             >
               {cat}
@@ -161,71 +211,93 @@ export const Explore = () => {
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '12px',
-          paddingBottom: '12px',
-          borderBottom: '1px solid var(--border-color)'
+          padding: '12px 16px',
+          backgroundColor: '#FFFFFF',
+          borderRadius: '16px',
+          border: '2px solid #000',
+          boxShadow: '3px 3px 0 #000'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
           <button
             onClick={() => setContentType('all')}
+            className="btn-brutal"
             style={{
               padding: '6px 14px',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '0.82rem',
-              fontWeight: 600,
+              borderRadius: '8px',
+              fontSize: '0.8rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 800,
+              textTransform: 'uppercase',
               cursor: 'pointer',
-              color: contentType === 'all' ? 'var(--color-coral)' : 'var(--text-secondary)',
-              backgroundColor: contentType === 'all' ? 'rgba(245, 45, 58, 0.08)' : 'transparent'
+              color: '#000',
+              backgroundColor: contentType === 'all' ? 'var(--color-acid)' : '#fff',
+              border: '1.5px solid #000',
+              boxShadow: contentType === 'all' ? '2px 2px 0 #000' : 'none'
             }}
           >
             All Results ({filteredPodcasts.length + filteredMusic.length})
           </button>
           <button
             onClick={() => setContentType('podcasts')}
+            className="btn-brutal"
             style={{
               padding: '6px 14px',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '0.82rem',
-              fontWeight: 600,
+              borderRadius: '8px',
+              fontSize: '0.8rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 800,
+              textTransform: 'uppercase',
               cursor: 'pointer',
-              color: contentType === 'podcasts' ? 'var(--color-coral)' : 'var(--text-secondary)',
-              backgroundColor: contentType === 'podcasts' ? 'rgba(245, 45, 58, 0.08)' : 'transparent'
+              color: '#000',
+              backgroundColor: contentType === 'podcasts' ? 'var(--color-acid)' : '#fff',
+              border: '1.5px solid #000',
+              boxShadow: contentType === 'podcasts' ? '2px 2px 0 #000' : 'none'
             }}
           >
             Podcasts ({filteredPodcasts.length})
           </button>
           <button
             onClick={() => setContentType('music')}
+            className="btn-brutal"
             style={{
               padding: '6px 14px',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '0.82rem',
-              fontWeight: 600,
+              borderRadius: '8px',
+              fontSize: '0.8rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 800,
+              textTransform: 'uppercase',
               cursor: 'pointer',
-              color: contentType === 'music' ? 'var(--color-coral)' : 'var(--text-secondary)',
-              backgroundColor: contentType === 'music' ? 'rgba(245, 45, 58, 0.08)' : 'transparent'
+              color: '#000',
+              backgroundColor: contentType === 'music' ? 'var(--color-acid)' : '#fff',
+              border: '1.5px solid #000',
+              boxShadow: contentType === 'music' ? '2px 2px 0 #000' : 'none'
             }}
           >
             Music Releases ({filteredMusic.length})
           </button>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: '#000' }}>
           <SlidersHorizontal size={14} />
-          <span>Sort by:</span>
+          <span>SORT:</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             style={{
-              background: 'transparent',
-              color: 'var(--color-coral)',
-              border: 'none',
-              fontWeight: 600,
+              background: 'var(--color-acid)',
+              color: '#000',
+              border: '1.5px solid #000',
+              borderRadius: '6px',
+              padding: '3px 8px',
+              fontWeight: 800,
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.78rem',
               cursor: 'pointer'
             }}
           >
-            <option value="popular">Most Streamed</option>
-            <option value="newest">Newest Uploads</option>
+            <option value="popular">MOST STREAMED</option>
+            <option value="newest">NEWEST UPLOADS</option>
           </select>
         </div>
       </div>
@@ -233,43 +305,74 @@ export const Explore = () => {
       {/* Featured Spotlight Card */}
       {!searchQuery && selectedCategory === 'All' && (
         <section 
-          className="card-modern"
+          className="hero-split-grid"
           style={{
             padding: 'var(--space-2xl)',
-            borderRadius: 'var(--radius-2xl)',
-            background: 'linear-gradient(135deg, var(--color-teal) 0%, var(--color-charcoal) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '24px',
+            background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
+            border: '3px solid #000',
+            boxShadow: '6px 6px 0 #000',
             display: 'grid',
             gridTemplateColumns: '1.2fr 0.8fr',
             gap: 'var(--space-xl)',
-            alignItems: 'center',
-            boxShadow: 'var(--shadow-lg)'
+            alignItems: 'center'
           }}
-          className="hero-split-grid"
         >
           <div>
-            <span className="editorial-badge" style={{ backgroundColor: 'var(--color-coral)', color: '#FFFFFF', border: 'none', marginBottom: '12px' }}>
-              <Flame size={12} color="#fff" />
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                backgroundColor: 'var(--color-coral)',
+                color: '#FFFFFF',
+                border: '2px solid #000',
+                borderRadius: '8px',
+                padding: '4px 10px',
+                boxShadow: '2px 2px 0 #000',
+                marginBottom: '12px'
+              }}
+            >
+              <Flame size={13} color="#fff" />
               SPOTLIGHT OF THE WEEK
             </span>
-            <h2 style={{ fontSize: 'clamp(1.7rem, 3vw, 2.2rem)', color: '#FFFFFF', marginBottom: '8px' }}>
+            <h2 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', color: '#FFFFFF', textTransform: 'uppercase', marginBottom: '8px' }}>
               {mockPodcasts[0].title}
             </h2>
-            <p style={{ color: 'rgba(255, 255, 255, 0.82)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '20px' }}>
+            <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.94rem', lineHeight: 1.6, marginBottom: '20px' }}>
               {mockPodcasts[0].description}
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <button
                 onClick={() => playTrack(mockPodcasts[0])}
-                className="btn-primary"
-                style={{ padding: '10px 24px', fontSize: '0.9rem' }}
+                className="btn-brutal"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 24px',
+                  fontSize: '0.88rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 800,
+                  backgroundColor: 'var(--color-acid)',
+                  color: '#000',
+                  border: '2px solid #000',
+                  boxShadow: '3px 3px 0 #000',
+                  borderRadius: '999px',
+                  cursor: 'pointer'
+                }}
               >
-                <span>Play Spotlight Episode</span>
+                <Play size={16} fill="#000" />
+                <span>PLAY SPOTLIGHT EPISODE</span>
               </button>
             </div>
           </div>
 
-          <div style={{ position: 'relative', width: '100%', height: '230px', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', width: '100%', height: '240px', borderRadius: '18px', overflow: 'hidden', border: '2px solid #000', boxShadow: '4px 4px 0 #000' }}>
             <img 
               src={mockPodcasts[0].cover} 
               alt={mockPodcasts[0].title} 
@@ -282,12 +385,27 @@ export const Explore = () => {
       {/* Podcasts Grid */}
       {(contentType === 'all' || contentType === 'podcasts') && (
         <section>
-          <div className="section-header">
+          <div className="section-header" style={{ marginBottom: '16px' }}>
             <div>
-              <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-                STUDENT PODCASTS
+              <span 
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  backgroundColor: '#FFFFFF',
+                  color: '#000',
+                  border: '1.5px solid #000',
+                  padding: '3px 8px',
+                  borderRadius: '6px',
+                  boxShadow: '2px 2px 0 #000'
+                }}
+              >
+                🎙️ STUDENT PODCASTS
               </span>
-              <h2 className="section-header-title" style={{ marginTop: '6px' }}>
+              <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
                 Podcasts & Voice Notes ({filteredPodcasts.length})
               </h2>
             </div>
@@ -306,7 +424,7 @@ export const Explore = () => {
               ))}
             </div>
           ) : (
-            <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-muted)' }}>
+            <div style={{ textAlign: 'center', padding: '40px', color: '#555', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
               No podcasts match your search query. Try searching for "Robotics" or "Hostel".
             </div>
           )}
@@ -316,12 +434,27 @@ export const Explore = () => {
       {/* Music Grid */}
       {(contentType === 'all' || contentType === 'music') && (
         <section>
-          <div className="section-header">
+          <div className="section-header" style={{ marginBottom: '16px' }}>
             <div>
-              <span className="editorial-badge" style={{ backgroundColor: 'rgba(255, 181, 46, 0.15)', color: 'var(--color-charcoal)' }}>
-                ORIGINAL SOUNDS
+              <span 
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  backgroundColor: 'var(--color-acid)',
+                  color: '#000',
+                  border: '1.5px solid #000',
+                  padding: '3px 8px',
+                  borderRadius: '6px',
+                  boxShadow: '2px 2px 0 #000'
+                }}
+              >
+                💿 ORIGINAL SOUNDS
               </span>
-              <h2 className="section-header-title" style={{ marginTop: '6px' }}>
+              <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
                 Campus Music Tracks ({filteredMusic.length})
               </h2>
             </div>
@@ -340,7 +473,7 @@ export const Explore = () => {
               ))}
             </div>
           ) : (
-            <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-muted)' }}>
+            <div style={{ textAlign: 'center', padding: '40px', color: '#555', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
               No music tracks found in this category.
             </div>
           )}

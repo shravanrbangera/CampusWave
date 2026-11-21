@@ -13,7 +13,8 @@ import {
   Calendar,
   Volume2,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Zap
 } from 'lucide-react';
 import { mockPodcasts } from '../data/podcasts';
 import { useAudio } from '../context/AudioContext';
@@ -49,7 +50,6 @@ export const PodcastDetails = () => {
   };
 
   const handleTimestampJump = (timeStr) => {
-    // "07:40" -> 7 * 60 + 40 = 460 seconds
     const parts = timeStr.split(':').map(Number);
     const secs = parts.length === 2 ? parts[0] * 60 + parts[1] : 0;
     if (!isCurrent) {
@@ -69,35 +69,42 @@ export const PodcastDetails = () => {
       <div>
         <button
           onClick={() => navigate(-1)}
+          className="btn-brutal"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            color: 'var(--text-secondary)',
-            fontSize: '0.88rem',
+            padding: '8px 16px',
+            borderRadius: '999px',
+            backgroundColor: '#FFFFFF',
+            color: '#000',
+            border: '2px solid #000',
+            boxShadow: '2px 2px 0 #000',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.82rem',
+            fontWeight: 800,
             cursor: 'pointer'
           }}
         >
           <ArrowLeft size={16} />
-          <span>Back to Podcasts</span>
+          <span>BACK TO CRATE</span>
         </button>
       </div>
 
       {/* Main Episode Banner */}
       <div 
-        className="card-modern"
+        className="hero-split-grid"
         style={{
           padding: 'var(--space-2xl)',
-          borderRadius: 'var(--radius-2xl)',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, var(--color-charcoal) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '24px',
+          background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
+          border: '3px solid #000',
+          boxShadow: '6px 6px 0 #000',
           display: 'grid',
           gridTemplateColumns: 'minmax(260px, 340px) 1fr',
           gap: 'var(--space-2xl)',
-          alignItems: 'center',
-          boxShadow: 'var(--shadow-lg)'
+          alignItems: 'center'
         }}
-        className="hero-split-grid"
       >
         {/* Artwork */}
         <div 
@@ -105,9 +112,10 @@ export const PodcastDetails = () => {
             position: 'relative',
             width: '100%',
             height: '320px',
-            borderRadius: 'var(--radius-xl)',
+            borderRadius: '20px',
             overflow: 'hidden',
-            boxShadow: 'var(--shadow-lg)'
+            border: '3px solid #000',
+            boxShadow: '5px 5px 0 #000'
           }}
         >
           <img 
@@ -122,7 +130,19 @@ export const PodcastDetails = () => {
               left: '12px'
             }}
           >
-            <span className="editorial-badge" style={{ backgroundColor: 'rgba(0,0,0,0.7)', color: 'var(--color-amber)', border: 'none' }}>
+            <span 
+              style={{ 
+                backgroundColor: 'var(--color-acid)', 
+                color: '#000', 
+                border: '2px solid #000',
+                borderRadius: '8px',
+                padding: '4px 10px',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                fontSize: '0.74rem',
+                boxShadow: '2px 2px 0 #000'
+              }}
+            >
               {podcast.category}
             </span>
           </div>
@@ -134,89 +154,130 @@ export const PodcastDetails = () => {
             <div 
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.8rem',
-                color: 'var(--color-amber)',
-                fontWeight: 600,
+                fontSize: '0.82rem',
+                color: 'var(--color-acid)',
+                fontWeight: 800,
                 marginBottom: '6px'
               }}
             >
-              {podcast.showName} • EPISODE DISPATCH
+              ⚡ {podcast.showName} • EPISODE DISPATCH // 90.4 MHZ
             </div>
-            <h1 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.4rem)', lineHeight: 1.2, marginBottom: '8px', color: '#FFFFFF' }}>
+            <h1 
+              style={{ 
+                fontFamily: 'var(--font-black)', 
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', 
+                lineHeight: 1.2, 
+                marginBottom: '10px', 
+                color: '#FFFFFF',
+                textTransform: 'uppercase'
+              }}
+            >
               {podcast.title}
             </h1>
-            <div style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.8)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <User size={15} color="var(--color-coral)" />
-              <span style={{ fontWeight: 600, color: '#FFFFFF' }}>{podcast.host}</span>
+            <div style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.9)', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+              <User size={16} color="var(--color-coral)" />
+              <span style={{ color: 'var(--color-acid)' }}>{podcast.host}</span>
               <span>— {podcast.hostRole}</span>
             </div>
           </div>
 
-          <p style={{ color: 'rgba(255, 255, 255, 0.82)', fontSize: '0.98rem', lineHeight: 1.6 }}>
+          <p style={{ color: 'rgba(255, 255, 255, 0.92)', fontSize: '0.98rem', lineHeight: 1.6, fontFamily: 'var(--font-body)' }}>
             {podcast.description}
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'rgba(255, 255, 255, 0.65)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--color-acid)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Clock size={14} />
               <span>{podcast.duration}</span>
             </div>
             <div>•</div>
-            <div>{podcast.plays} student plays</div>
+            <div>{podcast.plays} PLAYS</div>
             <div>•</div>
-            <div>Released {podcast.publishedAt}</div>
+            <div>RELEASED {podcast.publishedAt}</div>
           </div>
 
           {/* Action Row */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap', paddingTop: '8px' }}>
             <button
               onClick={handlePlayToggle}
-              className="btn-primary"
-              style={{ padding: '12px 30px', fontSize: '1rem' }}
+              className="btn-brutal"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 28px',
+                fontSize: '0.92rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000',
+                borderRadius: '999px',
+                cursor: 'pointer'
+              }}
             >
               {isCurrent && isPlaying ? (
                 <>
-                  <Pause size={18} fill="#FFFFFF" />
-                  <span>Pause Episode</span>
+                  <Pause size={18} fill="#000" />
+                  <span>PAUSE EPISODE</span>
                 </>
               ) : (
                 <>
-                  <Play size={18} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
-                  <span>Play Episode ({podcast.duration})</span>
+                  <Play size={18} fill="#000" style={{ marginLeft: '2px' }} />
+                  <span>PLAY EPISODE ({podcast.duration})</span>
                 </>
               )}
             </button>
 
             <button
               onClick={() => toggleSavePodcast(podcast.id)}
-              className="btn-secondary"
+              className="btn-brutal"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                color: isSaved ? 'var(--color-coral)' : '#FFFFFF',
-                borderColor: isSaved ? 'var(--color-coral)' : 'rgba(255, 255, 255, 0.2)'
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 20px',
+                borderRadius: '999px',
+                backgroundColor: isSaved ? 'var(--color-coral)' : '#FFFFFF',
+                color: isSaved ? '#FFFFFF' : '#000',
+                border: '2px solid #000',
+                boxShadow: '3px 3px 0 #000',
+                fontSize: '0.85rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                cursor: 'pointer'
               }}
               title={isSaved ? "Saved" : "Save to bookmarks"}
             >
-              <Bookmark size={16} fill={isSaved ? "var(--color-coral)" : "none"} />
-              <span>{isSaved ? "Bookmarked" : "Save Episode"}</span>
+              <Bookmark size={16} fill={isSaved ? "#fff" : "none"} />
+              <span>{isSaved ? "BOOKMARKED" : "SAVE TO VAULT"}</span>
             </button>
 
             <button
               onClick={handleShare}
-              className="btn-icon"
+              className="btn-brutal"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                color: '#FFFFFF',
-                borderColor: 'rgba(255, 255, 255, 0.2)'
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                backgroundColor: '#FFFFFF',
+                color: '#000',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
               }}
               title="Share episode link"
             >
-              <Share2 size={16} />
+              <Share2 size={18} />
             </button>
           </div>
 
           {copyNotice && (
-            <div style={{ fontSize: '0.85rem', color: '#4ade80' }}>
+            <div style={{ fontSize: '0.85rem', fontFamily: 'var(--font-mono)', fontWeight: 800, color: 'var(--color-acid)' }}>
               ✓ Episode URL copied to clipboard!
             </div>
           )}
@@ -227,11 +288,11 @@ export const PodcastDetails = () => {
       <section 
         className="card-modern"
         style={{
-          borderRadius: 'var(--radius-2xl)',
+          borderRadius: '20px',
           overflow: 'hidden',
-          backgroundColor: 'var(--color-white)',
-          border: '1px solid var(--border-color)',
-          boxShadow: 'var(--shadow-sm)'
+          backgroundColor: '#FFFFFF',
+          border: '2.5px solid #000',
+          boxShadow: '5px 5px 0 #000'
         }}
       >
         <div 
@@ -242,32 +303,39 @@ export const PodcastDetails = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             cursor: 'pointer',
-            borderBottom: aiSummaryOpen ? '1px solid var(--border-color)' : 'none'
+            backgroundColor: '#F8F8F8',
+            borderBottom: aiSummaryOpen ? '2px solid #000' : 'none'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div 
               style={{
-                width: '36px',
-                height: '36px',
-                borderRadius: '10px',
-                backgroundColor: 'var(--color-coral)',
+                width: '40px',
+                height: '40px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-acid)',
+                border: '2px solid #000',
+                boxShadow: '2px 2px 0 #000',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FFFFFF'
+                color: '#000'
               }}
             >
-              <Sparkles size={18} />
+              <Sparkles size={20} fill="#000" />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--color-charcoal)' }}>CampusWave AI Broadcast Synthesis</h2>
-              <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Automated highlights, takeaways, and chapter bookmarks</div>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#000' }}>
+                CAMPUSWAVE AI BROADCAST SYNTHESIS
+              </h2>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#444', fontWeight: 600 }}>
+                Automated highlights, takeaways, and chapter bookmarks
+              </div>
             </div>
           </div>
 
-          <button style={{ color: 'var(--text-muted)' }}>
-            {aiSummaryOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          <button style={{ color: '#000', background: 'none', border: 'none', cursor: 'pointer' }}>
+            {aiSummaryOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
           </button>
         </div>
 
@@ -275,20 +343,20 @@ export const PodcastDetails = () => {
           <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '22px' }}>
             {/* Overview */}
             <div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--color-coral)', marginBottom: '8px' }}>
-                Executive Overview
+              <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-coral)', marginBottom: '8px', textTransform: 'uppercase' }}>
+                ⚡ EXECUTIVE OVERVIEW
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+              <p style={{ fontFamily: 'var(--font-body)', color: '#222', fontSize: '0.95rem', lineHeight: 1.6 }}>
                 {podcast.aiSummary.overview}
               </p>
             </div>
 
             {/* Highlights */}
             <div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--color-charcoal)', marginBottom: '8px' }}>
-                Discussion Highlights
+              <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 800, color: '#000', marginBottom: '8px', textTransform: 'uppercase' }}>
+                📌 DISCUSSION HIGHLIGHTS
               </h3>
-              <ul style={{ paddingLeft: '20px', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <ul style={{ paddingLeft: '20px', color: '#333', display: 'flex', flexDirection: 'column', gap: '6px', fontFamily: 'var(--font-body)' }}>
                 {podcast.aiSummary.highlights.map((h, i) => (
                   <li key={i}>{h}</li>
                 ))}
@@ -297,10 +365,10 @@ export const PodcastDetails = () => {
 
             {/* Key Takeaways */}
             <div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--color-charcoal)', marginBottom: '8px' }}>
-                Actionable Key Takeaways for Students
+              <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 800, color: '#000', marginBottom: '8px', textTransform: 'uppercase' }}>
+                💡 ACTIONABLE KEY TAKEAWAYS FOR STUDENTS
               </h3>
-              <ul style={{ paddingLeft: '20px', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <ul style={{ paddingLeft: '20px', color: '#333', display: 'flex', flexDirection: 'column', gap: '6px', fontFamily: 'var(--font-body)' }}>
                 {podcast.aiSummary.keyTakeaways.map((k, i) => (
                   <li key={i}>{k}</li>
                 ))}
@@ -309,41 +377,43 @@ export const PodcastDetails = () => {
 
             {/* Clickable Timestamps Chapters */}
             <div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--color-charcoal)', marginBottom: '10px' }}>
-                Chapter Bookmarks (Click to jump audio)
+              <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 800, color: '#000', marginBottom: '10px', textTransform: 'uppercase' }}>
+                ⏱️ CHAPTER BOOKMARKS (CLICK TO JUMP AUDIO)
               </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '10px' }}>
                 {podcast.aiSummary.timestamps.map((ts, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleTimestampJump(ts.time)}
+                    className="btn-brutal"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '10px',
                       padding: '10px 14px',
-                      backgroundColor: 'var(--color-soft-grey)',
-                      borderRadius: 'var(--radius-lg)',
-                      border: '1px solid var(--border-color)',
+                      backgroundColor: '#FFFFFF',
+                      borderRadius: '12px',
+                      border: '2px solid #000',
+                      boxShadow: '2px 2px 0 #000',
                       textAlign: 'left',
-                      cursor: 'pointer',
-                      transition: 'all var(--transition-fast)'
+                      cursor: 'pointer'
                     }}
                   >
                     <span 
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.8rem',
-                        fontWeight: 700,
-                        color: 'var(--color-coral)',
-                        backgroundColor: 'rgba(245, 45, 58, 0.1)',
-                        padding: '2px 8px',
-                        borderRadius: 'var(--radius-sm)'
+                        fontSize: '0.78rem',
+                        fontWeight: 900,
+                        color: '#000',
+                        backgroundColor: 'var(--color-acid)',
+                        border: '1.5px solid #000',
+                        padding: '3px 8px',
+                        borderRadius: '6px'
                       }}
                     >
                       {ts.time}
                     </span>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--color-charcoal)', fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.85rem', fontFamily: 'var(--font-body)', color: '#000', fontWeight: 700 }}>
                       {ts.label}
                     </span>
                   </button>
@@ -356,12 +426,27 @@ export const PodcastDetails = () => {
 
       {/* Related Episodes */}
       <section>
-        <div className="section-header">
+        <div className="section-header" style={{ marginBottom: '16px' }}>
           <div>
-            <span className="editorial-badge" style={{ backgroundColor: 'var(--color-cream)', color: 'var(--color-charcoal)' }}>
-              MORE IN THIS CATEGORY
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                fontWeight: 800,
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '1.5px solid #000',
+                padding: '3px 8px',
+                borderRadius: '6px',
+                boxShadow: '2px 2px 0 #000'
+              }}
+            >
+              🎙️ MORE IN THIS CRATE
             </span>
-            <h2 className="section-header-title" style={{ marginTop: '6px' }}>
+            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
               Related Student Shows
             </h2>
           </div>
@@ -382,4 +467,3 @@ export const PodcastDetails = () => {
     </div>
   );
 };
-

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Bookmark, Play, Clock, ArrowRight } from 'lucide-react';
+import { Sparkles, Bookmark, Play, Clock, ArrowRight, Check, Pin } from 'lucide-react';
 import { useAudio } from '../context/AudioContext';
 import { useAuth } from '../context/AuthContext';
 import { mockPodcasts } from '../data/podcasts';
@@ -32,19 +32,31 @@ export const SummaryCard = ({ summary }) => {
 
   return (
     <article 
-      className="card-3d glass-panel"
+      className="card-modern"
       style={{
-        padding: '22px',
+        padding: '24px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        borderRadius: 'var(--radius-lg)',
+        borderRadius: '20px',
         height: '100%',
-        position: 'relative'
+        position: 'relative',
+        backgroundColor: '#FFFFFF',
+        border: '2px solid #000',
+        boxShadow: '4px 4px 0 #000',
+        transition: 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translate(-3px, -3px)';
+        e.currentTarget.style.boxShadow = '7px 7px 0 #000';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translate(0, 0)';
+        e.currentTarget.style.boxShadow = '4px 4px 0 #000';
       }}
     >
       <div>
-        {/* Top Badges */}
+        {/* Top Badges & Sticky Note Pushpin */}
         <div 
           style={{
             display: 'flex',
@@ -54,47 +66,65 @@ export const SummaryCard = ({ summary }) => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="editorial-badge" style={{ background: 'var(--color-coral)', color: '#FFFFFF', border: 'none' }}>
-              <Sparkles size={12} />
-              AI SUMMARY
+            <span 
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                padding: '4px 10px',
+                backgroundColor: 'var(--color-acid)',
+                color: '#000',
+                border: '1.5px solid #000',
+                borderRadius: '6px',
+                fontSize: '0.72rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                boxShadow: '2px 2px 0 #000'
+              }}
+            >
+              <Sparkles size={12} fill="#000" />
+              AI DIGEST // 4NM22
             </span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#333', fontWeight: 700 }}>
               {summary.readTime}
             </span>
           </div>
 
           <button
             onClick={() => toggleSaveSummary(summary.id)}
+            className="btn-brutal"
             style={{
-              width: '32px',
-              height: '32px',
+              width: '34px',
+              height: '34px',
               borderRadius: '50%',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              color: isSaved ? 'var(--color-coral)' : 'var(--text-muted)',
+              backgroundColor: isSaved ? 'var(--color-acid)' : '#FFFFFF',
+              color: '#000',
               cursor: 'pointer',
-              border: '1px solid var(--border-color)',
+              border: '2px solid #000',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all var(--transition-fast)'
+              boxShadow: '2px 2px 0 #000'
             }}
             title={isSaved ? "Saved to Library" : "Save summary to library"}
           >
-            <Bookmark size={15} fill={isSaved ? "var(--color-coral)" : "none"} />
+            <Bookmark size={15} fill={isSaved ? "#000" : "none"} />
           </button>
         </div>
 
         <h3 
           style={{
-            fontSize: '1.2rem',
-            fontWeight: 700,
-            lineHeight: 1.35,
+            fontFamily: 'var(--font-heading)',
+            fontSize: '1.25rem',
+            fontWeight: 800,
+            lineHeight: 1.3,
             marginBottom: '8px',
+            color: 'var(--color-ink)',
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
-            minHeight: '2.7em'
+            minHeight: '2.6em'
           }}
         >
           {summary.title}
@@ -102,9 +132,10 @@ export const SummaryCard = ({ summary }) => {
 
         <div 
           style={{
-            fontSize: '0.82rem',
-            color: 'var(--color-amber)',
-            fontWeight: 600,
+            fontSize: '0.84rem',
+            fontFamily: 'var(--font-mono)',
+            color: 'var(--color-coral)',
+            fontWeight: 700,
             marginBottom: '12px'
           }}
         >
@@ -113,9 +144,10 @@ export const SummaryCard = ({ summary }) => {
 
         <p 
           style={{
+            fontFamily: 'var(--font-body)',
             fontSize: '0.88rem',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.6,
+            color: '#333',
+            lineHeight: 1.55,
             marginBottom: '16px',
             display: expanded ? 'block' : '-webkit-box',
             WebkitLineClamp: expanded ? 'none' : 3,
@@ -126,37 +158,41 @@ export const SummaryCard = ({ summary }) => {
           {summary.overview}
         </p>
 
-        {/* Expandable Key Takeaways */}
+        {/* Expandable Key Takeaways - Styled as Code Slab */}
         {expanded && (
           <div 
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.03)',
-              borderRadius: 'var(--radius-md)',
-              padding: '16px',
+              backgroundColor: '#F8F8F8',
+              borderRadius: '12px',
+              padding: '14px 16px',
               marginBottom: '16px',
-              border: '1px solid var(--border-color)'
+              border: '2px solid #000',
+              boxShadow: '3px 3px 0 #000'
             }}
           >
-            <div style={{ fontWeight: 700, fontSize: '0.86rem', color: 'var(--text-primary)', marginBottom: '8px' }}>
-              Key Takeaways:
+            <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.82rem', color: '#000', marginBottom: '8px', textTransform: 'uppercase' }}>
+              ⚡ KEY TAKEAWAYS:
             </div>
-            <ul style={{ paddingLeft: '18px', fontSize: '0.84rem', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <ul style={{ paddingLeft: '18px', fontSize: '0.84rem', color: '#222', display: 'flex', flexDirection: 'column', gap: '6px', fontFamily: 'var(--font-body)' }}>
               {summary.keyTakeaways.map((point, idx) => (
-                <li key={idx}>{point}</li>
+                <li key={idx} style={{ lineHeight: 1.45 }}>{point}</li>
               ))}
             </ul>
             {summary.highlightQuote && (
               <blockquote 
                 style={{
                   marginTop: '12px',
-                  paddingLeft: '12px',
-                  borderLeft: '2px solid var(--color-coral)',
+                  padding: '8px 12px',
+                  backgroundColor: 'var(--color-acid)',
+                  border: '1.5px solid #000',
+                  borderRadius: '6px',
                   fontStyle: 'italic',
                   fontSize: '0.82rem',
-                  color: 'var(--text-primary)'
+                  fontWeight: 600,
+                  color: '#000'
                 }}
               >
-                {summary.highlightQuote}
+                "{summary.highlightQuote}"
               </blockquote>
             )}
           </div>
@@ -170,10 +206,12 @@ export const SummaryCard = ({ summary }) => {
               style={{
                 fontSize: '0.72rem',
                 fontFamily: 'var(--font-mono)',
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                color: 'var(--text-muted)',
-                padding: '2px 8px',
-                borderRadius: 'var(--radius-full)'
+                fontWeight: 700,
+                backgroundColor: '#000',
+                color: '#fff',
+                padding: '3px 9px',
+                borderRadius: '999px',
+                border: '1px solid #000'
               }}
             >
               #{t}
@@ -190,33 +228,47 @@ export const SummaryCard = ({ summary }) => {
           justifyContent: 'space-between',
           paddingTop: '14px',
           marginTop: 'auto',
-          borderTop: '1px solid var(--border-color)'
+          borderTop: '2px dashed #000'
         }}
       >
         <button
           onClick={() => setExpanded(!expanded)}
           style={{
-            fontSize: '0.82rem',
-            fontWeight: 600,
+            fontSize: '0.84rem',
+            fontFamily: 'var(--font-mono)',
+            fontWeight: 800,
             color: 'var(--color-coral)',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            background: 'none',
+            border: 'none',
+            textDecoration: 'underline'
           }}
         >
-          {expanded ? "Show Less" : "Read Full AI Analysis"}
+          {expanded ? "[- LESS]" : "[+ FULL DIGEST]"}
         </button>
 
         <button
           onClick={handleListenClick}
-          className="btn-secondary"
+          className="btn-brutal"
           style={{
-            padding: '6px 14px',
-            fontSize: '0.8rem',
-            gap: '6px'
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '7px 14px',
+            fontSize: '0.78rem',
+            fontWeight: 800,
+            fontFamily: 'var(--font-mono)',
+            borderRadius: '999px',
+            backgroundColor: '#000',
+            color: '#FFFFFF',
+            border: '2px solid #000',
+            boxShadow: '2px 2px 0 #000',
+            cursor: 'pointer'
           }}
           title="Play Original Episode"
         >
-          <Play size={12} fill="currentColor" />
-          <span>Listen ({summary.originalEpisodeDuration})</span>
+          <Play size={12} fill="#FFFFFF" />
+          <span>LISTEN ({summary.originalEpisodeDuration})</span>
         </button>
       </div>
     </article>

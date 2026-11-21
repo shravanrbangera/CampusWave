@@ -15,7 +15,9 @@ import {
   Heart,
   CheckCircle2,
   Sliders,
-  Volume2
+  Volume2,
+  Zap,
+  QrCode
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { podcastCategories } from '../data/podcasts';
@@ -52,84 +54,112 @@ export const Profile = () => {
 
   return (
     <div className="profile-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
-      {/* Top Banner / Student ID Card (Editorial Identity) */}
+      {/* Top Banner / Student ID Card (Editorial Brutalist Identity) */}
       <section 
-        className="card-modern profile-header-card"
+        className="hero-split-grid"
         style={{
           padding: 'var(--space-2xl)',
-          borderRadius: 'var(--radius-2xl)',
-          background: 'linear-gradient(135deg, var(--color-teal) 0%, var(--color-charcoal) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '24px',
+          background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
+          border: '3px solid #000',
+          boxShadow: '6px 6px 0 #000',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 'var(--space-xl)',
-          flexWrap: 'wrap',
-          boxShadow: 'var(--shadow-lg)'
+          flexWrap: 'wrap'
         }}
       >
-        <div style={{ position: 'relative' }}>
-          <img 
-            src={user?.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&q=80"} 
-            alt={user?.name || "Student"}
-            style={{
-              width: '92px',
-              height: '92px',
-              borderRadius: '50%',
-              objectFit: 'cover',
-              border: '3px solid var(--color-coral)',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)'
-            }}
-          />
-          <span 
-            style={{
-              position: 'absolute',
-              bottom: '2px',
-              right: '2px',
-              width: '18px',
-              height: '18px',
-              borderRadius: '50%',
-              backgroundColor: '#16a34a',
-              border: '3px solid #123C40'
-            }}
-            title="Active on Campus Wi-Fi"
-          />
-        </div>
-
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span className="editorial-badge" style={{ backgroundColor: 'var(--color-coral)', color: '#FFFFFF', border: 'none' }}>
-              VERIFIED STUDENT LISTENER
-            </span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.85)' }}>
-              {user?.usn || "4NM22CS042"}
-            </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+          <div style={{ position: 'relative' }}>
+            <img 
+              src={user?.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&q=80"} 
+              alt={user?.name || "Student"}
+              style={{
+                width: '96px',
+                height: '96px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '3px solid var(--color-acid)',
+                boxShadow: '4px 4px 0 #000'
+              }}
+            />
+            <span 
+              style={{
+                position: 'absolute',
+                bottom: '4px',
+                right: '4px',
+                width: '18px',
+                height: '18px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--color-acid)',
+                border: '2px solid #000'
+              }}
+              title="Active on Campus Network"
+            />
           </div>
 
-          <h1 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)', color: '#FFFFFF', marginBottom: '4px' }}>
-            {user?.name || "Aarav Hegde"}
-          </h1>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+              <span 
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.74rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  backgroundColor: 'var(--color-acid)',
+                  color: '#000',
+                  border: '2px solid #000',
+                  borderRadius: '6px',
+                  padding: '3px 8px',
+                  boxShadow: '2px 2px 0 #000'
+                }}
+              >
+                ⚡ VERIFIED STUDENT LISTENER
+              </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', fontWeight: 800, color: 'var(--color-acid)' }}>
+                USN: {user?.usn || "4NM22CS042"}
+              </span>
+            </div>
 
-          <div style={{ fontSize: '0.94rem', color: 'rgba(255, 255, 255, 0.82)' }}>
-            {user?.branch || "Computer Science & Engineering"} • {user?.semester || "6th Semester"}
-          </div>
+            <h1 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#FFFFFF', textTransform: 'uppercase', marginBottom: '4px' }}>
+              {user?.name || "Aarav Hegde"}
+            </h1>
 
-          <div style={{ fontSize: '0.84rem', color: 'var(--color-amber)', marginTop: '4px', fontFamily: 'var(--font-mono)' }}>
-            {user?.hostel || "Netravati Block B - Room 304"} • {user?.email}
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.9)', fontWeight: 600 }}>
+              {user?.branch || "Computer Science & Engineering"} • {user?.semester || "6th Semester"}
+            </div>
+
+            <div style={{ fontSize: '0.84rem', color: 'var(--color-amber)', marginTop: '4px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+              📍 {user?.hostel || "Netravati Block B - Room 304"} • {user?.email}
+            </div>
           </div>
         </div>
 
         <button
           onClick={() => setLogoutConfirm(true)}
-          className="btn-secondary"
+          className="btn-brutal"
           style={{
-            borderColor: 'rgba(245, 45, 58, 0.4)',
-            color: 'var(--color-coral)',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '10px 20px',
+            borderRadius: '999px',
+            backgroundColor: 'var(--color-coral)',
+            color: '#FFFFFF',
+            border: '2px solid #000',
+            boxShadow: '3px 3px 0 #000',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.84rem',
+            fontWeight: 800,
+            cursor: 'pointer'
           }}
         >
           <LogOut size={16} />
-          <span>Sign Out</span>
+          <span>SIGN OUT</span>
         </button>
       </section>
 
@@ -140,7 +170,7 @@ export const Profile = () => {
             position: 'fixed',
             inset: 0,
             zIndex: 400,
-            backgroundColor: 'rgba(0, 0, 0, 0.65)',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
             backdropFilter: 'blur(8px)',
             display: 'flex',
             alignItems: 'center',
@@ -154,30 +184,53 @@ export const Profile = () => {
               maxWidth: '420px',
               width: '100%',
               padding: '30px',
-              borderRadius: 'var(--radius-2xl)',
+              borderRadius: '24px',
               textAlign: 'center',
-              backgroundColor: 'var(--color-white)',
-              boxShadow: 'var(--shadow-xl)'
+              backgroundColor: '#FFFFFF',
+              border: '3px solid #000',
+              boxShadow: '6px 6px 0 #000'
             }}
           >
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '10px', color: 'var(--color-charcoal)' }}>Sign out of CampusWave?</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '24px' }}>
+            <h3 style={{ fontFamily: 'var(--font-black)', fontSize: '1.45rem', marginBottom: '10px', color: '#000', textTransform: 'uppercase' }}>
+              Sign out of CampusWave?
+            </h3>
+            <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.88rem', marginBottom: '24px', lineHeight: 1.5 }}>
               You will need your student email to sign back into your bookmarks and hosteller poll state.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
               <button 
                 onClick={() => setLogoutConfirm(false)}
-                className="btn-secondary"
-                style={{ padding: '10px 22px' }}
+                className="btn-brutal"
+                style={{
+                  padding: '10px 22px',
+                  borderRadius: '999px',
+                  backgroundColor: '#FFFFFF',
+                  color: '#000',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 800,
+                  cursor: 'pointer'
+                }}
               >
-                Cancel
+                CANCEL
               </button>
               <button 
                 onClick={handleLogout}
-                className="btn-coral"
-                style={{ padding: '10px 22px' }}
+                className="btn-brutal"
+                style={{
+                  padding: '10px 22px',
+                  borderRadius: '999px',
+                  backgroundColor: 'var(--color-coral)',
+                  color: '#FFFFFF',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 800,
+                  cursor: 'pointer'
+                }}
               >
-                Yes, Sign Out
+                YES, SIGN OUT
               </button>
             </div>
           </div>
@@ -193,36 +246,36 @@ export const Profile = () => {
           gap: 'var(--space-md)'
         }}
       >
-        <div className="card-modern" style={{ padding: '22px', borderRadius: 'var(--radius-xl)', textAlign: 'center', backgroundColor: 'var(--color-white)' }}>
-          <Headphones size={24} color="var(--color-coral)" style={{ margin: '0 auto 8px' }} />
-          <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.85rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
-            {user?.stats?.hoursListened || 48} hrs
+        <div className="card-modern" style={{ padding: '24px', borderRadius: '20px', textAlign: 'center', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '4px 4px 0 #000' }}>
+          <Headphones size={28} color="var(--color-coral)" style={{ margin: '0 auto 8px' }} />
+          <div style={{ fontFamily: 'var(--font-black)', fontSize: '2rem', color: '#000' }}>
+            {user?.stats?.hoursListened || 48} HRS
           </div>
-          <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Total Streamed</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#444' }}>TOTAL STREAMED</div>
         </div>
 
-        <div className="card-modern" style={{ padding: '22px', borderRadius: 'var(--radius-xl)', textAlign: 'center', backgroundColor: 'var(--color-white)' }}>
-          <Sparkles size={24} color="var(--color-amber)" style={{ margin: '0 auto 8px' }} />
-          <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.85rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
+        <div className="card-modern" style={{ padding: '24px', borderRadius: '20px', textAlign: 'center', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '4px 4px 0 #000' }}>
+          <Sparkles size={28} color="#000" style={{ margin: '0 auto 8px' }} />
+          <div style={{ fontFamily: 'var(--font-black)', fontSize: '2rem', color: '#000' }}>
             {user?.stats?.podcastsCompleted || 14}
           </div>
-          <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Podcasts Completed</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#444' }}>PODCASTS COMPLETED</div>
         </div>
 
-        <div className="card-modern" style={{ padding: '22px', borderRadius: 'var(--radius-xl)', textAlign: 'center', backgroundColor: 'var(--color-white)' }}>
-          <Radio size={24} color="var(--color-coral)" style={{ margin: '0 auto 8px' }} />
-          <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.85rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
+        <div className="card-modern" style={{ padding: '24px', borderRadius: '20px', textAlign: 'center', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '4px 4px 0 #000' }}>
+          <Radio size={28} color="var(--color-coral)" style={{ margin: '0 auto 8px' }} />
+          <div style={{ fontFamily: 'var(--font-black)', fontSize: '2rem', color: '#000' }}>
             {user?.stats?.songsRequested || 6}
           </div>
-          <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Songs Requested</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#444' }}>SONGS REQUESTED</div>
         </div>
 
-        <div className="card-modern" style={{ padding: '22px', borderRadius: 'var(--radius-xl)', textAlign: 'center', backgroundColor: 'var(--color-white)' }}>
-          <Bell size={24} color="var(--color-amber)" style={{ margin: '0 auto 8px' }} />
-          <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.85rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
+        <div className="card-modern" style={{ padding: '24px', borderRadius: '20px', textAlign: 'center', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '4px 4px 0 #000' }}>
+          <Bell size={28} color="#000" style={{ margin: '0 auto 8px' }} />
+          <div style={{ fontFamily: 'var(--font-black)', fontSize: '2rem', color: '#000' }}>
             {user?.stats?.liveShoutouts || 9}
           </div>
-          <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Live Shoutouts Sent</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#444' }}>LIVE SHOUTOUTS</div>
         </div>
       </section>
 
@@ -236,32 +289,34 @@ export const Profile = () => {
         className="hero-split-grid"
       >
         {/* Left: Preferences & Favorite Categories */}
-        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: 'var(--radius-2xl)', backgroundColor: 'var(--color-white)' }}>
-          <h2 style={{ fontSize: '1.35rem', marginBottom: '8px', color: 'var(--color-charcoal)' }}>
+        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: '24px', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '5px 5px 0 #000' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.35rem', fontWeight: 800, marginBottom: '8px', color: '#000', textTransform: 'uppercase' }}>
             Favorite Content Categories
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '20px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.88rem', fontWeight: 600, marginBottom: '20px' }}>
             Choose what you enjoy hearing. Your feed and recommendations dynamically adjust.
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
             {podcastCategories.filter(c => c !== 'All').map(cat => {
               const active = selectedInterests.includes(cat);
               return (
                 <button
                   key={cat}
                   onClick={() => toggleInterest(cat)}
+                  className="btn-brutal"
                   style={{
                     padding: '8px 18px',
-                    borderRadius: 'var(--radius-full)',
-                    fontSize: '0.85rem',
-                    fontWeight: 600,
+                    borderRadius: '999px',
+                    fontSize: '0.82rem',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
                     cursor: 'pointer',
-                    transition: 'all var(--transition-fast)',
-                    backgroundColor: active ? 'var(--color-coral)' : 'var(--color-white)',
-                    color: active ? '#FFFFFF' : 'var(--text-secondary)',
-                    border: active ? '1px solid var(--color-coral)' : '1px solid var(--border-color)',
-                    boxShadow: active ? '0 4px 12px rgba(245, 45, 58, 0.25)' : 'none'
+                    backgroundColor: active ? 'var(--color-acid)' : '#FFFFFF',
+                    color: '#000',
+                    border: '2px solid #000',
+                    boxShadow: active ? '3px 3px 0 #000' : '2px 2px 0 #000',
+                    transform: active ? 'translateY(-2px)' : 'none'
                   }}
                 >
                   {active ? `✓ ${cat}` : `+ ${cat}`}
@@ -271,29 +326,31 @@ export const Profile = () => {
           </div>
 
           {savedToast && (
-            <div style={{ marginTop: '14px', fontSize: '0.82rem', color: '#16a34a', fontWeight: 600 }}>
+            <div style={{ marginTop: '14px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: '#16a34a', fontWeight: 800 }}>
               ✓ Category preferences saved to your profile!
             </div>
           )}
 
-          <div style={{ marginTop: '28px', paddingTop: '20px', borderTop: '1px solid var(--border-color)' }}>
-            <h3 style={{ fontSize: '1.1rem', marginBottom: '12px', color: 'var(--color-charcoal)' }}>Library Shortcuts</h3>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <Link to="/library" className="btn-secondary" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
+          <div style={{ marginTop: '28px', paddingTop: '20px', borderTop: '2px dashed #000' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', fontWeight: 800, marginBottom: '12px', color: '#000', textTransform: 'uppercase' }}>
+              Library Shortcuts
+            </h3>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <Link to="/library" className="btn-brutal" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 18px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', fontWeight: 800, backgroundColor: '#FFFFFF', color: '#000', border: '2px solid #000', boxShadow: '2px 2px 0 #000', borderRadius: '999px', textDecoration: 'none' }}>
                 <Bookmark size={15} />
-                <span>Saved Podcasts</span>
+                <span>SAVED PODCASTS</span>
               </Link>
-              <Link to="/library" className="btn-secondary" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
+              <Link to="/library" className="btn-brutal" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 18px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', fontWeight: 800, backgroundColor: '#FFFFFF', color: '#000', border: '2px solid #000', boxShadow: '2px 2px 0 #000', borderRadius: '999px', textDecoration: 'none' }}>
                 <Heart size={15} />
-                <span>Liked Tracks</span>
+                <span>LIKED TRACKS</span>
               </Link>
             </div>
           </div>
         </div>
 
         {/* Right: Audio Playback & Display Settings */}
-        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: 'var(--radius-2xl)', backgroundColor: 'var(--color-white)' }}>
-          <h2 style={{ fontSize: '1.35rem', marginBottom: '20px', color: 'var(--color-charcoal)' }}>
+        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: '24px', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '5px 5px 0 #000' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.35rem', fontWeight: 800, marginBottom: '20px', color: '#000', textTransform: 'uppercase' }}>
             Playback & Experience Settings
           </h2>
 
@@ -301,26 +358,26 @@ export const Profile = () => {
             {/* Theme Toggle */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-charcoal)' }}>Visual Environment</div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  {theme === 'dark' ? 'Night Owl Dark (Teal & Charcoal)' : 'Editorial Light (Cream & Crisp White)'}
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.92rem', color: '#000' }}>VISUAL ENVIRONMENT</div>
+                <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-body)', color: '#444' }}>
+                  {theme === 'dark' ? 'Night Owl Dark (Teal & Ink)' : 'Editorial Brutalist (Cream & Acid Yellow)'}
                 </div>
               </div>
               <button
                 onClick={toggleTheme}
-                className="btn-secondary"
-                style={{ padding: '8px 16px', fontSize: '0.82rem', gap: '6px' }}
+                className="btn-brutal"
+                style={{ padding: '8px 16px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', fontWeight: 800, backgroundColor: 'var(--color-acid)', color: '#000', border: '2px solid #000', boxShadow: '2px 2px 0 #000', borderRadius: '999px', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
               >
                 {theme === 'dark' ? <Moon size={15} /> : <Sun size={15} />}
-                <span>{theme === 'dark' ? 'Night Mode' : 'Light Mode'}</span>
+                <span>{theme === 'dark' ? 'NIGHT' : 'LIGHT'}</span>
               </button>
             </div>
 
             {/* Audio Quality */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '14px', borderTop: '2px dashed #000' }}>
               <div>
-                <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-charcoal)' }}>Audio Streaming Quality</div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.92rem', color: '#000' }}>AUDIO STREAM QUALITY</div>
+                <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-body)', color: '#444' }}>
                   Lossless 320kbps for campus Wi-Fi, 128kbps for mobile data
                 </div>
               </div>
@@ -328,13 +385,15 @@ export const Profile = () => {
                 value={audioQuality}
                 onChange={(e) => setAudioQuality(e.target.value)}
                 style={{
-                  backgroundColor: 'var(--color-soft-grey)',
-                  color: 'var(--color-coral)',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: 'var(--radius-md)',
+                  backgroundColor: 'var(--color-acid)',
+                  color: '#000',
+                  border: '2px solid #000',
+                  boxShadow: '2px 2px 0 #000',
+                  borderRadius: '8px',
                   padding: '6px 12px',
-                  fontWeight: 600,
-                  fontSize: '0.85rem',
+                  fontWeight: 800,
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.82rem',
                   cursor: 'pointer'
                 }}
               >
@@ -344,10 +403,10 @@ export const Profile = () => {
             </div>
 
             {/* Autoplay Next */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '14px', borderTop: '2px dashed #000' }}>
               <div>
-                <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-charcoal)' }}>Autoplay Next Episode</div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.92rem', color: '#000' }}>AUTOPLAY NEXT EPISODE</div>
+                <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-body)', color: '#444' }}>
                   Seamlessly proceed to the next student track in queue
                 </div>
               </div>
@@ -355,15 +414,15 @@ export const Profile = () => {
                 type="checkbox"
                 checked={autoplayNext}
                 onChange={(e) => setAutoplayNext(e.target.checked)}
-                style={{ width: '18px', height: '18px', accentColor: 'var(--color-coral)', cursor: 'pointer' }}
+                style={{ width: '20px', height: '20px', accentColor: 'var(--color-coral)', cursor: 'pointer' }}
               />
             </div>
 
             {/* Live Show Reminders */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '14px', borderTop: '2px dashed #000' }}>
               <div>
-                <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-charcoal)' }}>Live Radio Push Alerts</div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.92rem', color: '#000' }}>LIVE RADIO PUSH ALERTS</div>
+                <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-body)', color: '#444' }}>
                   Notify when RJ Ananya or DJ Shutter go on air at 9:00 PM
                 </div>
               </div>
@@ -371,7 +430,7 @@ export const Profile = () => {
                 type="checkbox"
                 checked={liveAlerts}
                 onChange={(e) => setLiveAlerts(e.target.checked)}
-                style={{ width: '18px', height: '18px', accentColor: 'var(--color-coral)', cursor: 'pointer' }}
+                style={{ width: '20px', height: '20px', accentColor: 'var(--color-coral)', cursor: 'pointer' }}
               />
             </div>
           </div>

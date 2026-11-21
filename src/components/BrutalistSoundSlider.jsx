@@ -432,3 +432,4 @@ export const BrutalistSoundSlider = () => {
 };
 
 export default BrutalistSoundSlider;
+

@@ -42,14 +42,16 @@ export const PodcastCard = ({ podcast, compact = false }) => {
 
   return (
     <div 
-      className="card-3d glass-panel"
+      className="card-modern shadow-brutal-sm"
       style={{
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
         height: '100%',
-        borderRadius: 'var(--radius-lg)'
+        backgroundColor: '#FFFFFF',
+        border: '2px solid #000000',
+        borderRadius: '16px'
       }}
     >
       {/* Artwork with Play Overlay */}
@@ -59,7 +61,7 @@ export const PodcastCard = ({ podcast, compact = false }) => {
           width: '100%',
           height: compact ? '160px' : '185px',
           overflow: 'hidden',
-          backgroundColor: 'var(--bg-tertiary)'
+          backgroundColor: '#000000'
         }}
       >
         <img 
@@ -89,9 +91,12 @@ export const PodcastCard = ({ podcast, compact = false }) => {
           <span 
             className="editorial-badge"
             style={{
-              backgroundColor: 'rgba(12, 16, 18, 0.88)',
-              color: 'var(--color-amber)',
-              border: '1px solid rgba(255, 181, 46, 0.3)'
+              backgroundColor: 'var(--color-acid)',
+              color: '#000000',
+              border: '2px solid #000000',
+              boxShadow: '2px 2px 0 #000000',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 800
             }}
           >
             {podcast.category}
@@ -101,6 +106,7 @@ export const PodcastCard = ({ podcast, compact = false }) => {
         {/* Bookmark button */}
         <button
           onClick={handleSaveClick}
+          className="btn-brutal"
           style={{
             position: 'absolute',
             top: '12px',
@@ -108,46 +114,46 @@ export const PodcastCard = ({ podcast, compact = false }) => {
             width: '34px',
             height: '34px',
             borderRadius: '50%',
-            backgroundColor: 'rgba(12, 16, 18, 0.8)',
-            backdropFilter: 'blur(8px)',
+            backgroundColor: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: isSaved ? 'var(--color-coral)' : 'var(--text-secondary)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            zIndex: 2,
-            transition: 'all var(--transition-fast)'
+            color: isSaved ? 'var(--color-coral)' : '#000000',
+            border: '2px solid #000000',
+            boxShadow: '2px 2px 0 #000',
+            zIndex: 2
           }}
           title={isSaved ? "Remove from bookmarks" : "Save podcast"}
         >
-          <Bookmark size={15} fill={isSaved ? "var(--color-coral)" : "none"} />
+          <Bookmark size={15} fill={isSaved ? "var(--color-coral)" : "none"} strokeWidth={2.5} />
         </button>
 
         {/* Play Button Overlay */}
         <button
           onClick={handlePlayClick}
+          className="btn-brutal"
           style={{
             position: 'absolute',
             bottom: '12px',
             right: '12px',
-            width: '44px',
-            height: '44px',
+            width: '46px',
+            height: '46px',
             borderRadius: '50%',
-            backgroundColor: 'var(--color-coral)',
-            color: '#FFFFFF',
+            backgroundColor: 'var(--color-acid)',
+            color: '#000000',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: 'var(--shadow-coral)',
-            zIndex: 2,
-            transition: 'transform var(--transition-fast)'
+            border: '2px solid #000000',
+            boxShadow: '3px 3px 0 #000000',
+            zIndex: 2
           }}
           title={isCurrent && isPlaying ? "Pause" : "Play Episode"}
         >
           {isCurrent && isPlaying ? (
-            <Pause size={19} fill="#FFFFFF" />
+            <Pause size={20} fill="#000000" />
           ) : (
-            <Play size={19} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
+            <Play size={20} fill="#000000" style={{ marginLeft: '2px' }} />
           )}
         </button>
       </div>
@@ -170,7 +176,8 @@ export const PodcastCard = ({ podcast, compact = false }) => {
               color: 'var(--text-muted)',
               marginBottom: '6px',
               textTransform: 'uppercase',
-              letterSpacing: '0.04em'
+              letterSpacing: '0.06em',
+              fontWeight: 700
             }}
           >
             {podcast.showName}
@@ -180,15 +187,15 @@ export const PodcastCard = ({ podcast, compact = false }) => {
             to={`/podcast/${podcast.id}`}
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: '1.02rem',
-              fontWeight: 700,
-              color: 'var(--text-primary)',
-              lineHeight: 1.35,
+              fontSize: '1.08rem',
+              fontWeight: 800,
+              color: '#000000',
+              lineHeight: 1.3,
               display: '-webkit-box',
               WebkitLineClamp: 2,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
-              minHeight: '2.7em',
+              minHeight: '2.6em',
               marginBottom: '8px'
             }}
           >

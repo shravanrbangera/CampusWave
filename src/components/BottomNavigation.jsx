@@ -35,7 +35,8 @@ export const BottomNavigation = () => {
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderTop: '1px solid var(--border-color)',
-        zIndex: 90,
+        zIndex: 100,
+        overflow: 'visible',
         alignItems: 'center',
         justifyContent: 'space-around',
         padding: '0 8px env(safe-area-inset-bottom, 0px)',
@@ -57,34 +58,36 @@ export const BottomNavigation = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 textDecoration: 'none',
-                padding: '2px 4px',
-                minWidth: '52px',
-                height: '100%'
+                padding: '2px 6px',
+                minWidth: '56px',
+                height: '100%',
+                position: 'relative'
               }}
             >
               <div 
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
                   backgroundColor: 'var(--color-orange)',
-                  boxShadow: '0 2px 8px var(--color-orange-glow)',
+                  boxShadow: '0 2px 10px var(--color-orange-glow)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#FFFFFF',
-                  position: 'relative'
+                  position: 'relative',
+                  flexShrink: 0
                 }}
               >
-                <Icon size={18} color="#FFFFFF" strokeWidth={2.2} />
+                <Icon size={19} color="#FFFFFF" strokeWidth={2.4} />
                 {isPlaying && (
                   <span 
                     style={{
                       position: 'absolute',
                       top: '0px',
                       right: '0px',
-                      width: '8px',
-                      height: '8px',
+                      width: '9px',
+                      height: '9px',
                       borderRadius: '50%',
                       backgroundColor: '#10B981',
                       border: '1.5px solid #FFFFFF'
@@ -98,8 +101,8 @@ export const BottomNavigation = () => {
                   fontSize: '0.66rem',
                   fontWeight: 800,
                   color: 'var(--color-orange)',
-                  marginTop: '2px',
-                  letterSpacing: '0.02em',
+                  marginTop: '3px',
+                  letterSpacing: '0.03em',
                   textTransform: 'uppercase',
                   lineHeight: 1
                 }}

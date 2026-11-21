@@ -84,7 +84,7 @@ a:active,
   :root {
     --navbar-height: 58px;
     --mini-player-height: 60px;
-    --bottom-nav-height: 58px;
+    --bottom-nav-height: 64px;
   }
 
   /* Eliminate unwanted gaps between content and footer */
@@ -122,6 +122,8 @@ a:active,
 
   .nav-mobile-bottom {
     display: flex !important;
+    overflow: visible !important;
+    z-index: 100 !important;
   }
 
   #mobile-nav-toggle {
@@ -132,6 +134,7 @@ a:active,
   .mini-player-container {
     bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px)) !important;
     height: var(--mini-player-height) !important;
+    z-index: 90 !important;
   }
 
   /* Full Screen Overlay Player on Mobile */
@@ -290,7 +293,7 @@ a:active,
     --space-xl: 16px;
     --space-lg: 12px;
     --space-md: 8px;
-    --bottom-nav-height: 60px;
+    --bottom-nav-height: 64px;
     --mini-player-height: 64px;
   }
 

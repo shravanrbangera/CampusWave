@@ -1,0 +1,130 @@
+/* ==========================================================================
+   CAMPUSWAVE RESPONSIVE BREAKPOINTS
+   Rigorous responsive engineering for:
+   375px (Small Mobile), 430px (Standard Mobile), 768px (Tablet), 
+   1024px (Laptop), 1440px (Wide Desktop)
+   ========================================================================== */
+
+/* Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+  .page-wrapper {
+    max-width: 1400px;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+}
+
+/* Laptop / Desktop (1024px to 1439px) */
+@media (max-width: 1024px) {
+  :root {
+    --navbar-height: 68px;
+  }
+
+  .page-wrapper {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .hero-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-xl) !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media (max-width: 768px) {
+
+  /* Prevent content from hiding behind both BottomNav & MiniPlayer */
+  .app-container {
+    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + 20px) !important;
+  }
+
+  /* Desktop links hide, mobile bottom bar appears */
+  .nav-desktop-links {
+    display: none !important;
+  }
+
+  .nav-mobile-bottom {
+    display: flex !important;
+  }
+
+  /* Show mobile hamburger toggle */
+  #mobile-nav-toggle {
+    display: inline-flex !important;
+  }
+
+  /* Dock Mini Player cleanly above the mobile bottom navigation bar */
+  .mini-player-container {
+    bottom: var(--bottom-nav-height) !important;
+  }
+
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .split-login-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .login-visual-panel {
+    display: none !important;
+  }
+}
+
+/* Mobile Standard (430px and below) */
+@media (max-width: 430px) {
+  :root {
+    --mini-player-height: 72px;
+    --bottom-nav-height: 60px;
+    --navbar-height: 62px;
+  }
+
+  .page-wrapper {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .editorial-title {
+    font-size: 2.15rem !important;
+    line-height: 1.12 !important;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 18px;
+    font-size: 0.88rem;
+  }
+
+  .mini-player-controls .secondary-control {
+    display: none !important;
+  }
+
+  .vinyl-wrapper {
+    transform: scale(0.85);
+  }
+}
+
+/* Small Mobile (375px and below) */
+@media (max-width: 375px) {
+  .editorial-title {
+    font-size: 1.85rem !important;
+  }
+
+  .hero-actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions-group button,
+  .hero-actions-group a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .vinyl-wrapper {
+    transform: scale(0.78);
+  }
+}

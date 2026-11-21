@@ -1,0 +1,125 @@
+/* ==========================================================================
+   CAMPUSWAVE MODERN MOTION & MICRO-INTERACTIONS
+   Smooth, purposeful, non-distracting animations
+   ========================================================================== */
+
+/* Vinyl record continuous spin */
+@keyframes spinVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-vinyl {
+  animation: spinVinyl 5.5s linear infinite;
+  animation-play-state: running;
+}
+
+.spin-vinyl.paused {
+  animation-play-state: paused;
+}
+
+/* Tonearm needle pivot animation */
+.tonearm {
+  transform-origin: 20px 20px;
+  transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tonearm.playing {
+  transform: rotate(26deg);
+}
+
+.tonearm.paused {
+  transform: rotate(0deg);
+}
+
+/* Glowing Coral LIVE pulse badge */
+@keyframes livePulseCoral {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 45, 58, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 7px rgba(245, 45, 58, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 45, 58, 0);
+  }
+}
+
+.badge-live-pulse {
+  animation: livePulseCoral 2s infinite ease-in-out;
+}
+
+/* Floating element hover float */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+.float-element {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+
+/* Sound bar equalizer dancing */
+@keyframes soundBounce {
+  0%, 100% {
+    height: 20%;
+  }
+  50% {
+    height: 95%;
+  }
+}
+
+/* Shimmer loading box */
+@keyframes shimmerBox {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-box {
+  background: linear-gradient(90deg, #F3F3F3 25%, #EAEAEA 37%, #F3F3F3 63%);
+  background-size: 400% 100%;
+  animation: shimmerBox 1.6s ease infinite;
+}
+
+/* Oversized Ghost Typography Styling */
+.ghost-typography {
+  position: absolute;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: rgba(32, 32, 32, 0.035);
+  user-select: none;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  z-index: 0;
+}
+
+[data-theme="dark"] .ghost-typography {
+  color: rgba(255, 255, 255, 0.035);
+}
+
+/* Respect user reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

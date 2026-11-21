@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Radio, MapPin, Heart, Sparkles } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { MarqueeTicker } from './MarqueeTicker';
 import { campusWaveLogo } from '../assets/Images';
 
@@ -78,40 +77,6 @@ export const Footer = () => {
               STUDIO 90.4 FM • LIVE FROM NITTE CAMPUS
             </span>
           </div>
-        </div>
-
-        {/* Navigation Links - 5 Main Items Only */}
-        <div>
-          <h4 style={{ fontFamily: 'var(--font-radio)', fontSize: '0.92rem', marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
-            CAMPUS RADIO
-          </h4>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', fontWeight: 500 }}>
-            <li>
-              <Link to="/home" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                Home Feed
-              </Link>
-            </li>
-            <li>
-              <Link to="/podcasts" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                Student Podcasts
-              </Link>
-            </li>
-            <li>
-              <Link to="/live" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                Live Broadcast (90.4 FM)
-              </Link>
-            </li>
-            <li>
-              <Link to="/vote" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                Daily Playlist Voting
-              </Link>
-            </li>
-            <li>
-              <Link to="/saved" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
-                Saved Episodes Vault
-              </Link>
-            </li>
-          </ul>
         </div>
 
         {/* Radio Broadcast Info Badge */}

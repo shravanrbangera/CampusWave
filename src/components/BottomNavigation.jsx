@@ -57,39 +57,37 @@ export const BottomNavigation = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 textDecoration: 'none',
-                position: 'relative',
-                top: '-8px',
-                padding: '0 4px',
-                minWidth: '56px'
+                padding: '2px 4px',
+                minWidth: '52px',
+                height: '100%'
               }}
             >
               <div 
                 style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '36px',
+                  height: '36px',
                   borderRadius: '50%',
                   backgroundColor: 'var(--color-orange)',
-                  boxShadow: '0 4px 14px var(--color-orange-glow)',
+                  boxShadow: '0 2px 8px var(--color-orange-glow)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#FFFFFF',
-                  position: 'relative',
-                  border: '2px solid var(--bg-card)'
+                  position: 'relative'
                 }}
               >
-                <Icon size={22} color="#FFFFFF" />
+                <Icon size={18} color="#FFFFFF" strokeWidth={2.2} />
                 {isPlaying && (
                   <span 
                     style={{
                       position: 'absolute',
-                      top: '-2px',
-                      right: '-2px',
-                      width: '10px',
-                      height: '10px',
+                      top: '0px',
+                      right: '0px',
+                      width: '8px',
+                      height: '8px',
                       borderRadius: '50%',
                       backgroundColor: '#10B981',
-                      border: '1.5px solid var(--bg-card)'
+                      border: '1.5px solid #FFFFFF'
                     }}
                   />
                 )}
@@ -97,12 +95,13 @@ export const BottomNavigation = () => {
               <span 
                 style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '0.68rem',
+                  fontSize: '0.66rem',
                   fontWeight: 800,
                   color: 'var(--color-orange)',
                   marginTop: '2px',
                   letterSpacing: '0.02em',
-                  textTransform: 'uppercase'
+                  textTransform: 'uppercase',
+                  lineHeight: 1
                 }}
               >
                 LIVE

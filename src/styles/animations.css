@@ -114,6 +114,190 @@
   color: rgba(255, 255, 255, 0.035);
 }
 
+/* ==========================================================================
+   FUNKY & NEO-BRUTALIST STUDENT ANIMATIONS
+   Tactile button presses, infinite marquees, sticker wobbles, liquid pulses
+   ========================================================================== */
+
+/* Infinite Marquee Ticker Track */
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeScrollReverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-fast {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 12s linear infinite;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollReverse 22s linear infinite;
+}
+
+/* Playful Sticker / Badge Wobble */
+@keyframes stickerWobble {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.03);
+  }
+}
+
+.sticker-wobble {
+  animation: stickerWobble 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* 8-bit Pixel Dino / Arcade Jump */
+@keyframes arcadeBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.arcade-bounce {
+  animation: arcadeBounce 2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+}
+
+/* Electric Neon Pulse */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--color-acid-glow), 4px 4px 0 #000;
+  }
+  50% {
+    box-shadow: 0 0 25px var(--color-acid-glow), 4px 4px 0 #000;
+  }
+}
+
+.neon-glow {
+  animation: neonPulse 2.5s infinite ease-in-out;
+}
+
+/* Hard Brutalist Tactile Button Press */
+.btn-brutal {
+  transition: transform 0.08s ease, box-shadow 0.08s ease !important;
+  cursor: pointer;
+  border: 3px solid #000000 !important;
+  box-shadow: 6px 6px 0 0 #000000;
+  font-family: var(--font-black);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.btn-brutal:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 0 #000000 !important;
+}
+
+.btn-brutal:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 0 #000000 !important;
+}
+
+/* Brutalist Shadow Tokens */
+.shadow-brutal {
+  box-shadow: 8px 8px 0 0 #000000 !important;
+}
+
+.shadow-brutal-sm {
+  box-shadow: 4px 4px 0 0 #000000 !important;
+}
+
+.shadow-brutal-lg {
+  box-shadow: 14px 14px 0 0 #000000 !important;
+}
+
+.shadow-brutal-acid {
+  box-shadow: 8px 8px 0 0 var(--color-acid), 8px 8px 0 3px #000000 !important;
+}
+
+.shadow-panel {
+  box-shadow: 12px 12px 0 0 var(--color-acid), 12px 12px 0 3px #000000 !important;
+}
+
+/* Grid Paper Background Pattern */
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+[data-theme="dark"] .grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+/* Funky Acid Selection */
+::selection {
+  background-color: var(--color-acid) !important;
+  color: #000000 !important;
+}
+
+/* Typography Utility Classes */
+.font-black {
+  font-family: var(--font-black) !important;
+}
+
+.font-funky {
+  font-family: var(--font-funky) !important;
+}
+
+.font-mono-brutal {
+  font-family: var(--font-mono) !important;
+}
+
+.highlight-acid {
+  background-color: var(--color-acid);
+  color: #000000;
+  padding: 1px 8px;
+  box-decoration-clone: clone;
+  -webkit-box-decoration-clone: clone;
+  display: inline-block;
+  border: 2px solid #000000;
+}
+
+.highlight-cyan {
+  background-color: var(--color-cyan);
+  color: #000000;
+  padding: 1px 8px;
+  box-decoration-clone: clone;
+  -webkit-box-decoration-clone: clone;
+  display: inline-block;
+  border: 2px solid #000000;
+}
+
 /* Respect user reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

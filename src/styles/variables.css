@@ -20,6 +20,16 @@
   --color-charcoal-light: #2E2E2E;
   --color-charcoal-dark: #141414;
 
+  /* Funky Neo-Brutalist & Student Music Palette */
+  --color-paper: #F4F1EA;
+  --color-ink: #000000;
+  --color-acid: #E8FF00;
+  --color-acid-glow: rgba(232, 255, 0, 0.45);
+  --color-cyan: #00F0FF;
+  --color-cyan-glow: rgba(0, 240, 255, 0.45);
+  --color-magenta: #FF007F;
+  --color-purple: #7B2CBF;
+
   --color-coral: #F52D3A;
   --color-coral-hover: #E01E2B;
   --color-coral-soft: rgba(245, 45, 58, 0.1);
@@ -70,10 +80,12 @@
   --text-muted: #888888;
   --text-inverse: #FFFFFF;
 
-  /* Typography */
-  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography: Funky, Bold, Brutalist & Audio-Centric */
+  --font-heading: 'Space Grotesk', 'Syne', sans-serif;
+  --font-black: 'Archivo Black', sans-serif;
+  --font-funky: 'Syne', 'Space Grotesk', sans-serif;
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
 
   /* Spacing Scale */
   --space-2xs: 2px;

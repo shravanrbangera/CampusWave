@@ -31,6 +31,10 @@ import { SummaryCard } from '../components/SummaryCard';
 import { VinylRecord } from '../components/VinylRecord';
 import { AudioWaveform } from '../components/AudioWaveform';
 import { AxonCanvas } from '../components/AxonCanvas';
+import { LiquidEther } from '../components/LiquidEther';
+import { BrutalistSoundSlider } from '../components/BrutalistSoundSlider';
+import { RetroConsoleDeck } from '../components/RetroConsoleDeck';
+import { MarqueeTicker } from '../components/MarqueeTicker';
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -38,6 +42,16 @@ export const Landing = () => {
   const { votedPolls, castVote } = useAuth();
   const [activePollVote, setActivePollVote] = useState(votedPolls['dailySong'] || null);
   const [voteFeedback, setVoteFeedback] = useState(false);
+
+  // LiquidEther Color Themes
+  const etherPalettes = {
+    acid: ['#e8ff00', '#F52D3A', '#00f0ff', '#123C40'],
+    cherry: ['#F52D3A', '#FFB52E', '#ff007f', '#202020'],
+    midnight: ['#5227FF', '#FF9FFC', '#00e5ff', '#123C40'],
+    retro: ['#FFB52E', '#00f5d4', '#7b2cbf', '#f15bb5']
+  };
+  const [activePalette, setActivePalette] = useState('acid');
+  const [heroMode, setHeroMode] = useState('console'); // 'console' | 'vinyl'
 
   const isLivePlaying = currentTrack?.id === mockLiveShow.id && isPlaying;
 
@@ -98,8 +112,27 @@ export const Landing = () => {
             90.4 FM
           </div>
 
-          {/* Interactive Axon canvas for subtle particle drift */}
-          <AxonCanvas particleCount={30} />
+          {/* Interactive LiquidEther WebGL Fluid Simulation Background */}
+          <div 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 0,
+              opacity: 0.75,
+              pointerEvents: 'auto'
+            }}
+          >
+            <LiquidEther 
+              colors={etherPalettes[activePalette]}
+              mouseForce={30}
+              cursorSize={110}
+              autoDemo={true}
+              autoSpeed={0.5}
+              autoIntensity={2.4}
+              resolution={0.5}
+              BFECC={true}
+            />
+          </div>
 
           <div 
             style={{
@@ -114,17 +147,61 @@ export const Landing = () => {
           >
             {/* Left Hero Column */}
             <div>
+              {/* Fluid Synth Theme Switcher Pills */}
+              <div 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px', 
+                  marginBottom: '16px', 
+                  flexWrap: 'wrap' 
+                }}
+              >
+                <span 
+                  style={{ 
+                    fontFamily: 'var(--font-mono)', 
+                    fontSize: '0.72rem', 
+                    fontWeight: 800, 
+                    color: '#000000', 
+                    backgroundColor: 'var(--color-acid)', 
+                    padding: '3px 8px', 
+                    border: '2px solid #000000' 
+                  }}
+                >
+                  ⚡ FLUID MIXER:
+                </span>
+                {Object.keys(etherPalettes).map((pKey) => (
+                  <button
+                    key={pKey}
+                    onClick={() => setActivePalette(pKey)}
+                    className="btn-brutal"
+                    style={{
+                      padding: '3px 10px',
+                      fontSize: '0.7rem',
+                      backgroundColor: activePalette === pKey ? '#000000' : '#FFFFFF',
+                      color: activePalette === pKey ? 'var(--color-acid)' : '#000000',
+                      border: '2px solid #000000',
+                      boxShadow: activePalette === pKey ? '2px 2px 0 #000' : '3px 3px 0 #000'
+                    }}
+                  >
+                    {pKey.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+
               {/* Editorial Pill */}
               <div 
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  backgroundColor: 'var(--color-coral-soft)',
-                  border: '1px solid rgba(245, 45, 58, 0.25)',
+                  backgroundColor: '#000000',
+                  color: 'var(--color-acid)',
+                  border: '2px solid #000000',
                   padding: '5px 14px',
                   borderRadius: 'var(--radius-full)',
-                  marginBottom: '20px'
+                  marginBottom: '18px',
+                  boxShadow: '3px 3px 0 #000000'
                 }}
               >
                 <span 
@@ -133,7 +210,7 @@ export const Landing = () => {
                     width: '7px',
                     height: '7px',
                     borderRadius: '50%',
-                    backgroundColor: 'var(--color-coral)',
+                    backgroundColor: 'var(--color-acid)',
                     display: 'inline-block'
                   }}
                 />
@@ -141,8 +218,8 @@ export const Landing = () => {
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.74rem',
-                    color: 'var(--color-coral)',
-                    fontWeight: 700,
+                    color: 'var(--color-acid)',
+                    fontWeight: 800,
                     letterSpacing: '0.04em'
                   }}
                 >
@@ -150,25 +227,32 @@ export const Landing = () => {
                 </span>
               </div>
 
-              {/* Master Headline */}
+              {/* Master Headline (Punchy, Crazy Student Typography) */}
               <h1 
-                className="editorial-title" 
+                className="font-black editorial-title" 
                 style={{ 
-                  color: 'var(--color-charcoal)',
-                  marginBottom: '18px'
+                  color: '#000000',
+                  marginBottom: '18px',
+                  lineHeight: 0.94,
+                  textTransform: 'uppercase',
+                  letterSpacing: '-0.02em'
                 }}
               >
-                Your Campus. <br />
-                <span style={{ color: 'var(--color-coral)' }}>Your Sound.</span> <br />
-                Your Wave.
+                YOUR CAMPUS. <br />
+                <span className="highlight-acid">YOUR SOUND.</span> <br />
+                YOUR <span className="highlight-cyan">WAVE.</span>
               </h1>
 
               {/* Description */}
               <p 
                 className="editorial-sub"
-                style={{ marginBottom: '32px' }}
+                style={{ 
+                  marginBottom: '32px',
+                  color: '#222222',
+                  fontWeight: 600
+                }}
               >
-                Discover music, campus stories, student voices and everything happening around you at NMAM Institute of Technology.
+                Discover student talk shows, hosteller acoustic releases, hackathon live synthesis, and campus radio at NMAM Institute of Technology.
               </p>
 
               {/* Action Buttons */}
@@ -181,24 +265,32 @@ export const Landing = () => {
                   flexWrap: 'wrap'
                 }}
               >
-                <Link to="/explore" className="btn-coral" style={{ padding: '13px 30px', fontSize: '1rem' }}>
-                  <Compass size={18} />
-                  <span>Explore Now</span>
+                <Link 
+                  to="/explore" 
+                  className="btn-brutal" 
+                  style={{ 
+                    padding: '12px 28px', 
+                    fontSize: '0.96rem',
+                    backgroundColor: 'var(--color-acid)',
+                    color: '#000000'
+                  }}
+                >
+                  <Compass size={18} style={{ display: 'inline-block', marginRight: '6px' }} />
+                  <span>EXPLORE CRATES</span>
                 </Link>
 
                 <button 
                   onClick={handleTuneInLive}
-                  className="btn-secondary"
+                  className="btn-brutal"
                   style={{ 
-                    padding: '13px 26px', 
-                    fontSize: '1rem',
-                    backgroundColor: isLivePlaying ? 'var(--color-teal)' : 'var(--color-white)',
-                    color: isLivePlaying ? '#FFFFFF' : 'var(--color-charcoal)',
-                    borderColor: isLivePlaying ? 'var(--color-teal)' : 'var(--color-border)'
+                    padding: '12px 24px', 
+                    fontSize: '0.96rem',
+                    backgroundColor: isLivePlaying ? '#000000' : '#FFFFFF',
+                    color: isLivePlaying ? 'var(--color-acid)' : '#000000'
                   }}
                 >
-                  <Radio size={18} color={isLivePlaying ? "#FFF" : "var(--color-coral)"} />
-                  <span>{isLivePlaying ? 'Listening Live' : 'Listen Live (90.4 FM)'}</span>
+                  <Radio size={18} style={{ display: 'inline-block', marginRight: '6px' }} />
+                  <span>{isLivePlaying ? 'ON AIR (TUNED IN)' : 'LISTEN LIVE 90.4'}</span>
                 </button>
               </div>
 
@@ -206,153 +298,219 @@ export const Landing = () => {
               <div 
                 className="hero-stats-row"
                 style={{
-                  marginTop: '36px',
+                  marginTop: '34px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '24px',
                   paddingTop: '20px',
-                  borderTop: '1px solid var(--color-border)',
+                  borderTop: '2px solid #000000',
                   flexWrap: 'wrap'
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
+                  <div className="font-black" style={{ fontSize: '1.5rem', color: '#000000' }}>
                     340+
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    Hostel Listeners
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#444444' }}>
+                    HOSTEL STREAMERS
                   </div>
                 </div>
 
-                <div className="divider-line" style={{ width: '1px', height: '24px', background: 'var(--color-border)' }} />
+                <div className="divider-line" style={{ width: '2px', height: '24px', background: '#000000' }} />
 
                 <div>
-                  <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-charcoal)' }}>
+                  <div className="font-black" style={{ fontSize: '1.5rem', color: '#000000' }}>
                     28
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    Student Shows
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#444444' }}>
+                    STUDENT PODCASTS
                   </div>
                 </div>
 
-                <div className="divider-line" style={{ width: '1px', height: '24px', background: 'var(--color-border)' }} />
+                <div className="divider-line" style={{ width: '2px', height: '24px', background: '#000000' }} />
 
                 <div>
-                  <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-coral)' }}>
+                  <div className="font-black" style={{ fontSize: '1.5rem', color: 'var(--color-coral)' }}>
                     90.4
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    Studio Digital FM
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#444444' }}>
+                    DIGITAL FM
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Hero Column: 3D Turntable Showcase Card */}
+            {/* Right Hero Column: Interactive Console Deck OR 3D Turntable */}
             <div 
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                position: 'relative'
+                position: 'relative',
+                zIndex: 2
               }}
             >
+              {/* Dual Mode Switcher Tabs */}
               <div 
-                className="card-3d"
-                style={{
-                  background: 'linear-gradient(145deg, var(--color-teal) 0%, #0B2529 100%)',
-                  padding: '34px 28px',
-                  borderRadius: 'var(--radius-xl)',
-                  boxShadow: '0 20px 50px rgba(18, 60, 64, 0.35)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  width: '100%',
-                  maxWidth: '400px',
-                  position: 'relative',
-                  border: '1px solid rgba(255, 255, 255, 0.12)'
+                style={{ 
+                  display: 'flex', 
+                  gap: '8px', 
+                  marginBottom: '16px',
+                  backgroundColor: '#FFFFFF',
+                  padding: '4px',
+                  border: '2px solid #000000',
+                  boxShadow: '3px 3px 0 #000000'
                 }}
               >
-                {/* Vinyl Record */}
-                <VinylRecord 
-                  isPlaying={isLivePlaying} 
-                  coverImage={mockLiveShow.cover} 
-                  size={250} 
-                  albumTitle={mockLiveShow.title}
-                  showArm={true}
-                />
+                <button
+                  onClick={() => setHeroMode('console')}
+                  className="btn-brutal"
+                  style={{
+                    padding: '6px 14px',
+                    fontSize: '0.75rem',
+                    backgroundColor: heroMode === 'console' ? 'var(--color-acid)' : '#FFFFFF',
+                    color: '#000000',
+                    boxShadow: heroMode === 'console' ? '2px 2px 0 #000' : 'none',
+                    border: '2px solid #000000'
+                  }}
+                >
+                  🦖 RETRO CONSOLE
+                </button>
 
-                {/* Live Card details */}
-                <div style={{ width: '100%', marginTop: '22px', textAlign: 'center' }}>
-                  <div 
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      backgroundColor: 'rgba(245, 45, 58, 0.2)',
-                      color: 'var(--color-coral)',
-                      border: '1px solid rgba(245, 45, 58, 0.4)',
-                      padding: '3px 10px',
-                      borderRadius: 'var(--radius-full)',
-                      fontSize: '0.7rem',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 800,
-                      marginBottom: '8px'
-                    }}
-                  >
-                    <span className="badge-live-pulse" style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-coral)' }} />
-                    LIVE ON TRANSMISSION
-                  </div>
+                <button
+                  onClick={() => setHeroMode('vinyl')}
+                  className="btn-brutal"
+                  style={{
+                    padding: '6px 14px',
+                    fontSize: '0.75rem',
+                    backgroundColor: heroMode === 'vinyl' ? '#000000' : '#FFFFFF',
+                    color: heroMode === 'vinyl' ? 'var(--color-acid)' : '#000000',
+                    boxShadow: heroMode === 'vinyl' ? '2px 2px 0 #000' : 'none',
+                    border: '2px solid #000000'
+                  }}
+                >
+                  💿 3D TURNTABLE
+                </button>
+              </div>
 
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '4px' }}>
-                    {mockLiveShow.title}
-                  </h3>
+              {heroMode === 'console' ? (
+                <RetroConsoleDeck />
+              ) : (
+                <div 
+                  className="card-3d shadow-brutal"
+                  style={{
+                    background: 'linear-gradient(145deg, #123C40 0%, #0B2529 100%)',
+                    padding: '34px 28px',
+                    borderRadius: 'var(--radius-xl)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width: '100%',
+                    maxWidth: '400px',
+                    position: 'relative',
+                    border: '3px solid #000000'
+                  }}
+                >
+                  {/* Vinyl Record */}
+                  <VinylRecord 
+                    isPlaying={isLivePlaying} 
+                    coverImage={mockLiveShow.cover} 
+                    size={240} 
+                    albumTitle={mockLiveShow.title}
+                    showArm={true}
+                  />
 
-                  <p style={{ fontSize: '0.86rem', color: 'var(--color-amber)', fontWeight: 600 }}>
-                    {mockLiveShow.rj} • Studio 1
-                  </p>
-
-                  <div 
-                    style={{
-                      marginTop: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '10px'
-                    }}
-                  >
-                    <button
-                      onClick={handleTuneInLive}
-                      className="btn-coral"
-                      style={{ padding: '8px 20px', fontSize: '0.84rem' }}
-                    >
-                      <Headphones size={15} />
-                      <span>{isLivePlaying ? "Tune In Stream" : "Listen Right Now"}</span>
-                    </button>
-                    <Link 
-                      to="/live" 
+                  {/* Live Card details */}
+                  <div style={{ width: '100%', marginTop: '20px', textAlign: 'center' }}>
+                    <div 
                       style={{
-                        width: '38px',
-                        height: '38px',
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        backgroundColor: 'rgba(245, 45, 58, 0.2)',
+                        color: 'var(--color-coral)',
+                        border: '1px solid rgba(245, 45, 58, 0.4)',
+                        padding: '3px 10px',
+                        borderRadius: 'var(--radius-full)',
+                        fontSize: '0.7rem',
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 800,
+                        marginBottom: '8px'
+                      }}
+                    >
+                      <span className="badge-live-pulse" style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-coral)' }} />
+                      LIVE ON TRANSMISSION
+                    </div>
+
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '4px' }}>
+                      {mockLiveShow.title}
+                    </h3>
+
+                    <p style={{ fontSize: '0.86rem', color: 'var(--color-amber)', fontWeight: 600 }}>
+                      {mockLiveShow.rj} • Studio 1
+                    </p>
+
+                    <div 
+                      style={{
+                        marginTop: '16px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#FFFFFF'
+                        gap: '10px'
                       }}
-                      title="Open Studio"
                     >
-                      <ExternalLink size={16} />
-                    </Link>
+                      <button
+                        onClick={handleTuneInLive}
+                        className="btn-brutal"
+                        style={{ 
+                          padding: '8px 20px', 
+                          fontSize: '0.84rem',
+                          backgroundColor: 'var(--color-acid)',
+                          color: '#000000'
+                        }}
+                      >
+                        <Headphones size={15} style={{ display: 'inline-block', marginRight: '6px' }} />
+                        <span>{isLivePlaying ? "Tuned In" : "Listen Now"}</span>
+                      </button>
+                      <Link 
+                        to="/live" 
+                        style={{
+                          width: '38px',
+                          height: '38px',
+                          borderRadius: '50%',
+                          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: '#FFFFFF'
+                        }}
+                        title="Open Studio"
+                      >
+                        <ExternalLink size={16} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Infinite Marquee Ticker */}
+      <MarqueeTicker />
+
+      {/* Neo-Brutalist Sound Slider Section */}
+      <BrutalistSoundSlider />
+
+      {/* Secondary Reverse Marquee Ticker in Acid Yellow */}
+      <MarqueeTicker 
+        reverse={true} 
+        bgColor="var(--color-acid)" 
+        textColor="#000000" 
+        speed="fast" 
+      />
 
       {/* =========================================================================
           SECTION 2: BENTO GRID CATEGORY DISCOVERY (6 Distinct Cards)

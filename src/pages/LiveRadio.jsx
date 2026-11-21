@@ -17,6 +17,7 @@ import { mockLiveShow } from '../data/music';
 import { mockRJs } from '../data/rjs';
 import { VinylRecord } from '../components/VinylRecord';
 import { AudioWaveform } from '../components/AudioWaveform';
+import { LiquidEther } from '../components/LiquidEther';
 
 export const LiveRadio = () => {
   const { 
@@ -181,17 +182,38 @@ export const LiveRadio = () => {
             <div 
               className="glass-panel"
               style={{
-                background: 'linear-gradient(145deg, rgba(16, 56, 61, 0.65) 0%, rgba(14, 19, 21, 0.9) 100%)',
+                background: 'linear-gradient(145deg, rgba(16, 56, 61, 0.75) 0%, rgba(14, 19, 21, 0.95) 100%)',
                 padding: 'var(--space-2xl)',
                 borderRadius: 'var(--radius-xl)',
-                border: '1px solid rgba(255, 148, 26, 0.3)',
+                border: '2px solid var(--color-coral)',
                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                position: 'relative'
+                position: 'relative',
+                overflow: 'hidden'
               }}
             >
+              {/* Interactive LiquidEther Studio Visualizer Background */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  zIndex: 0,
+                  opacity: 0.55,
+                  pointerEvents: 'auto'
+                }}
+              >
+                <LiquidEther 
+                  colors={['#F52D3A', '#e8ff00', '#00f0ff', '#123C40']}
+                  mouseForce={28}
+                  cursorSize={100}
+                  autoDemo={true}
+                  autoSpeed={0.45}
+                  resolution={0.45}
+                />
+              </div>
+
               {/* Top Station Tags */}
               <div 
                 style={{
@@ -199,7 +221,9 @@ export const LiveRadio = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  marginBottom: '18px'
+                  marginBottom: '18px',
+                  position: 'relative',
+                  zIndex: 2
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -233,7 +257,7 @@ export const LiveRadio = () => {
               </div>
 
               {/* High-Fidelity Vinyl Record */}
-              <div style={{ margin: '8px 0 20px' }}>
+              <div style={{ margin: '8px 0 20px', position: 'relative', zIndex: 2 }}>
                 <VinylRecord 
                   isPlaying={isLivePlaying} 
                   coverImage={mockLiveShow.cover} 
@@ -244,7 +268,7 @@ export const LiveRadio = () => {
               </div>
 
               {/* Show Titles */}
-              <div style={{ textAlign: 'center', width: '100%', marginBottom: '18px' }}>
+              <div style={{ textAlign: 'center', width: '100%', marginBottom: '18px', position: 'relative', zIndex: 2 }}>
                 <h1 style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.3rem)', color: 'var(--color-cream)', marginBottom: '6px', lineHeight: 1.2 }}>
                   {mockLiveShow.title}
                 </h1>
@@ -260,11 +284,13 @@ export const LiveRadio = () => {
               <div 
                 style={{
                   width: '100%',
-                  backgroundColor: 'rgba(0, 0, 0, 0.35)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.45)',
                   padding: '14px 18px',
                   borderRadius: 'var(--radius-lg)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  marginBottom: '20px'
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  marginBottom: '20px',
+                  position: 'relative',
+                  zIndex: 2
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginBottom: '6px' }}>

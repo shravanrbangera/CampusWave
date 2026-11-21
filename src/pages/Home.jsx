@@ -25,6 +25,8 @@ import { PodcastCard } from '../components/PodcastCard';
 import { MusicCard } from '../components/MusicCard';
 import { EventCard } from '../components/EventCard';
 import { VinylRecord } from '../components/VinylRecord';
+import { LiquidEther } from '../components/LiquidEther';
+import { MarqueeTicker } from '../components/MarqueeTicker';
 
 export const Home = () => {
   const { user, votedPolls, castVote } = useAuth();
@@ -108,20 +110,25 @@ export const Home = () => {
             boxShadow: 'var(--shadow-lg)'
           }}
         >
-          {/* Subtle Ambient Backlight */}
+          {/* Interactive LiquidEther Background */}
           <div 
             style={{
               position: 'absolute',
-              top: '-20%',
-              right: '5%',
-              width: '380px',
-              height: '380px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(245, 45, 58, 0.28) 0%, transparent 70%)',
-              filter: 'blur(50px)',
-              pointerEvents: 'none'
+              inset: 0,
+              zIndex: 1,
+              opacity: 0.65,
+              pointerEvents: 'auto'
             }}
-          />
+          >
+            <LiquidEther 
+              colors={['#123C40', '#00f0ff', '#F52D3A', '#e8ff00']}
+              mouseForce={24}
+              cursorSize={90}
+              autoDemo={true}
+              autoSpeed={0.4}
+              resolution={0.45}
+            />
+          </div>
 
           <div 
             style={{

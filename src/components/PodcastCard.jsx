@@ -95,10 +95,10 @@ export const PodcastCard = ({ podcast, compact = false }) => {
               color: '#FFFFFF',
               borderRadius: '6px',
               padding: '3px 8px',
-              fontFamily: 'var(--font-body)',
+              fontFamily: 'var(--font-radio)',
               fontWeight: 700,
               fontSize: '0.7rem',
-              letterSpacing: '0.02em',
+              letterSpacing: '0.03em',
               display: 'inline-block'
             }}
           >
@@ -174,9 +174,9 @@ export const PodcastCard = ({ podcast, compact = false }) => {
         <div>
           <div 
             style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '0.72rem',
-              color: 'var(--text-muted)',
+              fontFamily: 'var(--font-radio)',
+              fontSize: '0.74rem',
+              color: 'var(--color-orange)',
               marginBottom: '4px',
               textTransform: 'uppercase',
               letterSpacing: '0.04em',

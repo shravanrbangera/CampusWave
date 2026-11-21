@@ -43,11 +43,11 @@ export const MarqueeTicker = ({
           {items.map((item, idx) => (
             <span 
               key={`seq1-${idx}`}
-              className="font-black"
               style={{
-                fontSize: '1.15rem',
+                fontFamily: 'var(--font-radio)',
+                fontSize: '1.05rem',
                 textTransform: 'uppercase',
-                letterSpacing: '-0.01em',
+                letterSpacing: '0.04em',
                 padding: '0 28px',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -65,11 +65,11 @@ export const MarqueeTicker = ({
           {items.map((item, idx) => (
             <span 
               key={`seq2-${idx}`}
-              className="font-black"
               style={{
-                fontSize: '1.15rem',
+                fontFamily: 'var(--font-radio)',
+                fontSize: '1.05rem',
                 textTransform: 'uppercase',
-                letterSpacing: '-0.01em',
+                letterSpacing: '0.04em',
                 padding: '0 28px',
                 display: 'inline-flex',
                 alignItems: 'center',

@@ -96,12 +96,12 @@ export const BottomNavigation = () => {
               </div>
               <span 
                 style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.66rem',
+                  fontFamily: 'var(--font-radio)',
+                  fontSize: '0.68rem',
                   fontWeight: 700,
                   color: 'var(--color-orange)',
                   marginTop: '2px',
-                  letterSpacing: '0.02em',
+                  letterSpacing: '0.04em',
                   textTransform: 'uppercase'
                 }}
               >
@@ -135,9 +135,11 @@ export const BottomNavigation = () => {
                 <Icon size={19} strokeWidth={isActive ? 2.4 : 1.8} color={isActive ? 'var(--color-orange)' : 'var(--text-secondary)'} />
                 <span 
                   style={{ 
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'var(--font-radio)',
                     fontSize: '0.68rem', 
-                    fontWeight: isActive ? 700 : 500,
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
                     color: isActive ? 'var(--color-orange)' : 'var(--text-secondary)'
                   }}
                 >

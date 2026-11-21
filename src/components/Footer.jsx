@@ -45,11 +45,16 @@ export const Footer = () => {
               <Radio size={20} />
             </div>
             <div>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-                CAMPUS<span style={{ color: 'var(--color-orange)' }}>WAVE</span>
-              </span>
-              <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
-                NMAMIT • 90.4 MHZ DIGITAL
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontFamily: 'var(--font-radio)', fontSize: '1.35rem', letterSpacing: '0.04em', color: 'var(--text-primary)' }}>
+                  CAMPUS<span style={{ color: 'var(--color-orange)' }}>WAVE</span>
+                </span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 700, backgroundColor: 'var(--color-orange)', color: '#FFF', padding: '1px 6px', borderRadius: '4px' }}>
+                  90.4 FM
+                </span>
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: 'var(--text-secondary)', letterSpacing: '0.04em' }}>
+                NMAMIT • DIGITAL FM STEREO
               </div>
             </div>
           </div>

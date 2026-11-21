@@ -122,27 +122,31 @@ export const PlaylistVoting = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange">
+          <span className="sticker-tag sticker-tag-orange" style={{ fontFamily: 'var(--font-radio)', letterSpacing: '0.04em' }}>
             <Vote size={13} />
             CAMPUS DEMOCRACY // 90.4 MHZ
           </span>
-          <span className="sticker-tag" style={{ transform: 'rotate(1deg)' }}>
+          <span className="sticker-tag" style={{ transform: 'rotate(1deg)', fontFamily: 'var(--font-mono)' }}>
             STUDENT PICKS 🔥
           </span>
-          <span style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-            HOSTEL PRIME HOUR CURATION
+          <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
+            Hostel Prime Hour Curation & Jukebox
           </span>
         </div>
 
+        <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: 'var(--color-orange)', fontSize: '1.05rem', marginTop: '6px' }}>
+          Stay Tuned & Cast Your Voice...
+        </div>
         <h1 
+          className="retro-title-shadow"
           style={{ 
-            fontFamily: 'var(--font-heading)',
-            fontSize: 'var(--font-size-page-heading)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
-            marginTop: '8px', 
+            fontFamily: 'var(--font-retro)',
+            fontSize: 'var(--font-size-hero)',
+            fontWeight: 400,
+            marginTop: '4px', 
             marginBottom: '10px', 
-            color: 'var(--text-primary)' 
+            color: 'var(--color-retro-yellow)',
+            lineHeight: 1.15
           }}
         >
           DAILY PLAYLIST <span style={{ color: 'var(--color-orange)' }}>VOTING</span>
@@ -164,10 +168,10 @@ export const PlaylistVoting = () => {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '24px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-radio)' }}>
               <Flame size={14} /> TONIGHT'S PRIME POLL
             </div>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: 800, color: 'var(--text-primary)', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: 'var(--font-radio)', fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', color: 'var(--text-primary)', marginTop: '4px', letterSpacing: '0.02em' }}>
               {mockVotingData.dailySongPoll.question}
             </h2>
           </div>
@@ -231,7 +235,7 @@ export const PlaylistVoting = () => {
 
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
+                        <h3 style={{ fontFamily: 'var(--font-radio)', fontSize: '1.08rem', color: 'var(--text-primary)', margin: 0, letterSpacing: '0.02em' }}>
                           {song.title}
                         </h3>
                         {isVoted && (

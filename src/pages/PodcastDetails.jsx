@@ -152,29 +152,34 @@ export const PodcastDetails = () => {
           <div>
             <div 
               style={{
+                fontFamily: 'var(--font-radio)',
                 fontSize: '0.82rem',
                 color: 'var(--color-orange)',
-                fontWeight: 700,
+                letterSpacing: '0.04em',
                 marginBottom: '6px'
               }}
             >
-              ⚡ {podcast.showName} • EPISODE DISPATCH // 90.4 MHZ
+              ⚡ {podcast.showName.toUpperCase()} • EPISODE DISPATCH // 90.4 MHZ
+            </div>
+            <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: '#FAB005', fontSize: '1rem', marginBottom: '4px' }}>
+              From The Campus Tape Vault...
             </div>
             <h1 
+              className="retro-title-shadow"
               style={{ 
-                fontFamily: 'var(--font-heading)', 
-                fontSize: 'clamp(1.6rem, 3.2vw, 2.4rem)', 
+                fontFamily: 'var(--font-retro)', 
+                fontSize: 'clamp(1.8rem, 3.4vw, 2.6rem)', 
                 lineHeight: 1.2, 
                 marginBottom: '10px', 
-                color: '#FFFFFF',
-                fontWeight: 800
+                color: 'var(--color-retro-yellow)',
+                fontWeight: 400
               }}
             >
               {podcast.title}
             </h1>
             <div style={{ fontSize: '0.92rem', color: 'rgba(255, 255, 255, 0.9)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>
               <User size={16} color="var(--color-orange)" />
-              <span style={{ color: '#FFB800' }}>{podcast.host}</span>
+              <span style={{ fontFamily: 'var(--font-radio)', color: '#FFB800', letterSpacing: '0.02em', fontSize: '1.02rem' }}>{podcast.host}</span>
               <span>— {podcast.hostRole}</span>
             </div>
           </div>
@@ -310,7 +315,7 @@ export const PodcastDetails = () => {
               <Sparkles size={18} />
             </div>
             <div>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
+              <h2 style={{ fontFamily: 'var(--font-radio)', fontSize: '1.15rem', margin: 0, color: 'var(--text-primary)', letterSpacing: '0.03em' }}>
                 CAMPUSWAVE AI BROADCAST SYNTHESIS
               </h2>
               <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
@@ -412,8 +417,8 @@ export const PodcastDetails = () => {
             <span className="sticker-tag sticker-tag-cyan" style={{ marginBottom: '6px' }}>
               🎙️ MORE IN THIS CRATE
             </span>
-            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
-              Related Student Shows
+            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-radio)', letterSpacing: '0.03em' }}>
+              RELATED STUDENT SHOWS
             </h2>
           </div>
         </div>

@@ -92,15 +92,15 @@ export const LiveRadio = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange">
+          <span className="sticker-tag sticker-tag-orange" style={{ fontFamily: 'var(--font-radio)', letterSpacing: '0.04em' }}>
             <Radio size={14} />
             STUDIO TRANSMISSION ACTIVE
           </span>
-          <span className="sticker-tag sticker-tag-cyan">
-            90.4 MHZ DIGITAL
+          <span className="sticker-tag" style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+            90.4 MHZ STEREO
           </span>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-            NMAMIT Campus Live Broadcast Console
+          <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
+            Stay Tuned! NMAMIT Campus Digital Airwaves
           </span>
         </div>
 
@@ -220,8 +220,29 @@ export const LiveRadio = () => {
               </div>
             </div>
 
+            {/* Retro FM Frequency Tuner Dial */}
+            <div 
+              className="retro-tuner-scale" 
+              style={{ 
+                width: '100%', 
+                maxWidth: '380px', 
+                marginBottom: '14px', 
+                position: 'relative', 
+                zIndex: 2,
+                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                border: '1px solid rgba(255, 255, 255, 0.2)'
+              }}
+            >
+              <span>88 FM</span>
+              <span style={{ color: '#FAB005', fontWeight: 800 }}>90.4 MHZ [TUNED]</span>
+              <span>96</span>
+              <span>102</span>
+              <span>108 FM</span>
+              <div className="retro-tuner-needle" style={{ left: '26%' }} />
+            </div>
+
             {/* High-Fidelity Vinyl Record */}
-            <div style={{ margin: '8px 0 20px', position: 'relative', zIndex: 2 }}>
+            <div style={{ margin: '4px 0 18px', position: 'relative', zIndex: 2 }}>
               <VinylRecord 
                 isPlaying={isLivePlaying} 
                 coverImage={mockLiveShow.cover} 
@@ -231,13 +252,26 @@ export const LiveRadio = () => {
               />
             </div>
 
-            {/* Show Titles */}
+            {/* Show Titles - FM Retro Display */}
             <div style={{ textAlign: 'center', width: '100%', marginBottom: '18px', position: 'relative', zIndex: 2 }}>
-              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: '#FFFFFF', fontWeight: 800, marginBottom: '6px', lineHeight: 1.2 }}>
+              <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: '#FAB005', fontSize: '1rem', marginBottom: '4px' }}>
+                A Wonderful Live Broadcast with...
+              </div>
+              <h1 
+                className="retro-title-shadow"
+                style={{ 
+                  fontFamily: 'var(--font-retro)', 
+                  fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', 
+                  color: 'var(--color-retro-yellow)', 
+                  fontWeight: 400, 
+                  marginBottom: '8px', 
+                  lineHeight: 1.2 
+                }}
+              >
                 {mockLiveShow.title}
               </h1>
-              <p style={{ color: '#FFB52E', fontSize: '0.96rem', fontWeight: 700 }}>
-                Hosted by {mockLiveShow.rj}
+              <p style={{ fontFamily: 'var(--font-radio)', color: '#FFFFFF', fontSize: '1.05rem', letterSpacing: '0.04em' }}>
+                HOSTED BY RJ {mockLiveShow.rj.toUpperCase()}
               </p>
               <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.88rem', marginTop: '6px', maxWidth: '480px', margin: '6px auto 0', lineHeight: 1.5 }}>
                 {mockLiveShow.description}
@@ -355,8 +389,8 @@ export const LiveRadio = () => {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
               <Clock size={18} color="var(--color-orange)" />
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
-                Upcoming Tonight on 90.4 FM
+              <h3 style={{ fontFamily: 'var(--font-radio)', fontSize: '1.2rem', color: 'var(--text-primary)', margin: 0, letterSpacing: '0.03em' }}>
+                UPCOMING TONIGHT ON 90.4 FM
               </h3>
             </div>
 
@@ -429,8 +463,8 @@ export const LiveRadio = () => {
                 style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-orange)' }} 
               />
               <div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                  {currentRJ.name}
+                <h3 style={{ fontFamily: 'var(--font-radio)', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '2px', letterSpacing: '0.03em' }}>
+                  {currentRJ.name.toUpperCase()}
                 </h3>
                 <div style={{ fontSize: '0.84rem', color: 'var(--color-orange)', fontWeight: 600 }}>
                   {currentRJ.role}
@@ -480,8 +514,8 @@ export const LiveRadio = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <MessageSquare size={17} color="var(--color-orange)" />
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
-                  Live Studio Shoutouts
+                <h3 style={{ fontFamily: 'var(--font-radio)', fontSize: '1.15rem', color: 'var(--text-primary)', margin: 0, letterSpacing: '0.03em' }}>
+                  LIVE STUDIO SHOUTOUTS
                 </h3>
               </div>
               <span className="sticker-tag sticker-tag-orange" style={{ fontSize: '0.7rem', padding: '2px 8px' }}>

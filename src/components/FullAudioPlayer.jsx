@@ -141,51 +141,54 @@ export const FullAudioPlayer = () => {
             style={{
               padding: '6px 16px',
               borderRadius: 'var(--radius-full)',
-              fontSize: '0.84rem',
-              fontWeight: 700,
+              fontSize: '0.82rem',
+              fontFamily: 'var(--font-radio)',
+              letterSpacing: '0.03em',
               color: activeTab === 'player' ? '#FFFFFF' : 'rgba(255, 255, 255, 0.7)',
-              backgroundColor: activeTab === 'player' ? 'var(--color-coral)' : 'transparent',
+              backgroundColor: activeTab === 'player' ? 'var(--color-orange)' : 'transparent',
               display: 'flex',
               alignItems: 'center',
               gap: '6px'
             }}
           >
             <Disc3 size={15} />
-            Player
+            PLAYER
           </button>
           <button
             onClick={() => setActiveTab('queue')}
             style={{
               padding: '6px 16px',
               borderRadius: 'var(--radius-full)',
-              fontSize: '0.84rem',
-              fontWeight: 700,
+              fontSize: '0.82rem',
+              fontFamily: 'var(--font-radio)',
+              letterSpacing: '0.03em',
               color: activeTab === 'queue' ? '#FFFFFF' : 'rgba(255, 255, 255, 0.7)',
-              backgroundColor: activeTab === 'queue' ? 'var(--color-coral)' : 'transparent',
+              backgroundColor: activeTab === 'queue' ? 'var(--color-orange)' : 'transparent',
               display: 'flex',
               alignItems: 'center',
               gap: '6px'
             }}
           >
             <ListMusic size={15} />
-            Queue ({queue.length})
+            QUEUE ({queue.length})
           </button>
           <button
             onClick={() => setActiveTab('ai')}
             style={{
               padding: '6px 16px',
               borderRadius: 'var(--radius-full)',
-              fontSize: '0.84rem',
-              fontWeight: 700,
+              fontSize: '0.82rem',
+              fontFamily: 'var(--font-radio)',
+              letterSpacing: '0.03em',
               color: activeTab === 'ai' ? '#FFFFFF' : 'rgba(255, 255, 255, 0.7)',
-              backgroundColor: activeTab === 'ai' ? 'var(--color-coral)' : 'transparent',
+              backgroundColor: activeTab === 'ai' ? 'var(--color-orange)' : 'transparent',
               display: 'flex',
               alignItems: 'center',
               gap: '6px'
             }}
           >
             <Sparkles size={15} />
-            AI Takeaways
+            AI TAKEAWAYS
           </button>
         </div>
 
@@ -277,21 +280,28 @@ export const FullAudioPlayer = () => {
             {/* Right: Audio Info, Waveform & Controls */}
             <div className="full-player-controls-box" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
               <div>
+                <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: '#FAB005', fontSize: '1rem', marginBottom: '4px' }}>
+                  Now Playing On 90.4 FM...
+                </div>
                 <h2 
+                  className="retro-title-shadow"
                   style={{
+                    fontFamily: 'var(--font-retro)',
                     fontSize: 'clamp(1.7rem, 3.2vw, 2.3rem)',
                     marginBottom: '8px',
                     lineHeight: 1.2,
-                    color: '#FFFFFF'
+                    color: 'var(--color-retro-yellow)',
+                    fontWeight: 400
                   }}
                 >
                   {currentTrack.title}
                 </h2>
                 <p 
                   style={{
+                    fontFamily: 'var(--font-radio)',
                     fontSize: '1.05rem',
-                    color: 'var(--color-amber)',
-                    fontWeight: 700
+                    color: '#FFB800',
+                    letterSpacing: '0.03em'
                   }}
                 >
                   {currentTrack.artist || currentTrack.host}

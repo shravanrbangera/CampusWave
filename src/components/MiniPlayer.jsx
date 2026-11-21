@@ -139,9 +139,9 @@ export const MiniPlayer = () => {
           <div style={{ minWidth: 0, overflow: 'hidden' }}>
             <div 
               style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '0.88rem',
-                fontWeight: 700,
+                fontFamily: 'var(--font-radio)',
+                fontSize: '0.9rem',
+                letterSpacing: '0.02em',
                 color: 'var(--text-primary)',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -172,7 +172,9 @@ export const MiniPlayer = () => {
                     backgroundColor: 'var(--color-orange)',
                     color: '#FFF',
                     borderRadius: '4px',
-                    fontWeight: 800
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em'
                   }}
                 >
                   LIVE

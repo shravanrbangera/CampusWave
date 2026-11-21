@@ -113,22 +113,64 @@ export const Home = () => {
 
         {/* Dynamic Contextual Greeting */}
         <div>
+          <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.94rem', color: 'var(--text-secondary)', marginBottom: '2px' }}>
+            A Wonderful Broadcast with...
+          </div>
           <h1 
             style={{ 
-              fontFamily: 'var(--font-heading)', 
-              fontSize: 'clamp(1.5rem, 5vw, 2.4rem)', 
+              fontFamily: 'var(--font-retro)', 
+              fontSize: 'clamp(1.7rem, 5.5vw, 2.7rem)', 
               color: 'var(--text-primary)', 
-              fontWeight: 800,
-              letterSpacing: '-0.025em',
-              lineHeight: 1.2,
-              margin: '2px 0 6px'
+              letterSpacing: '0.02em',
+              lineHeight: 1.15,
+              margin: '2px 0 6px',
+              textShadow: '2px 2px 0 var(--color-retro-shadow, rgba(201, 42, 42, 0.25))'
             }}
           >
             {timeGreeting}, <span style={{ color: 'var(--color-orange)' }}>{firstName}</span>!
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', fontWeight: 500, maxWidth: '640px', lineHeight: 1.5 }}>
-            Live student radio broadcasts, engineering chronicles, and daily hostel playlists. Less clutter, more listening.
+            Student engineering chronicles, indie hostel acoustics, and daily playlist votes. Stay tuned to 90.4 MHz Stereo.
           </p>
+        </div>
+
+        {/* Vintage Radio FM Frequency Scale */}
+        <div 
+          style={{
+            maxWidth: '560px',
+            margin: '2px 0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: 'var(--bg-card-subtle)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '10px',
+            padding: '7px 14px',
+            position: 'relative'
+          }}
+        >
+          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>88 FM</span>
+          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>· · ·</span>
+          <span style={{ 
+            fontSize: '0.74rem', 
+            fontFamily: 'var(--font-mono)', 
+            fontWeight: 800, 
+            color: 'var(--color-orange)',
+            backgroundColor: 'var(--color-orange-soft)',
+            padding: '2px 8px',
+            borderRadius: '4px',
+            border: '1px solid var(--color-orange)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '5px'
+          }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--color-orange)', animation: 'pulse 1s infinite' }} />
+            90.4 MHZ (TUNED)
+          </span>
+          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>· · ·</span>
+          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>98 FM</span>
+          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>· · ·</span>
+          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>108 FM</span>
         </div>
 
         {/* Quick Action Navigation Pills */}
@@ -285,7 +327,7 @@ export const Home = () => {
               </div>
 
               {/* Show Title */}
-              <h2 style={{ fontSize: 'clamp(1.25rem, 3.2vw, 1.65rem)', color: '#FFFFFF', marginBottom: '6px', lineHeight: 1.2, fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
+              <h2 style={{ fontSize: 'clamp(1.35rem, 3.5vw, 1.8rem)', color: 'var(--color-retro-yellow)', marginBottom: '6px', lineHeight: 1.2, fontFamily: 'var(--font-retro)', letterSpacing: '0.02em', textShadow: '1px 1px 0 rgba(0,0,0,0.6)' }}>
                 {mockLiveShow.title}
               </h2>
 
@@ -410,7 +452,7 @@ export const Home = () => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Bookmark size={16} color="var(--color-orange)" />
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
+              <h2 style={{ fontFamily: 'var(--font-retro)', fontSize: '1.15rem', margin: 0, color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
                 QUICK ACCESS: SAVED EPISODES
               </h2>
             </div>
@@ -476,7 +518,7 @@ export const Home = () => {
             <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               CAMPUS DISCUSSIONS // PODCASTS
             </span>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.2rem, 3vw, 1.45rem)', fontWeight: 800, margin: '2px 0 0', color: 'var(--text-primary)' }}>
+            <h2 style={{ fontFamily: 'var(--font-retro)', fontSize: 'clamp(1.25rem, 3.5vw, 1.6rem)', margin: '2px 0 0', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
               FEATURED EPISODES
             </h2>
           </div>
@@ -521,7 +563,7 @@ export const Home = () => {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.72rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               <Vote size={13} /> PLAYLIST VOTING PREVIEW
             </div>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, margin: '2px 0 0', color: 'var(--text-primary)' }}>
+            <h3 style={{ fontFamily: 'var(--font-retro)', fontSize: '1.18rem', margin: '2px 0 0', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
               Tonight's Prime Hour Track Vote
             </h3>
           </div>

@@ -111,26 +111,30 @@ export const Saved = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span className="sticker-tag sticker-tag-orange">
+          <span className="sticker-tag sticker-tag-orange" style={{ fontFamily: 'var(--font-radio)', letterSpacing: '0.04em' }}>
             <Bookmark size={13} fill="#FFF" />
             STUDENT AUDIO VAULT // 90.4 FM
           </span>
-          <span className="sticker-tag" style={{ transform: 'rotate(1.2deg)' }}>
-            PERSONAL LIBRARY 📼
+          <span className="sticker-tag" style={{ transform: 'rotate(1.2deg)', fontFamily: 'var(--font-mono)' }}>
+            CASSETTE VAULT 📼
           </span>
-          <span style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-            OFFLINE & SAVED EPISODES
+          <span style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', fontSize: '0.9rem', color: 'var(--color-orange)' }}>
+            Offline Recordings & Stored Broadcasts
           </span>
         </div>
 
+        <div style={{ fontFamily: 'var(--font-serif-retro)', fontStyle: 'italic', color: 'var(--color-orange)', fontSize: '1.05rem', marginTop: '6px' }}>
+          Your Vintage Magnetic Tapes & Records...
+        </div>
         <h1 
+          className="retro-title-shadow"
           style={{ 
-            fontFamily: 'var(--font-heading)',
-            fontSize: 'var(--font-size-page-heading)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
-            margin: '8px 0 10px',
-            color: 'var(--text-primary)' 
+            fontFamily: 'var(--font-retro)',
+            fontSize: 'var(--font-size-hero)',
+            fontWeight: 400,
+            margin: '4px 0 10px',
+            color: 'var(--color-retro-yellow)',
+            lineHeight: 1.15
           }}
         >
           SAVED <span style={{ color: 'var(--color-orange)' }}>LIBRARY</span>
@@ -158,11 +162,13 @@ export const Saved = () => {
             padding: '8px 18px',
             fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            minHeight: '38px'
+            minHeight: '38px',
+            fontFamily: 'var(--font-radio)',
+            letterSpacing: '0.03em'
           }}
         >
           <Mic2 size={15} />
-          <span>Bookmarked ({bookmarkedEpisodes.length})</span>
+          <span>BOOKMARKED ({bookmarkedEpisodes.length})</span>
         </button>
 
         <button
@@ -172,11 +178,13 @@ export const Saved = () => {
             padding: '8px 18px',
             fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            minHeight: '38px'
+            minHeight: '38px',
+            fontFamily: 'var(--font-radio)',
+            letterSpacing: '0.03em'
           }}
         >
           <Download size={15} />
-          <span>Downloaded ({downloadedEpisodes.length})</span>
+          <span>DOWNLOADED ({downloadedEpisodes.length})</span>
         </button>
 
         <button
@@ -186,11 +194,13 @@ export const Saved = () => {
             padding: '8px 18px',
             fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            minHeight: '38px'
+            minHeight: '38px',
+            fontFamily: 'var(--font-radio)',
+            letterSpacing: '0.03em'
           }}
         >
           <Clock size={15} />
-          <span>Recently Played ({listeningHistory?.length || 0})</span>
+          <span>RECENT ({listeningHistory?.length || 0})</span>
         </button>
 
         <button
@@ -200,11 +210,13 @@ export const Saved = () => {
             padding: '8px 18px',
             fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            minHeight: '38px'
+            minHeight: '38px',
+            fontFamily: 'var(--font-radio)',
+            letterSpacing: '0.03em'
           }}
         >
           <Heart size={15} />
-          <span>Liked Music ({favoriteTracks.length})</span>
+          <span>LIKED MUSIC ({favoriteTracks.length})</span>
         </button>
       </div>
 

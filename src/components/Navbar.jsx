@@ -114,13 +114,12 @@ export const Navbar = () => {
             )}
           </div>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span 
                 style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '1.15rem',
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
+                  fontFamily: 'var(--font-radio)',
+                  fontSize: '1.25rem',
+                  letterSpacing: '0.03em',
                   color: 'var(--text-primary)',
                   lineHeight: 1
                 }}
@@ -129,31 +128,34 @@ export const Navbar = () => {
               </span>
               <span 
                 style={{
+                  fontFamily: 'var(--font-mono)',
                   fontSize: '0.62rem',
-                  fontWeight: 800,
+                  fontWeight: 700,
                   backgroundColor: 'var(--color-orange-soft)',
                   color: 'var(--color-orange)',
                   border: '1px solid var(--color-orange)',
-                  padding: '1px 5px',
+                  padding: '2px 5px',
                   borderRadius: '4px',
                   lineHeight: 1
                 }}
               >
-                90.4
+                90.4 FM
               </span>
             </div>
             <div 
               className="desktop-only"
               style={{
+                fontFamily: 'var(--font-body)',
                 fontSize: '0.66rem',
                 color: 'var(--text-secondary)',
-                letterSpacing: '0.04em',
+                letterSpacing: '0.06em',
                 lineHeight: 1.2,
-                fontWeight: 600,
-                marginTop: '2px'
+                fontWeight: 700,
+                marginTop: '2px',
+                textTransform: 'uppercase'
               }}
             >
-              NMAMIT DIGITAL RADIO
+              NMAMIT STEREO BROADCAST
             </div>
           </div>
         </Link>

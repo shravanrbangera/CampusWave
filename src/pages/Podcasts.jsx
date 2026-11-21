@@ -67,13 +67,13 @@ export const Podcasts = () => {
 
         <h1 
           style={{ 
-            fontFamily: 'var(--font-heading)',
-            fontSize: 'var(--font-size-page-heading)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
+            fontFamily: 'var(--font-retro)',
+            fontSize: 'clamp(1.8rem, 5vw, 2.8rem)',
+            letterSpacing: '0.02em',
             marginTop: '8px', 
             marginBottom: '10px', 
-            color: 'var(--text-primary)' 
+            color: 'var(--text-primary)',
+            textShadow: '2px 2px 0 var(--color-retro-shadow, rgba(201, 42, 42, 0.25))'
           }}
         >
           STUDENT <span style={{ color: 'var(--color-orange)' }}>PODCASTS</span>
@@ -216,7 +216,7 @@ export const Podcasts = () => {
               </span>
             </div>
 
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.6rem, 3.2vw, 2.3rem)', color: '#FFFFFF', fontWeight: 800, lineHeight: 1.2, marginBottom: '10px' }}>
+            <h2 style={{ fontFamily: 'var(--font-retro)', fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)', color: 'var(--color-retro-yellow)', letterSpacing: '0.02em', lineHeight: 1.2, marginBottom: '10px', textShadow: '1px 1px 0 rgba(0,0,0,0.6)' }}>
               {featured.title}
             </h2>
 
@@ -324,7 +324,7 @@ export const Podcasts = () => {
             <span className="sticker-tag sticker-tag-cyan" style={{ marginBottom: '6px' }}>
               🎙️ VOICES OF NMAMIT
             </span>
-            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
+            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-retro)', letterSpacing: '0.02em' }}>
               Featured Student Hosts & RJs
             </h2>
           </div>

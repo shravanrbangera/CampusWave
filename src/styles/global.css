@@ -350,6 +350,68 @@ input, textarea, select {
 .sound-bar:nth-child(3) { height: 60%; animation-delay: 0.15s; }
 .sound-bar:nth-child(4) { height: 100%; animation-delay: 0.45s; }
 
+/* ==========================================================================
+   FM RETRO RADIO TYPOGRAPHY & VISUAL MOTIFS
+   Inspired by 70s Groovy Radio Shows & Vintage Receiver Consoles
+   ========================================================================== */
+
+/* 70s Retro Curvy Groovy Title */
+.font-retro {
+  font-family: var(--font-retro);
+  letter-spacing: 0.015em;
+  font-weight: normal;
+}
+
+/* Vintage Broadcast Station Lettering */
+.font-radio {
+  font-family: var(--font-radio);
+  letter-spacing: 0.03em;
+}
+
+/* 70s Multi-Layered Drop Shadow (Inspired by "the Kirby's Show" & "imersão Retrô") */
+.retro-title-shadow {
+  font-family: var(--font-retro);
+  color: var(--color-retro-yellow);
+  text-shadow: 
+    2px 2px 0 var(--color-retro-red),
+    4px 4px 0 rgba(44, 33, 23, 0.25);
+}
+
+.retro-title-orange {
+  font-family: var(--font-retro);
+  color: var(--color-orange);
+  text-shadow: 
+    2px 2px 0 var(--color-retro-red),
+    3px 3px 0 rgba(44, 33, 23, 0.2);
+}
+
+/* Vintage Radio Tuner Dial Indicator */
+.retro-tuner-scale {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-tuner-needle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-orange);
+  box-shadow: 0 0 8px var(--color-orange-glow);
+  left: 50%;
+}
+
+
 
 /* Section Header Layout */
 .section-header {

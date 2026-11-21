@@ -1,21 +1,47 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Mic2, Search, Filter, Sparkles, ArrowRight, User, Play, Clock, Flame, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Mic2, Search, Filter, Sparkles, ArrowRight, User, Play, Clock, Flame, Zap, X } from 'lucide-react';
 import { mockPodcasts, podcastCategories } from '../data/podcasts';
 import { mockRJs } from '../data/rjs';
 import { PodcastCard } from '../components/PodcastCard';
 import { useAudio } from '../context/AudioContext';
 
 export const Podcasts = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialQuery = searchParams.get('q') || '';
+  
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const { playTrack } = useAudio();
 
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q !== null && q !== searchQuery) {
+      setSearchQuery(q);
+    }
+  }, [searchParams]);
+
+  const handleSearchChange = (val) => {
+    setSearchQuery(val);
+    if (val.trim()) {
+      setSearchParams({ q: val.trim() });
+    } else {
+      setSearchParams({});
+    }
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    setSearchParams({});
+  };
+
   const filteredPodcasts = mockPodcasts.filter(pod => {
-    const matchesSearch = 
-      pod.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      pod.host.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      pod.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q || 
+      pod.title.toLowerCase().includes(q) ||
+      pod.host.toLowerCase().includes(q) ||
+      pod.description.toLowerCase().includes(q) ||
+      pod.category.toLowerCase().includes(q);
     const matchesCat = selectedCategory === 'All' || pod.category === selectedCategory;
     return matchesSearch && matchesCat;
   });
@@ -23,130 +49,147 @@ export const Podcasts = () => {
   const featured = mockPodcasts[0];
 
   return (
-    <div className="podcasts-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3xl)' }}>
+    <div className="podcasts-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
       {/* Top Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.74rem',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              backgroundColor: 'var(--color-acid)',
-              color: '#000',
-              border: '2px solid #000',
-              borderRadius: '8px',
-              padding: '4px 10px',
-              boxShadow: '2px 2px 0 #000'
-            }}
-          >
-            <Mic2 size={13} fill="#000" />
+          <span className="sticker-tag sticker-tag-orange">
+            <Mic2 size={13} />
             VOICE CRATES // 90.4 MHZ
           </span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 700, color: '#333' }}>
+          <span className="sticker-tag" style={{ transform: 'rotate(1.2deg)' }}>
+            STUDENT VOICES 🎙️
+          </span>
+          <span style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
             NMAMIT STUDENT BROADCASTS
           </span>
         </div>
 
         <h1 
           style={{ 
-            fontFamily: 'var(--font-black)',
-            fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)',
-            textTransform: 'uppercase',
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'var(--font-size-page-heading)',
+            fontWeight: 800,
             letterSpacing: '-0.03em',
             marginTop: '8px', 
             marginBottom: '10px', 
-            color: 'var(--color-ink)' 
+            color: 'var(--text-primary)' 
           }}
         >
-          STUDENT <span className="highlight-acid" style={{ border: '2px solid #000', borderRadius: '6px', padding: '0 8px' }}>PODCASTS</span>
+          STUDENT <span style={{ color: 'var(--color-orange)' }}>PODCASTS</span>
         </h1>
-        <p style={{ fontFamily: 'var(--font-mono)', color: '#333', fontSize: '0.95rem', fontWeight: 600, maxWidth: '680px', marginBottom: '24px', lineHeight: 1.6 }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', fontWeight: 500, maxWidth: '680px', marginBottom: '20px', lineHeight: 1.6 }}>
           Real engineering discussions, hostel chronicles, tech debates, and placement insights recorded right on campus.
         </p>
 
         {/* Search & Filter Bar */}
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '14px' }}>
           <div style={{ position: 'relative', flex: '1', minWidth: '280px', maxWidth: '520px' }}>
+            <Search 
+              size={18} 
+              color="var(--text-muted)" 
+              style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} 
+            />
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search episodes, topics or hosts..."
               style={{
                 width: '100%',
-                padding: '14px 18px 14px 48px',
-                borderRadius: '16px',
-                backgroundColor: '#FFFFFF',
-                border: '2.5px solid #000',
-                boxShadow: '4px 4px 0 #000',
-                fontSize: '0.95rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 600,
-                color: '#000',
-                outline: 'none'
+                padding: '12px 42px 12px 46px',
+                borderRadius: 'var(--radius-full)',
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                boxShadow: 'var(--shadow-sm)',
+                fontSize: '15px',
+                fontWeight: 500,
+                color: 'var(--text-primary)',
+                outline: 'none',
+                transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)'
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = 'var(--color-orange)';
+                e.target.style.boxShadow = '0 0 0 3px var(--color-orange-soft)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = 'var(--border-color)';
+                e.target.style.boxShadow = 'var(--shadow-sm)';
               }}
             />
-            <Search 
-              size={20} 
-              color="#000" 
-              style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} 
-            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={handleClearSearch}
+                style={{
+                  position: 'absolute',
+                  right: '14px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                title="Clear search"
+              >
+                <X size={16} />
+              </button>
+            )}
           </div>
 
-          <div 
-            className="category-pills-row scroll-touch-pills"
-            style={{ display: 'flex', gap: '10px', overflowX: 'auto', padding: '4px 0' }}
-          >
-            {podcastCategories.map(cat => {
-              const isSelected = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className="btn-brutal"
-                  style={{
-                    padding: '8px 18px',
-                    borderRadius: '999px',
-                    fontSize: '0.82rem',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 800,
-                    textTransform: 'uppercase',
-                    whiteSpace: 'nowrap',
-                    cursor: 'pointer',
-                    backgroundColor: isSelected ? 'var(--color-acid)' : '#FFFFFF',
-                    color: '#000000',
-                    border: '2px solid #000',
-                    boxShadow: isSelected ? '3px 3px 0 #000' : '2px 2px 0 #000',
-                    transform: isSelected ? 'translateY(-2px)' : 'none'
-                  }}
-                >
-                  {cat}
-                </button>
-              );
-            })}
+          {/* Results count badge */}
+          <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+            {filteredPodcasts.length} {filteredPodcasts.length === 1 ? 'episode' : 'episodes'}
           </div>
+        </div>
+
+        {/* Category Filter Pills */}
+        <div 
+          className="category-pills-row scroll-touch-pills"
+          style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '4px 0' }}
+        >
+          {podcastCategories.map(cat => {
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={isSelected ? "btn-primary" : "btn-secondary"}
+                style={{
+                  padding: '7px 16px',
+                  borderRadius: 'var(--radius-full)',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  whiteSpace: 'nowrap',
+                  cursor: 'pointer',
+                  minHeight: '36px'
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Featured Podcast Spotlight */}
+      {/* Featured Podcast Spotlight (Only when not searching) */}
       {!searchQuery && selectedCategory === 'All' && (
         <section 
-          className="hero-split-grid podcast-spotlight-card"
+          className="hero-split-grid podcast-spotlight-card card-modern"
           style={{
             padding: 'var(--space-2xl)',
             borderRadius: '24px',
-            background: 'linear-gradient(135deg, var(--color-teal) 0%, #000000 100%)',
-            border: '3px solid #000',
-            boxShadow: '6px 6px 0 #000',
+            background: 'linear-gradient(135deg, var(--color-teal) 0%, #0F1216 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            boxShadow: 'var(--shadow-md)',
             display: 'grid',
             gridTemplateColumns: '1.2fr 0.8fr',
             gap: 'var(--space-2xl)',
-            alignItems: 'center'
+            alignItems: 'center',
+            color: '#FFFFFF'
           }}
         >
           <div>
@@ -156,88 +199,68 @@ export const Podcasts = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  fontFamily: 'var(--font-mono)',
                   fontSize: '0.74rem',
                   fontWeight: 800,
                   textTransform: 'uppercase',
-                  backgroundColor: 'var(--color-coral)',
+                  backgroundColor: 'var(--color-orange)',
                   color: '#FFFFFF',
-                  border: '2px solid #000',
-                  borderRadius: '8px',
-                  padding: '4px 10px',
-                  boxShadow: '2px 2px 0 #000'
+                  borderRadius: 'var(--radius-full)',
+                  padding: '4px 12px'
                 }}
               >
                 <Flame size={13} color="#fff" />
-                FEATURED SHOW SPOTLIGHT
+                FEATURED SPOTLIGHT
               </span>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 800, color: 'var(--color-acid)' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-amber)' }}>
                 ⏱️ {featured.duration}
               </span>
             </div>
 
-            <h2 style={{ fontFamily: 'var(--font-black)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', color: '#FFFFFF', textTransform: 'uppercase', lineHeight: 1.2, marginBottom: '12px' }}>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.6rem, 3.2vw, 2.3rem)', color: '#FFFFFF', fontWeight: 800, lineHeight: 1.2, marginBottom: '10px' }}>
               {featured.title}
             </h2>
 
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.92rem', color: 'var(--color-amber)', fontWeight: 700, marginBottom: '12px' }}>
+            <div style={{ fontSize: '0.9rem', color: '#FFB52E', fontWeight: 700, marginBottom: '12px' }}>
               HOSTED BY {featured.host} • {featured.hostRole}
             </div>
 
-            <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '24px' }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '22px', maxWidth: '520px' }}>
               {featured.description}
             </p>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
               <button
                 onClick={() => playTrack(featured)}
-                className="btn-brutal"
+                className="btn-primary"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '12px 26px',
-                  fontSize: '0.9rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 800,
-                  backgroundColor: 'var(--color-acid)',
-                  color: '#000',
-                  border: '2px solid #000',
-                  boxShadow: '3px 3px 0 #000',
-                  borderRadius: '999px',
-                  cursor: 'pointer'
+                  backgroundColor: 'var(--color-orange)',
+                  padding: '12px 24px',
+                  fontSize: '0.88rem'
                 }}
               >
-                <Play size={18} fill="#000" />
-                <span>PLAY FULL EPISODE</span>
+                <Play size={17} fill="#FFF" />
+                <span>PLAY EPISODE</span>
               </button>
 
               <Link
                 to={`/podcast/${featured.id}`}
-                className="btn-brutal"
+                className="btn-secondary"
                 style={{ 
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '12px 22px',
-                  backgroundColor: '#FFFFFF',
-                  color: '#000',
-                  border: '2px solid #000',
-                  boxShadow: '3px 3px 0 #000',
-                  borderRadius: '999px',
-                  fontSize: '0.88rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 800,
+                  padding: '12px 20px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                  color: '#FFFFFF',
+                  borderColor: 'rgba(255, 255, 255, 0.25)',
+                  fontSize: '0.86rem',
                   textDecoration: 'none'
                 }}
               >
-                <span>READ AI BREAKDOWN</span>
-                <ArrowRight size={16} />
+                <span>AI BREAKDOWN</span>
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>
 
-          <div style={{ position: 'relative', width: '100%', height: '300px', borderRadius: '20px', overflow: 'hidden', border: '3px solid #000', boxShadow: '5px 5px 0 #000' }}>
+          <div style={{ position: 'relative', width: '100%', height: '260px', borderRadius: '18px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.18)' }}>
             <img 
               src={featured.cover} 
               alt={featured.title}
@@ -247,29 +270,61 @@ export const Podcasts = () => {
         </section>
       )}
 
-      {/* Popular Student Hosts & RJs */}
+      {/* Episodes Grid or No Results */}
+      {filteredPodcasts.length > 0 ? (
+        <section>
+          <div 
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))',
+              gap: 'var(--space-lg)'
+            }}
+          >
+            {filteredPodcasts.map(podcast => (
+              <PodcastCard key={podcast.id} podcast={podcast} />
+            ))}
+          </div>
+        </section>
+      ) : (
+        <div 
+          className="card-modern"
+          style={{
+            padding: 'var(--space-3xl) var(--space-xl)',
+            textAlign: 'center',
+            borderRadius: '24px',
+            backgroundColor: 'var(--bg-card)'
+          }}
+        >
+          <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--color-orange-soft)', color: 'var(--color-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+            <Search size={28} />
+          </div>
+          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-primary)' }}>
+            No episodes found matching "{searchQuery}"
+          </h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', maxWidth: '440px', margin: '0 auto 20px' }}>
+            Try searching with a different topic, host name, or select "All" categories to browse the complete catalogue.
+          </p>
+          <button
+            onClick={() => {
+              setSearchQuery('');
+              setSelectedCategory('All');
+              setSearchParams({});
+            }}
+            className="btn-primary"
+          >
+            Clear Search & Filters
+          </button>
+        </div>
+      )}
+
+      {/* Student Hosts & RJs Carousel Strip */}
       <section>
         <div className="section-header" style={{ marginBottom: '16px' }}>
           <div>
-            <span 
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.72rem',
-                fontWeight: 800,
-                backgroundColor: 'var(--color-acid)',
-                color: '#000',
-                border: '1.5px solid #000',
-                padding: '3px 8px',
-                borderRadius: '6px',
-                boxShadow: '2px 2px 0 #000'
-              }}
-            >
+            <span className="sticker-tag sticker-tag-cyan" style={{ marginBottom: '6px' }}>
               🎙️ VOICES OF NMAMIT
             </span>
-            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
+            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
               Featured Student Hosts & RJs
             </h2>
           </div>
@@ -278,92 +333,39 @@ export const Podcasts = () => {
         <div 
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
             gap: 'var(--space-md)'
           }}
         >
-          {mockRJs.map(rj => (
-            <div 
+          {mockRJs.slice(0, 4).map(rj => (
+            <div
               key={rj.id}
               className="card-modern"
               style={{
-                padding: '24px 20px',
-                borderRadius: '20px',
+                padding: '16px',
+                borderRadius: 'var(--radius-lg)',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                textAlign: 'center',
-                backgroundColor: '#FFFFFF',
-                border: '2px solid #000',
-                boxShadow: '4px 4px 0 #000',
-                transition: 'transform 0.15s ease, box-shadow 0.15s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translate(-3px, -3px)';
-                e.currentTarget.style.boxShadow = '7px 7px 0 #000';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translate(0, 0)';
-                e.currentTarget.style.boxShadow = '4px 4px 0 #000';
+                gap: '12px'
               }}
             >
               <img 
                 src={rj.avatar} 
-                alt={rj.name} 
-                style={{ width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #000', boxShadow: '3px 3px 0 #000', marginBottom: '14px' }} 
+                alt={rj.name}
+                style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-orange)', flexShrink: 0 }}
               />
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', fontWeight: 800, marginBottom: '2px', color: '#000' }}>{rj.name}</h3>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--color-coral)', fontWeight: 800, marginBottom: '8px' }}>
-                {rj.role}
-              </div>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.84rem', color: '#333', lineHeight: 1.5, marginBottom: '14px' }}>
-                {rj.show}
-              </p>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#000', backgroundColor: 'var(--color-acid)', border: '1.5px solid #000', padding: '3px 12px', borderRadius: '999px', boxShadow: '2px 2px 0 #000' }}>
-                {rj.listeners}
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {rj.name}
+                </div>
+                <div style={{ fontSize: '0.76rem', color: 'var(--color-orange)', fontWeight: 600 }}>
+                  {rj.role}
+                </div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                  {rj.showsCount} episodes
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Episode Grid */}
-      <section>
-        <div className="section-header" style={{ marginBottom: '16px' }}>
-          <div>
-            <span 
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.72rem',
-                fontWeight: 800,
-                backgroundColor: '#FFFFFF',
-                color: '#000',
-                border: '1.5px solid #000',
-                padding: '3px 8px',
-                borderRadius: '6px',
-                boxShadow: '2px 2px 0 #000'
-              }}
-            >
-              📻 EPISODE DIRECTORY
-            </span>
-            <h2 className="section-header-title" style={{ marginTop: '8px', fontFamily: 'var(--font-black)', textTransform: 'uppercase' }}>
-              All Episodes ({filteredPodcasts.length})
-            </h2>
-          </div>
-        </div>
-
-        <div 
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: 'var(--space-lg)'
-          }}
-        >
-          {filteredPodcasts.map(podcast => (
-            <PodcastCard key={podcast.id} podcast={podcast} />
           ))}
         </div>
       </section>

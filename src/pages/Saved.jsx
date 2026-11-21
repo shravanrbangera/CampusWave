@@ -89,15 +89,14 @@ export const Saved = () => {
             top: '84px',
             right: '20px',
             zIndex: 1000,
-            backgroundColor: 'var(--color-ink)',
-            color: '#FFFFFF',
+            backgroundColor: 'var(--bg-card)',
+            color: 'var(--text-primary)',
             border: '2px solid var(--color-orange)',
-            borderRadius: '12px',
-            padding: '12px 18px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.84rem',
-            fontWeight: 800,
-            boxShadow: '4px 4px 0 #000',
+            borderRadius: 'var(--radius-lg)',
+            padding: '12px 20px',
+            fontSize: '0.86rem',
+            fontWeight: 700,
+            boxShadow: 'var(--shadow-md)',
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
@@ -112,44 +111,31 @@ export const Saved = () => {
       {/* Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
-          <span 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.74rem',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              backgroundColor: 'var(--color-orange)',
-              color: '#FFFFFF',
-              border: '2px solid #000',
-              borderRadius: '8px',
-              padding: '4px 10px',
-              boxShadow: '2px 2px 0 #000'
-            }}
-          >
+          <span className="sticker-tag sticker-tag-orange">
             <Bookmark size={13} fill="#FFF" />
             STUDENT AUDIO VAULT // 90.4 FM
           </span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
+          <span className="sticker-tag" style={{ transform: 'rotate(1.2deg)' }}>
+            PERSONAL LIBRARY 📼
+          </span>
+          <span style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
             OFFLINE & SAVED EPISODES
           </span>
         </div>
 
         <h1 
           style={{ 
-            fontFamily: 'var(--font-black)',
+            fontFamily: 'var(--font-heading)',
             fontSize: 'var(--font-size-page-heading)',
-            textTransform: 'uppercase',
+            fontWeight: 800,
             letterSpacing: '-0.03em',
             margin: '8px 0 10px',
             color: 'var(--text-primary)' 
           }}
         >
-          SAVED <span style={{ color: 'var(--color-orange)', textDecoration: 'underline wavy var(--color-orange)' }}>LIBRARY</span>
+          SAVED <span style={{ color: 'var(--color-orange)' }}>LIBRARY</span>
         </h1>
-        <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 600, maxWidth: '680px', lineHeight: 1.6 }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', fontWeight: 500, maxWidth: '680px', lineHeight: 1.6 }}>
           Your bookmarked episodes, offline downloaded audio, listening history, and liked student tracks in one convenient vault.
         </p>
       </div>
@@ -167,101 +153,57 @@ export const Saved = () => {
       >
         <button
           onClick={() => setActiveTab('podcasts')}
-          className="btn-brutal"
+          className={activeTab === 'podcasts' ? "btn-primary" : "btn-secondary"}
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            borderRadius: '999px',
-            fontSize: '0.84rem',
-            fontFamily: 'var(--font-mono)',
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            backgroundColor: activeTab === 'podcasts' ? 'var(--color-orange)' : 'var(--bg-tertiary)',
-            color: activeTab === 'podcasts' ? '#FFFFFF' : 'var(--text-primary)',
-            border: '2px solid #000',
-            boxShadow: activeTab === 'podcasts' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            padding: '8px 18px',
+            fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            cursor: 'pointer'
+            minHeight: '38px'
           }}
         >
-          <Mic2 size={16} />
+          <Mic2 size={15} />
           <span>Bookmarked ({bookmarkedEpisodes.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('downloads')}
-          className="btn-brutal"
+          className={activeTab === 'downloads' ? "btn-primary" : "btn-secondary"}
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            borderRadius: '999px',
-            fontSize: '0.84rem',
-            fontFamily: 'var(--font-mono)',
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            backgroundColor: activeTab === 'downloads' ? 'var(--color-orange)' : 'var(--bg-tertiary)',
-            color: activeTab === 'downloads' ? '#FFFFFF' : 'var(--text-primary)',
-            border: '2px solid #000',
-            boxShadow: activeTab === 'downloads' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            padding: '8px 18px',
+            fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            cursor: 'pointer'
+            minHeight: '38px'
           }}
         >
-          <Download size={16} />
+          <Download size={15} />
           <span>Downloaded ({downloadedEpisodes.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('history')}
-          className="btn-brutal"
+          className={activeTab === 'history' ? "btn-primary" : "btn-secondary"}
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            borderRadius: '999px',
-            fontSize: '0.84rem',
-            fontFamily: 'var(--font-mono)',
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            backgroundColor: activeTab === 'history' ? 'var(--color-orange)' : 'var(--bg-tertiary)',
-            color: activeTab === 'history' ? '#FFFFFF' : 'var(--text-primary)',
-            border: '2px solid #000',
-            boxShadow: activeTab === 'history' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            padding: '8px 18px',
+            fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            cursor: 'pointer'
+            minHeight: '38px'
           }}
         >
-          <Clock size={16} />
+          <Clock size={15} />
           <span>Recently Played ({listeningHistory?.length || 0})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('liked')}
-          className="btn-brutal"
+          className={activeTab === 'liked' ? "btn-primary" : "btn-secondary"}
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            borderRadius: '999px',
-            fontSize: '0.84rem',
-            fontFamily: 'var(--font-mono)',
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            backgroundColor: activeTab === 'liked' ? 'var(--color-orange)' : 'var(--bg-tertiary)',
-            color: activeTab === 'liked' ? '#FFFFFF' : 'var(--text-primary)',
-            border: '2px solid #000',
-            boxShadow: activeTab === 'liked' ? '3px 3px 0 #000' : '2px 2px 0 #000',
+            padding: '8px 18px',
+            fontSize: '0.82rem',
             whiteSpace: 'nowrap',
-            cursor: 'pointer'
+            minHeight: '38px'
           }}
         >
-          <Heart size={16} />
+          <Heart size={15} />
           <span>Liked Music ({favoriteTracks.length})</span>
         </button>
       </div>
@@ -274,41 +216,25 @@ export const Saved = () => {
               className="card-modern"
               style={{
                 borderRadius: '24px',
-                backgroundColor: 'var(--bg-tertiary)',
-                border: '2.5px solid #000',
                 padding: 'var(--space-3xl) var(--space-xl)',
                 textAlign: 'center',
-                boxShadow: '4px 4px 0 #000',
                 maxWidth: '640px',
                 margin: '0 auto'
               }}
             >
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'rgba(255, 85, 0, 0.1)', border: '2px solid var(--color-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: 'var(--color-orange)' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--color-orange-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: 'var(--color-orange)' }}>
                 <Bookmark size={28} />
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.35rem', fontWeight: 800, marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-primary)' }}>
                 No Bookmarked Episodes Yet
               </h3>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.86rem', color: 'var(--text-secondary)', maxWidth: '420px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', maxWidth: '420px', margin: '0 auto 20px', lineHeight: 1.6 }}>
                 Save interesting podcast episodes while browsing so you never forget what to listen to between college lectures!
               </p>
               <Link
                 to="/podcasts"
-                className="btn-brutal"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '12px 24px',
-                  borderRadius: '999px',
-                  backgroundColor: 'var(--color-orange)',
-                  color: '#FFFFFF',
-                  border: '2px solid #000',
-                  boxShadow: '3px 3px 0 #000',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.84rem',
-                  fontWeight: 900
-                }}
+                className="btn-primary"
+                style={{ textDecoration: 'none' }}
               >
                 <span>EXPLORE PODCASTS</span>
                 <ArrowRight size={16} />
@@ -325,9 +251,6 @@ export const Saved = () => {
                     className="card-modern"
                     style={{
                       borderRadius: '20px',
-                      backgroundColor: 'var(--bg-tertiary)',
-                      border: '2.5px solid #000',
-                      boxShadow: '4px 4px 0 #000',
                       padding: '16px',
                       display: 'flex',
                       flexDirection: 'column',
@@ -339,38 +262,29 @@ export const Saved = () => {
                       <img 
                         src={ep.cover} 
                         alt={ep.title} 
-                        style={{ width: '80px', height: '80px', borderRadius: '14px', objectFit: 'cover', border: '2px solid #000', flexShrink: 0 }} 
+                        style={{ width: '74px', height: '74px', borderRadius: '12px', objectFit: 'cover', flexShrink: 0 }} 
                       />
-                      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 0 }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-orange)', textTransform: 'uppercase' }}>
                           {ep.category} • {ep.duration}
                         </span>
-                        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-primary)', margin: '4px 0', lineHeight: 1.3 }}>
+                        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.94rem', fontWeight: 700, color: 'var(--text-primary)', margin: '4px 0', lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {ep.title}
                         </h3>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
+                        <span style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
                           Hosted by {ep.host}
                         </span>
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1.5px dashed var(--border-color)', paddingTop: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-color)', paddingTop: '12px' }}>
                       <button
                         onClick={() => handlePlayToggle(ep, 'podcast')}
-                        className="btn-brutal"
+                        className="btn-primary"
                         style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          padding: '8px 16px',
-                          borderRadius: '999px',
-                          backgroundColor: isCurrent ? 'var(--color-orange)' : '#000000',
-                          color: '#FFFFFF',
-                          border: '2px solid #000',
-                          fontFamily: 'var(--font-mono)',
+                          padding: '6px 16px',
                           fontSize: '0.78rem',
-                          fontWeight: 900,
-                          cursor: 'pointer'
+                          minHeight: '34px'
                         }}
                       >
                         {isCurrent ? <Pause size={14} fill="#FFF" /> : <Play size={14} fill="#FFF" />}
@@ -380,15 +294,12 @@ export const Saved = () => {
                       <div style={{ display: 'flex', gap: '8px' }}>
                         <Link
                           to={`/podcast/${ep.id}`}
+                          className="btn-secondary"
                           style={{
-                            padding: '8px 12px',
-                            borderRadius: '8px',
-                            backgroundColor: 'var(--bg-primary)',
-                            border: '1.5px solid #000',
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: '0.74rem',
-                            fontWeight: 800,
-                            color: 'var(--text-primary)'
+                            padding: '6px 12px',
+                            fontSize: '0.76rem',
+                            minHeight: '34px',
+                            textDecoration: 'none'
                           }}
                         >
                           DETAILS
@@ -397,16 +308,16 @@ export const Saved = () => {
                           onClick={() => handleRemoveBookmark(ep.id, ep.title)}
                           aria-label="Remove bookmark"
                           title="Remove bookmark"
+                          className="btn-icon"
                           style={{
-                            padding: '8px',
-                            borderRadius: '8px',
-                            backgroundColor: '#FFFFFF',
-                            border: '1.5px solid #000',
-                            cursor: 'pointer',
+                            width: '34px',
+                            height: '34px',
+                            minWidth: '34px',
+                            minHeight: '34px',
                             color: '#E11D48'
                           }}
                         >
-                          <Trash2 size={16} />
+                          <Trash2 size={15} />
                         </button>
                       </div>
                     </div>
@@ -426,41 +337,25 @@ export const Saved = () => {
               className="card-modern"
               style={{
                 borderRadius: '24px',
-                backgroundColor: 'var(--bg-tertiary)',
-                border: '2.5px solid #000',
                 padding: 'var(--space-3xl) var(--space-xl)',
                 textAlign: 'center',
-                boxShadow: '4px 4px 0 #000',
                 maxWidth: '640px',
                 margin: '0 auto'
               }}
             >
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'rgba(255, 85, 0, 0.1)', border: '2px solid var(--color-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: 'var(--color-orange)' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--color-orange-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: 'var(--color-orange)' }}>
                 <Download size={28} />
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.35rem', fontWeight: 800, marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-primary)' }}>
                 No Offline Downloads
               </h3>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.86rem', color: 'var(--text-secondary)', maxWidth: '420px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', maxWidth: '420px', margin: '0 auto 20px', lineHeight: 1.6 }}>
                 Download episodes while connected to campus Wi-Fi so you can listen during hostel study hours or daily bus commutes without using data!
               </p>
               <Link
                 to="/podcasts"
-                className="btn-brutal"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '12px 24px',
-                  borderRadius: '999px',
-                  backgroundColor: 'var(--color-orange)',
-                  color: '#FFFFFF',
-                  border: '2px solid #000',
-                  boxShadow: '3px 3px 0 #000',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.84rem',
-                  fontWeight: 900
-                }}
+                className="btn-primary"
+                style={{ textDecoration: 'none' }}
               >
                 <span>BROWSE TO DOWNLOAD</span>
                 <ArrowRight size={16} />
@@ -477,9 +372,6 @@ export const Saved = () => {
                     className="card-modern"
                     style={{
                       borderRadius: '20px',
-                      backgroundColor: 'var(--bg-tertiary)',
-                      border: '2.5px solid #000',
-                      boxShadow: '4px 4px 0 #000',
                       padding: '16px',
                       display: 'flex',
                       flexDirection: 'column',
@@ -491,38 +383,30 @@ export const Saved = () => {
                       <img 
                         src={ep.cover} 
                         alt={ep.title} 
-                        style={{ width: '80px', height: '80px', borderRadius: '14px', objectFit: 'cover', border: '2px solid #000', flexShrink: 0 }} 
+                        style={{ width: '74px', height: '74px', borderRadius: '12px', objectFit: 'cover', flexShrink: 0 }} 
                       />
-                      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', fontWeight: 800, color: '#10B981', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 0 }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-success)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <CheckCircle2 size={12} /> STORED FOR OFFLINE • {ep.duration}
                         </span>
-                        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-primary)', margin: '4px 0', lineHeight: 1.3 }}>
+                        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.94rem', fontWeight: 700, color: 'var(--text-primary)', margin: '4px 0', lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {ep.title}
                         </h3>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
+                        <span style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
                           {ep.host}
                         </span>
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1.5px dashed var(--border-color)', paddingTop: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-color)', paddingTop: '12px' }}>
                       <button
                         onClick={() => handlePlayToggle(ep, 'podcast')}
-                        className="btn-brutal"
+                        className="btn-primary"
                         style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          padding: '8px 16px',
-                          borderRadius: '999px',
-                          backgroundColor: isCurrent ? 'var(--color-orange)' : '#10B981',
-                          color: '#FFFFFF',
-                          border: '2px solid #000',
-                          fontFamily: 'var(--font-mono)',
+                          padding: '6px 16px',
                           fontSize: '0.78rem',
-                          fontWeight: 900,
-                          cursor: 'pointer'
+                          backgroundColor: 'var(--color-success)',
+                          minHeight: '34px'
                         }}
                       >
                         {isCurrent ? <Pause size={14} fill="#FFF" /> : <Play size={14} fill="#FFF" />}
@@ -533,16 +417,16 @@ export const Saved = () => {
                         onClick={() => handleRemoveDownload(ep.id, ep.title)}
                         aria-label="Delete offline download"
                         title="Delete offline file"
+                        className="btn-icon"
                         style={{
-                          padding: '8px',
-                          borderRadius: '8px',
-                          backgroundColor: '#FFFFFF',
-                          border: '1.5px solid #000',
-                          cursor: 'pointer',
+                          width: '34px',
+                          height: '34px',
+                          minWidth: '34px',
+                          minHeight: '34px',
                           color: '#E11D48'
                         }}
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={15} />
                       </button>
                     </div>
                   </div>
@@ -559,13 +443,10 @@ export const Saved = () => {
           className="card-modern"
           style={{
             borderRadius: '24px',
-            backgroundColor: 'var(--bg-tertiary)',
-            border: '2.5px solid #000',
-            boxShadow: '4px 4px 0 #000',
             padding: 'var(--space-xl)'
           }}
         >
-          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 800, marginBottom: '16px' }}>
+          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-primary)' }}>
             YOUR RECENT AUDIO SESSIONS
           </h3>
 
@@ -576,9 +457,9 @@ export const Saved = () => {
                   key={idx}
                   style={{
                     padding: '12px 16px',
-                    borderRadius: '12px',
-                    backgroundColor: 'var(--bg-primary)',
-                    border: '1.5px solid #000',
+                    borderRadius: 'var(--radius-md)',
+                    backgroundColor: 'var(--bg-card-subtle)',
+                    border: '1px solid var(--border-color)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -586,38 +467,34 @@ export const Saved = () => {
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: 'var(--color-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF' }}>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: 'var(--color-orange-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-orange)' }}>
                       {item.type === 'live' ? <Radio size={18} /> : item.type === 'music' ? <Music size={18} /> : <Mic2 size={18} />}
                     </div>
                     <div>
-                      <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 800 }}>
+                      <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                         {item.title}
                       </div>
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+                      <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                         {item.type?.toUpperCase()} • {item.time}
                       </span>
                     </div>
                   </div>
 
-                  <Link
-                    to={item.type === 'live' ? '/live' : '/podcasts'}
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.74rem',
-                      fontWeight: 800,
-                      color: 'var(--color-orange)',
-                      textDecoration: 'none'
-                    }}
+                  <button
+                    onClick={() => handlePlayToggle(item, item.type || 'podcast')}
+                    className="btn-icon"
+                    style={{ width: '34px', height: '34px', minWidth: '34px', minHeight: '34px' }}
+                    title="Play again"
                   >
-                    PLAY AGAIN →
-                  </Link>
+                    <Play size={14} fill="currentColor" />
+                  </button>
                 </div>
               ))}
             </div>
           ) : (
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
-              No history recorded yet. Tune in to a broadcast or podcast to get started!
-            </p>
+            <div style={{ textAlign: 'center', padding: 'var(--space-xl) 0', color: 'var(--text-muted)' }}>
+              No recent listening history found. Start tuning into live radio or podcasts!
+            </div>
           )}
         </div>
       )}
@@ -630,123 +507,88 @@ export const Saved = () => {
               className="card-modern"
               style={{
                 borderRadius: '24px',
-                backgroundColor: 'var(--bg-tertiary)',
-                border: '2.5px solid #000',
                 padding: 'var(--space-3xl) var(--space-xl)',
                 textAlign: 'center',
-                boxShadow: '4px 4px 0 #000',
                 maxWidth: '640px',
                 margin: '0 auto'
               }}
             >
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'rgba(255, 85, 0, 0.1)', border: '2px solid var(--color-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: 'var(--color-orange)' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--color-orange-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: 'var(--color-orange)' }}>
                 <Heart size={28} />
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.35rem', fontWeight: 800, marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-primary)' }}>
                 No Liked Tracks Yet
               </h3>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.86rem', color: 'var(--text-secondary)', maxWidth: '420px', margin: '0 auto 20px', lineHeight: 1.6 }}>
-                Tap the heart on any campus track or indie song in the audio player to save it here!
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', maxWidth: '420px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+                Tap the heart button on the mini player or live broadcasts to save your favorite campus jams and hostel soundtracks!
               </p>
               <Link
                 to="/vote"
-                className="btn-brutal"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '12px 24px',
-                  borderRadius: '999px',
-                  backgroundColor: 'var(--color-orange)',
-                  color: '#FFFFFF',
-                  border: '2px solid #000',
-                  boxShadow: '3px 3px 0 #000',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.84rem',
-                  fontWeight: 900
-                }}
+                className="btn-primary"
+                style={{ textDecoration: 'none' }}
               >
-                <span>VOTE & DISCOVER MUSIC</span>
+                <span>EXPLORE DAILY PLAYLISTS</span>
                 <ArrowRight size={16} />
               </Link>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))', gap: 'var(--space-lg)' }}>
-              {favoriteTracks.map(m => {
-                const isCurrent = currentTrack?.id === m.id && isPlaying;
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-md)' }}>
+              {favoriteTracks.map(track => {
+                const isCurrent = currentTrack?.id === track.id && isPlaying;
 
                 return (
                   <div
-                    key={m.id}
+                    key={track.id}
                     className="card-modern"
                     style={{
-                      borderRadius: '20px',
-                      backgroundColor: 'var(--bg-tertiary)',
-                      border: '2.5px solid #000',
-                      boxShadow: '4px 4px 0 #000',
-                      padding: '16px',
+                      borderRadius: '16px',
+                      padding: '14px',
                       display: 'flex',
-                      flexDirection: 'column',
+                      alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '14px'
+                      gap: '12px'
                     }}
                   >
-                    <div style={{ display: 'flex', gap: '14px' }}>
-                      <img 
-                        src={m.cover} 
-                        alt={m.title} 
-                        style={{ width: '80px', height: '80px', borderRadius: '14px', objectFit: 'cover', border: '2px solid #000', flexShrink: 0 }} 
-                      />
-                      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', fontWeight: 800, color: 'var(--color-orange)', textTransform: 'uppercase' }}>
-                          {m.genre} • {m.duration}
-                        </span>
-                        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-primary)', margin: '4px 0', lineHeight: 1.3 }}>
-                          {m.title}
-                        </h3>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
-                          {m.artist}
-                        </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                      <img src={track.cover} alt={track.title} style={{ width: '48px', height: '48px', borderRadius: '10px', objectFit: 'cover', flexShrink: 0 }} />
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {track.title}
+                        </div>
+                        <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
+                          {track.artist}
+                        </div>
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1.5px dashed var(--border-color)', paddingTop: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <button
-                        onClick={() => handlePlayToggle(m, 'music')}
-                        className="btn-brutal"
+                        onClick={() => handlePlayToggle(track, 'music')}
+                        className="btn-icon"
                         style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          padding: '8px 16px',
-                          borderRadius: '999px',
-                          backgroundColor: isCurrent ? 'var(--color-orange)' : '#000000',
-                          color: '#FFFFFF',
-                          border: '2px solid #000',
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.78rem',
-                          fontWeight: 900,
-                          cursor: 'pointer'
+                          width: '36px',
+                          height: '36px',
+                          minWidth: '36px',
+                          minHeight: '36px',
+                          backgroundColor: 'var(--color-orange)',
+                          color: '#FFFFFF'
                         }}
                       >
-                        {isCurrent ? <Pause size={14} fill="#FFF" /> : <Play size={14} fill="#FFF" />}
-                        <span>{isCurrent ? 'PAUSE' : 'PLAY'}</span>
+                        {isCurrent ? <Pause size={15} fill="#FFF" /> : <Play size={15} fill="#FFF" style={{ marginLeft: '2px' }} />}
                       </button>
-
                       <button
-                        onClick={() => handleRemoveLiked(m.id, m.title)}
-                        aria-label="Unlike track"
-                        title="Remove from liked"
+                        onClick={() => handleRemoveLiked(track.id, track.title)}
+                        className="btn-icon"
                         style={{
-                          padding: '8px',
-                          borderRadius: '8px',
-                          backgroundColor: '#FFFFFF',
-                          border: '1.5px solid #000',
-                          cursor: 'pointer',
+                          width: '36px',
+                          height: '36px',
+                          minWidth: '36px',
+                          minHeight: '36px',
                           color: '#E11D48'
                         }}
+                        title="Unlike track"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={15} />
                       </button>
                     </div>
                   </div>

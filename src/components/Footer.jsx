@@ -1,27 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Radio, MapPin, ExternalLink, Heart, Zap, Sparkles } from 'lucide-react';
+import { Radio, MapPin, Heart, Sparkles } from 'lucide-react';
 import { MarqueeTicker } from './MarqueeTicker';
 
 export const Footer = () => {
   return (
     <footer 
       style={{
-        backgroundColor: 'transparent',
-        borderTop: '3px solid #000000',
+        backgroundColor: 'var(--bg-card)',
+        borderTop: '1px solid var(--border-color)',
         marginTop: 'var(--space-3xl)',
-        position: 'relative'
+        position: 'relative',
+        transition: 'background-color var(--transition-normal), border-color var(--transition-normal)'
       }}
     >
       {/* Top Infinite Dual Marquee Ticker */}
       <MarqueeTicker />
 
       <div 
-        className="footer-grid-container"
+        className="footer-grid-container page-wrapper"
         style={{
-          maxWidth: '1360px',
-          margin: '0 auto',
-          padding: 'var(--space-3xl) var(--space-lg) var(--space-xl)',
+          padding: 'var(--space-2xl) var(--space-lg) var(--space-xl)',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           gap: 'var(--space-2xl)'
@@ -32,114 +31,105 @@ export const Footer = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
             <div 
               style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '12px',
-                background: 'var(--color-coral)',
-                border: '2px solid #000',
+                background: 'var(--color-orange)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#fff',
-                boxShadow: '3px 3px 0 #000'
+                color: '#FFFFFF',
+                boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <Radio size={22} />
+              <Radio size={20} />
             </div>
             <div>
-              <span style={{ fontFamily: 'var(--font-black)', fontSize: '1.35rem', letterSpacing: '-0.03em', color: '#000' }}>
-                CAMPUS<span style={{ color: 'var(--color-coral)' }}>WAVE</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
+                CAMPUS<span style={{ color: 'var(--color-orange)' }}>WAVE</span>
               </span>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.66rem', fontWeight: 800, color: '#333' }}>
+              <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
                 NMAMIT • 90.4 MHZ DIGITAL
               </div>
             </div>
           </div>
 
-          <p style={{ color: '#222', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '16px', fontFamily: 'var(--font-body)' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '14px' }}>
             The official student digital radio and audio storytelling network of NMAM Institute of Technology (NMAMIT), Nitte.
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: '#111', fontWeight: 600 }}>
-            <MapPin size={15} color="var(--color-coral)" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+            <MapPin size={15} color="var(--color-orange)" />
             <span>Nitte, Karkala Taluk, Udupi, Karnataka 574110</span>
           </div>
 
-          {/* Sticky Note Badge */}
-          <div 
-            style={{
-              marginTop: '16px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '6px 12px',
-              backgroundColor: 'var(--color-acid)',
-              border: '2px solid #000',
-              borderRadius: '8px',
-              boxShadow: '2px 2px 0 #000',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.74rem',
-              fontWeight: 800,
-              color: '#000'
-            }}
-          >
-            <span>🦖 90.4 FM // LIVE FROM NITTE CAMPUS</span>
+          {/* Sticky Funky Student Sticker */}
+          <div style={{ marginTop: '14px' }}>
+            <span className="sticker-tag">
+              🦖 90.4 FM // LIVE FROM NITTE CAMPUS
+            </span>
           </div>
         </div>
 
-        {/* Discovery Links */}
+        {/* Navigation Links - 5 Main Items Only */}
         <div>
-          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.98rem', fontWeight: 900, marginBottom: '16px', letterSpacing: '0.04em', color: '#000' }}>
+          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 700, marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
             CAMPUS RADIO
           </h4>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
-            <li><Link to="/live" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>⚡ Live Broadcast (90.4 FM)</Link></li>
-            <li><Link to="/podcasts" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🎙️ Student Podcasts Directory</Link></li>
-            <li><Link to="/vote" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🔥 Daily Playlist Voting</Link></li>
-            <li><Link to="/saved" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>📼 Saved Episodes Vault</Link></li>
-            <li><Link to="/profile" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🪪 Student Listener Profile</Link></li>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', fontWeight: 500 }}>
+            <li>
+              <Link to="/home" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
+                🏠 Home Feed
+              </Link>
+            </li>
+            <li>
+              <Link to="/podcasts" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
+                🎙️ Student Podcasts
+              </Link>
+            </li>
+            <li>
+              <Link to="/live" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
+                ⚡ Live Broadcast (90.4 FM)
+              </Link>
+            </li>
+            <li>
+              <Link to="/vote" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
+                🔥 Daily Playlist Voting
+              </Link>
+            </li>
+            <li>
+              <Link to="/saved" style={{ color: 'var(--text-secondary)', transition: 'color var(--transition-fast)' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-orange)'} onMouseOut={e=>e.currentTarget.style.color='var(--text-secondary)'}>
+                📼 Saved Episodes Vault
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Campus Network */}
+        {/* Radio Broadcast Info Badge */}
         <div>
-          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.98rem', fontWeight: 900, marginBottom: '16px', letterSpacing: '0.04em', color: '#000' }}>
-            CAMPUS ECOSYSTEM
-          </h4>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
-            <li><Link to="/campus" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>📢 Announcements & Circulars</Link></li>
-            <li><Link to="/campus" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🎪 Incridea 2026 Portal</Link></li>
-            <li><Link to="/community" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🎵 Song Request Box</Link></li>
-            <li><Link to="/library" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>📼 Your Cassette Library</Link></li>
-            <li><Link to="/profile" style={{ color: '#222', transition: 'color 0.15s ease' }} onMouseOver={e=>e.currentTarget.style.color='var(--color-coral)'} onMouseOut={e=>e.currentTarget.style.color='#222'}>🪪 Student Listener ID</Link></li>
-          </ul>
-        </div>
-
-        {/* Radio Specs Stamp Box */}
-        <div>
-          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.98rem', fontWeight: 900, marginBottom: '16px', letterSpacing: '0.04em', color: '#000' }}>
-            TRANSMISSION SPECS
+          <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.92rem', fontWeight: 700, marginBottom: '14px', letterSpacing: '0.04em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
+            STUDIO BROADCAST
           </h4>
           <div 
             style={{
-              background: '#F5F5F5',
+              background: 'var(--bg-secondary)',
               padding: '16px',
-              borderRadius: '16px',
-              border: '2px solid #000',
-              boxShadow: '3px 3px 0 #000',
-              fontSize: '0.82rem',
-              color: '#111',
-              lineHeight: 1.6,
-              fontFamily: 'var(--font-mono)'
+              borderRadius: 'var(--radius-lg)',
+              border: '1px solid var(--border-color)',
+              fontSize: '0.84rem',
+              color: 'var(--text-primary)',
+              lineHeight: 1.6
             }}
           >
-            <div style={{ color: 'var(--color-coral)', fontWeight: 800, marginBottom: '4px' }}>
+            <div style={{ color: 'var(--color-orange)', fontWeight: 800, marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span className="badge-live-pulse" style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--color-orange)' }} />
               FREQUENCY: 90.4 MHZ DIGITAL
             </div>
-            <div><strong>Studio Bitrate:</strong> 320kbps HD Master</div>
-            <div><strong>Coverage:</strong> NMAMIT Campus, Hostels & Netravati</div>
-            <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px dashed #000', fontSize: '0.72rem', color: '#555' }}>
-              ⚡ Prototype simulated student audio streaming network.
+            <div style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+              Covering NMAMIT campus academic blocks, hostels & student dining commons.
+            </div>
+            <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid var(--border-color)', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+              ⚡ Designed by & for NMAMIT students.
             </div>
           </div>
         </div>
@@ -148,35 +138,19 @@ export const Footer = () => {
       {/* Bottom Legal Bar */}
       <div 
         style={{
-          borderTop: '2px solid #000',
-          backgroundColor: '#000',
-          color: '#fff',
-          padding: '16px var(--space-lg)'
+          borderTop: '1px solid var(--border-color)',
+          padding: '16px var(--space-lg)',
+          textAlign: 'center',
+          fontSize: '0.78rem',
+          color: 'var(--text-secondary)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '6px',
+          flexWrap: 'wrap'
         }}
       >
-        <div 
-          className="footer-bottom-bar"
-          style={{
-            maxWidth: '1360px',
-            margin: '0 auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '12px',
-            fontSize: '0.82rem',
-            fontFamily: 'var(--font-mono)'
-          }}
-        >
-          <div>
-            © 2026 CAMPUSWAVE // CRAZY AUDIO NETWORK FOR NMAMIT STUDENTS.
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span style={{ color: 'var(--color-acid)', fontWeight: 700 }}>TUNE IN • STAY CONNECTED</span>
-            <span>•</span>
-            <Link to="/home" style={{ color: 'var(--color-acid)', fontWeight: 800 }}>DASHBOARD</Link>
-          </div>
-        </div>
+        <span>© {new Date().getFullYear()} CampusWave NMAMIT. Built for campus culture and student voices.</span>
       </div>
     </footer>
   );

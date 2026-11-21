@@ -25,25 +25,27 @@ export const BottomNavigation = () => {
       className="nav-mobile-bottom"
       aria-label="Mobile Bottom Navigation"
       style={{
-        display: 'none', // Shown via responsive.css on mobile
+        display: 'none', // Managed via responsive.css
         position: 'fixed',
         bottom: 0,
         left: 0,
         right: 0,
         height: 'calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px))',
-        backgroundColor: 'rgba(255, 255, 255, 0.98)',
+        backgroundColor: 'var(--bg-bottom-nav)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '2.5px solid #000000',
+        borderTop: '1px solid var(--border-color)',
         zIndex: 90,
         alignItems: 'center',
         justifyContent: 'space-around',
-        padding: '0 4px env(safe-area-inset-bottom, 0px)',
-        boxShadow: '0 -4px 0 rgba(0, 0, 0, 0.05)'
+        padding: '0 8px env(safe-area-inset-bottom, 0px)',
+        boxShadow: 'var(--shadow-md)',
+        transition: 'background-color var(--transition-normal), border-color var(--transition-normal)'
       }}
     >
       {navItems.map((item) => {
         const Icon = item.icon;
+
         if (item.isLive) {
           return (
             <NavLink
@@ -56,25 +58,24 @@ export const BottomNavigation = () => {
                 justifyContent: 'center',
                 textDecoration: 'none',
                 position: 'relative',
-                top: '-10px',
+                top: '-8px',
                 padding: '0 4px',
                 minWidth: '56px'
               }}
             >
               <div 
-                className="btn-brutal"
                 style={{
                   width: '48px',
                   height: '48px',
                   borderRadius: '50%',
-                  background: 'var(--color-coral)',
-                  border: '2px solid #000000',
-                  boxShadow: '2px 2px 0 #000000',
+                  backgroundColor: 'var(--color-orange)',
+                  boxShadow: '0 4px 14px var(--color-orange-glow)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#FFFFFF',
-                  position: 'relative'
+                  position: 'relative',
+                  border: '2px solid var(--bg-card)'
                 }}
               >
                 <Icon size={22} color="#FFFFFF" />
@@ -87,20 +88,20 @@ export const BottomNavigation = () => {
                       width: '10px',
                       height: '10px',
                       borderRadius: '50%',
-                      background: 'var(--color-acid)',
-                      border: '1.5px solid #000'
+                      backgroundColor: '#10B981',
+                      border: '1.5px solid var(--bg-card)'
                     }}
                   />
                 )}
               </div>
               <span 
                 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.62rem',
-                  fontWeight: 900,
-                  color: '#000000',
-                  marginTop: '3px',
-                  letterSpacing: '0.04em',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.66rem',
+                  fontWeight: 700,
+                  color: 'var(--color-orange)',
+                  marginTop: '2px',
+                  letterSpacing: '0.02em',
                   textTransform: 'uppercase'
                 }}
               >
@@ -119,29 +120,25 @@ export const BottomNavigation = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '3px',
+              gap: '4px',
               textDecoration: 'none',
-              color: isActive ? '#000000' : '#444444',
-              padding: '6px 8px',
-              minWidth: '52px',
-              minHeight: '48px',
-              borderRadius: '8px',
-              backgroundColor: isActive ? 'var(--color-acid)' : 'transparent',
-              border: isActive ? '1.5px solid #000' : '1.5px solid transparent',
-              boxShadow: isActive ? '1.5px 1.5px 0 #000' : 'none',
-              transition: 'all 0.15s ease'
+              color: isActive ? 'var(--color-orange)' : 'var(--text-secondary)',
+              padding: '6px 10px',
+              minWidth: '50px',
+              minHeight: '44px',
+              borderRadius: 'var(--radius-sm)',
+              transition: 'all var(--transition-fast)'
             })}
           >
             {({ isActive }) => (
               <>
-                <Icon size={19} strokeWidth={isActive ? 2.5 : 1.8} color="#000" />
+                <Icon size={19} strokeWidth={isActive ? 2.4 : 1.8} color={isActive ? 'var(--color-orange)' : 'var(--text-secondary)'} />
                 <span 
                   style={{ 
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.64rem', 
-                    fontWeight: isActive ? 900 : 700,
-                    textTransform: 'uppercase',
-                    color: '#000'
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.68rem', 
+                    fontWeight: isActive ? 700 : 500,
+                    color: isActive ? 'var(--color-orange)' : 'var(--text-secondary)'
                   }}
                 >
                   {item.label}

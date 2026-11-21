@@ -2,12 +2,10 @@ import React from 'react';
 import { 
   Play, 
   Pause, 
-  SkipForward, 
-  SkipBack, 
-  Volume2, 
-  VolumeX, 
   Maximize2, 
-  Heart
+  Heart,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { useAudio } from '../context/AudioContext';
 import { useAuth } from '../context/AuthContext';
@@ -17,8 +15,6 @@ export const MiniPlayer = () => {
     currentTrack, 
     isPlaying, 
     togglePlay, 
-    nextTrack, 
-    prevTrack, 
     currentTime, 
     duration, 
     volume, 
@@ -31,7 +27,7 @@ export const MiniPlayer = () => {
   } = useAudio();
 
   const { likedTracks, toggleLikeTrack } = useAuth();
-  const isLiked = currentTrack ? likedTracks.includes(currentTrack.id) : false;
+  const isLiked = currentTrack ? likedTracks?.includes(currentTrack.id) : false;
 
   if (!currentTrack) return null;
 
@@ -54,15 +50,15 @@ export const MiniPlayer = () => {
         left: 0,
         right: 0,
         height: 'var(--mini-player-height)',
-        backgroundColor: '#111111',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '2.5px solid #000000',
+        backgroundColor: 'var(--bg-mini-player)',
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        borderTop: '1px solid var(--border-color)',
         zIndex: 95,
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 -6px 0 rgba(0, 0, 0, 0.1)',
-        transition: 'bottom var(--transition-fast)'
+        boxShadow: 'var(--shadow-lg)',
+        transition: 'bottom var(--transition-fast), background-color var(--transition-normal), border-color var(--transition-normal)'
       }}
     >
       {/* Clickable Scrub Progress Bar along top edge */}
@@ -70,49 +66,36 @@ export const MiniPlayer = () => {
         onClick={handleProgressClick}
         style={{
           width: '100%',
-          height: '4px',
-          background: 'rgba(255, 255, 255, 0.12)',
+          height: '3px',
+          backgroundColor: 'var(--border-color)',
           cursor: 'pointer',
           position: 'relative'
         }}
-        title={`Scrub position: ${formatTime(currentTime)} / ${formatTime(duration)}`}
+        title={`Scrub: ${formatTime(currentTime)} / ${formatTime(duration)}`}
       >
         <div 
           style={{
             width: `${progress}%`,
             height: '100%',
-            background: 'linear-gradient(90deg, var(--color-teal), var(--color-coral))',
+            backgroundColor: 'var(--color-orange)',
             position: 'relative',
             transition: 'width 0.15s linear'
           }}
-        >
-          <div 
-            style={{
-              position: 'absolute',
-              right: '-4px',
-              top: '-3px',
-              width: '10px',
-              height: '10px',
-              borderRadius: '50%',
-              backgroundColor: 'var(--color-coral)',
-              boxShadow: '0 0 8px rgba(245, 45, 58, 0.8)'
-            }}
-          />
-        </div>
+        />
       </div>
 
       {/* Mini Player Inner Content */}
       <div 
         style={{
           flex: 1,
-          maxWidth: '1320px',
+          maxWidth: '1240px',
           width: '100%',
           margin: '0 auto',
-          padding: '0 var(--space-lg)',
+          padding: '0 var(--space-md)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: 'var(--space-md)'
+          gap: '12px'
         }}
       >
         {/* Track Info (Click to open Full Player) */}
@@ -122,24 +105,24 @@ export const MiniPlayer = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '12px',
+            gap: '10px',
             cursor: 'pointer',
-            minWidth: '180px',
-            maxWidth: '360px',
+            minWidth: 0,
             flex: '1'
           }}
-          title="Click to expand full audio console"
+          title="Click to expand audio player"
         >
+          {/* Small Episode Artwork */}
           <div 
             style={{
               position: 'relative',
-              width: '46px',
-              height: '46px',
-              borderRadius: '10px',
+              width: '42px',
+              height: '42px',
+              borderRadius: '8px',
               overflow: 'hidden',
               flexShrink: 0,
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.35)',
-              border: '1px solid rgba(255, 255, 255, 0.15)'
+              backgroundColor: 'var(--bg-card-subtle)',
+              border: '1px solid var(--border-color)'
             }}
           >
             <img 
@@ -151,52 +134,31 @@ export const MiniPlayer = () => {
                 objectFit: 'cover'
               }}
             />
-            {isPlaying && (
-              <div 
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'rgba(0, 0, 0, 0.35)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <div 
-                  className="spin-vinyl"
-                  style={{
-                    width: '22px',
-                    height: '22px',
-                    borderRadius: '50%',
-                    border: '2px dashed var(--color-coral)'
-                  }}
-                />
-              </div>
-            )}
           </div>
 
-          <div style={{ overflow: 'hidden' }}>
+          <div style={{ minWidth: 0, overflow: 'hidden' }}>
             <div 
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '0.9rem',
+                fontSize: '0.88rem',
                 fontWeight: 700,
-                color: '#FFFFFF',
+                color: 'var(--text-primary)',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
-                textOverflow: 'ellipsis'
+                textOverflow: 'ellipsis',
+                lineHeight: 1.2
               }}
             >
               {currentTrack.title}
             </div>
             <div 
               style={{
-                fontSize: '0.78rem',
-                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '0.74rem',
+                color: 'var(--text-secondary)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                marginTop: '1px'
+                marginTop: '2px'
               }}
             >
               <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -204,13 +166,12 @@ export const MiniPlayer = () => {
               </span>
               {currentTrack.type === 'live' && (
                 <span 
-                  className="editorial-badge"
                   style={{
-                    padding: '1px 6px',
+                    padding: '1px 5px',
                     fontSize: '0.62rem',
-                    background: 'var(--color-coral)',
-                    color: '#fff',
-                    border: 'none',
+                    backgroundColor: 'var(--color-orange)',
+                    color: '#FFF',
+                    borderRadius: '4px',
                     fontWeight: 800
                   }}
                 >
@@ -219,113 +180,32 @@ export const MiniPlayer = () => {
               )}
             </div>
           </div>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              toggleLikeTrack(currentTrack.id);
-            }}
-            style={{
-              padding: '6px',
-              color: isLiked ? 'var(--color-coral)' : 'rgba(255, 255, 255, 0.5)',
-              marginLeft: '4px',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-            title={isLiked ? "Saved to Liked Songs" : "Like track"}
-          >
-            <Heart size={17} fill={isLiked ? "var(--color-coral)" : "none"} />
-          </button>
         </div>
 
-        {/* Center Controls */}
+        {/* Right Controls */}
         <div 
           style={{
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
-            gap: '2px'
+            gap: '10px',
+            flexShrink: 0
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <button
-              onClick={prevTrack}
-              style={{ color: 'rgba(255, 255, 255, 0.7)', padding: '6px' }}
-              className="secondary-control"
-              title="Previous Track"
-            >
-              <SkipBack size={18} />
-            </button>
-
-            <button
-              onClick={togglePlay}
-              className="btn-brutal"
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--color-orange)',
-                color: '#FFFFFF',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer'
-              }}
-              title={isPlaying ? "Pause" : "Play"}
-            >
-              {isPlaying ? <Pause size={18} fill="#FFF" /> : <Play size={18} fill="#FFF" style={{ marginLeft: '2px' }} />}
-            </button>
-
-            <button
-              onClick={nextTrack}
-              style={{ color: 'rgba(255, 255, 255, 0.7)', padding: '6px' }}
-              className="secondary-control"
-              title="Next Track"
-            >
-              <SkipForward size={18} />
-            </button>
-          </div>
-
-          {/* Time Display */}
+          {/* Desktop Volume Slider */}
           <div 
-            className="mini-player-time"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.7rem',
-              color: 'rgba(255, 255, 255, 0.5)'
-            }}
-          >
-            {formatTime(currentTime)} / {formatTime(duration)}
-          </div>
-        </div>
-
-        {/* Right Controls (Volume, Expand) */}
-        <div 
-          className="mini-player-controls"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            minWidth: '160px',
-            justifyContent: 'flex-end'
-          }}
-        >
-          <div 
-            className="secondary-control"
+            className="desktop-only"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '8px'
+              gap: '6px'
             }}
           >
             <button 
               onClick={toggleMute}
-              style={{ color: 'rgba(255, 255, 255, 0.6)' }}
+              style={{ color: 'var(--text-secondary)', padding: '4px' }}
               title={isMuted ? "Unmute" : "Mute"}
             >
-              {isMuted ? <VolumeX size={17} /> : <Volume2 size={17} />}
+              {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
             </button>
             <input 
               type="range"
@@ -335,26 +215,69 @@ export const MiniPlayer = () => {
               value={isMuted ? 0 : volume}
               onChange={(e) => setVolume(parseFloat(e.target.value))}
               style={{
-                width: '70px',
-                accentColor: 'var(--color-coral)',
+                width: '65px',
+                accentColor: 'var(--color-orange)',
                 cursor: 'pointer'
               }}
             />
           </div>
 
+          {/* Like Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleLikeTrack(currentTrack.id);
+            }}
+            style={{
+              padding: '6px',
+              color: isLiked ? 'var(--color-orange)' : 'var(--text-secondary)',
+              display: 'flex',
+              alignItems: 'center'
+            }}
+            title={isLiked ? "Saved to Liked" : "Like track"}
+          >
+            <Heart size={18} fill={isLiked ? "var(--color-orange)" : "none"} />
+          </button>
+
+          {/* Play/Pause Button */}
+          <button
+            onClick={togglePlay}
+            style={{
+              width: '40px',
+              height: '40px',
+              minWidth: '40px',
+              minHeight: '40px',
+              borderRadius: '50%',
+              backgroundColor: 'var(--color-orange)',
+              color: '#FFFFFF',
+              border: 'none',
+              boxShadow: '0 2px 8px var(--color-orange-glow)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer'
+            }}
+            title={isPlaying ? "Pause" : "Play"}
+          >
+            {isPlaying ? <Pause size={18} fill="#FFF" /> : <Play size={18} fill="#FFF" style={{ marginLeft: '2px' }} />}
+          </button>
+
+          {/* Expand Full Player Button */}
           <button
             onClick={() => setIsFullPlayerOpen(true)}
             style={{
               width: '36px',
               height: '36px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              color: '#FFFFFF',
+              borderRadius: 'var(--radius-sm)',
+              backgroundColor: 'var(--bg-card-subtle)',
+              color: 'var(--text-secondary)',
+              border: '1px solid var(--border-color)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              cursor: 'pointer'
             }}
-            title="Expand Full Screen Console"
+            title="Expand Full Player"
           >
             <Maximize2 size={15} />
           </button>

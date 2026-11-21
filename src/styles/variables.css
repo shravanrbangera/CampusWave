@@ -1,103 +1,43 @@
 /* ==========================================================================
-   CAMPUSWAVE NEW DESIGN SYSTEM TOKENS
-   Primary:
-     - Pure White: #FFFFFF
-     - Soft Grey: #F3F3F3
-     - Charcoal: #202020
-     - Coral Red: #F52D3A
-     - Warm Amber: #FFB52E
-   Supporting:
-     - Deep Teal: #123C40
-     - Soft Cream: #FFF5E9
-     - Light Border: #E8E8E8
+   CAMPUSWAVE DESIGN SYSTEM TOKENS
+   Refined for Modern Premium Digital Radio & Music Streaming
+   Theme-adaptive: Seamless Dark Mode (Midnight) & Light Mode (Off-White)
    ========================================================================== */
 
 :root {
-  /* Brand Core Palette */
-  --color-white: #FFFFFF;
-  --color-soft-grey: #F3F3F3;
-  --color-charcoal: #202020;
-  --color-charcoal-light: #2E2E2E;
-  --color-charcoal-dark: #141414;
-
-  /* Funky Neo-Brutalist & Student Music Palette */
-  --color-paper: #F4F0E8;
-  --grid-line-color: rgba(0, 0, 0, 0.08);
-  --color-ink: #000000;
-  --color-acid: #E8FF00;
-  --color-acid-glow: rgba(232, 255, 0, 0.45);
-  --color-cyan: #00F0FF;
-  --color-cyan-glow: rgba(0, 240, 255, 0.45);
-  --color-magenta: #FF007F;
-  --color-purple: #7B2CBF;
-
-  /* Primary Vibrant Orange Accent (Campus Radio Identity) */
+  /* Brand Core Accent: Vibrant Orange */
   --color-orange: #FF5500;
   --color-orange-hover: #E64C00;
-  --color-orange-glow: rgba(255, 85, 0, 0.4);
   --color-orange-soft: rgba(255, 85, 0, 0.12);
+  --color-orange-glow: rgba(255, 85, 0, 0.35);
 
+  /* Legacy aliases mapped to Orange for backward compatibility */
   --color-coral: #FF5500;
   --color-coral-hover: #E64C00;
   --color-coral-soft: rgba(255, 85, 0, 0.12);
-  --color-coral-glow: rgba(255, 85, 0, 0.4);
-
-  --color-amber: #FF9E1B;
-  --color-amber-hover: #E88C10;
-  --color-amber-soft: rgba(255, 158, 27, 0.14);
-  --color-amber-glow: rgba(255, 158, 27, 0.35);
-
-  --color-teal: #123C40;
-  --color-teal-dark: #0B2427;
-  --color-teal-light: #1A5459;
-  --color-teal-glow: rgba(18, 60, 64, 0.4);
-
-  --color-cream: #FAF8F5;
-  --color-cream-dark: #EFECE4;
-  --color-border: #E5E7EB;
-  --color-border-hover: #CBD5E1;
-
-  /* Aliases for backwards compatibility & consistency */
-  --color-burgundy: #123C40;
-
-  /* Semantic UI Colors */
+  --color-coral-glow: rgba(255, 85, 0, 0.35);
   --color-live: #FF5500;
+
+  /* Neutral Supporting Tones */
+  --color-amber: #F59E0B;
+  --color-amber-soft: rgba(245, 158, 11, 0.15);
   --color-success: #10B981;
-  --color-info: #0EA5E9;
+  --color-success-soft: rgba(16, 185, 129, 0.15);
+  --color-teal: #123C40;
 
-  /* Modern Light Editorial Theme (Warm Off-White Surfaces) */
-  --bg-primary: #F8F6F0;
-  --bg-secondary: #EFECE4;
-  --bg-tertiary: #FFFFFF;
-  --bg-elevated: #FFFFFF;
-  --bg-hero-container: #FFFFFF;
-  --bg-glass: rgba(255, 255, 255, 0.94);
-  --bg-glass-card: rgba(255, 255, 255, 0.92);
-  
-  --border-color: #E2E8F0;
-  --border-color-hover: #CBD5E1;
-  --border-color-active: #FF5500;
-
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --text-inverse: #FFFFFF;
-
-  /* Typography: Funky, Bold, Brutalist & Audio-Centric */
-  --font-heading: 'Space Grotesk', 'Syne', sans-serif;
-  --font-black: 'Archivo Black', sans-serif;
-  --font-funky: 'Syne', 'Space Grotesk', sans-serif;
+  /* Typography: Clean, Modern, Readable (No heavy monospace for normal text) */
+  --font-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace; /* Reserved only for frequency/technical specs */
 
-  /* Fluid Typography Clamps (Mobile-First Scaled) */
-  --font-size-hero: clamp(2rem, 7vw, 4.5rem);           /* 32px - 72px */
-  --font-size-page-heading: clamp(1.625rem, 5vw, 3.25rem); /* 26px - 52px */
-  --font-size-section-heading: clamp(1.3125rem, 3.8vw, 2.25rem); /* 21px - 36px */
-  --font-size-card-heading: clamp(1rem, 2.5vw, 1.25rem);   /* 16px - 20px */
-  --font-size-body: clamp(0.875rem, 2vw, 1.05rem);         /* 14px - 17px */
-  --font-size-supporting: clamp(0.75rem, 1.5vw, 0.875rem); /* 12px - 14px */
-  --font-size-btn: clamp(0.875rem, 1.8vw, 1rem);           /* 14px - 16px */
+  /* Responsive Fluid Typography Clamps (Mobile-First) */
+  --font-size-hero: clamp(1.85rem, 5.5vw, 3.2rem);       /* 30px - 51px */
+  --font-size-page-heading: clamp(1.5rem, 4vw, 2.4rem);   /* 24px - 38px */
+  --font-size-section-heading: clamp(1.2rem, 3vw, 1.65rem); /* 19px - 26px */
+  --font-size-card-heading: clamp(1rem, 2vw, 1.15rem);    /* 16px - 18px */
+  --font-size-body: clamp(0.875rem, 1.6vw, 1rem);        /* 14px - 16px */
+  --font-size-supporting: clamp(0.75rem, 1.4vw, 0.85rem); /* 12px - 14px */
+  --font-size-btn: clamp(0.85rem, 1.5vw, 0.95rem);        /* 14px - 15px */
 
   /* Touch Ergonomics Minimum Sizes */
   --min-touch-target: 48px;
@@ -110,61 +50,97 @@
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
-  --space-2xl: 48px;
-  --space-3xl: 64px;
+  --space-2xl: 44px;
+  --space-3xl: 60px;
 
   /* Modern Card & Bento Radius */
   --radius-xs: 6px;
   --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-2xl: 40px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Modern Soft Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.08);
-  --shadow-coral: 0 10px 28px rgba(245, 45, 58, 0.28);
-  --shadow-amber: 0 10px 28px rgba(255, 181, 46, 0.28);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
-
   /* Layout Dimensions */
-  --mini-player-height: 76px;
-  --bottom-nav-height: 64px;
-  --navbar-height: 72px;
+  --mini-player-height: 64px;
+  --bottom-nav-height: 60px;
+  --navbar-height: 68px;
 
-  /* Smooth Transitions */
+  /* Transitions */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark / Immersive Mode (Deep Charcoal / Midnight Background) */
-[data-theme="dark"] {
-  --bg-primary: #0D0F14;
-  --grid-line-color: rgba(255, 255, 255, 0.06);
-  --bg-secondary: #131722;
-  --bg-tertiary: #1A1F2E;
+/* ==========================================================================
+   LIGHT THEME (Default: Clean Off-White Background & Crisp Surfaces)
+   ========================================================================== */
+html,
+html[data-theme="light"],
+:root {
+  --bg-primary: #F8F9FA;
+  --bg-page: #F8F9FA;
+  --bg-secondary: #F1F3F5;
+  --bg-tertiary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F1F3F5;
+  --bg-elevated: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --bg-glass-card: rgba(255, 255, 255, 0.94);
+  --bg-navbar: rgba(255, 255, 255, 0.92);
+  --bg-bottom-nav: rgba(255, 255, 255, 0.95);
+  --bg-mini-player: rgba(255, 255, 255, 0.96);
+
+  --border-color: #E2E8F0;
+  --border-color-hover: #CBD5E1;
+  --border-color-active: #FF5500;
+  --grid-line-color: rgba(0, 0, 0, 0.05);
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-inverse: #FFFFFF;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  --icon-color: #0F172A;
+}
+
+/* ==========================================================================
+   DARK THEME (Deep Charcoal / Midnight Background)
+   ========================================================================== */
+html[data-theme="dark"] {
+  --bg-primary: #0F1117;
+  --bg-page: #0F1117;
+  --bg-secondary: #161A24;
+  --bg-tertiary: #1C212E;
+  --bg-card: #161A24;
+  --bg-card-subtle: #1C212E;
   --bg-elevated: #222838;
-  --bg-hero-container: #151924;
-  --bg-glass: rgba(13, 15, 20, 0.92);
-  --bg-glass-card: rgba(26, 31, 46, 0.85);
+  --bg-glass: rgba(15, 17, 23, 0.92);
+  --bg-glass-card: rgba(22, 26, 36, 0.9);
+  --bg-navbar: rgba(15, 17, 23, 0.92);
+  --bg-bottom-nav: rgba(15, 17, 23, 0.95);
+  --bg-mini-player: rgba(22, 26, 36, 0.96);
 
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(255, 85, 0, 0.5);
+  --border-color-hover: rgba(255, 85, 0, 0.45);
   --border-color-active: #FF5500;
+  --grid-line-color: rgba(255, 255, 255, 0.04);
 
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
-  --text-inverse: #0D0F14;
+  --text-inverse: #0F1117;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
-  --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 8px 26px rgba(0, 0, 0, 0.5);
+
+  --icon-color: #F8FAFC;
 }

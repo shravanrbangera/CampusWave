@@ -10,8 +10,7 @@ import {
   Sun, 
   Moon, 
   Menu,
-  X,
-  Sparkles
+  X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAudio } from '../context/AudioContext';
@@ -35,16 +34,16 @@ export const Navbar = () => {
     }
   };
 
-  // The 5 primary sections requested
+  // Exact 5 primary sections requested
   const navLinks = [
     { to: '/', label: 'Home', icon: Home },
+    { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
     { 
       to: '/live', 
       label: 'Live Radio', 
       icon: Radio, 
       isLive: true 
     },
-    { to: '/podcasts', label: 'Podcasts', icon: Mic2 },
     { to: '/vote', label: 'Vote', icon: Vote },
     { to: '/saved', label: 'Saved', icon: Bookmark, badge: totalSavedCount }
   ];
@@ -55,20 +54,20 @@ export const Navbar = () => {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '2.5px solid #000000',
-        boxShadow: '0 4px 0 rgba(0, 0, 0, 0.05)',
+        backgroundColor: 'var(--bg-navbar)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid var(--border-color)',
+        boxShadow: 'var(--shadow-sm)',
         height: 'var(--navbar-height)',
         display: 'flex',
         alignItems: 'center',
-        transition: 'all var(--transition-normal)'
+        transition: 'background-color var(--transition-normal), border-color var(--transition-normal)'
       }}
     >
       <div 
         style={{
-          maxWidth: '1360px',
+          maxWidth: '1240px',
           width: '100%',
           margin: '0 auto',
           padding: '0 var(--space-lg)',
@@ -78,7 +77,7 @@ export const Navbar = () => {
           gap: 'var(--space-md)'
         }}
       >
-        {/* Brand Logo with Tactile Brutalist Badge */}
+        {/* Brand Logo */}
         <Link 
           to="/" 
           style={{
@@ -90,32 +89,30 @@ export const Navbar = () => {
         >
           <div 
             style={{
-              width: '42px',
-              height: '42px',
+              width: '40px',
+              height: '40px',
               borderRadius: '12px',
-              background: 'var(--color-coral)',
-              border: '2px solid #000',
+              backgroundColor: 'var(--color-orange)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '3px 3px 0 #000',
+              boxShadow: '0 4px 12px var(--color-orange-glow)',
               position: 'relative',
               flexShrink: 0
             }}
           >
-            <Radio size={22} color="#FFFFFF" />
+            <Radio size={20} color="#FFFFFF" />
             {isPlaying && (
               <span 
                 style={{
                   position: 'absolute',
-                  top: '-4px',
-                  right: '-4px',
-                  width: '12px',
-                  height: '12px',
+                  top: '-2px',
+                  right: '-2px',
+                  width: '10px',
+                  height: '10px',
                   borderRadius: '50%',
-                  background: 'var(--color-acid)',
-                  border: '2px solid #000',
-                  boxShadow: '1px 1px 0 #000'
+                  backgroundColor: '#10B981',
+                  border: '2px solid var(--bg-navbar)'
                 }}
               />
             )}
@@ -124,25 +121,25 @@ export const Navbar = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span 
                 style={{
-                  fontFamily: 'var(--font-black)',
-                  fontSize: '1.35rem',
-                  letterSpacing: '-0.04em',
-                  color: '#000000'
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '1.25rem',
+                  fontWeight: 800,
+                  letterSpacing: '-0.03em',
+                  color: 'var(--text-primary)'
                 }}
               >
-                CAMPUS<span style={{ color: 'var(--color-coral)' }}>WAVE</span>
+                CAMPUS<span style={{ color: 'var(--color-orange)' }}>WAVE</span>
               </span>
               <span 
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.62rem',
-                  fontWeight: 900,
-                  backgroundColor: 'var(--color-acid)',
-                  color: '#000',
-                  border: '1.5px solid #000',
+                  fontWeight: 800,
+                  backgroundColor: 'var(--color-orange-soft)',
+                  color: 'var(--color-orange)',
+                  border: '1px solid var(--color-orange)',
                   padding: '1px 5px',
-                  borderRadius: '4px',
-                  boxShadow: '1px 1px 0 #000'
+                  borderRadius: '4px'
                 }}
               >
                 90.4
@@ -150,20 +147,20 @@ export const Navbar = () => {
             </div>
             <div 
               style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.65rem',
-                color: '#333333',
-                letterSpacing: '0.06em',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.68rem',
+                color: 'var(--text-secondary)',
+                letterSpacing: '0.04em',
                 lineHeight: 1,
-                fontWeight: 700
+                fontWeight: 600
               }}
             >
-              NMAMIT • DIGITAL FM
+              NMAMIT DIGITAL RADIO
             </div>
           </div>
         </Link>
 
-        {/* Desktop Nav Links with Brutalist Tactile States */}
+        {/* Desktop Nav Links */}
         <nav 
           className="nav-desktop-links"
           style={{
@@ -182,32 +179,30 @@ export const Navbar = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  padding: '6px 13px',
-                  borderRadius: '999px',
-                  fontSize: '0.84rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  color: isActive ? '#000000' : '#222222',
-                  backgroundColor: isActive ? 'var(--color-acid)' : 'transparent',
-                  border: isActive ? '2px solid #000' : '2px solid transparent',
-                  boxShadow: isActive ? '2px 2px 0 #000' : 'none',
+                  padding: '8px 16px',
+                  borderRadius: 'var(--radius-full)',
+                  fontSize: '0.86rem',
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? 'var(--color-orange)' : 'var(--text-secondary)',
+                  backgroundColor: isActive ? 'var(--color-orange-soft)' : 'transparent',
+                  border: isActive ? '1px solid var(--color-orange)' : '1px solid transparent',
                   position: 'relative',
-                  transition: 'all 0.15s ease'
+                  transition: 'all var(--transition-fast)'
                 })}
               >
-                <Icon size={14} />
+                <Icon size={16} />
                 <span>{item.label}</span>
                 {item.badge > 0 && (
                   <span 
                     style={{
-                      fontSize: '0.65rem',
-                      fontWeight: 900,
+                      fontSize: '0.68rem',
+                      fontWeight: 800,
                       backgroundColor: 'var(--color-orange)',
                       color: '#FFF',
                       padding: '1px 6px',
                       borderRadius: '999px',
-                      border: '1px solid #000'
+                      marginLeft: '2px'
                     }}
                   >
                     {item.badge}
@@ -216,11 +211,10 @@ export const Navbar = () => {
                 {item.isLive && (
                   <span 
                     style={{
-                      width: '8px',
-                      height: '8px',
+                      width: '7px',
+                      height: '7px',
                       borderRadius: '50%',
-                      backgroundColor: 'var(--color-coral)',
-                      border: '1px solid #000',
+                      backgroundColor: 'var(--color-orange)',
                       display: 'inline-block',
                       animation: 'pulse 1.2s infinite'
                     }}
@@ -233,175 +227,87 @@ export const Navbar = () => {
 
         {/* Right Action Icons & Controls */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          {/* Search Trigger */}
-          {searchOpen ? (
-            <form 
-              onSubmit={handleSearchSubmit} 
-              className="navbar-search-form"
-              style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
-            >
-              <input
-                type="text"
-                autoFocus
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  width: 'clamp(120px, 28vw, 210px)',
-                  padding: '7px 14px',
-                  borderRadius: '999px',
-                  background: '#FFFFFF',
-                  border: '2px solid #000',
-                  boxShadow: '2px 2px 0 #000',
-                  color: '#000',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '16px',
-                  fontWeight: 600
-                }}
-              />
-              <button 
-                type="button" 
-                onClick={() => setSearchOpen(false)}
-                style={{ color: '#000', cursor: 'pointer', background: 'none', border: 'none', padding: '6px', display: 'flex', alignItems: 'center' }}
-                aria-label="Close search"
-              >
-                <X size={18} />
-              </button>
-            </form>
-          ) : (
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="btn-brutal"
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '50%',
-                backgroundColor: '#FFFFFF',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer'
-              }}
-              title="Search CampusWave"
-              aria-label="Search"
-            >
-              <Search size={16} />
-            </button>
-          )}
-
-          {/* Theme Switcher */}
-          <button
-            onClick={toggleTheme}
-            className="btn-brutal"
+          {/* Desktop Search Trigger / Input */}
+          <form 
+            onSubmit={handleSearchSubmit} 
+            className="desktop-only"
             style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '50%',
-              backgroundColor: '#FFFFFF',
-              border: '2px solid #000',
-              boxShadow: '2px 2px 0 #000',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search shows, podcasts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: 'clamp(150px, 18vw, 220px)',
+                padding: '8px 12px 8px 34px',
+                borderRadius: 'var(--radius-full)',
+                backgroundColor: 'var(--bg-card-subtle)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.82rem',
+                fontWeight: 500
+              }}
+            />
+            <Search 
+              size={15} 
+              color="var(--text-muted)" 
+              style={{ position: 'absolute', left: '11px', pointerEvents: 'none' }} 
+            />
+          </form>
+
+          {/* Theme Toggle Button */}
+          <button 
+            onClick={toggleTheme}
+            className="btn-icon"
+            style={{
+              width: '40px',
+              height: '40px',
+              minWidth: '40px',
+              minHeight: '40px',
+              borderRadius: 'var(--radius-full)',
+              backgroundColor: 'var(--bg-card-subtle)',
+              border: '1px solid var(--border-color)',
+              color: 'var(--text-primary)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer'
             }}
-            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+            title={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            {theme === 'dark' ? <Sun size={17} color="var(--color-amber)" /> : <Moon size={17} color="var(--text-primary)" />}
           </button>
-
-          {/* Profile / Auth Button */}
-          {isAuthenticated ? (
-            <Link 
-              to="/profile"
-              className="btn-brutal"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '4px 12px 4px 4px',
-                borderRadius: '999px',
-                backgroundColor: 'var(--color-acid)',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                textDecoration: 'none'
-              }}
-              title="Open Student Profile"
-            >
-              <img 
-                src={user?.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&q=80"} 
-                alt={user?.name || "Student"}
-                style={{
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  border: '1.5px solid #000'
-                }}
-              />
-              <span 
-                className="desktop-only"
-                style={{
-                  fontSize: '0.82rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 800,
-                  color: '#000',
-                  maxWidth: '90px',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {user?.name?.split(' ')[0] || "Student"}
-              </span>
-            </Link>
-          ) : (
-            <Link 
-              to="/login"
-              className="btn-brutal"
-              style={{
-                padding: '8px 18px',
-                fontSize: '0.82rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                backgroundColor: 'var(--color-coral)',
-                color: '#fff',
-                border: '2px solid #000',
-                boxShadow: '2px 2px 0 #000',
-                borderRadius: '999px'
-              }}
-            >
-              LOGIN
-            </Link>
-          )}
 
           {/* Mobile hamburger menu toggle */}
           <button 
-            className="btn-brutal"
             onClick={() => setMobileMenuOpen(prev => !prev)}
             style={{
               display: 'none',
-              width: '38px',
-              height: '38px',
+              width: '40px',
+              height: '40px',
               borderRadius: '10px',
-              backgroundColor: '#fff',
-              border: '2px solid #000',
-              boxShadow: '2px 2px 0 #000',
+              backgroundColor: 'var(--bg-card-subtle)',
+              border: '1px solid var(--border-color)',
+              color: 'var(--text-primary)',
               alignItems: 'center',
               justifyContent: 'center'
             }}
             id="mobile-nav-toggle"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={19} /> : <Menu size={19} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div 
           style={{
@@ -409,15 +315,36 @@ export const Navbar = () => {
             top: 'var(--navbar-height)',
             left: 0,
             right: 0,
-            backgroundColor: 'var(--color-white)',
-            borderBottom: '3px solid #000',
+            backgroundColor: 'var(--bg-card)',
+            borderBottom: '1px solid var(--border-color)',
             padding: 'var(--space-md)',
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            boxShadow: '0 8px 0 rgba(0,0,0,0.1)'
+            boxShadow: 'var(--shadow-lg)'
           }}
         >
+          {/* Mobile Search input inside drawer */}
+          <form onSubmit={handleSearchSubmit} style={{ position: 'relative', marginBottom: '8px' }}>
+            <input
+              type="text"
+              placeholder="Search shows, podcasts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '12px 14px 12px 38px',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'var(--bg-card-subtle)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '16px'
+              }}
+            />
+            <Search size={18} color="var(--text-muted)" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }} />
+          </form>
+
           {navLinks.map((item) => {
             const Icon = item.icon;
             return (
@@ -429,15 +356,14 @@ export const Navbar = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  padding: '11px 16px',
-                  borderRadius: '12px',
-                  border: '2px solid #000',
-                  boxShadow: isActive ? '3px 3px 0 #000' : 'none',
-                  color: '#000',
-                  backgroundColor: isActive ? 'var(--color-acid)' : '#fff',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 800,
-                  fontSize: '0.88rem'
+                  padding: '12px 16px',
+                  borderRadius: 'var(--radius-md)',
+                  border: isActive ? '1px solid var(--color-orange)' : '1px solid transparent',
+                  color: isActive ? 'var(--color-orange)' : 'var(--text-primary)',
+                  backgroundColor: isActive ? 'var(--color-orange-soft)' : 'transparent',
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: isActive ? 700 : 500,
+                  fontSize: '0.94rem'
                 })}
               >
                 <Icon size={18} />
@@ -448,11 +374,25 @@ export const Navbar = () => {
                       width: '8px',
                       height: '8px',
                       borderRadius: '50%',
-                      backgroundColor: 'var(--color-coral)',
-                      border: '1px solid #000',
+                      backgroundColor: 'var(--color-orange)',
                       marginLeft: 'auto'
                     }}
                   />
+                )}
+                {item.badge > 0 && !item.isLive && (
+                  <span 
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      backgroundColor: 'var(--color-orange)',
+                      color: '#FFF',
+                      padding: '2px 8px',
+                      borderRadius: '999px',
+                      marginLeft: 'auto'
+                    }}
+                  >
+                    {item.badge}
+                  </span>
                 )}
               </NavLink>
             );

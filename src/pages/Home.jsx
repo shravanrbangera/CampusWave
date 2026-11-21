@@ -66,13 +66,6 @@ export const Home = () => {
     }
   };
 
-  // Quick Action circle items (matching user reference Image 1)
-  const quickActions = [
-    { label: 'Live Radio', to: '/live', icon: Radio, bg: '#E8F3FF', color: '#1971C2' },
-    { label: 'Podcasts', to: '/podcasts', icon: Mic2, bg: '#FFF0E6', color: '#F15A24' },
-    { label: 'Vote Song', to: '/vote', icon: Vote, bg: '#F3E8FF', color: '#7950F2' },
-    { label: 'Saved Vault', to: '/saved', icon: Bookmark, bg: '#E6FCF5', color: '#0CA678' }
-  ];
 
   return (
     <div 
@@ -201,63 +194,6 @@ export const Home = () => {
             {isLiveActive ? "PLAYING" : "ON AIR"}
           </span>
         </div>
-      </div>
-
-      {/* 3. Quick Action Circles (Matches Image 1: History, Last added, Most played, Shuffle) */}
-      <div 
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '10px',
-          margin: '2px 0 6px'
-        }}
-      >
-        {quickActions.map((action, idx) => {
-          const Icon = action.icon;
-          return (
-            <Link
-              key={idx}
-              to={action.to}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textDecoration: 'none',
-                gap: '8px'
-              }}
-            >
-              <div 
-                style={{
-                  width: '52px',
-                  height: '52px',
-                  borderRadius: '50%',
-                  backgroundColor: action.bg,
-                  color: action.color,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                  transition: 'transform var(--transition-fast)'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
-                onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              >
-                <Icon size={22} strokeWidth={2.2} />
-              </div>
-              <span 
-                style={{ 
-                  fontFamily: 'var(--font-heading)', 
-                  fontSize: '0.74rem', 
-                  fontWeight: 700, 
-                  color: 'var(--text-primary)',
-                  textAlign: 'center'
-                }}
-              >
-                {action.label}
-              </span>
-            </Link>
-          );
-        })}
       </div>
 
       {/* Retro FM Radio Tuner Dial (Inspired by user 70s FM radio and iPod reference) */}

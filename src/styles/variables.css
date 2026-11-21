@@ -62,9 +62,9 @@
   --radius-full: 9999px;
 
   /* Layout Dimensions */
-  --mini-player-height: 64px;
-  --bottom-nav-height: 60px;
-  --navbar-height: 68px;
+  --mini-player-height: 60px;
+  --bottom-nav-height: 58px;
+  --navbar-height: 62px;
 
   /* Transitions */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);

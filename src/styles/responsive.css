@@ -82,18 +82,33 @@ a:active,
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   :root {
-    --navbar-height: 64px;
-    --mini-player-height: 68px;
-    --bottom-nav-height: 64px;
+    --navbar-height: 58px;
+    --mini-player-height: 60px;
+    --bottom-nav-height: 58px;
   }
 
   /* Prevent page content from being obscured behind fixed MiniPlayer + BottomNav */
   .app-container {
-    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 20px) !important;
+    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 32px) !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: inline-flex !important;
   }
 
   .nav-desktop-links {
     display: none !important;
+  }
+
+  .hero-split-grid,
+  .podcast-spotlight-card,
+  .podcast-details-banner {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
   .nav-mobile-bottom {
@@ -237,23 +252,23 @@ a:active,
   .community-poll-banner,
   .community-form-card,
   .live-turntable-deck {
-    padding: 20px 16px !important;
-    border-radius: 18px !important;
-    box-shadow: 4px 4px 0 #000 !important;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-sm) !important;
   }
 
   .login-form-wrapper {
-    padding: 24px 16px !important;
+    padding: 20px 14px !important;
   }
 
   .auth-form-card {
-    padding: 24px 18px !important;
-    border-radius: 18px !important;
-    box-shadow: 4px 4px 0 #000 !important;
+    padding: 20px 16px !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-sm) !important;
   }
 
   .bento-card {
-    padding: 20px 16px !important;
+    padding: 16px 14px !important;
   }
 }
 
@@ -346,7 +361,7 @@ a:active,
   .retro-handheld-console {
     padding: 12px 8px !important;
     border-radius: 16px !important;
-    box-shadow: 4px 4px 0 #000 !important;
+    box-shadow: var(--shadow-sm) !important;
   }
 
   .retro-controls-deck {
@@ -378,7 +393,7 @@ a:active,
   /* BrutalistSoundSlider Compact Scaling */
   .brutalist-slider-rig {
     padding: 12px 8px !important;
-    box-shadow: 4px 4px 0 #000 !important;
+    box-shadow: var(--shadow-sm) !important;
   }
 
   .slider-flex-wrapper {
@@ -467,8 +482,8 @@ a:active,
 
   /* Vinyl Record in Turntables & Players */
   .vinyl-wrapper {
-    width: min(240px, 70vw) !important;
-    height: min(240px, 70vw) !important;
+    width: min(180px, 50vw) !important;
+    height: min(180px, 50vw) !important;
     aspect-ratio: 1 / 1 !important;
     margin: 0 auto !important;
   }
@@ -554,8 +569,8 @@ a:active,
   }
 
   .vinyl-wrapper {
-    width: min(270px, 68vw) !important;
-    height: min(270px, 68vw) !important;
+    width: min(200px, 50vw) !important;
+    height: min(200px, 50vw) !important;
     aspect-ratio: 1 / 1 !important;
   }
 
@@ -731,12 +746,12 @@ a:active,
    -------------------------------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) {
   .card-modern:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 6px 6px 0 #000000;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   .btn-brutal:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 #000000;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
 }

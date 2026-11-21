@@ -127,6 +127,29 @@ input, textarea, select {
   width: 100%;
 }
 
+/* Visibility Utilities */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 14px 16px;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: inline-flex !important;
+  }
+}
+
 /* ==========================================================================
    BUTTONS SYSTEM: Modern, Touch-Friendly, Accessible
    ========================================================================== */

@@ -233,13 +233,13 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
       </div>
 
       {/* Tactile Controls: 3 Colored Buttons + Rotary Smiley Knob + D-Pad */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '14px', marginBottom: '18px' }}>
+      <div className="retro-controls-deck" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '14px', marginBottom: '18px', flexWrap: 'wrap' }}>
         
         {/* Retro 3 Colored Action Buttons (Blue, Yellow, Red from Image 2!) */}
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <div className="retro-sound-btns" style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <button
             onClick={() => playSound('airhorn')}
-            className="btn-brutal"
+            className="btn-brutal retro-fx-btn"
             title="Airhorn Blast"
             style={{
               width: '44px',
@@ -258,7 +258,7 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
 
           <button
             onClick={() => playSound('bassdrop')}
-            className="btn-brutal"
+            className="btn-brutal retro-fx-btn"
             title="808 Bass Drop"
             style={{
               width: '44px',
@@ -277,7 +277,7 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
 
           <button
             onClick={() => playSound('chiptune')}
-            className="btn-brutal"
+            className="btn-brutal retro-fx-btn"
             title="8-Bit Arcade Arpeggio"
             style={{
               width: '44px',
@@ -296,10 +296,10 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
         </div>
 
         {/* Rotary Smiley Knob (From Image 2!) */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+        <div className="retro-dial-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
           <button
             onClick={handleDialClick}
-            className="btn-brutal"
+            className="btn-brutal retro-dial-btn"
             title="Click to Scratch Dial"
             style={{
               width: '54px',
@@ -325,7 +325,7 @@ export const RetroConsoleDeck = ({ onSoundTrigger }) => {
 
       {/* Yellow Sticky Post-It Note with Red Pushpin (From Image 1!) */}
       <div 
-        className="sticker-wobble"
+        className="sticker-wobble retro-pushpin-note"
         style={{
           backgroundColor: '#FFF875',
           border: '2px solid #000000',

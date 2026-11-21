@@ -20,6 +20,7 @@ export const VinylRecord = ({
         width: `${size}px`,
         height: `${size}px`,
         maxWidth: '100%',
+        aspectRatio: '1 / 1',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

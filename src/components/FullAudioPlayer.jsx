@@ -97,6 +97,7 @@ export const FullAudioPlayer = () => {
     >
       {/* Top Header Bar */}
       <div 
+        className="full-player-header"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -210,6 +211,7 @@ export const FullAudioPlayer = () => {
 
       {/* Main Container Content */}
       <div 
+        className="full-player-body"
         style={{
           flex: 1,
           maxWidth: '1200px',
@@ -229,10 +231,11 @@ export const FullAudioPlayer = () => {
               gap: 'var(--space-2xl)',
               alignItems: 'center'
             }}
-            className="hero-split-grid"
+            className="hero-split-grid full-player-grid"
           >
             {/* Left: Vinyl Record Showcase */}
             <div 
+              className="full-player-vinyl-box"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -272,7 +275,7 @@ export const FullAudioPlayer = () => {
             </div>
 
             {/* Right: Audio Info, Waveform & Controls */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+            <div className="full-player-controls-box" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
               <div>
                 <h2 
                   style={{
@@ -306,6 +309,7 @@ export const FullAudioPlayer = () => {
 
               {/* Dynamic Waveform Visualizer */}
               <div 
+                className="full-player-waveform-box"
                 style={{
                   background: 'rgba(0, 0, 0, 0.35)',
                   padding: '16px 20px',
@@ -361,6 +365,7 @@ export const FullAudioPlayer = () => {
 
               {/* Main Control Buttons */}
               <div 
+                className="full-player-controls-row"
                 style={{
                   display: 'flex',
                   alignItems: 'center',

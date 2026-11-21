@@ -159,6 +159,7 @@ export const BrutalistSoundSlider = () => {
 
         {/* Carousel Container Rig */}
         <div 
+          className="brutalist-slider-rig"
           style={{
             position: 'relative',
             backgroundColor: '#FFFFFF',
@@ -168,6 +169,7 @@ export const BrutalistSoundSlider = () => {
           }}
         >
           <div 
+            className="slider-flex-wrapper"
             style={{
               display: 'flex',
               alignItems: 'stretch',
@@ -180,7 +182,7 @@ export const BrutalistSoundSlider = () => {
             <button
               onClick={handlePrev}
               aria-label="Previous slide"
-              className="btn-brutal"
+              className="btn-brutal slider-arrow-btn slider-arrow-prev"
               style={{
                 width: '60px',
                 height: '60px',
@@ -198,7 +200,7 @@ export const BrutalistSoundSlider = () => {
 
             {/* Central Brutalist Slide Panel */}
             <div 
-              className="shadow-panel"
+              className="shadow-panel slider-content-panel"
               style={{
                 flex: '1 1 600px',
                 maxWidth: '820px',
@@ -213,6 +215,7 @@ export const BrutalistSoundSlider = () => {
             >
               {/* Copy & Playback Content Cell */}
               <div 
+                className="slider-content-body"
                 style={{
                   padding: 'var(--space-xl)',
                   display: 'flex',
@@ -332,6 +335,7 @@ export const BrutalistSoundSlider = () => {
 
               {/* Inverted Giant Numeral Index Block */}
               <div 
+                className="slider-numeral-block"
                 style={{
                   width: '130px',
                   backgroundColor: '#000000',
@@ -376,7 +380,7 @@ export const BrutalistSoundSlider = () => {
             <button
               onClick={handleNext}
               aria-label="Next slide"
-              className="btn-brutal"
+              className="btn-brutal slider-arrow-btn slider-arrow-next"
               style={{
                 width: '60px',
                 height: '60px',
@@ -395,6 +399,7 @@ export const BrutalistSoundSlider = () => {
 
           {/* Row of Square Index Buttons */}
           <div 
+            className="slider-index-row"
             style={{
               display: 'flex',
               alignItems: 'center',

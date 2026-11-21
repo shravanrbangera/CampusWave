@@ -56,7 +56,7 @@ export const Profile = () => {
     <div className="profile-page page-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
       {/* Top Banner / Student ID Card (Editorial Brutalist Identity) */}
       <section 
-        className="hero-split-grid"
+        className="hero-split-grid profile-header-card"
         style={{
           padding: 'var(--space-2xl)',
           borderRadius: '24px',

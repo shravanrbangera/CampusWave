@@ -1,30 +1,64 @@
 /* ==========================================================================
-   CAMPUSWAVE RESPONSIVE BREAKPOINTS & MOBILE ARCHITECTURE
-   Tailored for:
-   - Ultra-compact mobile (320px - 375px)
-   - Standard mobile (376px - 480px)
-   - Phablet & Small Tablet (481px - 768px)
-   - Tablet & Small Laptop (769px - 1024px)
-   - Desktop & Wide (1025px+)
+   CAMPUSWAVE MOBILE-FIRST RESPONSIVE ARCHITECTURE
+   Specially engineered for:
+     1. Small mobile: 320px – 374px
+     2. Standard mobile: 375px – 430px
+     3. Large mobile: 431px – 600px
+     4. Tablet: 601px – 900px
+     5. Laptop: 901px – 1200px
+     6. Desktop & Wide: 1201px and above
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   GLOBAL FLUID RESETS
+   1. GLOBAL FLUID RESETS & HORIZONTAL OVERFLOW PREVENTION
    -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, 
 body, 
 #root, 
 .app-container {
   max-width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
 }
 
 img, svg, video, canvas {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Horizontal scrollable pill containers touch ergonomics */
+/* Touch Ergonomics & Mobile Input Zoom Prevention */
+input, 
+select, 
+textarea {
+  font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+  touch-action: manipulation;
+}
+
+button, 
+a, 
+input, 
+select, 
+textarea, 
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active, 
+a:active, 
+.btn-brutal:active {
+  transform: scale(0.97);
+  transition: transform 0.08s ease;
+}
+
+/* Touch-friendly horizontal scrollable pill rows (zero scrollbar clutter) */
 .scroll-x,
 .scroll-touch-pills,
 .category-pills-row,
@@ -40,37 +74,460 @@ img, svg, video, canvas {
 .category-pills-row::-webkit-scrollbar,
 [style*="overflowX: 'auto'"]::-webkit-scrollbar,
 [style*="overflow-x: auto"]::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------
-   DESKTOP (1025px - 1440px+)
+   2. MOBILE-FIRST BASE NAVIGATION & DOCK ARCHITECTURE (<= 768px)
    -------------------------------------------------------------------------- */
-@media (min-width: 1025px) {
-  .page-wrapper {
-    max-width: 1360px;
-    padding: var(--space-2xl) var(--space-xl);
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 64px;
+    --mini-player-height: 68px;
+    --bottom-nav-height: 64px;
+  }
+
+  /* Prevent page content from being obscured behind fixed MiniPlayer + BottomNav */
+  .app-container {
+    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 20px) !important;
+  }
+
+  .nav-desktop-links {
+    display: none !important;
   }
 
   .nav-mobile-bottom {
-    display: none !important;
+    display: flex !important;
   }
 
   #mobile-nav-toggle {
+    display: inline-flex !important;
+  }
+
+  /* MiniPlayer docks directly above the Bottom Navigation */
+  .mini-player-container {
+    bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px)) !important;
+    height: var(--mini-player-height) !important;
+  }
+
+  /* Full Screen Overlay Player on Mobile */
+  .full-player-overlay {
+    padding: 0 !important;
+    inset: 0 !important;
+  }
+
+  .full-player-header {
+    padding: 12px 14px !important;
+  }
+
+  .full-player-header-title {
     display: none !important;
+  }
+
+  .full-player-tabs {
+    padding: 2px !important;
+  }
+
+  .full-player-tabs button {
+    padding: 6px 10px !important;
+    font-size: 0.74rem !important;
+    gap: 4px !important;
+  }
+
+  .full-player-body {
+    padding: 16px 14px 40px !important;
+  }
+
+  .full-player-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .full-player-controls-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  /* Mobile Bento Grid & Card Grids: Single Column Stack */
+  .bento-category-grid,
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4,
+  [style*="minmax(280px"],
+  [style*="minmax(300px"],
+  [style*="minmax(310px"],
+  [style*="minmax(320px"],
+  [style*="minmax(360px"] {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
+  }
+
+  .bento-card,
+  .bento-card-7,
+  .bento-card-5,
+  .bento-card-4 {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  /* Hero Section Mobile Reflow */
+  .hero-container {
+    padding: 28px 18px !important;
+    border-radius: var(--radius-xl) !important;
+  }
+
+  .ghost-typography {
+    display: none !important; /* Hide ghost background letters on mobile to avoid contrast clash */
+  }
+
+  /* Login / Register Split Layout collapses to single column on mobile */
+  .split-login-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .login-visual-panel {
+    display: none !important;
+  }
+
+  /* Profile page header card */
+  .profile-header-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: var(--space-lg) !important;
+    gap: 16px !important;
+  }
+
+  .profile-header-card button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
 }
 
 /* --------------------------------------------------------------------------
-   TABLET & SMALL LAPTOP (769px - 1024px)
+   3. BREAKPOINT 1: SMALL MOBILE (320px – 374px)
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
+@media (max-width: 374px) {
   :root {
-    --navbar-height: 66px;
+    --space-2xl: 20px;
+    --space-xl: 16px;
+    --space-lg: 12px;
+    --space-md: 8px;
+    --bottom-nav-height: 60px;
+    --mini-player-height: 64px;
   }
 
   .page-wrapper {
-    padding: var(--space-xl) var(--space-lg);
+    padding: 10px 8px !important;
+  }
+
+  .hero-container {
+    padding: 18px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Fluid typography clamp for ultra-compact screens */
+  .editorial-title,
+  h1 {
+    font-size: clamp(1.65rem, 7.5vw, 1.95rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  .editorial-sub,
+  p {
+    font-size: 0.88rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Full-width tap buttons */
+  .btn-primary,
+  .btn-secondary,
+  .btn-coral,
+  .btn-brutal {
+    padding: 10px 14px !important;
+    font-size: 0.82rem !important;
+    min-height: 44px !important;
+  }
+
+  /* Vinyl Record in Turntables & Players */
+  .vinyl-wrapper {
+    width: min(200px, 66vw) !important;
+    height: min(200px, 66vw) !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 auto !important;
+  }
+
+  /* MiniPlayer on Small Mobile */
+  .mini-player-track-info {
+    min-width: 0 !important;
+    max-width: 140px !important;
+    gap: 8px !important;
+  }
+
+  .mini-player-track-info img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .mini-player-controls {
+    gap: 4px !important;
+    min-width: auto !important;
+  }
+
+  .secondary-control,
+  .mini-player-time {
+    display: none !important;
+  }
+
+  /* Bottom Navigation text & icons */
+  .nav-mobile-bottom a span {
+    font-size: 0.56rem !important;
+  }
+
+  .nav-mobile-bottom .btn-brutal {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  /* RetroConsoleDeck Compact Scaling */
+  .retro-handheld-console {
+    padding: 12px 8px !important;
+    border-radius: 16px !important;
+    box-shadow: 4px 4px 0 #000 !important;
+  }
+
+  .retro-controls-deck {
+    gap: 8px !important;
+    justify-content: center !important;
+  }
+
+  .retro-sound-btns {
+    gap: 6px !important;
+  }
+
+  .retro-fx-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .retro-dial-btn {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .retro-pushpin-note {
+    padding: 6px 8px !important;
+    font-size: 0.65rem !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  /* BrutalistSoundSlider Compact Scaling */
+  .brutalist-slider-rig {
+    padding: 12px 8px !important;
+    box-shadow: 4px 4px 0 #000 !important;
+  }
+
+  .slider-flex-wrapper {
+    gap: 10px !important;
+  }
+
+  .slider-content-panel {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  .slider-numeral-block {
+    display: none !important;
+  }
+
+  .slider-content-body {
+    padding: 12px 10px !important;
+  }
+
+  .slider-arrow-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+  }
+
+  .slider-index-row button {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Profile page stats single column */
+  .profile-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. BREAKPOINT 2: STANDARD MOBILE (375px – 430px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 375px) and (max-width: 430px) {
+  :root {
+    --space-2xl: 24px;
+    --space-xl: 18px;
+    --space-lg: 14px;
+    --space-md: 10px;
+  }
+
+  .page-wrapper {
+    padding: 16px 12px !important;
+  }
+
+  .hero-container {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .editorial-title,
+  h1 {
+    font-size: clamp(1.85rem, 8vw, 2.25rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  .editorial-sub,
+  p {
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Vinyl Record in Turntables & Players */
+  .vinyl-wrapper {
+    width: min(240px, 70vw) !important;
+    height: min(240px, 70vw) !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 auto !important;
+  }
+
+  /* Buttons full width or flex wrap */
+  .hero-actions-row,
+  .hero-actions-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions-row button,
+  .hero-actions-row a,
+  .hero-actions-group button,
+  .hero-actions-group a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* MiniPlayer Compact Mobile Ergonomics */
+  .mini-player-track-info {
+    min-width: 0 !important;
+    max-width: 180px !important;
+    flex: 1 1 auto !important;
+  }
+
+  .mini-player-controls {
+    min-width: auto !important;
+    gap: 6px !important;
+  }
+
+  .mini-player-controls .secondary-control,
+  .mini-player-time {
+    display: none !important;
+  }
+
+  /* BrutalistSoundSlider Standard Mobile */
+  .brutalist-slider-rig {
+    padding: 16px 12px !important;
+  }
+
+  .slider-content-panel {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  .slider-numeral-block {
+    display: none !important;
+  }
+
+  .slider-content-body {
+    padding: 16px 12px !important;
+  }
+
+  .slider-arrow-btn {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+  }
+
+  /* RetroConsoleDeck */
+  .retro-handheld-console {
+    padding: 16px 12px !important;
+  }
+
+  .retro-controls-deck {
+    gap: 10px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. BREAKPOINT 3: LARGE MOBILE (431px – 600px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 431px) and (max-width: 600px) {
+  .page-wrapper {
+    padding: 20px 16px !important;
+  }
+
+  .hero-container {
+    padding: 28px 20px !important;
+  }
+
+  .vinyl-wrapper {
+    width: min(270px, 68vw) !important;
+    height: min(270px, 68vw) !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .brutalist-slider-rig {
+    padding: 20px 16px !important;
+  }
+
+  .slider-content-panel {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  .slider-numeral-block {
+    width: 85px !important;
+    padding: 10px !important;
+  }
+
+  .slider-numeral-block .font-black {
+    font-size: 3.2rem !important;
+  }
+
+  .slider-content-body {
+    padding: 20px 16px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. BREAKPOINT 4: TABLET (601px – 900px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 601px) and (max-width: 900px) {
+  :root {
+    --navbar-height: 68px;
+  }
+
+  .page-wrapper {
+    padding: var(--space-xl) var(--space-lg) !important;
   }
 
   .hero-split-grid {
@@ -93,284 +550,130 @@ img, svg, video, canvas {
     grid-column: span 2 !important;
   }
 
+  /* Section Grids Tablet Layout: 2 Columns */
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4,
+  [style*="minmax(280px"],
+  [style*="minmax(300px"],
+  [style*="minmax(310px"],
+  [style*="minmax(320px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-md) !important;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
   .desktop-only {
     display: none !important;
   }
 }
 
 /* --------------------------------------------------------------------------
-   MOBILE & TABLET PORTRAIT (768px and below)
+   7. BREAKPOINT 5: LAPTOP (901px – 1200px)
    -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
+@media (min-width: 901px) and (max-width: 1200px) {
   :root {
-    --navbar-height: 62px;
-    --mini-player-height: 68px;
-    --bottom-nav-height: 62px;
-  }
-
-  /* Prevent page content from being obscured behind fixed MiniPlayer + BottomNav */
-  .app-container {
-    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + 16px) !important;
+    --navbar-height: 70px;
+    --mini-player-height: 74px;
   }
 
   .page-wrapper {
-    padding: var(--space-lg) var(--space-md) !important;
+    padding: var(--space-xl) var(--space-lg);
   }
 
-  /* Navigation Bar Adjustments */
   .nav-desktop-links {
-    display: none !important;
+    display: flex !important;
   }
 
   .nav-mobile-bottom {
-    display: flex !important;
+    display: none !important;
   }
 
   #mobile-nav-toggle {
     display: inline-flex !important;
   }
 
-  /* Mobile Dock: MiniPlayer sits above Bottom Navigation */
   .mini-player-container {
-    bottom: var(--bottom-nav-height) !important;
+    bottom: 0 !important;
     height: var(--mini-player-height) !important;
   }
 
-  /* Bento Grid on Mobile: 1 Column */
+  .app-container {
+    padding-bottom: calc(var(--mini-player-height) + 16px) !important;
+  }
+
   .bento-category-grid {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-md) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--space-lg) !important;
   }
 
-  .bento-card,
-  .bento-card-7,
-  .bento-card-5,
+  .bento-card-7 {
+    grid-column: span 3 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. BREAKPOINT 6: DESKTOP & WIDE (1201px and above)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1201px) {
+  .page-wrapper {
+    max-width: 1360px;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .nav-desktop-links {
+    display: flex !important;
+  }
+
+  .nav-mobile-bottom {
+    display: none !important;
+  }
+
+  #mobile-nav-toggle {
+    display: none !important;
+  }
+
+  .mini-player-container {
+    bottom: 0 !important;
+  }
+
+  .app-container {
+    padding-bottom: calc(var(--mini-player-height) + 20px) !important;
+  }
+
+  /* Full Bento Grid 7-Card Asymmetric Layout */
+  .bento-category-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .bento-card-1 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
   .bento-card-4 {
-    grid-column: span 1 !important;
-    width: 100% !important;
-    min-height: auto !important;
+    grid-column: span 2;
   }
 
-  /* Hero Container on Mobile */
-  .hero-container {
-    padding: 28px 18px !important;
-    border-radius: var(--radius-xl) !important;
-  }
-
-  .ghost-typography {
-    display: none !important; /* Hide ghost background letters on mobile to avoid contrast clash */
-  }
-
-  /* Vinyl Record Scaling on Mobile */
-  .vinyl-wrapper {
-    max-width: 100% !important;
-    transform: scale(0.85);
-    transform-origin: center center;
-    margin: -15px auto !important;
-  }
-
-  /* Split Login Layout on Mobile */
-  .split-login-container {
-    grid-template-columns: 1fr !important;
-  }
-
-  .login-visual-panel {
-    display: none !important;
-  }
-
-  /* Section Grids Collapse Cleanly */
-  .section-grid-2,
-  .section-grid-3,
-  .section-grid-4 {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-md) !important;
-  }
-
-  /* Adjust section headers */
-  .section-header {
-    margin-bottom: var(--space-lg) !important;
-    gap: 8px !important;
-  }
-
-  .section-header-title {
-    font-size: 1.5rem !important;
-  }
-
-  /* Form Elements */
-  .form-input {
-    font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
-    padding: 12px 16px !important;
+  .bento-card-7 {
+    grid-column: span 4;
   }
 }
 
 /* --------------------------------------------------------------------------
-   STANDARD MOBILE (480px and below)
+   9. INTERACTIVE ACCESSIBILITY & TAP ERGONOMICS
    -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  :root {
-    --space-2xl: 24px;
-    --space-xl: 18px;
-    --space-lg: 14px;
-    --space-md: 10px;
+@media (hover: hover) and (pointer: fine) {
+  .card-modern:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 #000000;
   }
 
-  .page-wrapper {
-    padding: 16px 12px !important;
-  }
-
-  /* Hero Headline font size fluid clamp */
-  .editorial-title {
-    font-size: clamp(1.85rem, 8vw, 2.3rem) !important;
-    line-height: 1.15 !important;
-  }
-
-  .editorial-sub {
-    font-size: 0.94rem !important;
-  }
-
-  /* Buttons in hero / actions row take full width or flex nicely */
-  .hero-actions-row,
-  .hero-actions-group {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    gap: 10px !important;
-  }
-
-  .hero-actions-row button,
-  .hero-actions-row a,
-  .hero-actions-group button,
-  .hero-actions-group a {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  /* Stats Bar on Hero */
-  .hero-stats-row {
-    gap: 12px !important;
-    justify-content: space-between !important;
-  }
-
-  .hero-stats-row .divider-line {
-    display: none !important;
-  }
-
-  /* Vinyl Record in Turntable Cards */
-  .vinyl-wrapper {
-    transform: scale(0.72) !important;
-    margin: -32px auto !important;
-  }
-
-  /* MiniPlayer Compact Mobile Ergonomics */
-  .mini-player-track-info {
-    min-width: 0 !important;
-    max-width: 180px !important;
-    flex: 1 1 auto !important;
-  }
-
-  .mini-player-controls {
-    min-width: auto !important;
-    gap: 6px !important;
-  }
-
-  .mini-player-controls .secondary-control {
-    display: none !important;
-  }
-
-  .mini-player-time {
-    display: none !important;
-  }
-
-  /* Full Screen Audio Modal */
-  .full-player-overlay {
-    padding: 0 !important;
-  }
-
-  .full-player-header-title {
-    display: none !important;
-  }
-
-  .full-player-tabs button {
-    padding: 5px 10px !important;
-    font-size: 0.78rem !important;
-  }
-
-  /* Audio Waveform on mobile */
-  .audio-waveform-container {
-    height: 36px !important;
-  }
-
-  /* Profile Page Responsive Layout */
-  .profile-header-card {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 16px !important;
-  }
-
-  .profile-header-card button {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  .profile-stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
-  }
-
-  .profile-stats-grid .card-modern {
-    padding: 14px 10px !important;
-  }
-
-  /* Live Radio Mobile Controls */
-  .live-radio-deck {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 14px !important;
-  }
-
-  .live-radio-deck > div {
-    justify-content: center !important;
-  }
-
-  /* Cards Grid: Ensure cards take full width on mobile */
-  [style*="minmax(280px"],
-  [style*="minmax(300px"],
-  [style*="minmax(310px"],
-  [style*="minmax(320px"],
-  [style*="minmax(360px"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   ULTRA-COMPACT MOBILE (360px and below - e.g. iPhone SE / Fold outer)
-   -------------------------------------------------------------------------- */
-@media (max-width: 360px) {
-  .page-wrapper {
-    padding: 12px 10px !important;
-  }
-
-  .editorial-title {
-    font-size: 1.65rem !important;
-  }
-
-  .vinyl-wrapper {
-    transform: scale(0.65) !important;
-    margin: -45px auto !important;
-  }
-
-  .profile-stats-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .btn-primary,
-  .btn-secondary,
-  .btn-coral {
-    padding: 10px 16px !important;
-    font-size: 0.84rem !important;
-  }
-
-  .nav-mobile-bottom a span {
-    font-size: 0.6rem !important;
+  .btn-brutal:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #000000;
   }
 }

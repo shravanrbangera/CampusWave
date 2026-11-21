@@ -88,6 +88,19 @@
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
 
+  /* Fluid Typography Clamps (Mobile-First Scaled) */
+  --font-size-hero: clamp(2rem, 7vw, 4.5rem);           /* 32px - 72px */
+  --font-size-page-heading: clamp(1.625rem, 5vw, 3.25rem); /* 26px - 52px */
+  --font-size-section-heading: clamp(1.3125rem, 3.8vw, 2.25rem); /* 21px - 36px */
+  --font-size-card-heading: clamp(1rem, 2.5vw, 1.25rem);   /* 16px - 20px */
+  --font-size-body: clamp(0.875rem, 2vw, 1.05rem);         /* 14px - 17px */
+  --font-size-supporting: clamp(0.75rem, 1.5vw, 0.875rem); /* 12px - 14px */
+  --font-size-btn: clamp(0.875rem, 1.8vw, 1rem);           /* 14px - 16px */
+
+  /* Touch Ergonomics Minimum Sizes */
+  --min-touch-target: 48px;
+  --min-touch-btn: 44px;
+
   /* Spacing Scale */
   --space-2xs: 2px;
   --space-xs: 4px;

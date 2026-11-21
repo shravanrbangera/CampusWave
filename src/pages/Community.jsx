@@ -164,6 +164,7 @@ export const Community = () => {
 
       {/* Main Daily Song Poll */}
       <section 
+        className="community-poll-banner"
         style={{
           padding: 'var(--space-2xl)',
           borderRadius: '24px',
@@ -305,7 +306,7 @@ export const Community = () => {
         className="hero-split-grid"
       >
         {/* Song Request Box */}
-        <div className="card-modern" style={{ padding: 'var(--space-2xl)', borderRadius: '24px', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '5px 5px 0 #000' }}>
+        <div className="card-modern community-form-card" style={{ padding: 'var(--space-2xl)', borderRadius: '24px', backgroundColor: '#FFFFFF', border: '2.5px solid #000', boxShadow: '5px 5px 0 #000' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
             <Music size={24} color="var(--color-coral)" />
             <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.45rem', fontWeight: 800, margin: 0, color: '#000', textTransform: 'uppercase' }}>

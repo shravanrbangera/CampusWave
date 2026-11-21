@@ -17,6 +17,7 @@ export const Footer = () => {
       <MarqueeTicker />
 
       <div 
+        className="footer-grid-container"
         style={{
           maxWidth: '1360px',
           margin: '0 auto',
@@ -154,6 +155,7 @@ export const Footer = () => {
         }}
       >
         <div 
+          className="footer-bottom-bar"
           style={{
             maxWidth: '1360px',
             margin: '0 auto',

@@ -82,6 +82,7 @@ export const Library = () => {
 
       {/* Segmented Controls / Tabs */}
       <div
+        className="category-pills-row scroll-touch-pills"
         style={{
           display: 'flex',
           alignItems: 'center',

@@ -89,7 +89,7 @@ export const Campus = () => {
 
         {/* Tab switcher & Search */}
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <div className="category-pills-row scroll-touch-pills" style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '4px', maxWidth: '100%' }}>
             <button
               onClick={() => setActiveTab('all')}
               className="btn-brutal"
@@ -100,6 +100,7 @@ export const Campus = () => {
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 800,
                 textTransform: 'uppercase',
+                whiteSpace: 'nowrap',
                 cursor: 'pointer',
                 backgroundColor: activeTab === 'all' ? 'var(--color-acid)' : '#FFFFFF',
                 color: '#000000',
@@ -120,6 +121,7 @@ export const Campus = () => {
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 800,
                 textTransform: 'uppercase',
+                whiteSpace: 'nowrap',
                 cursor: 'pointer',
                 backgroundColor: activeTab === 'announcements' ? 'var(--color-acid)' : '#FFFFFF',
                 color: '#000000',
@@ -140,6 +142,7 @@ export const Campus = () => {
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 800,
                 textTransform: 'uppercase',
+                whiteSpace: 'nowrap',
                 cursor: 'pointer',
                 backgroundColor: activeTab === 'events' ? 'var(--color-acid)' : '#FFFFFF',
                 color: '#000000',
@@ -152,7 +155,7 @@ export const Campus = () => {
             </button>
           </div>
 
-          <div style={{ position: 'relative', width: '290px' }}>
+          <div style={{ position: 'relative', width: 'min(100%, 320px)' }}>
             <input
               type="text"
               value={searchQuery}

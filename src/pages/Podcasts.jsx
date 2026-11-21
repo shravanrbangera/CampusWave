@@ -98,7 +98,10 @@ export const Podcasts = () => {
             />
           </div>
 
-          <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', padding: '4px 0' }}>
+          <div 
+            className="category-pills-row scroll-touch-pills"
+            style={{ display: 'flex', gap: '10px', overflowX: 'auto', padding: '4px 0' }}
+          >
             {podcastCategories.map(cat => {
               const isSelected = selectedCategory === cat;
               return (
@@ -133,7 +136,7 @@ export const Podcasts = () => {
       {/* Featured Podcast Spotlight */}
       {!searchQuery && selectedCategory === 'All' && (
         <section 
-          className="hero-split-grid"
+          className="hero-split-grid podcast-spotlight-card"
           style={{
             padding: 'var(--space-2xl)',
             borderRadius: '24px',

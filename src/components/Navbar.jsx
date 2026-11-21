@@ -223,15 +223,19 @@ export const Navbar = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           {/* Search Trigger */}
           {searchOpen ? (
-            <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center' }}>
+            <form 
+              onSubmit={handleSearchSubmit} 
+              className="navbar-search-form"
+              style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
+            >
               <input
                 type="text"
                 autoFocus
-                placeholder="Search CampusWave..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
-                  width: '210px',
+                  width: 'clamp(120px, 28vw, 210px)',
                   padding: '7px 14px',
                   borderRadius: '999px',
                   background: '#FFFFFF',
@@ -239,14 +243,15 @@ export const Navbar = () => {
                   boxShadow: '2px 2px 0 #000',
                   color: '#000',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.82rem',
+                  fontSize: '16px',
                   fontWeight: 600
                 }}
               />
               <button 
                 type="button" 
                 onClick={() => setSearchOpen(false)}
-                style={{ marginLeft: '6px', color: '#000', cursor: 'pointer', background: 'none', border: 'none' }}
+                style={{ color: '#000', cursor: 'pointer', background: 'none', border: 'none', padding: '6px', display: 'flex', alignItems: 'center' }}
+                aria-label="Close search"
               >
                 <X size={18} />
               </button>

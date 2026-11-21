@@ -185,6 +185,7 @@ export const Register = () => {
 
       {/* Right Registration Form */}
       <div 
+        className="login-form-wrapper"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -195,7 +196,7 @@ export const Register = () => {
         }}
       >
         <div 
-          className="card-modern"
+          className="card-modern auth-form-card"
           style={{ 
             maxWidth: '480px', 
             width: '100%',

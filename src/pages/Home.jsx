@@ -159,7 +159,7 @@ export const Home = () => {
       {/* Featured Live Broadcast Banner (Cinematic Deep Teal & Charcoal) */}
       <section>
         <div 
-          className="card-modern"
+          className="card-modern home-live-banner"
           style={{
             position: 'relative',
             overflow: 'hidden',

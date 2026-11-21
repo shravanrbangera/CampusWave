@@ -166,6 +166,7 @@ export const Explore = () => {
 
       {/* Category Filter Pills (Tactile Brutalist Buttons) */}
       <div 
+        className="category-pills-row scroll-touch-pills"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -305,7 +306,7 @@ export const Explore = () => {
       {/* Featured Spotlight Card */}
       {!searchQuery && selectedCategory === 'All' && (
         <section 
-          className="hero-split-grid"
+          className="hero-split-grid explore-spotlight-card"
           style={{
             padding: 'var(--space-2xl)',
             borderRadius: '24px',

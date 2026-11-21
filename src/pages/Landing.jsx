@@ -810,7 +810,7 @@ export const Landing = () => {
       <section style={{ padding: 'var(--space-3xl) 0' }}>
         <div className="page-wrapper">
           <div 
-            className="card-3d"
+            className="card-3d hero-split-grid"
             style={{
               borderRadius: 'var(--radius-2xl)',
               backgroundColor: 'var(--color-teal)',
@@ -824,7 +824,6 @@ export const Landing = () => {
               gap: 'var(--space-2xl)',
               alignItems: 'center'
             }}
-            className="hero-split-grid"
           >
             {/* Ambient Background Aura */}
             <div style={{ position: 'absolute', top: '-30%', right: '0%', width: '380px', height: '380px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(245, 45, 58, 0.28) 0%, transparent 70%)', filter: 'blur(50px)' }} />

@@ -171,6 +171,7 @@ export const Login = () => {
 
       {/* Right Login Form Panel */}
       <div
+        className="login-form-wrapper"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -181,7 +182,7 @@ export const Login = () => {
         }}
       >
         <div 
-          className="card-modern"
+          className="card-modern auth-form-card"
           style={{ 
             maxWidth: '460px', 
             width: '100%',

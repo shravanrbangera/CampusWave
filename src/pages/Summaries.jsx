@@ -106,7 +106,10 @@ export const Summaries = () => {
             <Search size={20} color="#000" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} />
           </div>
 
-          <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', padding: '4px 0' }}>
+          <div 
+            className="category-pills-row scroll-touch-pills"
+            style={{ display: 'flex', gap: '10px', overflowX: 'auto', padding: '4px 0' }}
+          >
             {categories.map(cat => {
               const isSelected = selectedCategory === cat;
               return (
@@ -141,7 +144,7 @@ export const Summaries = () => {
       {/* Featured Editorial Magazine Card */}
       {!searchQuery && selectedCategory === 'All' && (
         <section 
-          className="hero-split-grid"
+          className="hero-split-grid summaries-featured-card"
           style={{
             padding: 'var(--space-2xl)',
             borderRadius: '24px',

@@ -184,6 +184,7 @@ export const LiveRadio = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
             {/* Turntable Deck & Artwork */}
             <div 
+              className="live-turntable-deck"
               style={{
                 background: 'linear-gradient(145deg, rgba(16, 56, 61, 0.85) 0%, rgba(14, 19, 21, 0.98) 100%)',
                 padding: 'var(--space-2xl)',
@@ -582,7 +583,7 @@ export const LiveRadio = () => {
               </div>
 
               {/* Input Form */}
-              <form onSubmit={handleSendShoutout} style={{ display: 'flex', gap: '8px' }}>
+              <form onSubmit={handleSendShoutout} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 <input
                   type="text"
                   value={shoutoutText}
@@ -593,9 +594,9 @@ export const LiveRadio = () => {
                     backgroundColor: 'rgba(0, 0, 0, 0.4)',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: 'var(--radius-full)',
-                    padding: '10px 16px',
+                    padding: '12px 16px',
                     color: 'var(--color-cream)',
-                    fontSize: '0.84rem'
+                    fontSize: '16px'
                   }}
                 />
                 <button
@@ -603,8 +604,8 @@ export const LiveRadio = () => {
                   style={{
                     backgroundColor: 'var(--color-coral)',
                     color: '#FFFFFF',
-                    width: '38px',
-                    height: '38px',
+                    width: '44px',
+                    height: '44px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -613,8 +614,9 @@ export const LiveRadio = () => {
                     flexShrink: 0
                   }}
                   title="Send Shoutout"
+                  aria-label="Send Shoutout"
                 >
-                  <Send size={15} />
+                  <Send size={16} />
                 </button>
               </form>
             </div>

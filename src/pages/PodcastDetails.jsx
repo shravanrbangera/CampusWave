@@ -93,7 +93,7 @@ export const PodcastDetails = () => {
 
       {/* Main Episode Banner */}
       <div 
-        className="hero-split-grid"
+        className="hero-split-grid podcast-details-banner"
         style={{
           padding: 'var(--space-2xl)',
           borderRadius: '24px',

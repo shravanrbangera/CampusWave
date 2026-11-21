@@ -73,8 +73,9 @@ export const Home = () => {
       style={{ 
         display: 'flex', 
         flexDirection: 'column', 
-        gap: 'clamp(20px, 3.5vw, 28px)',
-        paddingTop: 'clamp(6px, 1.5vw, 12px)'
+        gap: 'clamp(18px, 3vw, 24px)',
+        paddingTop: 'clamp(6px, 1.5vw, 12px)',
+        paddingBottom: '0'
       }}
     >
       {/* 1. Top Clean Search Bar (Matches Image 1) */}

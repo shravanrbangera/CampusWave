@@ -101,12 +101,18 @@ input, textarea, select {
   position: relative;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  padding-bottom: calc(var(--mini-player-height) + 24px);
+  padding-bottom: 0;
+}
+
+/* Footer clears mini player on desktop */
+footer {
+  padding-bottom: calc(var(--mini-player-height) + 16px);
 }
 
 @media (max-width: 768px) {
-  .app-container {
-    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 24px) !important;
+  /* Footer clears mini-player and bottom navigation dock on mobile */
+  footer {
+    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 20px) !important;
   }
 }
 

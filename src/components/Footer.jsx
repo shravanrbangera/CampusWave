@@ -9,7 +9,7 @@ export const Footer = () => {
       style={{
         backgroundColor: 'var(--bg-card)',
         borderTop: '1px solid var(--border-color)',
-        marginTop: 'var(--space-3xl)',
+        marginTop: 'clamp(14px, 2.5vw, 24px)',
         position: 'relative',
         transition: 'background-color var(--transition-normal), border-color var(--transition-normal)'
       }}
@@ -20,10 +20,10 @@ export const Footer = () => {
       <div 
         className="footer-grid-container page-wrapper"
         style={{
-          padding: 'var(--space-2xl) var(--space-lg) var(--space-xl)',
+          padding: 'clamp(14px, 2.5vw, 24px) clamp(14px, 2vw, 20px) 12px',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: 'var(--space-2xl)'
+          gap: 'clamp(16px, 3vw, 28px)'
         }}
       >
         {/* Brand Column */}

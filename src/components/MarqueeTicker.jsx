@@ -31,7 +31,7 @@ export const MarqueeTicker = ({
         borderTop: '3px solid #000000',
         borderBottom: '3px solid #000000',
         overflow: 'hidden',
-        padding: '12px 0',
+        padding: '8px 0',
         userSelect: 'none',
         position: 'relative',
         zIndex: 10

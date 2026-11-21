@@ -87,10 +87,18 @@ a:active,
     --bottom-nav-height: 58px;
   }
 
-  /* Prevent page content from being obscured behind fixed MiniPlayer + BottomNav */
-  .app-container,
+  /* Eliminate unwanted gaps between content and footer */
   .main-content {
-    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 32px) !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Footer clears fixed MiniPlayer + BottomNav dock on mobile with zero wasted space */
+  .app-container {
+    padding-bottom: 0 !important;
+  }
+
+  footer {
+    padding-bottom: calc(var(--mini-player-height) + var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 20px) !important;
   }
 
   .desktop-only {

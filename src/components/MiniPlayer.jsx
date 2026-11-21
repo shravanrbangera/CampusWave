@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { 
   Play, 
   Pause, 
@@ -11,6 +12,8 @@ import { useAudio } from '../context/AudioContext';
 import { useAuth } from '../context/AuthContext';
 
 export const MiniPlayer = () => {
+  const location = useLocation();
+  const isHome = location.pathname === '/' || location.pathname === '/home';
   const { 
     currentTrack, 
     isPlaying, 
@@ -29,7 +32,8 @@ export const MiniPlayer = () => {
   const { likedTracks, toggleLikeTrack } = useAuth();
   const isLiked = currentTrack ? likedTracks?.includes(currentTrack.id) : false;
 
-  if (!currentTrack) return null;
+  // On the Home page, the FMTunerDial is the primary player — avoid showing 2 music players on screen
+  if (!currentTrack || isHome) return null;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 

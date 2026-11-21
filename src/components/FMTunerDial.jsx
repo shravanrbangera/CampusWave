@@ -1,5 +1,6 @@
 import React from 'react';
-import { Radio, Play, Pause, Volume2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Radio, Play, Pause } from 'lucide-react';
 import { useAudio } from '../context/AudioContext';
 import { mockLiveShow } from '../data/music';
 
@@ -27,24 +28,18 @@ export const FMTunerDial = () => {
   return (
     <div 
       className="retro-fm-tuner-card"
-      onClick={handleTuneClick}
-      role="button"
-      tabIndex={0}
-      title="Click to tune in to 90.4 FM"
       style={{
         background: 'var(--bg-card)',
         border: '1.5px solid var(--border-color)',
         borderRadius: 'var(--radius-xl)',
-        padding: '16px 20px',
+        padding: '16px 18px',
         boxShadow: 'var(--shadow-sm)',
-        cursor: 'pointer',
         transition: 'all var(--transition-fast)',
-        userSelect: 'none',
         position: 'relative',
         overflow: 'hidden'
       }}
     >
-      {/* Top Header Row of Tuner Faceplate */}
+      {/* Top Header Row of Tuner Faceplate (Matching User Image 1) */}
       <div 
         style={{
           display: 'flex',
@@ -61,15 +56,14 @@ export const FMTunerDial = () => {
               width: '28px',
               height: '28px',
               borderRadius: '8px',
-              backgroundColor: isLiveActive ? 'var(--color-orange)' : 'var(--bg-secondary)',
-              color: isLiveActive ? '#FFFFFF' : 'var(--text-secondary)',
+              backgroundColor: 'var(--bg-secondary)',
+              color: 'var(--text-primary)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all var(--transition-fast)'
+              justifyContent: 'center'
             }}
           >
-            <Radio size={15} />
+            <Radio size={15} color="var(--text-primary)" />
           </div>
           <div>
             <span 
@@ -101,20 +95,23 @@ export const FMTunerDial = () => {
           </div>
         </div>
 
-        {/* Live Indicator / Tune Button */}
+        {/* Live Indicator & Play Button (Matching User Image 1) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span 
+          <button
+            onClick={handleTuneClick}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '5px',
-              fontSize: '0.68rem',
+              gap: '6px',
+              fontSize: '0.72rem',
               fontWeight: 800,
               fontFamily: 'var(--font-mono)',
-              padding: '3px 10px',
+              padding: '4px 10px',
               borderRadius: 'var(--radius-full)',
-              backgroundColor: isLiveActive ? 'var(--color-orange)' : 'var(--bg-secondary)',
-              color: isLiveActive ? '#FFF' : 'var(--text-secondary)',
+              backgroundColor: isLiveActive ? 'var(--color-orange-soft)' : 'var(--bg-secondary)',
+              color: isLiveActive ? 'var(--color-orange)' : 'var(--text-secondary)',
+              border: isLiveActive ? '1px solid var(--color-orange)' : '1px solid var(--border-color)',
+              cursor: 'pointer',
               transition: 'all var(--transition-fast)'
             }}
           >
@@ -123,39 +120,51 @@ export const FMTunerDial = () => {
                 width: '6px',
                 height: '6px',
                 borderRadius: '50%',
-                backgroundColor: isLiveActive ? '#FFF' : 'var(--color-orange)',
+                backgroundColor: isLiveActive ? 'var(--color-orange)' : '#F15A24',
                 animation: isLiveActive ? 'pulse 1.2s infinite' : 'none'
               }} 
             />
             {isLiveActive ? "BROADCASTING" : "TAP TO TUNE"}
-          </span>
+          </button>
 
-          <div 
+          <button
+            onClick={handleTuneClick}
             style={{
-              width: '32px',
-              height: '32px',
+              width: '40px',
+              height: '40px',
               borderRadius: '50%',
-              backgroundColor: isLiveActive ? 'var(--color-orange)' : 'var(--color-forest)',
-              color: '#FFF',
+              backgroundColor: isLiveActive ? 'var(--color-orange)' : '#123D2C',
+              color: '#FFFFFF',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: 'var(--shadow-sm)'
+              boxShadow: '0 3px 10px rgba(0,0,0,0.15)',
+              cursor: 'pointer',
+              border: 'none',
+              transition: 'transform var(--transition-fast)'
             }}
+            title={isLiveActive ? "Pause broadcast" : "Tune into 90.4 FM"}
+            aria-label={isLiveActive ? "Pause" : "Play"}
           >
-            {isLiveActive ? <Pause size={14} fill="#FFF" /> : <Play size={14} fill="#FFF" style={{ marginLeft: '2px' }} />}
-          </div>
+            {isLiveActive ? (
+              <Pause size={17} fill="#FFFFFF" />
+            ) : (
+              <Play size={17} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
+            )}
+          </button>
         </div>
       </div>
 
-      {/* Retro Dial Ruler (Inspired by iPod & 70s Hi-Fi Radio) */}
+      {/* Retro Dial Ruler (Exact match to User Image 1) */}
       <div 
+        onClick={handleTuneClick}
         style={{
           background: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-md)',
           padding: '12px 14px 10px',
           border: '1px solid var(--border-color)',
-          position: 'relative'
+          position: 'relative',
+          cursor: 'pointer'
         }}
       >
         {/* Frequency Marks Track */}
@@ -180,7 +189,7 @@ export const FMTunerDial = () => {
               <div 
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: item.active ? '0.78rem' : '0.68rem',
+                  fontSize: item.active ? '0.82rem' : '0.7rem',
                   fontWeight: item.active ? 800 : 600,
                   color: item.active ? 'var(--color-orange)' : 'var(--text-muted)',
                   letterSpacing: '0.02em'
@@ -191,7 +200,7 @@ export const FMTunerDial = () => {
               {item.label && (
                 <div 
                   style={{
-                    fontSize: '0.58rem',
+                    fontSize: '0.6rem',
                     fontFamily: 'var(--font-mono)',
                     fontWeight: 800,
                     color: 'var(--color-orange)',
@@ -239,14 +248,70 @@ export const FMTunerDial = () => {
         </div>
       </div>
 
-      {/* Tuner Subtext */}
+      {/* Live Track Info Strip (Merged so this is the complete player) */}
       <div 
         style={{
           marginTop: '10px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: '0.72rem',
+          padding: '8px 10px',
+          backgroundColor: 'var(--bg-secondary)',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--border-color)',
+          gap: '10px'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
+          <img 
+            src={mockLiveShow.cover} 
+            alt={mockLiveShow.title} 
+            style={{ width: '36px', height: '36px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} 
+          />
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.86rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {mockLiveShow.title}
+            </div>
+            <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              Hosted by {mockLiveShow.rj}
+            </div>
+          </div>
+        </div>
+
+        {isLiveActive ? (
+          <span className="sound-equalizer" style={{ height: '16px', gap: '2.5px', flexShrink: 0 }}>
+            <span className="sound-bar" style={{ backgroundColor: 'var(--color-orange)', width: '2.5px' }} />
+            <span className="sound-bar" style={{ backgroundColor: 'var(--color-orange)', width: '2.5px' }} />
+            <span className="sound-bar" style={{ backgroundColor: 'var(--color-orange)', width: '2.5px' }} />
+            <span className="sound-bar" style={{ backgroundColor: 'var(--color-orange)', width: '2.5px' }} />
+          </span>
+        ) : (
+          <Link
+            to="/live"
+            style={{
+              fontSize: '0.74rem',
+              color: 'var(--color-orange)',
+              fontWeight: 700,
+              textDecoration: 'none',
+              padding: '3px 8px',
+              borderRadius: 'var(--radius-full)',
+              border: '1px solid var(--border-color)',
+              flexShrink: 0
+            }}
+          >
+            Live Studio
+          </Link>
+        )}
+      </div>
+
+      {/* Tuner Subtext (Exact match to User Image 1) */}
+      <div 
+        style={{
+          marginTop: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontSize: '0.7rem',
           color: 'var(--text-secondary)',
           fontFamily: 'var(--font-mono)'
         }}

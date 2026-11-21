@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <footer 
       style={{
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         borderTop: '3px solid #000000',
         marginTop: 'var(--space-3xl)',
         position: 'relative'

@@ -771,7 +771,7 @@ export const Landing = () => {
       {/* =========================================================================
           SECTION 3: FEATURED PODCASTS (Clean Editorial Cards)
           ========================================================================= */}
-      <section style={{ padding: 'var(--space-2xl) 0', backgroundColor: 'var(--color-white)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+      <section style={{ padding: 'var(--space-2xl) 0', backgroundColor: 'transparent', borderTop: '2px solid #000', borderBottom: '2px solid #000' }}>
         <div className="page-wrapper">
           <div className="section-header">
             <div>
@@ -904,7 +904,7 @@ export const Landing = () => {
       {/* =========================================================================
           SECTION 5: TRENDING CAMPUS MUSIC (Clean Modern Row Cards)
           ========================================================================= */}
-      <section style={{ padding: 'var(--space-2xl) 0', backgroundColor: 'var(--color-white)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+      <section style={{ padding: 'var(--space-2xl) 0', backgroundColor: 'transparent', borderTop: '2px solid #000', borderBottom: '2px solid #000' }}>
         <div className="page-wrapper">
           <div className="section-header">
             <div>

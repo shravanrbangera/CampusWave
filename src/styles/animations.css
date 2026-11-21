@@ -247,16 +247,18 @@
 
 /* Grid Paper Background Pattern */
 .grid-bg {
+  background-color: var(--bg-primary);
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px), 
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px), 
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 34px 34px;
+  background-position: -1px -1px;
 }
 
 [data-theme="dark"] .grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px), 
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px), 
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
 }
 
 /* Funky Acid Selection */

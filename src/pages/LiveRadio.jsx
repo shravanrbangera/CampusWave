@@ -81,6 +81,10 @@ export const LiveRadio = () => {
       className="live-radio-page"
       style={{
         backgroundColor: 'var(--color-teal-dark)',
+        backgroundImage: 'linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px)',
+        backgroundSize: '34px 34px',
+        backgroundPosition: '-1px -1px',
+        backgroundAttachment: 'fixed',
         minHeight: 'calc(100vh - var(--navbar-height))',
         color: 'var(--color-cream)',
         position: 'relative',

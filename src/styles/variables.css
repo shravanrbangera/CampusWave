@@ -21,7 +21,8 @@
   --color-charcoal-dark: #141414;
 
   /* Funky Neo-Brutalist & Student Music Palette */
-  --color-paper: #F4F1EA;
+  --color-paper: #F4F0E8;
+  --grid-line-color: rgba(0, 0, 0, 0.08);
   --color-ink: #000000;
   --color-acid: #E8FF00;
   --color-acid-glow: rgba(232, 255, 0, 0.45);
@@ -63,8 +64,8 @@
   --color-info: #0284C7;
 
   /* Modern Light Editorial Theme (Default!) */
-  --bg-primary: #FAFAFA;
-  --bg-secondary: #F3F3F3;
+  --bg-primary: #F4F0E8;
+  --bg-secondary: #EBE6DC;
   --bg-tertiary: #FFFFFF;
   --bg-elevated: #FFFFFF;
   --bg-hero-container: #FFFFFF;
@@ -128,8 +129,9 @@
 
 /* Dark / Immersive Mode (For Night Owl Listener & Studio) */
 [data-theme="dark"] {
-  --bg-primary: #121517;
-  --bg-secondary: #191E21;
+  --bg-primary: #0E1315;
+  --grid-line-color: rgba(255, 255, 255, 0.07);
+  --bg-secondary: #161D20;
   --bg-tertiary: #20262A;
   --bg-elevated: #262E33;
   --bg-hero-container: #191E21;

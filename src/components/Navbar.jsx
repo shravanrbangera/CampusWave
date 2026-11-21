@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAudio } from '../context/AudioContext';
+import { campusWaveLogo } from '../assets/Images';
 
 export const Navbar = () => {
   const { theme, toggleTheme, savedPodcasts, downloadedPodcasts } = useAuth();
@@ -78,34 +79,44 @@ export const Navbar = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: '10px',
             textDecoration: 'none',
             flexShrink: 0
           }}
         >
           <div 
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '10px',
-              backgroundColor: 'var(--color-orange)',
+              position: 'relative',
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              backgroundColor: '#121110',
+              border: '2px solid var(--border-color)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 2px 8px var(--color-orange-glow)',
-              position: 'relative',
               flexShrink: 0
             }}
           >
-            <Radio size={18} color="#FFFFFF" />
+            <img 
+              src={campusWaveLogo} 
+              alt="CampusWave NMAMIT Radio Logo" 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
             {isPlaying && (
               <span 
                 style={{
                   position: 'absolute',
-                  top: '-2px',
-                  right: '-2px',
-                  width: '8px',
-                  height: '8px',
+                  top: '0px',
+                  right: '0px',
+                  width: '9px',
+                  height: '9px',
                   borderRadius: '50%',
                   backgroundColor: '#10B981',
                   border: '1.5px solid var(--bg-navbar)'

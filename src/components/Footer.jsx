@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Radio, MapPin, Heart, Sparkles } from 'lucide-react';
 import { MarqueeTicker } from './MarqueeTicker';
+import { campusWaveLogo } from '../assets/Images';
 
 export const Footer = () => {
   return (
@@ -31,18 +32,21 @@ export const Footer = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
             <div 
               style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '12px',
-                background: 'var(--color-orange)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                boxShadow: 'var(--shadow-sm)'
+                width: '46px',
+                height: '46px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                backgroundColor: '#121110',
+                border: '2px solid var(--border-color)',
+                boxShadow: 'var(--shadow-sm)',
+                flexShrink: 0
               }}
             >
-              <Radio size={20} />
+              <img 
+                src={campusWaveLogo} 
+                alt="CampusWave NMAMIT Radio Logo" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
